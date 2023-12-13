@@ -1,0 +1,26 @@
+<app-splash *ngIf="showSplash"></app-splash>
+<div class="container" *ngIf="!showSplash">
+  <div class="logo">
+    <img src="assets/images/gorceryroutepro_logo_color.svg"/>
+    <h1 class="logo-title">
+      <span class="dark-blue-text">Grocery</span>
+      <span class="light-blue-text">Route</span>
+      <span class="dark-blue-text">Pro</span>
+    </h1>
+  </div>
+  <div class="section">
+    <h2>Olá!</h2>
+    <p class="grey-text">O que pretende fazer?</p>
+  </div>
+  <button class="dark-blue-button">Login</button>
+  <div class="separator">
+    <div class="line"></div>
+    <span class="grey-text">ou</span>
+    <div class="line"></div>
+  </div>
+  <button class="no-fill-button">Registar</button>
+  <div class="footer">
+    <p class="dark-blue-text">GroceryRoute.Pro</p>
+    <p class="grey-text">© GroceryRoutePro 2024</p>
+  </div>
+</div>

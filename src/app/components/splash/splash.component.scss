@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  min-height: 100vh;
+  background: linear-gradient(192deg, #1565C0 0%, #219EBC 63.27%);
+  color: white;
+  position: relative;
+
+  .footer{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin: 5px;
+    }
+
+  }
+
+}
