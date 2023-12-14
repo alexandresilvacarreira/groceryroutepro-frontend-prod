@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { HeaderDashboardComponent } from './components/header-dashboard/header-dashboard.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HighlightCarouselComponent } from './components/highlight-carousel/highlight-carousel.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     WelcomeComponent,
     SplashComponent,
     HeaderDashboardComponent,
-    DashboardComponent
+    DashboardComponent,
+    HighlightCarouselComponent
   ],
   imports: [
     BrowserModule,
