@@ -1,18 +1,31 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate("200ms ease-in-out"),
+      ]),
+      transition(':leave', [
+        animate("800ms ease-out",  style({opacity: 0})),
+      ]),
+    ])
+  ]
 })
 export class SignupComponent implements OnInit {
 
   showPassword = false;
   showPasswordConfirm = false;
   form!: FormGroup;
+  showMessage = false;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -50,7 +63,16 @@ export class SignupComponent implements OnInit {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
 
-    return password === confirmPassword ? null : {mismatch: true};
+    if (password === confirmPassword) {
+      return null;
+    } else {
+      group.get('confirmPassword')?.setErrors({ mismatch: true });
+      return { mismatch: true };
+    }
+  }
+
+  signup(){
+    return true;
   }
 
 }

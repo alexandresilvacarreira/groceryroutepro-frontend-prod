@@ -75,18 +75,29 @@
           outline: solid 1px lightgrey;
         }
 
-        .ng-invalid.ng-touched.ng-dirty {
-          border: solid 1px #DB3A34;
-        }
+      }
 
-
+      .ng-invalid.ng-touched.ng-dirty {
+        border: solid 1px #DB3A34;
       }
 
     }
 
+    .invalid-input-warning {
+      display: flex;
+      justify-content: flex-start;
+      border-left: solid 2px #DB3A34;
+      font-weight: 300;
+      padding-left: 10px;
+    }
+
   }
 
-
-
+  .check-inputs-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
 
 }

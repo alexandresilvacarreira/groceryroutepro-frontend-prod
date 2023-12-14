@@ -4,16 +4,22 @@
     <h1 class="page-title">Registo</h1>
     <fa-icon class="icon" [icon]="faArrowRightToBracket" [routerLink]="['/login']"></fa-icon>
   </div>
-  <div class="signup-form">
+  <div class="signup-form" [formGroup]="form">
     <div class="form-field">
       <label class="form-label">Nome</label>
       <input class="form-input" label="name" type="text" minlength="5" placeholder="Introduza o seu nome" required
              formControlName="name"/>
+      <div class="invalid-input-warning" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty && form.get('name')?.touched">
+        Nome inválido. Por favor introduza um nome válido (min. 5 caracteres, apenas texto).
+      </div>
     </div>
     <div class="form-field">
       <label class="form-label">Email</label>
       <input class="form-input" label="email" type="email" placeholder="Introduza o seu e-mail" required
              formControlName="email"/>
+      <div class="invalid-input-warning" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty && form.get('email')?.touched">
+        Email inválido. Por favor introduza um email no formato “nome@exemplo.com”.
+      </div>
     </div>
     <div class="form-field">
       <label class="form-label">Password</label>
@@ -27,7 +33,16 @@
                formControlName="confirmPassword"/>
         <fa-icon class="password-icon" [icon]="showPasswordConfirm ? faEye : faEyeSlash" (mousedown)="toggleShowPassword(true)" (mouseup)="toggleShowPassword(true)"></fa-icon>
       </div>
+      <div class="invalid-input-warning" *ngIf="form.get('password')?.invalid && form.get('password')?.dirty && form.get('password')?.touched">
+        A password deverá conter pelo menos 5 caracteres, uma letra, um número e um caracter especial.
+      </div>
+      <div class="invalid-input-warning" *ngIf="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.dirty && form.get('confirmPassword')?.touched">
+        As passwords não coincidem.
+      </div>
     </div>
   </div>
-  <button class="dark-blue-button">Registar</button>
+  <button class="dark-blue-button" (click)="signup()">Registar</button>
+  <div class="check-inputs-message" *ngIf="showMessage" @fadeAnimation>
+    <p class="warning-text">Verifique o preenchimento dos campos</p>
+  </div>
 </div>
