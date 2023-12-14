@@ -10,13 +10,15 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { HeaderDashboardComponent } from './components/header-dashboard/header-dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     SplashComponent,
-    HeaderDashboardComponent
+    HeaderDashboardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
