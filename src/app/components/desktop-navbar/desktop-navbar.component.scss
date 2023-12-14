@@ -1,0 +1,102 @@
+.desktop-dashboard {
+  display: flex;
+  align-items: center;
+  height: 153px;
+  border-radius: 0 0 15px 15px;
+  background: linear-gradient(260deg, rgba(33, 158, 188, 0.89) 0%, rgba(21, 101, 192, 0.89) 98.41%);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  width: 100%;
+
+
+  .all-wrapper {
+    display: flex;
+    width: 60%;
+    height: 130px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    .logo {
+      display: flex;
+      height: 150px;
+      align-items: center;
+      width: 10%;
+
+      img {
+        height: 90px;
+        width: 90px;
+      }
+    }
+
+    .options-wrapper {
+
+      display: flex;
+      align-items: flex-end;
+      width: 90%;
+
+      .icons-wrapper {
+        display: flex;
+        width: 55%;
+        align-items: center;
+
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #f6f6f6;
+          width: 28%;
+          margin: 0;
+          text-decoration: none;
+
+          &.last {
+            width: 16%;
+
+            fa-icon {
+
+            }
+          }
+
+          fa-icon {
+            transform: scale(1.8);
+          }
+
+          h4 {
+            text-align: center;
+          }
+
+        }
+      }
+
+      .tab-wrapper {
+        display: flex;
+        width: 45%;
+        justify-content: center;
+        align-items: center;
+
+        .greeting {
+          color: #FFFFFF;
+
+        }
+
+        fa-icon {
+          display: flex;
+          width: 30px;
+          height: 30px;
+          color: #0F7293;
+          background-color: #FFFFFF;
+          border-radius: 50%;
+          align-items: center;
+          justify-content: center;
+          margin-left: 13px;
+          flex-shrink: 0;
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+        }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,39 @@
+<div class="desktop-dashboard">
+
+  <div class="all-wrapper">
+    <div class="logo">
+      <img src="assets/images/gorceryroutepro_logo_white.svg"/>
+    </div>
+
+
+    <div class="options-wrapper">
+      <div class="icons-wrapper">
+
+        <a [routerLink]="'/dashboard'" [routerLinkActive]="'active'">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <h4>Dashboard</h4>
+        </a>
+        <a [routerLink]="'faltameter'" [routerLinkActive]="'active'">
+          <fa-icon [icon]="faCartShopping"></fa-icon>
+          <h4>Lista de Compras</h4>
+        </a>
+        <a [routerLink]="'faltameter'" [routerLinkActive]="'active'">
+          <fa-icon [icon]="faSearch"></fa-icon>
+          <h4>Pesquisar</h4>
+        </a>
+        <a class="last" [routerLink]="'faltameter'" [routerLinkActive]="'active'">
+          <fa-icon [icon]="faRoute"></fa-icon>
+          <h4>Rotas</h4>
+        </a>
+
+      </div>
+
+      <div class="tab-wrapper">
+        <div class="greeting"><h2>Olá, Alexandre</h2></div>
+        <fa-icon [icon]="faUserGear"></fa-icon>
+        <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
