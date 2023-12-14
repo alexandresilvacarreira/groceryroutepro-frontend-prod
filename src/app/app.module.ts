@@ -9,22 +9,20 @@ import { SplashComponent } from './components/splash/splash.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
-import {LoginComponent} from "./pages/login/login.component";
-import {SignupComponent} from "./pages/signup/signup.component";
 import {HeaderDashboardComponent} from "./components/header-dashboard/header-dashboard.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {HighlightCarouselComponent} from "./components/highlight-carousel/highlight-carousel.component";
+import {MobileNavbarComponent} from "./components/mobile-navbar/mobile-navbar.component";
+import {SignupComponent} from "./pages/signup/signup.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     SplashComponent,
-    LoginComponent,
-    SignupComponent,
     HeaderDashboardComponent,
     DashboardComponent,
-    HighlightCarouselComponent
+    MobileNavbarComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
