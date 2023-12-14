@@ -14,11 +14,15 @@
     margin-left: 10%;
 
     .greeting {
-      color: #FFF;
+
       flex-grow: 1;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+
+      h2 {
+        color: #FFF;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
     fa-icon {
