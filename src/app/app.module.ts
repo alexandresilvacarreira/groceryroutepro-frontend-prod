@@ -15,6 +15,7 @@ import {MobileNavbarComponent} from "./components/mobile-navbar/mobile-navbar.co
 import {SignupComponent} from "./pages/signup/signup.component";
 import { ConfirmRegistrationComponent } from './pages/confirm-registration/confirm-registration.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navbar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ErrorComponent } from './pages/error/error.component';
     MobileNavbarComponent,
     SignupComponent,
     ConfirmRegistrationComponent,
-    ErrorComponent
+    ErrorComponent,
+    DesktopNavbarComponent
   ],
   imports: [
     BrowserModule,
