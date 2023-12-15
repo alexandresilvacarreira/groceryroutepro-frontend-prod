@@ -14,6 +14,7 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {MobileNavbarComponent} from "./components/mobile-navbar/mobile-navbar.component";
 import {SignupComponent} from "./pages/signup/signup.component";
 import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navbar.component';
+import { HeaderPageComponent } from './components/header-page/header-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navb
     DashboardComponent,
     MobileNavbarComponent,
     SignupComponent,
-    DesktopNavbarComponent
+    DesktopNavbarComponent,
+    HeaderPageComponent
   ],
   imports: [
     BrowserModule,
