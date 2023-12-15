@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {Login, ServerMessage, Signup} from "../interfaces";
 
@@ -16,11 +16,22 @@ export class AuthService {
   }
 
   signup(signup:Signup){
-    return this.http.post<ServerMessage>(BASE_URL + "/users/signup", signup)
+    return this.http.post<ServerMessage>(BASE_URL + "/signup", signup)
   }
 
-  login(login:Login){
-    return this.http.post<ServerMessage>(BASE_URL + "/users/login", login)
+  login(email:string, password:string){
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    let body = new HttpParams()
+      .set('email', email)
+      .set('password', password);
+
+    return this.http.post<ServerMessage>(BASE_URL + "/process-login", body.toString(),{
+      headers
+    })
   }
 
 }

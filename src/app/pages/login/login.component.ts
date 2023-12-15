@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
-import {Login, Signup} from "../../interfaces";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   showMessage = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
   }
 
   toggleShowPassword(confirm = false) {
@@ -48,6 +47,14 @@ export class LoginComponent implements OnInit {
   protected readonly faEyeSlash = faEyeSlash;
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      if (params['error']) {
+        // Redirect to the login error page
+        this.router.navigate(['/error']);
+      }
+    });
+
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
@@ -63,14 +70,15 @@ export class LoginComponent implements OnInit {
 
     if (emailInput?.valid && passwordInput?.valid) {
 
-      let login: Login = {
-        email: emailInput.value,
-        password: passwordInput.value
-      }
 
-      this.authService.login(login).subscribe(serverMessage => {
+      let email = emailInput.value;
+      let password = passwordInput.value;
+
+
+      this.authService.login(email, password).subscribe(serverMessage => {
         if (serverMessage.success) {
-          this.router.navigate(['/dashboard'])
+          console.log(serverMessage.userRole);
+          // this.router.navigate(['/dashboard'])
         } else {
           this.router.navigate(['/error'])
         }

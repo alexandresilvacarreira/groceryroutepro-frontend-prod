@@ -7,15 +7,16 @@ interface Signup {
 interface ServerMessage {
   message: string,
   success: boolean,
+  userRole?:string
 }
 
 interface Login {
   email: string,
-  password: string,
+  password: string
 }
 
 export {
   Signup,
+  Login,
   ServerMessage,
-  Login
 }
