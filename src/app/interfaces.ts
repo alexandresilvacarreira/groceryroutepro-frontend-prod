@@ -9,7 +9,13 @@ interface ServerMessage {
   success: boolean,
 }
 
+interface Login {
+  email: string,
+  password: string,
+}
+
 export {
   Signup,
-  ServerMessage
+  ServerMessage,
+  Login
 }

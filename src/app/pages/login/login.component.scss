@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .icon {
+      color: #0f7293;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .page-title {
+      margin: 0;
+    }
+
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 70px;
+    width: 100%;
+    margin: 50px 0 100px 0;
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 10px;
+
+      .password-container {
+        width: 100%;
+        position: relative;
+
+        .password-icon {
+          color: #BDBDBD;
+          position: absolute;
+          right: 5%;
+          top: 25%;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+      }
+
+      .form-label {
+        font-size: 1.5em;
+        align-self: flex-start;
+      }
+
+      .form-input {
+        border-radius: 8px;
+        font-family: 'Lato', sans-serif;
+        padding: 15px;
+        width: 100%;
+        align-items: flex-start;
+        border: none;
+        background-color: #F6F6F6;
+
+        &:focus {
+          outline: solid 1px lightgrey;
+        }
+
+      }
+
+      .ng-invalid.ng-touched.ng-dirty {
+        border: solid 1px #DB3A34;
+      }
+
+    }
+
+    .invalid-input-warning {
+      display: flex;
+      justify-content: flex-start;
+      border-left: solid 2px #DB3A34;
+      font-weight: 300;
+      padding-left: 10px;
+    }
+
+  }
+
+  .check-inputs-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+}

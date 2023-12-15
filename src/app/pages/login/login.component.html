@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="container">
+  <div class="header">
+    <fa-icon class="icon" [icon]="faArrowLeft" [routerLink]="['/welcome']"></fa-icon>
+    <h1 class="page-title">Login</h1>
+  </div>
+  <div class="signup-form" [formGroup]="form">
+    <div class="form-field">
+      <label class="form-label">Email</label>
+      <input class="form-input" label="email" type="email" placeholder="Introduza o seu e-mail" required
+             formControlName="email"/>
+      <div class="invalid-input-warning" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty && form.get('email')?.touched">
+        Email inválido.
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="form-label">Password</label>
+      <div class="password-container">
+        <input class="form-input" label="password" [type]="showPassword ? 'text' : 'password'" placeholder="Introduza uma password" required
+               formControlName="password"/>
+        <fa-icon class="password-icon" [icon]="showPassword ? faEye : faEyeSlash" (mousedown)="toggleShowPassword()" (mouseup)="toggleShowPassword()"></fa-icon>
+      </div>
+      <div class="invalid-input-warning" *ngIf="form.get('password')?.invalid && form.get('password')?.dirty && form.get('password')?.touched">
+        Password errada.
+      </div>
+    </div>
+  </div>
+  <button class="dark-blue-button" (click)="login()">Login</button>
+  <div class="check-inputs-message" *ngIf="showMessage" @fadeAnimation>
+    <p class="warning-text">Verifique o preenchimento dos campos</p>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import {SignupComponent} from "./pages/signup/signup.component";
 import { ConfirmRegistrationComponent } from './pages/confirm-registration/confirm-registration.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navbar.component';
+import {LoginComponent} from "./pages/login/login.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navb
     DashboardComponent,
     MobileNavbarComponent,
     SignupComponent,
+    LoginComponent,
     ConfirmRegistrationComponent,
     ErrorComponent,
     DesktopNavbarComponent

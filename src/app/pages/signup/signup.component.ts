@@ -89,10 +89,7 @@ export class SignupComponent implements OnInit {
         password: passwordInput.value
       }
 
-      console.log(signup)
-
       this.authService.signup(signup).subscribe(serverMessage =>{
-        console.log(serverMessage)
         if (serverMessage.success){
           this.router.navigate(['/confirm-registration'])
         } else {
