@@ -13,6 +13,8 @@ import {HeaderDashboardComponent} from "./components/header-dashboard/header-das
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {MobileNavbarComponent} from "./components/mobile-navbar/mobile-navbar.component";
 import {SignupComponent} from "./pages/signup/signup.component";
+import { ConfirmRegistrationComponent } from './pages/confirm-registration/confirm-registration.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {SignupComponent} from "./pages/signup/signup.component";
     HeaderDashboardComponent,
     DashboardComponent,
     MobileNavbarComponent,
-    SignupComponent
+    SignupComponent,
+    ConfirmRegistrationComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

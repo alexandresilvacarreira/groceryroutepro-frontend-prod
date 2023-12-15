@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {AuthService} from "../../services/auth.service";
+import {Signup} from "../../interfaces";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +18,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
         animate("200ms ease-in-out"),
       ]),
       transition(':leave', [
-        animate("800ms ease-out",  style({opacity: 0})),
+        animate("800ms ease-out", style({opacity: 0})),
       ]),
     ])
   ]
@@ -27,7 +30,7 @@ export class SignupComponent implements OnInit {
   form!: FormGroup;
   showMessage = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
 
   toggleShowPassword(confirm = false) {
@@ -66,13 +69,57 @@ export class SignupComponent implements OnInit {
     if (password === confirmPassword) {
       return null;
     } else {
-      group.get('confirmPassword')?.setErrors({ mismatch: true });
-      return { mismatch: true };
+      group.get('confirmPassword')?.setErrors({mismatch: true});
+      return {mismatch: true};
     }
   }
 
-  signup(){
-    return true;
+  signup() {
+
+    let nameInput = this.form.get("name");
+    let emailInput = this.form.get("email");
+    let passwordInput = this.form.get("password");
+    let confirmPasswordInput = this.form.get("confirmPassword");
+
+    if (nameInput?.valid && emailInput?.valid && passwordInput?.valid && confirmPasswordInput?.valid) {
+
+      let signup: Signup = {
+        name: nameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value
+      }
+
+      console.log(signup)
+
+      this.authService.signup(signup).subscribe(serverMessage =>{
+        console.log(serverMessage)
+        if (serverMessage.success){
+          this.router.navigate(['/confirm-registration'])
+        } else {
+          this.router.navigate(['/error'])
+        }
+      })
+
+    } else {
+
+      nameInput?.markAsTouched();
+      nameInput?.markAsDirty();
+      emailInput?.markAsTouched();
+      emailInput?.markAsDirty();
+      passwordInput?.markAsTouched();
+      passwordInput?.markAsDirty();
+      confirmPasswordInput?.markAsTouched();
+      confirmPasswordInput?.markAsDirty();
+
+      this.showMessage = true;
+
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 2000);
+    }
+
+
+
   }
 
 }

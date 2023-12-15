@@ -4,6 +4,8 @@ import {WelcomeComponent} from "./pages/welcome/welcome.component";
 import {SignupComponent} from "./pages/signup/signup.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import {ConfirmRegistrationComponent} from "./pages/confirm-registration/confirm-registration.component";
+import {ErrorComponent} from "./pages/error/error.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -11,6 +13,8 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component:DashboardComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'confirm-registration', component: ConfirmRegistrationComponent},
+  {path: 'error', component: ErrorComponent},
 
 ];
 
