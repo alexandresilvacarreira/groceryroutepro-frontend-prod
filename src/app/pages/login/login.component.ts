@@ -4,6 +4,8 @@ import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesom
 import {animate, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {catchError, mergeMap, switchMap, throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   showMessage = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private userService: UserService) {
   }
 
   toggleShowPassword(confirm = false) {
@@ -70,22 +72,20 @@ export class LoginComponent implements OnInit {
 
     if (emailInput?.valid && passwordInput?.valid) {
 
-
       let email = emailInput.value;
       let password = passwordInput.value;
 
-
-      this.authService.login(email, password).subscribe(serverMessage => {
-        if (serverMessage.success) {
-          console.log(serverMessage.userRole);
-          // this.router.navigate(['/dashboard'])
+      this.authService.login(email, password).subscribe(serverResponse => {
+        if (serverResponse && serverResponse.user) {
+          this.userService.setCurrentUser(serverResponse.user);
+          console.log(serverResponse)
+          this.router.navigate(['/dashboard']);
         } else {
-          this.router.navigate(['/error'])
+          console.log("Erro ao autenticar");
+          // this.router.navigate(['/login'])
         }
       })
-
     } else {
-
       emailInput?.markAsTouched();
       emailInput?.markAsDirty();
       passwordInput?.markAsTouched();

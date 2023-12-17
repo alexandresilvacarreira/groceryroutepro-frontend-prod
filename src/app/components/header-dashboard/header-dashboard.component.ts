@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {faUserGear} from "@fortawesome/free-solid-svg-icons/faUserGear";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
+import {User} from "../../interfaces";
 
 @Component({
   selector: 'app-header-dashboard',
@@ -11,4 +12,6 @@ export class HeaderDashboardComponent {
 
   protected readonly faUserGear = faUserGear;
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
+  @Input() user?:User;
+
 }
