@@ -13,9 +13,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAuthenticatedUser().subscribe(serverResponse => {
-      if (serverResponse && serverResponse.user){
-        this.userService.setCurrentUser(serverResponse.user);
+    // Obter o utilizador caso já haja um autenticado em sessão; caso contrário, limpar localStorage, para impedir
+    // navegação no frontend sem autenticação
+    this.userService.getAuthenticatedUser().subscribe(response => {
+      if (response.user){
+        this.userService.setCurrentUser(response.user);
+      } else {
+        this.userService.clearCurrentUser();
       }
     })
   }

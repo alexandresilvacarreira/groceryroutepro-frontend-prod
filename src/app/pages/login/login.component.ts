@@ -78,11 +78,10 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, password).subscribe(serverResponse => {
         if (serverResponse && serverResponse.user) {
           this.userService.setCurrentUser(serverResponse.user);
-          console.log(serverResponse)
           this.router.navigate(['/dashboard']);
         } else {
           console.log("Erro ao autenticar");
-          // this.router.navigate(['/login'])
+          this.router.navigate(['/login'])
         }
       })
     } else {

@@ -34,4 +34,8 @@ export class AuthService {
     })
   }
 
+  logout() {
+    return this.http.post<ServerResponse>(BASE_URL + "/logout", {})
+  }
+
 }

@@ -6,6 +6,9 @@ import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faUserGear} from "@fortawesome/free-solid-svg-icons/faUserGear";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import {User} from "../../interfaces";
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-desktop-navbar',
@@ -22,5 +25,17 @@ export class DesktopNavbarComponent {
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
 
   @Input() user?:User;
+
+  constructor(private router : Router, private userService: UserService, private authService : AuthService) {
+  }
+
+  logout() {
+    this.authService.logout().subscribe(serverResponse => {
+      if (serverResponse.success){
+        this.userService.clearCurrentUser();
+        this.router.navigate(["/login"]);
+      }
+    });
+  }
 
 }

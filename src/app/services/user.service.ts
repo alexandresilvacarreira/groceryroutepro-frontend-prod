@@ -13,8 +13,6 @@ const BASE_URL = environment.BASE_URL;
 
 export class UserService {
 
-  user?:User;
-
   constructor(private http: HttpClient) {
   }
 
@@ -23,11 +21,16 @@ export class UserService {
   }
 
   getCurrentUser(){
-    return this.user;
+    let storedUser = localStorage.getItem("user");
+    return JSON.parse(storedUser!);
   }
 
   setCurrentUser(user: User){
-    this.user = user;
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
+  clearCurrentUser(){
+    localStorage.removeItem("user");
   }
 
 
