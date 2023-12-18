@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getAuthenticatedUser() {
-     return this.http.get<ServerResponse>(BASE_URL + "/users/get-authenticated-user", { withCredentials: true });
+     return this.http.get<ServerResponse>(BASE_URL + "/users/get-authenticated-user" /*,{ withCredentials: true }*/);
   }
 
   getCurrentUser(){
