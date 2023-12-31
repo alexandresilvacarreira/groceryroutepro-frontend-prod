@@ -1,0 +1,9 @@
+<div [class]="'chain-sticker chain-' + chainId">
+  <div *ngIf="chainId!==5 && chainId!==7">{{chainName}}</div>
+  <div *ngIf="chainId===5">
+      <span *ngFor="let letter of chainNameLetters; let i = index" [class]="i<5 ? 'black-letter' : 'red-letter'">{{letter}}</span>
+  </div>
+  <div *ngIf="chainId===7">
+    <span *ngFor="let letter of chainNameLetters; let i = index" [class]="i<4 ? 'red-letter' : 'blue-letter'">{{letter}}</span>
+  </div>
+</div>

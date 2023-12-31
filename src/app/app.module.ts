@@ -17,6 +17,13 @@ import { ConfirmRegistrationComponent } from './pages/confirm-registration/confi
 import { ErrorComponent } from './pages/error/error.component';
 import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navbar.component';
 import {LoginComponent} from "./pages/login/login.component";
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { SearchComponent } from './pages/search/search.component';
+import {DatePipe, registerLocaleData} from "@angular/common";
+import localePt from '@angular/common/locales/pt';
+import { ChainStickerComponent } from './components/chain-sticker/chain-sticker.component';
+
+registerLocaleData(localePt, 'pt'); // Register the locale data
 
 @NgModule({
   declarations: [
@@ -30,7 +37,10 @@ import {LoginComponent} from "./pages/login/login.component";
     LoginComponent,
     ConfirmRegistrationComponent,
     ErrorComponent,
-    DesktopNavbarComponent
+    DesktopNavbarComponent,
+    ProductDetailsComponent,
+    SearchComponent,
+    ChainStickerComponent
   ],
   imports: [
     BrowserModule,

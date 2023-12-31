@@ -1,7 +1,7 @@
-import {Injectable, OnInit} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {Login, ServerResponse, Signup} from "../interfaces";
+import {ServerResponse, Signup} from "../interfaces";
 
 const BASE_URL = environment.BASE_URL;
 
