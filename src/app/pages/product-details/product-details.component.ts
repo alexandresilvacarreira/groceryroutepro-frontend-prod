@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   productId : number;
   product!: Product;
   prices!: Price[];
+  currentPrice!:Price;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService) {
     this.user = this.userService.getCurrentUser();
@@ -30,6 +31,7 @@ export class ProductDetailsComponent implements OnInit {
       if (productDetails.success){
         this.product = productDetails.product;
         this.prices = productDetails.prices;
+        this.currentPrice = this.prices[this.prices.length-1];
       }
     })
 

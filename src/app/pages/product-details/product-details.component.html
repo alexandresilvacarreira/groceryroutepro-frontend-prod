@@ -3,12 +3,46 @@
     <fa-icon class="icon" [icon]="faArrowLeft" [routerLink]="['/search']"></fa-icon>
     <h1 class="page-title">Detalhes</h1>
   </div>
-  <div *ngIf="product && prices" class="product-summary">
-    <div class="product-img" [style.background-image]="'url(' + product.imageUrl + ')'"></div>
-    <div class="product-summary-text">
-      <span>{{product.name}}</span>
-      <span>{{prices[prices.length-1].primaryValue | number:undefined :'pt'}} €</span>
-      <app-chain-sticker [chainId]="product.chain.id" [chainName]="product.chain.name"></app-chain-sticker>
+  <div *ngIf="product && prices" class="page-content">
+    <div class="product-summary">
+      <div class="product-img" [style.background-image]="'url(' + product.imageUrl + ')'"></div>
+      <div class="product-summary-text">
+        <span>{{product.name}}</span>
+        <span>{{currentPrice.primaryValue | number:undefined :'pt'}} €</span>
+        <app-chain-sticker [chainId]="product.chain.id" [chainName]="product.chain.name"></app-chain-sticker>
+      </div>
     </div>
+    <div class="line"></div>
+    <h3 class="subtitle">Detalhes do produto</h3>
+    <div class="product-details">
+      <div class="detail-row">
+        <span class="detail-title">Marca</span>
+        <span class="detail-value">{{product.brand!=="" ? product.brand : "N/A"}}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-title">Quantidade</span>
+        <span class="detail-value">{{product.quantity!=="" ? product.quantity : "N/A"}}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-title">Preço por unidade</span>
+        <span class="detail-value">{{currentPrice.primaryValue | number:undefined :'pt'}} €</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-title">Preço por {{currentPrice.secondaryUnit !== "" ? currentPrice.secondaryUnit : "Kg"}}</span>
+        <span class="detail-value">{{currentPrice.secondaryValue !== 0.0 ? ((currentPrice.secondaryValue | number:undefined :'pt') + " €") : "N/A"}}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-title">Superfície</span>
+        <span class="detail-value">{{product.chain.name}}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-title">Categorias</span>
+        <div class="categories">
+          <span *ngFor="let category of product.categories" class="detail-value">{{category.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
   </div>
+
 </div>
