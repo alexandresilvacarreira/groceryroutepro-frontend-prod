@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "./services/user.service";
+import {NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,12 +9,28 @@ import {UserService} from "./services/user.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   title = 'groceryroutepro-angular-frontend';
 
-  constructor(private userService:UserService) {
+  currentRoute = '';
+  previousRoute = '';
+
+  constructor(private userService:UserService, private router: Router) {
+  }
+
+  getRouterEvents(){
+    return this.router.events.pipe(filter(event => event instanceof NavigationEnd));
   }
 
   ngOnInit(): void {
+    this.getRouterEvents().subscribe(
+      (event) => {
+        if (event instanceof NavigationEnd){
+          this.previousRoute = this.currentRoute;
+          this.currentRoute = event.url;
+        }
+      }
+    )
     // Obter o utilizador caso já haja um autenticado em sessão; caso contrário, limpar localStorage, para impedir
     // navegação no frontend sem autenticação
     // this.userService.getAuthenticatedUser().subscribe(response => {
