@@ -22,6 +22,13 @@ import { SearchComponent } from './pages/search/search.component';
 import {DatePipe, registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
 import { ChainStickerComponent } from './components/chain-sticker/chain-sticker.component';
+import { PriceHistoryChartComponent } from './components/price-history-chart/price-history-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import Chart from 'chart.js/auto';
+
+Chart.defaults.font.family = 'Lato';
+// Chart.defaults.font.size = 16;
+// Chart.defaults.font.weight = 500;
 
 registerLocaleData(localePt, 'pt'); // Register the locale data
 
@@ -40,7 +47,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     DesktopNavbarComponent,
     ProductDetailsComponent,
     SearchComponent,
-    ChainStickerComponent
+    ChainStickerComponent,
+    PriceHistoryChartComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +56,10 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

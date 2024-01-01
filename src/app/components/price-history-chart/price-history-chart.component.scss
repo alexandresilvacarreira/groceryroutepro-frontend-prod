@@ -1,0 +1,11 @@
+.price-history-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+canvas {
+  min-height: 250px !important;
+  max-width: 100% !important;
+}
