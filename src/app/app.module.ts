@@ -13,8 +13,24 @@ import {HeaderDashboardComponent} from "./components/header-dashboard/header-das
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {MobileNavbarComponent} from "./components/mobile-navbar/mobile-navbar.component";
 import {SignupComponent} from "./pages/signup/signup.component";
+import { ConfirmRegistrationComponent } from './pages/confirm-registration/confirm-registration.component';
+import { ErrorComponent } from './pages/error/error.component';
 import { DesktopNavbarComponent } from './components/desktop-navbar/desktop-navbar.component';
-import { HeaderPageComponent } from './components/header-page/header-page.component';
+import {LoginComponent} from "./pages/login/login.component";
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { SearchComponent } from './pages/search/search.component';
+import {DatePipe, registerLocaleData} from "@angular/common";
+import localePt from '@angular/common/locales/pt';
+import { ChainStickerComponent } from './components/chain-sticker/chain-sticker.component';
+import { PriceHistoryChartComponent } from './components/price-history-chart/price-history-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import Chart from 'chart.js/auto';
+
+Chart.defaults.font.family = 'Lato';
+// Chart.defaults.font.size = 16;
+// Chart.defaults.font.weight = 500;
+
+registerLocaleData(localePt, 'pt'); // Register the locale data
 
 @NgModule({
   declarations: [
@@ -25,8 +41,14 @@ import { HeaderPageComponent } from './components/header-page/header-page.compon
     DashboardComponent,
     MobileNavbarComponent,
     SignupComponent,
+    LoginComponent,
+    ConfirmRegistrationComponent,
+    ErrorComponent,
     DesktopNavbarComponent,
-    HeaderPageComponent
+    ProductDetailsComponent,
+    SearchComponent,
+    ChainStickerComponent,
+    PriceHistoryChartComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +56,10 @@ import { HeaderPageComponent } from './components/header-page/header-page.compon
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

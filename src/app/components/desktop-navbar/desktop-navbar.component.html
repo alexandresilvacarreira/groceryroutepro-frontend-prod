@@ -29,9 +29,9 @@
       </div>
 
       <div class="tab-wrapper">
-        <div class="greeting"><h2>Olá, Alexandre</h2></div>
+        <div class="greeting"><h2>Olá, {{user?.name}}</h2></div>
         <fa-icon [icon]="faUserGear"></fa-icon>
-        <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+        <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
       </div>
     </div>
 

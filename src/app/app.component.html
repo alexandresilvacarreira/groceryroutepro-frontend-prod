@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+<app-mobile-navbar *ngIf=
+                     "currentRoute !== '/login'
+                     && currentRoute!=='/welcome'
+                     && currentRoute!=='/confirm-registration'
+                     && currentRoute!=='/signup'
+                     && currentRoute!=='/'"></app-mobile-navbar>
