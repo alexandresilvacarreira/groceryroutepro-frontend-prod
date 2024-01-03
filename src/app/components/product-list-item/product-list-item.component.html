@@ -1,0 +1,29 @@
+<div class="product-container" [routerLink]="'/product-details/' + product.productId">
+  <div *ngIf="product.priceDiscountPercentage!==0" class="price-discount-sticker">-{{product.priceDiscountPercentage}}
+    %
+  </div>
+  <div class="product-details">
+    <div class="product-thumbnail" [style.background-image]="'url(' + product.imageUrl + ')'"></div>
+    <div class="product-info">
+      <span class="product-name overflow-ellipsis">{{product.name}}</span>
+      <span class="product-quantity grey-text overflow-ellipsis">{{product.quantity}}</span>
+      <div class="product-primary-price">
+        <span class="overflow-ellipsis">{{product.pricePrimaryValue | number : undefined : 'pt'}} € </span>
+<!--        <span *ngIf="product.pricePrimaryUnit!==''" class="overflow-ellipsis">/ {{product.pricePrimaryUnit}} </span>-->
+        <span *ngIf="product.priceWoDiscount!==''" class="grey-text overflow-ellipsis"><s> {{product.priceWoDiscount}}</s></span>
+      </div>
+      <div class="product-secondary-price">
+        <span class="grey-text overflow-ellipsis">{{product.priceSecondaryValue | number : undefined : 'pt'}}</span>
+        <span class="grey-text overflow-ellipsis"> €/{{product.priceSecondaryUnit}}</span>
+      </div>
+      <app-chain-sticker [chainName]="product.chain" [chainId]="product.chainId"></app-chain-sticker>
+    </div>
+  </div>
+  <div class="bottom-row">
+    <div class="line"></div>
+    <div class="add-to-list-button">
+      <fa-icon class="dark-blue-text" [icon]="faCartPlus"></fa-icon>
+      <div class="dark-blue-text overflow-ellipsis"> Adicionar</div>
+    </div>
+  </div>
+</div>

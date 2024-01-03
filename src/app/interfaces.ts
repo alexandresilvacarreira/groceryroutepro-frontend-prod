@@ -82,6 +82,7 @@ interface ProductDetails {
 interface ProductWPrice {
   name: string;
   chain: string;
+  chainId:number;
   priceWoDiscount: string;
   imageUrl: string;
   quantity: string;
