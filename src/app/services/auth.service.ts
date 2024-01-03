@@ -30,12 +30,13 @@ export class AuthService {
       .set('password', password);
 
     return this.http.post<ServerResponse>(BASE_URL + "/process-login", body.toString(),{
-      headers
+      headers,
+      withCredentials: true
     })
   }
 
   logout() {
-    return this.http.post<ServerResponse>(BASE_URL + "/logout", {})
+    return this.http.post<ServerResponse>(BASE_URL + "/logout", {}, {withCredentials: true})
   }
 
 }

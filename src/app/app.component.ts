@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getRouterEvents().subscribe(
       (event) => {
         if (event instanceof NavigationEnd){
@@ -31,15 +32,13 @@ export class AppComponent implements OnInit {
         }
       }
     )
-    // Obter o utilizador caso já haja um autenticado em sessão; caso contrário, limpar localStorage, para impedir
-    // navegação no frontend sem autenticação
-    // this.userService.getAuthenticatedUser().subscribe(response => {
-    //   if (response.user){
-    //     this.userService.setCurrentUser(response.user);
-    //   } else {
-    //     this.userService.clearCurrentUser();
-    //   }
-    // })
+
+    this.userService.getCurrentUser().subscribe(user => {
+      if (!user) {
+        this.router.navigate(["/login"]);
+      }
+    })
+
   }
 
 

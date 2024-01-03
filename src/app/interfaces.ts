@@ -27,6 +27,10 @@ interface User {
   vehicleConsumption: number;
   stores: Store[];
   role: Role;
+  verifiedEmail: boolean,
+  confirmation: {
+    code: string
+  }
 }
 
 interface Role {
