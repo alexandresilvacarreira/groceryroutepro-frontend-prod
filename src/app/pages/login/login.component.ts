@@ -76,8 +76,9 @@ export class LoginComponent implements OnInit {
       let password = passwordInput.value;
 
       this.authService.login(email, password).subscribe(serverResponse => {
-        if (serverResponse && serverResponse.user) {
-          this.userService.setCurrentUser(serverResponse.user);
+        // TODO usar códigos http
+        if (serverResponse.user) {
+          //this.userService.setCurrentUser(serverResponse.user);
           this.router.navigate(['/dashboard']);
         } else {
           console.log("Erro ao autenticar");

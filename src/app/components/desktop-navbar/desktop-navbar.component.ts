@@ -26,13 +26,14 @@ export class DesktopNavbarComponent {
 
   @Input() user?:User;
 
-  constructor(private router : Router, private userService: UserService, private authService : AuthService) {
+  constructor(private router : Router, public userService: UserService, private authService : AuthService) {
   }
 
   logout() {
     this.authService.logout().subscribe(serverResponse => {
       if (serverResponse.success){
-        this.userService.clearCurrentUser();
+        //TODO logout
+        // this.userService.clearCurrentUser();
         this.router.navigate(["/login"]);
       }
     });

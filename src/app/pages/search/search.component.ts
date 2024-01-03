@@ -20,10 +20,10 @@ export class SearchComponent implements OnInit {
   protected readonly faSearch = faSearch;
 
   constructor(private userService: UserService, private router: Router, private productsService: ProductsService) {
-    this.user = this.userService.getCurrentUser();
-    if (!this.user) {
-      this.router.navigate(["/login"]);
-    }
+    // this.user = this.userService.getCurrentUser();
+    // if (!this.user) {
+    //   this.router.navigate(["/login"]);
+    // }
   }
 
   ngOnInit(): void {

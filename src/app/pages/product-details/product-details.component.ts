@@ -19,10 +19,10 @@ export class ProductDetailsComponent implements OnInit {
   currentPrice!:Price;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService) {
-    this.user = this.userService.getCurrentUser();
-    if (!this.user){
-      this.router.navigate(["/login"]);
-    }
+    // this.user = this.userService.getCurrentUser();
+    // if (!this.user){
+    //   this.router.navigate(["/login"]);
+    // }
     this.productId = parseInt(this.route.snapshot.params['productId']);
   }
 
