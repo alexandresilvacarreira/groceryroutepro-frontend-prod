@@ -1,0 +1,35 @@
+.header-subpage {
+  height: 104px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+
+  .header {
+    display: flex;
+    width: 90%;
+    margin: auto;
+
+    .icon {
+      color: #0f7293;
+      margin-left: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .page-title {
+      margin: auto;
+
+    }
+
+  }
+
+  @media only screen and (min-width: 769px) {
+    display: none;
+
+  }
+}
+
