@@ -29,6 +29,7 @@ import { ProductListItemComponent } from './components/product-list-item/product
 import {UserPanelComponent} from "./components/user-panel/user-panel.component";
 import {HighlightCarouselComponent} from "./components/highlight-carousel/highlight-carousel.component";
 
+
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 16;
 Chart.defaults.font.weight = 500;

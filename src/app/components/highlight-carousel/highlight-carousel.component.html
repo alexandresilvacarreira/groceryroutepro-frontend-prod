@@ -1,21 +1,29 @@
-<div class="carousel">
-
-  <div class="carousel_frame" >
-    <div class="image">
-      <img src="../../../assets/images/img.png">
-    </div>
-    <div class="info">
-      <div class="title"><h5>Batatinhas</h5></div>
-      <div class="qntd"><h6>emb. 15 kg</h6></div>
-      <div class="price">
-        <div class="atual_price"><h5>7,00 €</h5></div>
-        <div class="previous_price"><h6>8,00 €</h6></div>
+<div *ngIf="products">
+  <div class="carousel" *ngFor="let product of products; let i = index">
+    <div class="carousel_frame" *ngIf="i === productIndex" @slideAnimation>
+      <div>
+        <div class="image">
+          <img [src]="product.imageUrl">
+        </div>
+        <div class="info">
+          <div class="title"><h5>{{product.name}}</h5></div>
+          <div class="qntd"><h6>{{product.quantity}}</h6></div>
+          <div class="price">
+            <div class="atual_price"><h5>{{product.pricePrimaryValue | number : undefined : 'pt'}}</h5></div>
+            <div class="previous_price"><h6>{{product.priceWoDiscount}}</h6></div>
+          </div>
+          <div class="qntd_price">
+            <span class="">{{product.priceSecondaryValue | number : undefined : 'pt'}}</span>
+            <span class=""> €/{{product.priceSecondaryUnit}}</span>
+          </div>
+          <div>
+            <app-chain-sticker [chainId]="product.chainId" [chainName]="product.chain"></app-chain-sticker>
+          </div>
+        </div>
+        <div class="discount"><h5>-{{product.priceDiscountPercentage}}%</h5></div>
+        <div class="slides"></div>
       </div>
-      <div class="qntd_price"><h6>1,5 €/kg</h6></div>
-      <div class="chain"><h5>continente</h5></div>
     </div>
-    <div class="discount"><h5>15%</h5></div>
-    <div class="slides"></div>
   </div>
-
 </div>
+

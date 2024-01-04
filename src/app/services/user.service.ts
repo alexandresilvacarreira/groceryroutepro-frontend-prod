@@ -13,7 +13,7 @@ const BASE_URL = environment.BASE_URL;
 
 export class UserService {
 
-  private authenticatedUser = new BehaviorSubject<User | null>(null);
+  private authenticatedUser = new BehaviorSubject<User | boolean | null>(null);
 
   constructor(private http: HttpClient) {
     this.getAuthenticatedUser();
@@ -22,10 +22,9 @@ export class UserService {
   getAuthenticatedUser() {
     return this.http.get<User | null>(BASE_URL + "/users/get-authenticated-user", { withCredentials: true })
       .pipe(catchError((error) => {
-        return of(null);
+        return of(false);
       }))
       .subscribe(user => {
-        console.log("authenticated user: " + user)
         this.authenticatedUser.next(user);
       });
   }
