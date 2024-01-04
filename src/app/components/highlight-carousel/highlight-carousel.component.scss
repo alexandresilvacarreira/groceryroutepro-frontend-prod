@@ -1,50 +1,99 @@
 .carousel {
-  width: 60%;
-  height: 40%;
-  fill: #FFF;
-  stroke-width: 1px;
-  stroke: #FFF;
-  filter: drop-shadow(4px 4px 20px rgba(0, 0, 0, 0.25));
-  background-color: #0F7293;
-margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
 
-  .image {
+  .carousel_frame {
+    display: flex;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    filter: drop-shadow(4px 4px 20px rgba(0, 0, 0, 0.25));
+    flex-direction: row;
+    height: 144px;
+    justify-content: space-around;
+    position: relative;
+    overflow: hidden;
+    border-left: 2px solid #4CAF50;
 
-  }
+    .image {
+      display: flex;
+      margin-top: 20px;
+      margin-left: 11px;
+      width: 105px;
+      height: 105px;
+      align-items: center;
 
-  .info {
-    .title {
+      img {
+        width: 100%;
+        height: auto;
 
+      }
     }
 
-    .qntd {
+    .info {
+      display: flex;
+      flex-direction: column;
+      height: 105px;
+      margin-top: 20px;
+      justify-content: space-between;
 
-    }
-
-    .price {
-      .atual_price {
+      .title, .qntd, .price, .qntd_price {
+        display: flex;
+        height: 12px;
+        align-items: center;
 
       }
 
-      .previous_price {
+      .chain {
+        display: flex;
+        height: 24px;
+        width: 90px;
+        align-items: center;
+        background-color: #DB3A34;
+        border-radius:5px;
+        color:white;
+        justify-content: center;
+      }
 
+      .qntd, .qntd_price {
+        color: #918787;
+      }
+
+      .price {
+        display: flex;
+        flex-direction: row;
+
+        .atual_price {
+          display: flex;
+          margin-right: 10px;
+        }
+
+        .previous_price {
+          display: flex;
+          color: #918787;
+          text-decoration: line-through;
+        }
       }
     }
 
-    .qntd_price {
+    .discount {
+      display: flex;
+      position: absolute;
+      background-color: #4CAF50;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
+      border-top-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+      color: #FFFFFF;
 
+      .slides {
+
+      }
     }
-
-    .chain {
-
-    }
-  }
-
-  .discount {
-
-  }
-
-  .slides {
-
   }
 }
