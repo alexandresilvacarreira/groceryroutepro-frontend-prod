@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {ServerResponse, Signup} from "../interfaces";
+import {EmailVerificationToken, ServerResponse, Signup} from "../interfaces";
+
 
 const BASE_URL = environment.BASE_URL;
 
@@ -11,15 +12,16 @@ const BASE_URL = environment.BASE_URL;
 })
 
 export class AuthService {
+  emailVerificationtoken !: EmailVerificationToken;
 
   constructor(private http: HttpClient) {
   }
 
-  signup(signup:Signup){
+  signup(signup: Signup) {
     return this.http.post<ServerResponse>(BASE_URL + "/signup", signup)
   }
 
-  login(email:string, password:string){
+  login(email: string, password: string) {
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -29,7 +31,7 @@ export class AuthService {
       .set('email', email)
       .set('password', password);
 
-    return this.http.post<ServerResponse>(BASE_URL + "/process-login", body.toString(),{
+    return this.http.post<ServerResponse>(BASE_URL + "/process-login", body.toString(), {
       headers,
       withCredentials: true
     })
@@ -37,6 +39,12 @@ export class AuthService {
 
   logout() {
     return this.http.post<ServerResponse>(BASE_URL + "/logout", {}, {withCredentials: true})
+  }
+
+  verifyAccount(token: string) {
+    console.log(token)
+    return this.http.post<ServerResponse>(BASE_URL + "/verify-account", {token: token}
+    )
   }
 
 }

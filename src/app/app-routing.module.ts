@@ -8,6 +8,7 @@ import {ConfirmRegistrationComponent} from "./pages/confirm-registration/confirm
 import {ErrorComponent} from "./pages/error/error.component";
 import {ProductDetailsComponent} from "./pages/product-details/product-details.component";
 import {SearchComponent} from "./pages/search/search.component";
+import {VerifyAccountComponent} from "./pages/verify-account/verify-account.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -19,6 +20,8 @@ const routes: Routes = [
   {path: 'error', component: ErrorComponent},
   {path: 'product-details/:productId', component: ProductDetailsComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'verify-account', component: VerifyAccountComponent},
+
 
 ];
 

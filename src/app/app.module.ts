@@ -26,6 +26,7 @@ import { PriceHistoryChartComponent } from './components/price-history-chart/pri
 import { NgChartsModule } from 'ng2-charts';
 import Chart from 'chart.js/auto';
 import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+import { VerifyAccountComponent } from './pages/verify-account/verify-account.component';
 
 Chart.defaults.font.family = 'Lato';
 // Chart.defaults.font.size = 16;
@@ -50,7 +51,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     SearchComponent,
     ChainStickerComponent,
     PriceHistoryChartComponent,
-    ProductListItemComponent
+    ProductListItemComponent,
+    VerifyAccountComponent
   ],
   imports: [
     BrowserModule,
