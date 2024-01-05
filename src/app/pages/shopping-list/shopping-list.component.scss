@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .header {
+    border-radius: 0 0 15px 15px;
+    background: linear-gradient(260deg, rgba(33, 158, 188, 0.89) 0%, rgba(21, 101, 192, 0.89) 98.41%);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .page-title {
+      color: white;
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    .header {
+      all: unset;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      .page-title {
+        all: unset;
+        color: black;
+        padding: 10px;
+
+      }
+    }
+  }
+
+}
