@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
 
@@ -11,7 +11,6 @@ export class HeaderPageComponent implements OnInit{
 
   pageTitle: string = '';
 
-
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
@@ -23,7 +22,6 @@ export class HeaderPageComponent implements OnInit{
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
-        console.log(this.pageTitle);
       });
   }
 }

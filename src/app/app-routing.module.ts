@@ -16,15 +16,14 @@ const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'dashboard', component:DashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'login', component: LoginComponent},
   {path: 'confirm-registration', component: ConfirmRegistrationComponent},
   {path: 'error', component: ErrorComponent},
+  {path: 'dashboard', component:DashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")], data:{title:'Pesquisa'}},
   {path: 'verify-account', component: VerifyAccountComponent},
-  {path: 'shopping-list', component: ShoppingListComponent, data:{title:'Lista de Compras' }}
-
+  {path: 'shopping-list', component: ShoppingListComponent, data:{title:'Lista de Compras'}}
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import {BehaviorSubject, catchError, of, switchMap} from "rxjs";
 
 
 export function buildGuard(redirectTo: string): CanActivateFn {
+
   const authGuard: CanActivateFn = (route, state) => {
     return new Promise(resolve => {
       let userService = inject(UserService);
@@ -19,22 +20,6 @@ export function buildGuard(redirectTo: string): CanActivateFn {
       })
     })
 
-
-    /*.pipe(
-    switchMap(user => {
-      console.log(user);
-      if (user) {
-        return of(true);
-      } else if (user === false) {
-        return router.navigate(['/login']).then(() => false);
-      }
-      return of(false);
-    }),
-    catchError((error) => {
-      console.log(error);
-      return router.navigate(['/login']).then(() => false);
-    })
-  );*/
   };
 
   return authGuard
