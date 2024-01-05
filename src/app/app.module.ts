@@ -31,6 +31,9 @@ import {HighlightCarouselComponent} from "./components/highlight-carousel/highli
 import { ToastComponent } from './components/toast/toast.component';
 
 import { VerifyAccountComponent } from './pages/verify-account/verify-account.component';
+import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.component";
+import {HeaderPageComponent} from "./components/header-page/header-page.component";
+import {ProductCardItemComponent} from "./components/product-card-item/product-card-item.component";
 
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 16;
@@ -59,9 +62,10 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     UserPanelComponent,
     HighlightCarouselComponent,
     ToastComponent,
-    HighlightCarouselComponent,
-    ProductListItemComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    ShoppingListComponent,
+    HeaderPageComponent,
+    ProductCardItemComponent
   ],
   imports: [
     BrowserModule,
