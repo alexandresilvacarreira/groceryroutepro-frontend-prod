@@ -1,0 +1,117 @@
+.card-item {
+  display: flex;
+  flex-direction: column;
+  height: 110px;
+  width: 300px;
+  justify-content: space-around;
+  box-shadow: 0 0 8.1px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 10px 15px;
+  margin: auto;
+
+  .first-row {
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    .name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      height: 24px;
+
+      h3 {
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+
+    .quantity {
+      display: flex;
+
+      .minus, .plus, .number {
+        display: flex;
+        background-color: #E0E0E0;
+        border-radius: 8px;
+        min-width: 24px;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+          font-weight: 400;
+          margin: 0;
+        }
+      }
+
+      .number {
+        margin: 0 3px;
+        padding: 0 8px;
+
+      }
+
+      .minus, .plus {
+        padding: 0 8px;
+      }
+    }
+  }
+
+  .second-row {
+    display: flex;
+    height: 24px;
+    justify-content: flex-end;
+
+    .price {
+      display: flex;
+      align-items: center;
+      background-color: rgba(15, 114, 147, 0.2);
+      padding-right: 8px;
+      padding-left: 8px;
+      border-radius: 10px;
+
+      h4 {
+        font-weight: 400;
+        margin: 0;
+      }
+
+    }
+  }
+
+  .third-row {
+    display: flex;
+    justify-content: space-between;
+
+    .first-column {
+      display: flex;
+
+
+      .chain {
+        background-color: #DB3A34;
+
+        h5 {
+          margin: 0;
+        }
+
+      }
+
+      .price {
+        margin-left: 12px;
+
+        h5 {
+          font-weight: 400;
+          margin: 0;
+        }
+
+      }
+    }
+
+    .second-column {
+      color: rgba(219, 58, 52, 0.85);
+
+    }
+  }
+
+}
+
+
