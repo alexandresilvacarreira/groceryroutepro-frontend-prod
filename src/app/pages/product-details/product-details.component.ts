@@ -4,6 +4,7 @@ import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {faArrowLeft, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-product-details',
@@ -19,20 +20,18 @@ export class ProductDetailsComponent implements OnInit {
   currentPrice!:Price;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService) {
-    // this.user = this.userService.getCurrentUser();
-    // if (!this.user){
-    //   this.router.navigate(["/login"]);
-    // }
     this.productId = parseInt(this.route.snapshot.params['productId']);
   }
 
   ngOnInit(): void {
-    this.productsService.getProductDetails(this.productId).subscribe(productDetails => {
-      if (productDetails.success){
+    this.productsService.getProductDetails(this.productId).pipe(catchError(error => {
+
+      return throwError(() => error);
+    })).
+    subscribe(productDetails => {
         this.product = productDetails.product;
         this.prices = productDetails.prices;
         this.currentPrice = this.prices[this.prices.length-1];
-      }
     })
 
   }

@@ -44,7 +44,6 @@ export class SignupComponent implements OnInit {
     }
   }
 
-
   protected readonly faEye = faEye;
   protected readonly faArrowLeft = faArrowLeft;
   protected readonly faArrowRightToBracket = faArrowRightToBracket;
@@ -100,11 +99,7 @@ export class SignupComponent implements OnInit {
         return throwError(() => error);
       }))
         .subscribe(serverResponse =>{
-        if (serverResponse.success){
           this.router.navigate(['/confirm-registration'])
-        } else {
-          this.router.navigate(['/error'])
-        }
       })
 
     } else {
