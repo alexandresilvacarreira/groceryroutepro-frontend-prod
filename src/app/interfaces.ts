@@ -115,6 +115,10 @@ interface ProductWPriceList {
   pagination: Pagination;
 }
 
+interface EmailVerificationToken{
+  token: string
+}
+
 
 export {
   Signup,
@@ -130,5 +134,6 @@ export {
   ProductDetails,
   ProductWPrice,
   Pagination,
-  ProductWPriceList
+  ProductWPriceList,
+  EmailVerificationToken
 }

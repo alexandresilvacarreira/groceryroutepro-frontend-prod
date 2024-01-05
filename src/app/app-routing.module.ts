@@ -9,6 +9,7 @@ import {ErrorComponent} from "./pages/error/error.component";
 import {ProductDetailsComponent} from "./pages/product-details/product-details.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {buildGuard} from "./guards/auth.guard";
+import {VerifyAccountComponent} from "./pages/verify-account/verify-account.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'error', component: ErrorComponent},
   {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")]},
+  {path: 'verify-account', component: VerifyAccountComponent},
 
 ];
 
