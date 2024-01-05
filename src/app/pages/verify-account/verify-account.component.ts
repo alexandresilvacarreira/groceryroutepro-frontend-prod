@@ -63,7 +63,7 @@ export class VerifyAccountComponent implements OnInit {
           setTimeout(() => {
             this.showSucess = false;
           }, 2000);
-          this.router.navigate(['/login']);
+          //this.router.navigate(['/login']);
         },
         (error) => {
           this.showError = true;

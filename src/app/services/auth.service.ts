@@ -42,8 +42,7 @@ export class AuthService {
   }
 
   verifyAccount(token: string) {
-    console.log(token)
-    return this.http.post<ServerResponse>(BASE_URL + "/verify-account", {token: token}
+    return this.http.post<ServerResponse>(BASE_URL + "/verify-account/", {token}
     )
   }
 
