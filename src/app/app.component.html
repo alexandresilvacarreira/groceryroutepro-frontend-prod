@@ -1,4 +1,11 @@
 <app-toast *ngIf="previousRoute==='/login' && currentRoute==='/dashboard'" message="Login efetuado com sucesso" [success]="true"></app-toast>
+<app-header-page *ngIf=
+                   "currentRoute !== '/login'
+                     && currentRoute!=='/welcome'
+                     && currentRoute!=='/confirm-registration'
+                     && currentRoute!=='/signup'
+                     && currentRoute !=='/dashboard'
+                     && currentRoute!=='/'"></app-header-page>
 <app-desktop-navbar *ngIf=
                       "currentRoute !== '/login'
                      && currentRoute!=='/welcome'
