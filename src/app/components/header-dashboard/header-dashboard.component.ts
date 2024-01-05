@@ -30,4 +30,8 @@ export class HeaderDashboardComponent {
     });
   }
 
+  isUser(obj: any): obj is User {
+    return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
+  }
+
 }

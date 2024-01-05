@@ -32,11 +32,13 @@ export class DesktopNavbarComponent {
   logout() {
     this.authService.logout().subscribe(serverResponse => {
       if (serverResponse.success){
-        //TODO logout
-        // this.userService.clearCurrentUser();
         this.router.navigate(["/login"]);
       }
     });
+  }
+
+  isUser(obj: any): obj is User {
+    return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
   }
 
 }

@@ -26,11 +26,14 @@ import { PriceHistoryChartComponent } from './components/price-history-chart/pri
 import { NgChartsModule } from 'ng2-charts';
 import Chart from 'chart.js/auto';
 import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+import {UserPanelComponent} from "./components/user-panel/user-panel.component";
+import {HighlightCarouselComponent} from "./components/highlight-carousel/highlight-carousel.component";
+
 import { VerifyAccountComponent } from './pages/verify-account/verify-account.component';
 
 Chart.defaults.font.family = 'Lato';
-// Chart.defaults.font.size = 16;
-// Chart.defaults.font.weight = 500;
+Chart.defaults.font.size = 16;
+Chart.defaults.font.weight = 500;
 
 registerLocaleData(localePt, 'pt'); // Register the locale data
 
@@ -51,6 +54,9 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     SearchComponent,
     ChainStickerComponent,
     PriceHistoryChartComponent,
+    ProductListItemComponent,
+    UserPanelComponent,
+    HighlightCarouselComponent
     ProductListItemComponent,
     VerifyAccountComponent
   ],

@@ -104,5 +104,10 @@
     align-items: center;
     margin-top: 15px;
   }
+  @media only screen and (min-width: 768px) {
+    max-width: 50%;
+    min-width: 35%;
+    margin: auto;
+  }
 
 }
