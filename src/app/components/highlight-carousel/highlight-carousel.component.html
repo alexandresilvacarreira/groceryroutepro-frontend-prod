@@ -1,7 +1,9 @@
 <div *ngIf="products">
-  <div class="carousel">
+  <div class="carousel" >
     <ng-container *ngFor="let product of products; let i = index">
-      <div class="carousel_frame" *ngIf="i === productIndex" @slideAnimation>
+
+      <div class="carousel_frame" *ngIf="i === productIndex" @slideAnimation [routerLink]="'/product-details/' + product.productId">
+
         <div class="image">
           <img [src]="product.imageUrl">
         </div>
@@ -9,21 +11,26 @@
           <div class="title"><h5>{{product.name}}</h5></div>
           <div class="qntd"><h6>{{product.quantity}}</h6></div>
           <div class="price">
-            <div class="atual_price"><h5>{{product.pricePrimaryValue | number : undefined : 'pt'}}</h5></div>
+            <div class="atual_price"><h5>{{product.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
             <div class="previous_price"><h6>{{product.priceWoDiscount}}</h6></div>
           </div>
           <div class="qntd_price">
-            <span class="">{{product.priceSecondaryValue | number : undefined : 'pt'}}</span>
-            <span class=""> €/{{product.priceSecondaryUnit}}</span>
+            <span class=""><h5>{{product.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
+            <span class=""><h5>€/{{product.priceSecondaryUnit}}</h5> </span>
           </div>
           <div>
-            <app-chain-sticker [chainId]="product.chainId" [chainName]="product.chain"></app-chain-sticker>
+            <app-chain-sticker [chainId]="product.chainId" [chainName]="product.chain"
+                               class="chain"></app-chain-sticker>
           </div>
         </div>
         <div class="discount"><h5>-{{product.priceDiscountPercentage}}%</h5></div>
+
+
       </div>
+
     </ng-container>
   </div>
 </div>
-<button class="dark-blue-text" (click)="increment()">incrementar</button>
+
+
 
