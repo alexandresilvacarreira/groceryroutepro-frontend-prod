@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     )
 
     // this.userService.getCurrentUser().subscribe(user => {
-    //   if (!user) {
+    //   if (user === false) {
     //     this.router.navigate(["/login"]);
     //   }
     // })

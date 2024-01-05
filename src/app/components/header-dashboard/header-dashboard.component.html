@@ -1,8 +1,9 @@
 <div class="dashboard">
-
   <div class="tab-wrapper">
-    <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
-      <h2 *ngIf="isUser(user)">Olá, {{user?.name}} </h2>
+    <div class="greeting">
+      <ng-container *ngIf="userService.getCurrentUser() | async as user">
+        <h2 *ngIf="isUser(user)">Olá, {{user?.name}} </h2>
+      </ng-container>
     </div>
     <fa-icon [icon]="faUserGear"></fa-icon>
     <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>

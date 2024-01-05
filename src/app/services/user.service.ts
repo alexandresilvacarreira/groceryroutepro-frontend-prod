@@ -31,26 +31,7 @@ export class UserService {
 
   getCurrentUser() {
     return this.authenticatedUser.asObservable();
-    /*let storedUser = localStorage.getItem("user");
-    return JSON.parse(storedUser!);*/
   }
-
-  // getAuthenticatedUser() {
-  //    return this.http.get<ServerResponse>(BASE_URL + "/users/get-authenticated-user" /*,{ withCredentials: true }*/);
-  // }
-  //
-  // getCurrentUser(){
-  //   let storedUser = localStorage.getItem("user");
-  //   return JSON.parse(storedUser!);
-  // }
-
-  // setCurrentUser(user: User){
-  //   localStorage.setItem("user", JSON.stringify(user));
-  // }
-
-  // clearCurrentUser(){
-  //   localStorage.removeItem("user");
-  // }
 
 
 }

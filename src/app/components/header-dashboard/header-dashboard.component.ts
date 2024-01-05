@@ -15,8 +15,6 @@ export class HeaderDashboardComponent {
 
   protected readonly faUserGear = faUserGear;
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
-  @Input() user?:User;
-
 
   constructor(private router : Router, public userService: UserService, private authService : AuthService) {
   }

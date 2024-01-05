@@ -13,17 +13,12 @@ import {ProductsService} from "../../services/products.service";
 })
 export class SearchComponent implements OnInit {
 
-  user?: User;
   products?: ProductWPrice[];
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
 
-  constructor(private userService: UserService, private router: Router, private productsService: ProductsService) {
-    // this.user = this.userService.getCurrentUser();
-    // if (!this.user) {
-    //   this.router.navigate(["/login"]);
-    // }
+  constructor(private productsService: ProductsService) {
   }
 
   ngOnInit(): void {

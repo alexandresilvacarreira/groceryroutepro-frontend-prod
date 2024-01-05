@@ -5,6 +5,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
 import {Signup} from "../../interfaces";
 import {Router} from "@angular/router";
+import {catchError, throwError} from "rxjs";
 
 
 @Component({
@@ -29,6 +30,8 @@ export class SignupComponent implements OnInit {
   showPasswordConfirm = false;
   form!: FormGroup;
   showMessage = false;
+  showToast = false;
+  message = "";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
@@ -76,6 +79,8 @@ export class SignupComponent implements OnInit {
 
   signup() {
 
+    this.showToast = false;
+
     let nameInput = this.form.get("name");
     let emailInput = this.form.get("email");
     let passwordInput = this.form.get("password");
@@ -89,7 +94,12 @@ export class SignupComponent implements OnInit {
         password: passwordInput.value
       }
 
-      this.authService.signup(signup).subscribe(serverResponse =>{
+      this.authService.signup(signup).pipe(catchError(error =>{
+        this.message = error.error;
+        this.showToast = true;
+        return throwError(() => error);
+      }))
+        .subscribe(serverResponse =>{
         if (serverResponse.success){
           this.router.navigate(['/confirm-registration'])
         } else {
@@ -114,8 +124,6 @@ export class SignupComponent implements OnInit {
         this.showMessage = false;
       }, 2000);
     }
-
-
 
   }
 

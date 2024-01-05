@@ -1,0 +1,19 @@
+<div class="toast" *ngIf="showToast" @fadeAnimation>
+  <div class="toast-success toast-body" *ngIf=success>
+    <div class="toast-message">
+      {{ message }}
+    </div>
+    <div class="toast-icon">
+      <fa-icon [icon]="faCheck"></fa-icon>
+    </div>
+  </div>
+  <div class="toast-warning toast-body" *ngIf=!success>
+    <div class="toast-message">
+      {{ message }}
+    </div>
+    <div class="toast-icon">
+      <fa-icon [icon]="faXmark"></fa-icon>
+    </div>
+  </div>
+</div>
+

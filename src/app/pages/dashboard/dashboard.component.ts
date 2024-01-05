@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../interfaces";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +11,7 @@ import {Router} from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
 
-  user?: User;
-
-  constructor(public userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -22,5 +21,8 @@ export class DashboardComponent implements OnInit {
     // }
   }
 
+  isUser(obj: any): obj is User {
+    return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
+  }
 
 }

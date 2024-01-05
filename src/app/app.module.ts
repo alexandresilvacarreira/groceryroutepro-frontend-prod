@@ -28,6 +28,7 @@ import Chart from 'chart.js/auto';
 import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
 import {UserPanelComponent} from "./components/user-panel/user-panel.component";
 import {HighlightCarouselComponent} from "./components/highlight-carousel/highlight-carousel.component";
+import { ToastComponent } from './components/toast/toast.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -55,7 +56,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     PriceHistoryChartComponent,
     ProductListItemComponent,
     UserPanelComponent,
-    HighlightCarouselComponent
+    HighlightCarouselComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
