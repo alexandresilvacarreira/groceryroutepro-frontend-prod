@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
 
   currentRoute = '';
   previousRoute = '';
+  hideNavbar?:boolean;
+  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/product-details/"];
+  hideHeaderPage?:boolean;
+  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/"];
 
   constructor(private userService:UserService, private router: Router) {
   }
@@ -29,6 +33,9 @@ export class AppComponent implements OnInit {
         if (event instanceof NavigationEnd){
           this.previousRoute = this.currentRoute;
           this.currentRoute = event.url;
+          let productDetailsRoute = /^\/product-details\/\d+$/;
+          this.hideNavbar = this.pagesWithoutNavbar.includes(this.currentRoute) || productDetailsRoute.test(this.currentRoute);
+          this.hideHeaderPage = this.pagesWithoutHeader.includes(this.currentRoute) || productDetailsRoute.test(this.currentRoute);
         }
       }
     )

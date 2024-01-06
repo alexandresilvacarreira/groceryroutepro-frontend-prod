@@ -5,7 +5,8 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {catchError, mergeMap, switchMap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, mergeMap, of, switchMap, throwError} from "rxjs";
+import {User} from "../../interfaces";
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   showPasswordConfirm = false;
   form!: FormGroup;
   showMessage = false;
+  message = "";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private userService: UserService) {
   }
@@ -75,22 +77,31 @@ export class LoginComponent implements OnInit {
       let email = emailInput.value;
       let password = passwordInput.value;
 
-      this.authService.login(email, password).subscribe(serverResponse => {
-        // TODO usar códigos http
-        if (serverResponse.user) {
-          //this.userService.setCurrentUser(serverResponse.user);
-          this.router.navigate(['/dashboard']);
-        } else {
-          console.log("Erro ao autenticar");
-          this.router.navigate(['/login'])
-        }
-      })
+      this.authService.login(email, password).pipe(
+        catchError(error => {
+          this.message = error.error?.error;
+          this.showMessage = true;
+
+          setTimeout(() => {
+            this.showMessage = false;
+          }, 2000);
+
+          return throwError(() => error);
+        })
+      ).subscribe(serverResponse => {
+          if (serverResponse.user) {
+            this.userService.setCurrentUser(serverResponse.user);
+            this.router.navigate(['/dashboard']);
+          }
+        });
+
     } else {
       emailInput?.markAsTouched();
       emailInput?.markAsDirty();
       passwordInput?.markAsTouched();
       passwordInput?.markAsDirty();
 
+      this.message = "Verifique o preenchimento dos campos."
       this.showMessage = true;
 
       setTimeout(() => {

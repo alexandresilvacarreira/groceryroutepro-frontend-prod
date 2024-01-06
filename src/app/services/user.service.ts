@@ -2,7 +2,7 @@ import {Injectable, OnInit} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {Login, ServerResponse, Signup, User} from "../interfaces";
-import {BehaviorSubject, catchError, of, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, of, throwError} from "rxjs";
 
 const BASE_URL = environment.BASE_URL;
 
@@ -20,7 +20,7 @@ export class UserService {
   }
 
   getAuthenticatedUser() {
-    return this.http.get<User | null>(BASE_URL + "/users/get-authenticated-user", { withCredentials: true })
+    return this.http.get<User | null>(BASE_URL + "/users/get-authenticated-user", {withCredentials: true})
       .pipe(catchError((error) => {
         return of(false);
       }))
@@ -31,6 +31,14 @@ export class UserService {
 
   getCurrentUser() {
     return this.authenticatedUser.asObservable();
+  }
+
+  setCurrentUser(user : User) {
+    this.authenticatedUser.next(user);
+  }
+
+  clearCurrentUser(){
+    this.authenticatedUser.next(false);
   }
 
 

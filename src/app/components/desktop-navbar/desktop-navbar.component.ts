@@ -9,6 +9,7 @@ import {User} from "../../interfaces";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
+import {catchError, tap, throwError} from "rxjs";
 
 @Component({
   selector: 'app-desktop-navbar',
@@ -28,11 +29,17 @@ export class DesktopNavbarComponent {
   }
 
   logout() {
-    this.authService.logout().subscribe(serverResponse => {
-      if (serverResponse.success){
-        this.router.navigate(["/login"]);
-      }
-    });
+    this.authService.logout()
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          return throwError(() => error);
+        })
+      )
+      .subscribe(serverResponse => {
+        this.userService.clearCurrentUser();
+        this.router.navigate(['/login']);
+      });
   }
 
   isUser(obj: any): obj is User {

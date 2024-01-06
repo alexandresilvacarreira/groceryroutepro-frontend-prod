@@ -1,24 +1,13 @@
 <app-toast *ngIf="previousRoute==='/login' && currentRoute==='/dashboard'" message="Login efetuado com sucesso" [success]="true"></app-toast>
-<app-desktop-navbar *ngIf=
-                      "currentRoute !== '/login'
-                     && currentRoute!=='/welcome'
-                     && currentRoute!=='/confirm-registration'
-                     && currentRoute!=='/signup'
-                     && currentRoute!=='/'"></app-desktop-navbar>
-<app-header-page *ngIf=
-                   "currentRoute !== '/login'
-                     && currentRoute!=='/welcome'
-                     && currentRoute!=='/confirm-registration'
-                     && currentRoute!=='/signup'
-                     && currentRoute !=='/dashboard'
-                     && currentRoute!=='/'"></app-header-page>
+<ng-container *ngIf="hideNavbar!==undefined">
+  <app-desktop-navbar *ngIf="!hideNavbar"></app-desktop-navbar>
+</ng-container>
+<ng-container *ngIf="hideHeaderPage!==undefined">
+  <app-header-page *ngIf="!hideHeaderPage"></app-header-page>
+</ng-container>
 <router-outlet></router-outlet>
-<app-mobile-navbar *ngIf=
-                     "currentRoute !== '/login'
-                     && currentRoute!=='/welcome'
-                     && currentRoute!=='/confirm-registration'
-                     && currentRoute!=='/signup'
-                     && currentRoute!=='/verify-account'
-                     && currentRoute!=='/'"></app-mobile-navbar>
+<ng-container *ngIf="hideNavbar!==undefined">
+  <app-mobile-navbar *ngIf="!hideNavbar"></app-mobile-navbar>
+</ng-container>
 
 

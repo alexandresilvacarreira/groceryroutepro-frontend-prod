@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {WelcomeComponent} from "./pages/welcome/welcome.component";
 import {SignupComponent} from "./pages/signup/signup.component";
@@ -14,16 +14,16 @@ import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.compone
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
-  {path: 'welcome', component: WelcomeComponent},
+  {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false)]},
   {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
   {path: 'confirm-registration', component: ConfirmRegistrationComponent},
   {path: 'error', component: ErrorComponent},
-  {path: 'dashboard', component:DashboardComponent, canActivate: [buildGuard("/login")]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
-  {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")], data:{title:'Pesquisa'}},
+  {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")], data: {title: 'Pesquisa'}},
   {path: 'verify-account', component: VerifyAccountComponent},
-  {path: 'shopping-list', component: ShoppingListComponent, data:{title:'Lista de Compras'}}
+  {path: 'shopping-list', component: ShoppingListComponent, data: {title: 'Lista de Compras'}}
 ];
 
 @NgModule({
@@ -31,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
