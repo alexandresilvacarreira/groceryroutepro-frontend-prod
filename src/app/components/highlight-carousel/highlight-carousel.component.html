@@ -3,7 +3,7 @@
   <div class="carousel" >
     <ng-container *ngFor="let product of products; let i = index">
 
-      <div class="carousel_frame" *ngIf="i === productIndex" @slideAnimation [routerLink]="'/product-details/' + product.productId">
+      <div class="carousel_frame" *ngIf="i === productIndex" @slide [routerLink]="'/product-details/' + product.productId">
 
         <div class="image">
           <img [src]="product.imageUrl">

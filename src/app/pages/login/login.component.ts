@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
   showError =false;
   errorMessage="";
 
-
-
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private userService: UserService) {
   }
 

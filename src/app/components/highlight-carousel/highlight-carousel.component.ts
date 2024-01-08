@@ -2,23 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {ProductWPrice} from "../../interfaces";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {slideAnimation} from "../../animations";
 
 @Component({
   selector: 'app-highlight-carousel',
   templateUrl: './highlight-carousel.component.html',
   styleUrls: ['./highlight-carousel.component.scss'],
-  animations: [
-      trigger('slideAnimation', [
-        transition(':enter', [
-          style({transform: 'translateX(-100%)'}),
-          animate('1s ease-out', style({transform: 'translateX(0%)'}))
-        ]),
-        transition(':leave', [
-          style({transform: 'translateX(0%)', position: 'absolute'}),
-          animate('500ms ease-out', style({transform: 'translateX(100%)', position: 'absolute', opacity: 0}))
-        ])
-      ])
-  ]
+  animations: [slideAnimation]
 })
 
 
@@ -37,7 +27,6 @@ export class HighlightCarouselComponent implements OnInit {
         this.products = productWPriceList.products;
       }
     })
-
 
     setInterval(() => {
       if (this.products && this.productIndex === this.products?.length-1) {
