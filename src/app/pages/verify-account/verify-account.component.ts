@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-verify-account',
@@ -32,6 +33,7 @@ export class VerifyAccountComponent implements OnInit {
   form!: FormGroup;
   showError = false;
   showSucess = false;
+  errorMessage = "";
 
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router,
@@ -53,26 +55,23 @@ export class VerifyAccountComponent implements OnInit {
 
   submitToken() {
     let tokenControl = this.form.get("token");
+    this.showError=false;
     if (tokenControl) {
       let tokenValue = tokenControl.value;
-      console.log(tokenControl)
-      this.authService.verifyAccount(tokenValue).subscribe(
-        response => {
-          console.log(tokenValue)
+
+      this.authService.verifyAccount(tokenValue).pipe(catchError(err => {
+        this.errorMessage = err.error.message;
+        this.showError = true;
+        this.form.reset();
+        return throwError(() => err);
+      }))
+        .subscribe(serverResponse => {
           this.showSucess = true;
           setTimeout(() => {
-            this.showSucess = false;
+            this.router.navigate(['/login']);
           }, 2000);
-          //this.router.navigate(['/login']);
-        },
-        (error) => {
-          this.showError = true;
-          setTimeout(() => {
-            this.showError = false;
-          }, 2000);
-          this.form.reset();
-        }
-      )
+
+        })
     }
 
 

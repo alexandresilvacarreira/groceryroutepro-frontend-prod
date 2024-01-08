@@ -30,8 +30,12 @@ export class LoginComponent implements OnInit {
   showPassword = false;
   showPasswordConfirm = false;
   form!: FormGroup;
-  showMessage = false;
-  message = "";
+  showToast = false;
+  toastMessage = "";
+  showError =false;
+  errorMessage="";
+
+
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private userService: UserService) {
   }
@@ -68,6 +72,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.showToast=false;
 
     let emailInput = this.form.get("email");
     let passwordInput = this.form.get("password");
@@ -79,12 +84,8 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(email, password).pipe(
         catchError(error => {
-          this.message = error.error?.error;
-          this.showMessage = true;
-
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 2000);
+          this.toastMessage = error.error?.message;
+          this.showToast = true;
 
           return throwError(() => error);
         })
@@ -101,11 +102,11 @@ export class LoginComponent implements OnInit {
       passwordInput?.markAsTouched();
       passwordInput?.markAsDirty();
 
-      this.message = "Verifique o preenchimento dos campos."
-      this.showMessage = true;
+      this.errorMessage = "Verifique o preenchimento dos campos."
+      this.showError = true;
 
       setTimeout(() => {
-        this.showMessage = false;
+        this.showError = false;
       }, 2000);
     }
 
