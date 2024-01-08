@@ -68,7 +68,6 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-
     this.showToast = false;
 
     let nameInput = this.form.get("name");
@@ -84,10 +83,10 @@ export class SignupComponent implements OnInit {
         password: passwordInput.value
       }
 
-      this.authService.signup(signup).pipe(catchError(error =>{
-        this.message = error.error;
+      this.authService.signup(signup).pipe(catchError(err =>{
+        this.message = err.error.message;
         this.showToast = true;
-        return throwError(() => error);
+        return throwError(() => err);
       }))
         .subscribe(serverResponse =>{
           this.router.navigate(['/confirm-registration'])

@@ -1,3 +1,4 @@
+<app-toast *ngIf="showToast" [success]="false" [message]="toastMessage"></app-toast>
 <div class="container">
   <div class="header">
     <fa-icon class="icon" [icon]="faArrowLeft" [routerLink]="['/welcome']"></fa-icon>
@@ -25,7 +26,7 @@
     </div>
   </div>
   <button class="dark-blue-button" (click)="login()">Login</button>
-  <div class="check-inputs-message" *ngIf="showMessage" @fade>
-    <p class="warning-text">{{message}}</p>
+  <div class="check-inputs-message" *ngIf="showError" @fade>
+    <p class="warning-text">{{errorMessage}}</p>
   </div>
 </div>

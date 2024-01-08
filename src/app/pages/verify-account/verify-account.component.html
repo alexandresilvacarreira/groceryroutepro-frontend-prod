@@ -1,3 +1,6 @@
+<app-toast *ngIf="showSucess" [success]="true" message="Conta registada com sucesso!<br>
+ A reencaminhar para login"></app-toast>
+<app-toast *ngIf="showError" [success]="false" [message]="errorMessage"></app-toast>
 <div class="container">
   <div class="header">
     <fa-icon class="icon" [icon]="faArrowLeft" [routerLink]="['/welcome']"></fa-icon>
@@ -14,10 +17,3 @@
     <button class="dark-blue-button" (click)="submitToken()">Submeter</button>
   </div>
   </div>
-<div class="error-message" *ngIf="showError" @fade>
-  <div class="message-title">Erro a verificar conta</div>
-</div>
-<div class="sucess-message" *ngIf="showSucess">
-  <div class="message-title">Conta registada com sucesso! </div>
-  <div class="message-body">A reencaminhar para login</div>
-</div>

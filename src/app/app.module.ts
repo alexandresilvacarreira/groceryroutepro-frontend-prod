@@ -35,6 +35,7 @@ import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.compone
 import {HeaderPageComponent} from "./components/header-page/header-page.component";
 import {ProductCardItemComponent} from "./components/product-card-item/product-card-item.component";
 import { LoaderComponent } from './components/loader/loader.component';
+import {MatTab, MatTabsModule} from "@angular/material/tabs";
 
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 16;
@@ -76,7 +77,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgChartsModule
+    NgChartsModule,
+    MatTabsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
