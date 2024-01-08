@@ -46,4 +46,9 @@ export class AuthService {
     )
   }
 
+
+  requestPasswordLink(email: string){
+    return this.http.post<ServerResponse>(BASE_URL + "/users/forgot-password", {email:email});
+  }
+
 }
