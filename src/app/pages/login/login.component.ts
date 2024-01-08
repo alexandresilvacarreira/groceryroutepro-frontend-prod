@@ -7,22 +7,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {BehaviorSubject, catchError, mergeMap, of, switchMap, throwError} from "rxjs";
 import {User} from "../../interfaces";
+import {fadeAnimation} from "../../animations";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger('fadeAnimation', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate("200ms ease-in-out"),
-      ]),
-      transition(':leave', [
-        animate("800ms ease-out", style({opacity: 0})),
-      ]),
-    ])
-  ]
+  animations: [fadeAnimation]
 })
 export class LoginComponent implements OnInit {
 

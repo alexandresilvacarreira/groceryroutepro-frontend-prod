@@ -1,24 +1,14 @@
 import {Component, Input} from '@angular/core';
 import _default from "chart.js/dist/plugins/plugin.tooltip";
 import animations = _default.defaults.animations;
-import {animate, style, transition, trigger} from "@angular/animations";
 import {faCheck, faCross, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {fadeAnimation} from "../../animations";
 
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
-  animations: [
-    trigger('fadeAnimation', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate("100ms ease-in"),
-      ]),
-      transition(':leave', [
-        animate("800ms ease-out",  style({opacity: 0})),
-      ]),
-    ])
-  ]
+  animations: [fadeAnimation]
 })
 export class ToastComponent {
 

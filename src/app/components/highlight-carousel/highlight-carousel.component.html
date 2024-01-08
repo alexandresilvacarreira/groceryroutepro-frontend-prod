@@ -1,7 +1,4 @@
-<div *ngIf="!products" class="loading">
-  <span class="loader"></span>
-  <h3 class="grey-text">A carregar...</h3>
-</div>
+<app-loader *ngIf="!products"></app-loader>
 <div *ngIf="products">
   <div class="carousel" >
     <ng-container *ngFor="let product of products; let i = index">

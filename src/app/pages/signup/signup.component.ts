@@ -6,23 +6,14 @@ import {AuthService} from "../../services/auth.service";
 import {Signup} from "../../interfaces";
 import {Router} from "@angular/router";
 import {catchError, throwError} from "rxjs";
+import {fadeAnimation} from "../../animations";
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  animations: [
-    trigger('fadeAnimation', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate("200ms ease-in-out"),
-      ]),
-      transition(':leave', [
-        animate("800ms ease-out", style({opacity: 0})),
-      ]),
-    ])
-  ]
+  animations: [fadeAnimation]
 })
 export class SignupComponent implements OnInit {
 

@@ -4,23 +4,13 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {fadeAnimation} from "../../animations";
 
 @Component({
   selector: 'app-verify-account',
   templateUrl: './verify-account.component.html',
   styleUrls: ['./verify-account.component.scss'],
-  animations: [
-    trigger('fadeAnimation', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate("200ms ease-in-out"),
-      ]),
-      transition(':leave', [
-        animate("800ms ease-out", style({opacity: 0})),
-      ]),
-    ])
-  ]
+  animations: [fadeAnimation]
 })
 export class VerifyAccountComponent implements OnInit {
 
