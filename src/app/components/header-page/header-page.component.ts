@@ -7,23 +7,19 @@ import {filter} from "rxjs";
   templateUrl: './header-page.component.html',
   styleUrls: ['./header-page.component.scss']
 })
-export class HeaderPageComponent implements OnInit{
+export class HeaderPageComponent {
 
-  pageTitle: string = '';
+  @Input() pageTitle!:string;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.setPageTitle();
-  }
-
-  setPageTitle() {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
-      });
-  }
+  // setPageTitle() {
+  //   this.router.events
+  //     .pipe(filter(event => event instanceof NavigationEnd))
+  //     .subscribe(() => {
+  //       this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
+  //     });
+  // }
 }
 
 

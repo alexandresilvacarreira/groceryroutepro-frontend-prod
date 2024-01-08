@@ -2,10 +2,9 @@
 <ng-container *ngIf="hideNavbar!==undefined">
   <app-desktop-navbar *ngIf="!hideNavbar"></app-desktop-navbar>
 </ng-container>
-<ng-container *ngIf="hideHeaderPage!==undefined">
-  <app-header-page *ngIf="!hideHeaderPage"></app-header-page>
-</ng-container>
+<div class="wrapper">
 <router-outlet></router-outlet>
+</div>
 <ng-container *ngIf="hideNavbar!==undefined">
   <app-mobile-navbar *ngIf="!hideNavbar"></app-mobile-navbar>
 </ng-container>

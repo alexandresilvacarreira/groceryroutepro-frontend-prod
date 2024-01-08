@@ -15,7 +15,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
         ]),
         transition(':leave', [
           style({transform: 'translateX(0%)', position: 'absolute'}),
-          animate('500ms ease-out', style({transform: 'translateX(100%)', position: 'absolute'}))
+          animate('500ms ease-out', style({transform: 'translateX(100%)', position: 'absolute', opacity: 0}))
         ])
       ])
   ]

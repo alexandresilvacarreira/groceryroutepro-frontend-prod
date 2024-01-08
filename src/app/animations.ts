@@ -1,11 +1,4 @@
-import { trigger, style, animate, transition } from '@angular/animations';
-
-export const spinAnimation = trigger('spin', [
-  transition('void => *', [
-    style({ transform: 'rotate(0deg)' }),
-    animate('1s linear', style({ transform: 'rotate(360deg)' }))
-  ])
-]);
+import {trigger, style, animate, transition, keyframes} from '@angular/animations';
 
 export const fadeAnimation = trigger('fade', [
   transition(':enter', [

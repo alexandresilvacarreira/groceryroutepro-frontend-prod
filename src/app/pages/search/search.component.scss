@@ -57,6 +57,12 @@
         top: 25%;
       }
     }
+
+    @media only screen and (min-width: 768px) {
+      padding: 20px 10px;
+    }
+
+
   }
 
   .product-list {
@@ -70,6 +76,11 @@
     align-content: flex-start;
     margin-bottom: 40px;
 
+  }
+
+  @media only screen and (min-width: 768px) {
+    min-width: 35%;
+    margin: auto;
   }
 
 }
