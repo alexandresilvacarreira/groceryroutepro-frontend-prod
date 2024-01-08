@@ -1,39 +1,38 @@
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
 
-  .header {
-    border-radius: 0 0 15px 15px;
-    background: linear-gradient(260deg, rgba(33, 158, 188, 0.89) 0%, rgba(21, 101, 192, 0.89) 98.41%);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .page-title {
-      color: white;
-      padding: 10px;
-    }
+  mat-tab-group {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 21px;
   }
-
-  @media only screen and (min-width: 769px) {
-    .header {
-      all: unset;
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-
-      .page-title {
-        all: unset;
-        color: black;
-        padding: 10px;
-
-      }
-    }
-  }
-
 }
+
+:host ::ng-deep .mdc-tab-indicator__content {
+  border: 0;
+}
+
+:host ::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+
+  height: 26px;
+  width: auto;
+  padding-left: 7px;
+  padding-right: 7px;
+
+  &:not(.mdc-tab-indicator--active) {
+    opacity: 0.7;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+:host ::ng-deep .mat-mdc-tab-body-wrapper {
+  margin-top: 10px;
+  margin-bottom: 21px;
+}
+
+
+
+
