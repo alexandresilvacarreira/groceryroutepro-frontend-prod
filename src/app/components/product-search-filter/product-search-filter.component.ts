@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {faCircle} from "@fortawesome/free-regular-svg-icons/faCircle";
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
+import {faCircleXmark} from "@fortawesome/free-solid-svg-icons/faCircleXmark";
 
 @Component({
   selector: 'app-product-search-filter',
@@ -11,4 +12,5 @@ export class ProductSearchFilterComponent {
 
   protected readonly faCircle = faCircle;
   protected readonly faCircleCheck = faCircleCheck;
+  protected readonly faCircleXmark = faCircleXmark;
 }
