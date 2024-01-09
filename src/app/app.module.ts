@@ -35,6 +35,8 @@ import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.compone
 import {HeaderPageComponent} from "./components/header-page/header-page.component";
 import {ProductCardItemComponent} from "./components/product-card-item/product-card-item.component";
 import { LoaderComponent } from './components/loader/loader.component';
+import {MatTab, MatTabsModule} from "@angular/material/tabs";
+import { ForgotPassword } from './pages/request-new-password/forgot-password.component';
 
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 16;
@@ -67,7 +69,9 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShoppingListComponent,
     HeaderPageComponent,
     ProductCardItemComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProductCardItemComponent,
+    ForgotPassword
   ],
   imports: [
     BrowserModule,
