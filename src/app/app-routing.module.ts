@@ -12,6 +12,7 @@ import {buildGuard} from "./guards/auth.guard";
 import {VerifyAccountComponent} from "./pages/verify-account/verify-account.component";
 import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import {ForgotPasswordSucessComponent} from "./pages/forgot-password-sucess/forgot-password-sucess.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'verify-account', component: VerifyAccountComponent},
   {path: 'shopping-list', component: ShoppingListComponent, data: {title: 'Lista de Compras'}},
   {path: 'forgot-password', component: ForgotPasswordComponent },
+  {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent },
 
 ];
 

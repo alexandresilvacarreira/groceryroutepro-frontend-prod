@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   currentRoute = '';
   previousRoute = '';
   hideNavbar?:boolean;
-  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/","/request-new-password"];
+  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
+    "/request-new-password", "/forgot-password", "/forgot-password-confirm"];
   hideHeaderPage?:boolean;
   pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/", "request-new-password"];
 

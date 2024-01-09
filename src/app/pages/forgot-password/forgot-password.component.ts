@@ -69,7 +69,7 @@ export class ForgotPasswordComponent {
           this.toastBool=true;
           this.showToast = true;
           this.toastMessage = "Pedido enviado com sucesso";
-          //this.router.navigate(['/dashboard']);
+          this.router.navigate(['/forgot-password-confirm']);
         }
       });
 
