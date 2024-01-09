@@ -5,16 +5,7 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent{
 
-  showSplash= true;
-
-  ngOnInit(): void {
-
-    setTimeout(()=>{
-      this.showSplash=false;
-    }, 3000)
-
-  }
 
 }

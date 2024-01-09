@@ -1,13 +1,15 @@
 <app-toast *ngIf="previousRoute==='/login' && currentRoute==='/dashboard'" message="Login efetuado com sucesso" [success]="true"></app-toast>
+<app-splash *ngIf="showSplash && (currentRoute==='/welcome' ||  currentRoute==='/')"></app-splash>
 <ng-container *ngIf="hideNavbar!==undefined">
   <app-desktop-navbar *ngIf="!hideNavbar"></app-desktop-navbar>
 </ng-container>
-<ng-container *ngIf="hideNavbar!==undefined">
-  <app-mobile-navbar *ngIf="!hideNavbar"></app-mobile-navbar>
-</ng-container>
+<app-header-dashboard *ngIf="currentRoute==='/dashboard'"></app-header-dashboard>
+<app-header-page *ngIf="!hideHeaderPage"></app-header-page>
 <div class="wrapper">
 <router-outlet></router-outlet>
 </div>
+<app-mobile-navbar *ngIf="!hideNavbar"></app-mobile-navbar>
+
 
 
 

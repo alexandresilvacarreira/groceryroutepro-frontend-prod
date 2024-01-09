@@ -23,9 +23,9 @@ const routes: Routes = [
   {path: 'error', component: ErrorComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
-  {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")]},
+  {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")],  data: {title: 'Pesquisa'}},
   {path: 'verify-account', component: VerifyAccountComponent},
-  {path: 'shopping-list', component: ShoppingListComponent, data: {title: 'Lista de Compras'}},
+  {path: 'shopping-list', component: ShoppingListComponent, canActivate: [buildGuard("/login")], data: {title: 'Lista de Compras'}},
   {path: 'forgot-password', component: ForgotPasswordComponent },
 
 ];

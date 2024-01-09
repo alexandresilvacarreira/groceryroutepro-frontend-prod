@@ -5,9 +5,7 @@
   height: 153px;
   position: relative;
 
-
   .tab-wrapper {
-
     display: flex;
     width: 80%;
     align-items: center;
@@ -16,7 +14,6 @@
     margin-left: 10%;
 
     .greeting {
-
       flex-grow: 1;
       overflow: hidden;
 

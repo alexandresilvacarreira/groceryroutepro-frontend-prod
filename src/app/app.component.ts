@@ -12,12 +12,14 @@ export class AppComponent implements OnInit {
 
   title = 'groceryroutepro-angular-frontend';
 
+  showSplash= true;
+
   currentRoute = '';
   previousRoute = '';
   hideNavbar?:boolean;
-  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/","/request-new-password"];
+  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/","/request-new-password", '/forgot-password'];
   hideHeaderPage?:boolean;
-  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/", "request-new-password"];
+  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/", "request-new-password", '/forgot-password'];
 
   constructor(private userService:UserService, private router: Router) {
   }
@@ -39,6 +41,11 @@ export class AppComponent implements OnInit {
         }
       }
     )
+
+
+    setTimeout(()=>{
+      this.showSplash=false;
+    }, 3000)
 
   }
 
