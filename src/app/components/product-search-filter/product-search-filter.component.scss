@@ -1,4 +1,22 @@
 .filter {
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    .icon {
+      color: #0f7293;
+      position: absolute;
+      left: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   .group {
     &:first-of-type {
       border-top: 1px solid #918787;
