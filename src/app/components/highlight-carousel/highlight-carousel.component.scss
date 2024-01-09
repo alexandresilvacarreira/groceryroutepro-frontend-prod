@@ -7,6 +7,11 @@
   justify-content: center;
 
 
+  &:hover {
+    cursor: pointer;
+  }
+
+
   .carousel_frame {
     display: flex;
     border-radius: 8px;

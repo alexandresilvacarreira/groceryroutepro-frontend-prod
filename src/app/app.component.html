@@ -4,7 +4,7 @@
   <app-desktop-navbar *ngIf="!hideNavbar"></app-desktop-navbar>
 </ng-container>
 <app-header-dashboard *ngIf="currentRoute==='/dashboard'"></app-header-dashboard>
-<app-header-page *ngIf="!hideHeaderPage"></app-header-page>
+<app-header-page *ngIf="!hideHeaderPage && pageTitle" [title]="pageTitle"></app-header-page>
 <div class="wrapper">
 <router-outlet></router-outlet>
 </div>
