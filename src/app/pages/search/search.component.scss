@@ -36,13 +36,13 @@
       .grey-icon {
         color: #BDBDBD;
         position: absolute;
-        right: 5%;
+        right: 20px;
         top: 25%;
       }
     }
 
     @media only screen and (min-width: 768px) {
-      padding: 20px 10px;
+      padding: 20px 0px;
     }
 
 
@@ -58,6 +58,10 @@
     align-items: center;
     align-content: flex-start;
     margin-bottom: 40px;
+
+    @media only screen and (min-width: 768px) {
+      padding: 20px 0px;
+    }
 
   }
 

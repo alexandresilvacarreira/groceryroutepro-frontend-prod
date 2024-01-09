@@ -4,6 +4,8 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   height: 153px;
   position: relative;
+  display: flex;
+  justify-content: center;
 
   .tab-wrapper {
     display: flex;
@@ -11,8 +13,7 @@
     align-items: center;
     position: absolute;
     bottom: 41px;
-    margin-left: 5%;
-    margin-right: 5%;
+    padding: 0 20px;
 
     .greeting {
       flex-grow: 1;

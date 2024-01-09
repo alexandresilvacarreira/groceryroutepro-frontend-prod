@@ -6,6 +6,7 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,7 @@ export class SearchComponent implements OnInit {
 
   products?: ProductWPrice[];
 
-  searchControl = new FormControl('');
+  searchControl = new FormControl("");
 
 
   protected readonly faFilter = faFilter;
@@ -25,11 +26,19 @@ export class SearchComponent implements OnInit {
   constructor(private productsService: ProductsService) {
   }
 
-
   ngOnInit(): void {
-    // Subscribe to value changes of the searchControl
+
+    //Primeiro request, antes de escrever na barra de pesquisa
+    this.productsService
+      .getProductsList(undefined, undefined, undefined, 'pricePrimaryValue,asc')
+      .subscribe((productWPriceList) => {
+        if (productWPriceList.success) {
+          this.products = productWPriceList.products;
+        }
+      });
+
     this.searchControl.valueChanges.subscribe((searchTerm) => {
-      // Use the value as the first parameter in the getProductsList method
+      console.log(searchTerm)
       this.productsService
         .getProductsList(searchTerm === null ? undefined : searchTerm, undefined, undefined, 'pricePrimaryValue,asc')
         .subscribe((productWPriceList) => {
@@ -38,6 +47,7 @@ export class SearchComponent implements OnInit {
           }
         });
     });
+
   }
 
 
