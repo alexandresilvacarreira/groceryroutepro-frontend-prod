@@ -7,11 +7,12 @@
 
   .tab-wrapper {
     display: flex;
-    width: 80%;
+    width: 90%;
     align-items: center;
     position: absolute;
     bottom: 41px;
-    margin-left: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 
     .greeting {
       flex-grow: 1;
@@ -45,12 +46,13 @@
 
     }
   }
-  @media only screen and (min-width: 769px){
+
+  @media only screen and (min-width: 769px) {
     display: none;
 
 
   }
 
-  }
+}
 
 
