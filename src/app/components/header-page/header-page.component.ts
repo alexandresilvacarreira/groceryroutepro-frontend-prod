@@ -12,7 +12,9 @@ export class HeaderPageComponent implements OnInit{
 
   pageTitle!:string;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.setPageTitle();
+  }
 
   setPageTitle() {
     this.router.events
@@ -23,7 +25,7 @@ export class HeaderPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.setPageTitle();
+
   }
 }
 
