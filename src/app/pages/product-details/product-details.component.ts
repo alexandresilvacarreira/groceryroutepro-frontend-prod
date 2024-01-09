@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Price, Product, ProductDetails, User} from "../../interfaces";
 import {UserService} from "../../services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {faArrowLeft, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {catchError, throwError} from "rxjs";
+import {NavigationService} from "../../services/navigation.service";
 
 @Component({
   selector: 'app-product-details',
@@ -18,8 +19,9 @@ export class ProductDetailsComponent implements OnInit {
   product!: Product;
   prices!: Price[];
   currentPrice!:Price;
+  previousRoute = '';
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService, private navigationService:NavigationService) {
     this.productId = parseInt(this.route.snapshot.params['productId']);
   }
 
@@ -33,6 +35,9 @@ export class ProductDetailsComponent implements OnInit {
         this.prices = productDetails.prices;
         this.currentPrice = this.prices[this.prices.length-1];
     })
+
+    this.previousRoute = this.navigationService.getPreviousRoute();
+
 
   }
 

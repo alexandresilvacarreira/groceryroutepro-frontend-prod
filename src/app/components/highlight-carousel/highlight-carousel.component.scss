@@ -5,6 +5,11 @@
   overflow: hidden;
   margin: auto;
   justify-content: center;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
 
 
   .carousel_frame {

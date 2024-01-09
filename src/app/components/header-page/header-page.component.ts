@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
 
+
 @Component({
   selector: 'app-header-page',
   templateUrl: './header-page.component.html',
@@ -9,9 +10,12 @@ import {filter} from "rxjs";
 })
 export class HeaderPageComponent {
 
-  @Input() pageTitle!:string;
+  // pageTitle!:string;
+  @Input() title!:string;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    // this.setPageTitle();
+  }
 
   // setPageTitle() {
   //   this.router.events
@@ -20,6 +24,8 @@ export class HeaderPageComponent {
   //       this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
   //     });
   // }
+
+
 }
 
 
