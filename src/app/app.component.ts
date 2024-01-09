@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   currentRoute = '';
   previousRoute = '';
   hideNavbar?:boolean;
-  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/"];
+  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/","/request-new-password"];
   hideHeaderPage?:boolean;
-  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/"];
+  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/", "request-new-password"];
 
   constructor(private userService:UserService, private router: Router) {
   }
