@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="tabs">
+    <div (click)="onTabClick('tab1')" [ngClass]="{ 'active': activeTab === 'tab1' }" class="tab"><h4>A sua selecção</h4>
+    </div>
+    <div (click)="onTabClick('tab2')" [ngClass]="{ 'active': activeTab === 'tab2' }" class="tab"><h4>Mais barato</h4>
+    </div>
+    <div (click)="onTabClick('tab3')" [ngClass]="{ 'active': activeTab === 'tab3' }" class="tab"><h4>Mais rápido</h4>
+    </div>
+  </div>
+  <div class="content">
+    <div *ngIf="activeTab == 'tab1'">
+      <app-product-card-item></app-product-card-item>
+      <app-product-card-item></app-product-card-item>
+      <app-product-card-item></app-product-card-item>
+      <app-product-card-item></app-product-card-item>
+    </div>
+    <div *ngIf="activeTab == 'tab2'">
+      TAB 2 COLOCAR DADOS
+    </div>
+    <div *ngIf="activeTab == 'tab3'">
+      TAB 3 COLOCAR DADOS
+    </div>
+  </div>
+</div>
+

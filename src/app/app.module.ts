@@ -37,6 +37,7 @@ import {ProductCardItemComponent} from "./components/product-card-item/product-c
 import { LoaderComponent } from './components/loader/loader.component';
 import {ProductSearchFilterComponent} from "./components/product-search-filter/product-search-filter.component";
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { TabMenuShoppingListComponent } from './components/tab-menu-shopping-list/tab-menu-shopping-list.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -72,7 +73,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ProductCardItemComponent,
     LoaderComponent,
     ProductSearchFilterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    TabMenuShoppingListComponent
   ],
   imports: [
     BrowserModule,
