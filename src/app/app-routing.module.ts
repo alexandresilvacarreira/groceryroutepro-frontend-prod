@@ -11,7 +11,8 @@ import {SearchComponent} from "./pages/search/search.component";
 import {buildGuard} from "./guards/auth.guard";
 import {VerifyAccountComponent} from "./pages/verify-account/verify-account.component";
 import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.component";
-import {ForgotPassword} from "./pages/request-new-password/forgot-password.component";
+import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")]},
   {path: 'verify-account', component: VerifyAccountComponent},
   {path: 'shopping-list', component: ShoppingListComponent, data: {title: 'Lista de Compras'}},
-  {path: 'request-new-password', component: ForgotPassword },
+  {path: 'forgot-password', component: ForgotPasswordComponent },
 
 ];
 

@@ -8,12 +8,12 @@ import {fadeAnimation} from "../../animations";
 import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-request-new-password',
+  selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
   animations: [fadeAnimation]
 })
-export class ForgotPassword implements OnInit{
+export class ForgotPasswordComponent {
 
   showPassword = false;
   showPasswordConfirm = false;
@@ -88,6 +88,5 @@ export class ForgotPassword implements OnInit{
 
   }
 
+
 }
-
-
