@@ -6,11 +6,11 @@ export const fadeAnimation = trigger('fade', [
     animate("100ms ease-in"),
   ]),
   transition(':leave', [
-    animate("800ms ease-out",  style({opacity: 0})),
+    animate("800ms ease-out", style({opacity: 0})),
   ]),
 ]);
 
-export const slideAnimation =  trigger('slide', [
+export const slideAnimation = trigger('slide', [
   transition(':enter', [
     style({transform: 'translateX(-100%)', position: 'relative'}),
     animate('1s ease-out', style({transform: 'translateX(0%)', position: 'relative'}))
@@ -21,14 +21,14 @@ export const slideAnimation =  trigger('slide', [
   ])
 ]);
 
-export const slideAnimationTabMenu =  trigger('slide', [
+export const slideAnimationTabMenu = trigger('slide', [
   transition(':enter', [
-    style({ transform: 'translateX(-100%)' }),
-    animate('300ms', style({ transform: 'translateX(0%)'})),
+    style({transform: 'translateX(-100%)'}),
+    animate('300ms', style({transform: 'translateX(0%)'})),
   ]),
   transition(':leave', [
-    style({ transform: 'translateX(0%)' }),
-    animate('300ms', style({ transform: 'translateX(100%)', opacity:0 })),
+    style({transform: 'translateX(0%)'}),
+    animate('300ms', style({transform: 'translateX(100%)', opacity: 0})),
   ])
 ]);
 

@@ -1,0 +1,108 @@
+.container {
+  width: 300px;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+
+  * h4, h3 {
+    margin: 0;
+  }
+
+  * fa-icon {
+    color: #0F7293;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    color: #0F7293;
+    align-items: center;
+    box-shadow: 0 8px 8px -8px rgba(0, 0, 0, 0.25);
+    height: 40px;
+    position: relative;
+
+    h3 {
+      padding-right: 40px;
+    }
+
+    fa-icon {
+      font-size: 22px;
+      margin-right: 24px;
+    }
+
+    .trashcan {
+      position: absolute;
+      font-size: 16px;
+      color: #DB3A34;
+      right: -15px;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    .all-data {
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+      border-radius: 0 0 8px 8px;
+      border-top: 1px solid #E6E6E6;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+      .column1, .column2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 8px 14px 8px 14px;
+
+        .row1, .row2 {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          h4 {
+            font-weight: 400;
+          }
+        }
+
+        fa-icon {
+          margin-right: 6px;
+          font-size: 22px;
+        }
+      }
+    }
+
+    .route, .chains {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 20px 20px;
+
+      fa-icon {
+        font-size: 25px;
+        margin-right: 24px;
+      }
+    }
+  }
+
+  .check {
+    display: flex;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    color: #0F7293;
+    border-top: 1px solid #DADADA;
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      border-radius: 8px;
+      border: 1px solid #0F7293;
+      padding: 0 12px;
+
+    }
+  }
+}
+
