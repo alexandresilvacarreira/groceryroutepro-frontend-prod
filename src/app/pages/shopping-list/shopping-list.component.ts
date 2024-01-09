@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-shopping-list',
