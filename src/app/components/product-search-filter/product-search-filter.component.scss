@@ -1,23 +1,41 @@
-.filter{
-  .group{
-    border-bottom: 1px solid;
-    .title{
+.filter {
+  .group {
+    &:first-of-type {
+      border-top: 1px solid #918787;
+    }
+
+    .title {
       font-weight: 600;
 
+      h4 {
+        margin:10px 0;
+      }
     }
-    .option{
-      h4{
-        font-weight: 400;
-      }
-      .option-name{
 
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        font-weight: 400;
+        margin:10px 0;
       }
-      .circle{
+
+      &:last-child {
+        border-bottom: 1px solid #918787;
+      }
+
+      .option-name {
+      }
+
+      .circle {
 
       }
     }
   }
-  .buttons{
+
+  .buttons {
 
   }
 }
