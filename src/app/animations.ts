@@ -21,3 +21,15 @@ export const slideAnimation =  trigger('slide', [
   ])
 ]);
 
+export const slideAnimationTabMenu =  trigger('slide', [
+  transition(':enter', [
+    style({ transform: 'translateX(-100%)' }),
+    animate('300ms', style({ transform: 'translateX(0%)'})),
+  ]),
+  transition(':leave', [
+    style({ transform: 'translateX(0%)' }),
+    animate('300ms', style({ transform: 'translateX(100%)', opacity:0 })),
+  ])
+]);
+
+

@@ -8,16 +8,16 @@
     </div>
   </div>
   <div class="content">
-    <div *ngIf="activeTab == 'tab1'">
+    <div *ngIf="activeTab == 'tab1'" @slide>
       <app-product-card-item></app-product-card-item>
       <app-product-card-item></app-product-card-item>
       <app-product-card-item></app-product-card-item>
       <app-product-card-item></app-product-card-item>
     </div>
-    <div *ngIf="activeTab == 'tab2'">
+    <div *ngIf="activeTab == 'tab2'" @slide>
       TAB 2 COLOCAR DADOS
     </div>
-    <div *ngIf="activeTab == 'tab3'">
+    <div *ngIf="activeTab == 'tab3'" @slide>
       TAB 3 COLOCAR DADOS
     </div>
   </div>
