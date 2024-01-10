@@ -25,6 +25,7 @@ export class VerifyAccountComponent implements OnInit {
   showError = false;
   showSucess = false;
   errorMessage = "";
+  email!:string;
 
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router,
@@ -32,6 +33,9 @@ export class VerifyAccountComponent implements OnInit {
     this.form = this.formBuilder.group({
       token: ['', Validators.required]
     });
+    this.email = this.route.snapshot.params['email'];
+
+
   }
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ export class VerifyAccountComponent implements OnInit {
     if (tokenControl) {
       let tokenValue = tokenControl.value;
 
-      this.authService.verifyAccount(tokenValue).pipe(catchError(err => {
+      this.authService.verifyAccount(this.email, tokenValue).pipe(catchError(err => {
         this.errorMessage = err.error.message;
         this.showError = true;
         this.form.reset();

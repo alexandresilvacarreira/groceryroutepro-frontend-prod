@@ -38,6 +38,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import {ProductSearchFilterComponent} from "./components/product-search-filter/product-search-filter.component";
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ForgotPasswordSucessComponent } from './pages/forgot-password-sucess/forgot-password-sucess.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -74,7 +76,9 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     LoaderComponent,
     ProductSearchFilterComponent,
     ForgotPasswordComponent,
-    ForgotPasswordSucessComponent
+    ForgotPasswordSucessComponent,
+    ChangePasswordComponent,
+    ConfirmChangePasswordComponent
   ],
   imports: [
     BrowserModule,

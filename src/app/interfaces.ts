@@ -119,6 +119,11 @@ interface EmailVerificationToken{
   token: string
 }
 
+interface ChangePasswordInterface{
+  token: string;
+  password: string
+}
+
 
 export {
   Signup,
@@ -135,5 +140,6 @@ export {
   ProductWPrice,
   Pagination,
   ProductWPriceList,
-  EmailVerificationToken
+  EmailVerificationToken,
+  ChangePasswordInterface
 }

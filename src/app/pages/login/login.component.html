@@ -24,6 +24,10 @@
         Password inválida.
       </div>
     </div>
+
+  </div>
+  <div class="forgot-password" [routerLink]="['/forgot-password']">
+    Não sabes a tua palavra-chave?
   </div>
   <button class="dark-blue-button" (click)="login()">Login</button>
   <div class="check-inputs-message" *ngIf="showError" @fade>

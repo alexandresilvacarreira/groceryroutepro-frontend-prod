@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {EmailVerificationToken, ServerResponse, Signup} from "../interfaces";
+import {ChangePasswordInterface, EmailVerificationToken, ServerResponse, Signup} from "../interfaces";
 
 
 const BASE_URL = environment.BASE_URL;
@@ -41,8 +41,8 @@ export class AuthService {
     return this.http.post<ServerResponse>(BASE_URL + "/logout", {}, {withCredentials: true})
   }
 
-  verifyAccount(token: string) {
-    return this.http.post<ServerResponse>(BASE_URL + "/verify-account/", {token}
+  verifyAccount(email: string, token: string) {
+    return this.http.post<ServerResponse>(BASE_URL + "/verify-account/", {email,token}
     )
   }
 
@@ -50,5 +50,12 @@ export class AuthService {
   requestPasswordLink(email: string){
     return this.http.post<ServerResponse>(BASE_URL + "/users/forgot-password", {email:email});
   }
+
+  changePassword(email:string, token:string, password:string){
+  return this.http.post<ServerResponse>(BASE_URL + "/users/change-password/", {
+    email:email,
+    token:token,
+  password:password});
+}
 
 }
