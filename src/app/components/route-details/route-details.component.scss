@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+
+  .title-route {
+    faRoute {
+
+    }
+  }
+
+  .details-group {
+    main-title {
+      fa-icon {
+
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    .all-data {
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+      border-radius: 0 0 8px 8px;
+      border-top: 1px solid #E6E6E6;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+      .column1, .column2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 8px 14px 8px 14px;
+
+        .row1, .row2 {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          h4 {
+            font-weight: 400;
+          }
+        }
+
+        fa-icon {
+          margin-right: 6px;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  .chains {
+    fa-icon {
+    }
+  }
+
+  .map {
+    img {
+
+    }
+  }
+
+  .route {
+    .route-column1 {
+      .row1 {
+
+      }
+
+      .row2 {
+
+      }
+    }
+
+    .route-column2 {
+      .row1 {
+
+      }
+
+      .row2 {
+
+      }
+
+    }
+
+    .route-column3 {
+      .row1, row2 {
+
+      }
+
+    }
+  }
+}
+

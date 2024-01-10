@@ -1,8 +1,10 @@
 .container {
-  width: 300px;
+  min-width: 300px;
+  max-width: 70%;
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  margin: 30px auto 20px auto;
 
   * h4, h3 {
     margin: 0;
@@ -78,9 +80,16 @@
       align-items: center;
       margin: 20px 0 20px 20px;
 
+
       fa-icon {
         font-size: 25px;
         margin-right: 24px;
+      }
+
+      .chain{
+        display: flex;
+        flex-wrap: wrap;
+        gap:3px;
       }
     }
   }
@@ -101,6 +110,7 @@
       border-radius: 8px;
       border: 1px solid #0F7293;
       padding: 0 12px;
+      gap:3px;
 
     }
   }

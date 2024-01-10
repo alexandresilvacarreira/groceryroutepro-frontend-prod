@@ -47,6 +47,7 @@ import { RoutesComponent } from './pages/routes/routes.component';
 import { HistoryComponent } from './pages/history/history.component';
 import {RoutePreviousComponent} from "./components/route-previous/route-previous.component";
 import { TabMenuShoppingListDesktopComponent } from './components/tab-menu-shopping-list-desktop/tab-menu-shopping-list-desktop.component';
+import { RouteDetailsComponent } from './components/route-details/route-details.component';
 
 
 
@@ -93,7 +94,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         RoutesComponent,
         HistoryComponent,
         RoutePreviousComponent,
-        TabMenuShoppingListDesktopComponent
+        TabMenuShoppingListDesktopComponent,
+        RouteDetailsComponent
     ],
   imports: [
     BrowserModule,

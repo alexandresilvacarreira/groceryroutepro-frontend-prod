@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="title-route">
+    <fa-icon [icon]="faRoute"></fa-icon>
+    <h4>Lisboa - Oeiras</h4>
+  </div>
+
+  <div class="details-group">
+
+    <div class="main-title">
+      <fa-icon [icon]="faLocationArrow"></fa-icon>
+      <h4>A sua rota</h4>
+    </div>
+
+    <div class="info">
+      <div class="all-data">
+        <div class="column1">
+          <div class="row1">
+            <fa-icon [icon]="faCoins"></fa-icon>
+            <h4>30,24</h4>
+          </div>
+          <div class="row2">
+            <fa-icon [icon]="faPiggyBank"></fa-icon>
+            <h4>-2,09€</h4>
+          </div>
+        </div>
+
+        <div class="column2">
+          <div class="row1">
+            <fa-icon [icon]="faStopwatch"></fa-icon>
+            <h4>43 min</h4>
+          </div>
+          <div class="row2">
+            <fa-icon [icon]="faCar"></fa-icon>
+            <h4>2,42€</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chains">
+      <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+      <app-chain-sticker [chainId]="4" chainName="pingo doce"></app-chain-sticker>
+    </div>
+
+    <div class="map">
+      <img src="../../../assets/images-teste/img.png"/>
+    </div>
+
+    <div class="route">
+
+      <div class="route-column1"></div>
+
+      <div class="route-column2">
+        <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+        <div class="row1"><h5>aberto</h5></div>
+        <div class="row2"><h5>Encerra: 21:30h</h5>
+        </div>
+      </div>
+
+      <div class="route-column3">
+        <div class="street"><h4>Rua General Humberto Delgado</h4>></div>
+        <div class="zip-code"><h4>1700-086 Lisboa</h4></div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {faCalendar} from "@fortawesome/free-regular-svg-icons/faCalendar";
 import {faClockRotateLeft} from "@fortawesome/free-solid-svg-icons/faClockRotateLeft";
 import {faLocationPin} from "@fortawesome/free-solid-svg-icons/faLocationPin";
+import {faCircle} from "@fortawesome/free-solid-svg-icons/faCircle";
 
 @Component({
   selector: 'app-route-previous',
@@ -17,4 +18,5 @@ export class RoutePreviousComponent {
   protected readonly faCalendar = faCalendar;
   protected readonly faClockRotateLeft = faClockRotateLeft;
   protected readonly faLocationPin = faLocationPin;
+  protected readonly faCircle = faCircle;
 }
