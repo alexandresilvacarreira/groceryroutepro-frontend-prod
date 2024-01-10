@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-confirm-change-password',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ConfirmChangePasswordComponent {
 
+    protected readonly faArrowLeft = faArrowLeft;
 }

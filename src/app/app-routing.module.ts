@@ -18,7 +18,7 @@ import {ConfirmChangePasswordComponent} from "./pages/confirm-change-password/co
 
 
 const routes: Routes = [
-
+  {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false)]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
@@ -32,9 +32,9 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent },
   {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent },
   {path: 'change-password/:header', component: ChangePasswordComponent },
-  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent },
+  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent }
 
-  {path: '', redirectTo: '/welcome', pathMatch: 'full'}
+
 
 ];
 

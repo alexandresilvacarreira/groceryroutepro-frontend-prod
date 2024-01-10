@@ -44,6 +44,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
 
 
+
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 16;
 Chart.defaults.font.weight = 500;
