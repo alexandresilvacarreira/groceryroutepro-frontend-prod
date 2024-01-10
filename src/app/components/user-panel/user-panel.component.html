@@ -1,16 +1,21 @@
 <div class="user-panel">
+
   <div class="user-icons">
-    <a [routerLink]="'/shopping-list'" class="options">
-      <h4>Lista de Compras</h4>
-      <fa-icon [icon]="faCartShopping"></fa-icon>
-    </a>
-    <a [routerLink]="'faltameter'" class="options">
-      <h4>Rotas</h4>
+
+    <div class="options" [routerLink]="'/shopping-list'">
+      <div class="title"><h4>Lista de Compras</h4></div>
+      <fa-icon [icon]="faCartPlus"></fa-icon>
+    </div>
+
+    <div class="options" [routerLink]="'faltameter'">
+      <div class="title"><h4>Rotas</h4></div>
       <fa-icon [icon]="faRoute"></fa-icon>
-    </a>
-    <a [routerLink]="'faltameter'" class="options">
-      <h4>Consultar histórico</h4>
+    </div>
+
+    <div class="options" [routerLink]="'faltameter'">
+      <div class="title"><h4>Consultar histórico</h4></div>
       <fa-icon [icon]="faChartLine"></fa-icon>
-    </a>
+    </div>
   </div>
+
 </div>
