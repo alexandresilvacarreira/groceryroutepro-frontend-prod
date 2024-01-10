@@ -39,6 +39,7 @@ import {ProductSearchFilterComponent} from "./components/product-search-filter/p
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { TabMenuShoppingListComponent } from './components/tab-menu-shopping-list/tab-menu-shopping-list.component';
 import { RouteCurrentComponent } from './components/route-current/route-current.component';
+import { RoutePreviousComponent } from './components/route-previous/route-previous.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -76,7 +77,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ProductSearchFilterComponent,
     ForgotPasswordComponent,
     TabMenuShoppingListComponent,
-    RouteCurrentComponent
+    RouteCurrentComponent,
+    RoutePreviousComponent
   ],
   imports: [
     BrowserModule,
