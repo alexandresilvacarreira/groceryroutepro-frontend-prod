@@ -12,6 +12,9 @@ import {buildGuard} from "./guards/auth.guard";
 import {VerifyAccountComponent} from "./pages/verify-account/verify-account.component";
 import {ShoppingListComponent} from "./pages/shopping-list/shopping-list.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import {ForgotPasswordSucessComponent} from "./pages/forgot-password-sucess/forgot-password-sucess.component";
+import {ChangePasswordComponent} from "./pages/change-password/change-password.component";
+import {ConfirmChangePasswordComponent} from "./pages/confirm-change-password/confirm-change-password.component";
 
 
 const routes: Routes = [
@@ -24,9 +27,14 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")],  data: {title: 'Pesquisa'}},
-  {path: 'verify-account', component: VerifyAccountComponent},
+  {path: 'verify-account/:email', component: VerifyAccountComponent},
   {path: 'shopping-list', component: ShoppingListComponent, canActivate: [buildGuard("/login")], data: {title: 'Lista de Compras'}},
   {path: 'forgot-password', component: ForgotPasswordComponent },
+  {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent },
+  {path: 'change-password/:header', component: ChangePasswordComponent },
+  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent }
+
+
 
 ];
 

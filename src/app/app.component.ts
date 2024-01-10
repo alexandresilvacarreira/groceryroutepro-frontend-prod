@@ -18,13 +18,23 @@ export class AppComponent implements OnInit {
   currentRoute = '';
   previousRoute = '';
   hideNavbar?:boolean;
-  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/","/request-new-password", '/forgot-password'];
+  pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
+    "/request-new-password", "/forgot-password", "/forgot-password-confirm", "/change-password",
+    "/change-password-confirm"];
   hideHeaderPage?:boolean;
-  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/", "/dashboard", "/product-details/", "request-new-password", '/forgot-password'];
+  productDetailsRoute = /^\/product-details\/\d+$/;
+  changePasswordRoute = /\/change-password\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
+  verifyAccountRoute = /\/verify-account\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
+
+
+  pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
+    "/dashboard", "/product-details/", "request-new-password", '/forgot-password', '/change-password',
+  '/change-password-confirm'];
   pageTitle?:string;
 
   constructor(private router: Router, private navigationService:NavigationService, private activatedRoute : ActivatedRoute) {
   }
+
 
   ngOnInit(): void {
 
@@ -33,13 +43,21 @@ export class AppComponent implements OnInit {
         if (event instanceof NavigationEnd){
           this.previousRoute = this.currentRoute;
           this.currentRoute = event.url;
-          let productDetailsRoute = /^\/product-details\/\d+$/;
-          this.hideNavbar = this.pagesWithoutNavbar.includes(this.currentRoute) /*|| productDetailsRoute.test(this.currentRoute)*/;
-          this.hideHeaderPage = this.pagesWithoutHeader.includes(this.currentRoute) || productDetailsRoute.test(this.currentRoute);
+          this.hideNavbar = this.pagesWithoutNavbar.includes(this.currentRoute) || this.changePasswordRoute.test(this.currentRoute)
+          || this.verifyAccountRoute.test(this.currentRoute); /*|| productDetailsRoute.test(this.currentRoute)*/;
+
+          this.hideHeaderPage = this.pagesWithoutHeader.includes(this.currentRoute) || this.productDetailsRoute.test(this.currentRoute)
+            || this.changePasswordRoute.test(this.currentRoute) || this.verifyAccountRoute.test(this.currentRoute);
           this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
+
+          console.log(this.currentRoute);
+          console.log(this.hideNavbar);
+          console.log()
         }
       }
     )
+
+    console.log()
 
     setTimeout(()=>{
       this.showSplash=false;

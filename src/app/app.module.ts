@@ -39,7 +39,10 @@ import {ProductSearchFilterComponent} from "./components/product-search-filter/p
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { TabMenuShoppingListComponent } from './components/tab-menu-shopping-list/tab-menu-shopping-list.component';
 import { RouteCurrentComponent } from './components/route-current/route-current.component';
-import { RoutePreviousComponent } from './components/route-previous/route-previous.component';
+import { ForgotPasswordSucessComponent } from './pages/forgot-password-sucess/forgot-password-sucess.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
+
 
 
 Chart.defaults.font.family = 'Lato';
@@ -76,9 +79,12 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     LoaderComponent,
     ProductSearchFilterComponent,
     ForgotPasswordComponent,
+    ForgotPasswordSucessComponent,
+    ChangePasswordComponent,
+    ConfirmChangePasswordComponent,
+    ForgotPasswordComponent,
     TabMenuShoppingListComponent,
-    RouteCurrentComponent,
-    RoutePreviousComponent
+    RouteCurrentComponent
   ],
   imports: [
     BrowserModule,

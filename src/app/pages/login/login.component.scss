@@ -6,7 +6,6 @@
   padding: 20px;
   min-height: 100vh;
 
-
   .header {
     display: flex;
     justify-content: center;
@@ -27,7 +26,6 @@
     .page-title {
       margin: 0;
     }
-
   }
 
   .signup-form {
@@ -36,9 +34,10 @@
     justify-content: center;
     gap: 70px;
     width: 100%;
-    margin: 50px 0 100px 0;
+    margin: 50px 0 40px 0;
 
     .form-field {
+      position: relative; /* Add this line to position the relative context for absolute positioning */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -59,7 +58,6 @@
             cursor: pointer;
           }
         }
-
       }
 
       .form-label {
@@ -79,23 +77,34 @@
         &:focus {
           outline: solid 1px lightgrey;
         }
-
       }
 
       .ng-invalid.ng-touched.ng-dirty {
         border: solid 1px #DB3A34;
       }
 
+      .invalid-input-warning {
+        position: absolute;
+        top: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-start;
+        border-left: solid 2px #DB3A34;
+        font-weight: 300;
+        padding-left: 10px;
+        color: #DB3A34; /* Change the color for better visibility */
+      }
     }
 
-    .invalid-input-warning {
-      display: flex;
-      justify-content: flex-start;
-      border-left: solid 2px #DB3A34;
-      font-weight: 300;
-      padding-left: 10px;
-    }
+  }
 
+  .forgot-password{
+    margin-bottom: 50px;
+    color: #0F7293;
+    cursor: pointer;
+  }
+  .forgot-password:hover {
+    text-decoration: underline;
   }
 
   .check-inputs-message {
@@ -104,10 +113,11 @@
     align-items: center;
     margin-top: 15px;
   }
+
   @media only screen and (min-width: 768px) {
     max-width: 50%;
     min-width: 35%;
     margin: auto;
   }
-
 }
+
