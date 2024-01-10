@@ -37,6 +37,7 @@ const routes: Routes = [
   {path: 'change-password-confirm', component: ConfirmChangePasswordComponent },
   {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login")], data: {title: 'Rotas'}},
   {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
+  {path: '**', redirectTo: '/error', pathMatch: 'full'}
 
 ];
 
