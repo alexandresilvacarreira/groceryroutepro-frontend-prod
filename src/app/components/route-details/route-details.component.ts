@@ -5,6 +5,7 @@ import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {faCar} from "@fortawesome/free-solid-svg-icons/faCar";
 import {faPiggyBank} from "@fortawesome/free-solid-svg-icons";
 import {faStopwatch} from "@fortawesome/free-solid-svg-icons/faStopwatch";
+import {faShop} from "@fortawesome/free-solid-svg-icons/faShop";
 
 @Component({
   selector: 'app-route-details',
@@ -19,4 +20,5 @@ export class RouteDetailsComponent {
   protected readonly faCar = faCar;
   protected readonly faPiggyBank = faPiggyBank;
   protected readonly faStopwatch = faStopwatch;
+  protected readonly faShop = faShop;
 }

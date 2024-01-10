@@ -1,14 +1,14 @@
 <div class="container">
   <div class="title-route">
     <fa-icon [icon]="faRoute"></fa-icon>
-    <h4>Lisboa - Oeiras</h4>
+    <h3>Lisboa - Oeiras</h3>
   </div>
 
   <div class="details-group">
 
     <div class="main-title">
       <fa-icon [icon]="faLocationArrow"></fa-icon>
-      <h4>A sua rota</h4>
+      <h3>A sua rota</h3>
     </div>
 
     <div class="info">
@@ -34,12 +34,20 @@
             <h4>2,42€</h4>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="chains">
-      <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
-      <app-chain-sticker [chainId]="4" chainName="pingo doce"></app-chain-sticker>
+
+        <div class="chains">
+
+          <div class="icon">
+            <fa-icon [icon]="faShop"></fa-icon>
+          </div>
+
+          <div class="chain">
+            <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+            <app-chain-sticker [chainId]="4" chainName="pingo doce"></app-chain-sticker>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="map">
@@ -48,18 +56,29 @@
 
     <div class="route">
 
-      <div class="route-column1"></div>
-
-      <div class="route-column2">
-        <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
-        <div class="row1"><h5>aberto</h5></div>
-        <div class="row2"><h5>Encerra: 21:30h</h5>
-        </div>
+      <div class="title">
+        <h3>Trajecto</h3>
       </div>
 
-      <div class="route-column3">
-        <div class="street"><h4>Rua General Humberto Delgado</h4>></div>
-        <div class="zip-code"><h4>1700-086 Lisboa</h4></div>
+      <div class="route-columns">
+
+        <div class="route-column1">
+          <h3>1.</h3>
+        </div>
+
+        <div class="route-column2">
+          <div class="row1">
+            <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+          </div>
+          <div class="row2"><h5>aberto</h5></div>
+          <div class="row3"><h5>Encerra: 21:30h</h5>
+          </div>
+        </div>
+
+        <div class="route-column3">
+          <div class="street"><h4>Rua General Humberto Delgado</h4></div>
+          <div class="zip-code"><h4>1700-086 Lisboa</h4></div>
+        </div>
       </div>
 
     </div>
