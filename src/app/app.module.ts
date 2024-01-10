@@ -50,6 +50,7 @@ import { TabMenuShoppingListDesktopComponent } from './components/tab-menu-shopp
 import { RouteDetailsComponent } from './components/route-details/route-details.component';
 import { RouteSuggestionsComponent } from './components/route-suggestions/route-suggestions.component';
 import { RouteConfirmationComponent } from './components/route-confirmation/route-confirmation.component';
+import { HistoryProductCardComponent } from './components/history-product-card/history-product-card.component';
 
 
 
@@ -99,7 +100,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         TabMenuShoppingListDesktopComponent,
         RouteDetailsComponent,
         RouteSuggestionsComponent,
-        RouteConfirmationComponent
+        RouteConfirmationComponent,
+        HistoryProductCardComponent
     ],
   imports: [
     BrowserModule,
