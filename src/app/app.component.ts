@@ -20,16 +20,17 @@ export class AppComponent implements OnInit {
   hideNavbar?:boolean;
   pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/request-new-password", "/forgot-password", "/forgot-password-confirm", "/change-password",
-    "/change-password-confirm"];
+    "/change-password-confirm", "/error"];
   hideHeaderPage?:boolean;
-  productDetailsRoute = /^\/product-details\/\d+$/;
-  changePasswordRoute = /\/change-password\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
-  verifyAccountRoute = /\/verify-account\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
+  productDetailsRoute = /^\/product-details\/.*/;
+  changePasswordRoute = /^\/change-password\/.*/;
+  // changePasswordRoute = /\/change-password\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
+  verifyAccountRoute = /\/verify-account\/.*/;
 
 
   pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/dashboard", "/product-details/", "request-new-password", '/forgot-password', '/change-password',
-  '/change-password-confirm'];
+  '/change-password-confirm', "/error"];
   pageTitle?:string;
 
   constructor(private router: Router, private navigationService:NavigationService, private activatedRoute : ActivatedRoute) {
