@@ -51,6 +51,7 @@ import { RouteDetailsComponent } from './components/route-details/route-details.
 import { RouteSuggestionsComponent } from './components/route-suggestions/route-suggestions.component';
 import { RouteConfirmationComponent } from './components/route-confirmation/route-confirmation.component';
 import { HistoryProductCardComponent } from './components/history-product-card/history-product-card.component';
+import { HistoryRouteSummaryCardComponent } from './components/history-route-summary-card/history-route-summary-card.component';
 
 
 
@@ -101,7 +102,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         RouteDetailsComponent,
         RouteSuggestionsComponent,
         RouteConfirmationComponent,
-        HistoryProductCardComponent
+        HistoryProductCardComponent,
+        HistoryRouteSummaryCardComponent
     ],
   imports: [
     BrowserModule,
