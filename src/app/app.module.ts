@@ -42,6 +42,7 @@ import { RouteCurrentComponent } from './components/route-current/route-current.
 import { ForgotPasswordSucessComponent } from './pages/forgot-password-sucess/forgot-password-sucess.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 
 
@@ -93,7 +94,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgChartsModule
+    NgChartsModule,
+    InfiniteScrollModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

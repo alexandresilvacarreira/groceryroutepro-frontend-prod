@@ -50,14 +50,10 @@ export class AppComponent implements OnInit {
             || this.changePasswordRoute.test(this.currentRoute) || this.verifyAccountRoute.test(this.currentRoute);
           this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
 
-          console.log(this.currentRoute);
-          console.log(this.hideNavbar);
-          console.log()
         }
       }
     )
 
-    console.log()
 
     setTimeout(()=>{
       this.showSplash=false;

@@ -6,7 +6,17 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {switchMap} from "rxjs";
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  debounceTime,
+  forkJoin, map,
+  merge, startWith,
+  switchMap,
+  take,
+  throwError
+} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -15,10 +25,13 @@ import {switchMap} from "rxjs";
 })
 export class SearchComponent implements OnInit {
 
-  products?: ProductWPrice[];
-
+  products: ProductWPrice[] = [];
+  showError = false;
+  errorMessage = "";
   searchControl = new FormControl("");
-
+  page = new BehaviorSubject<number>(0);
+  productListSelector = ".product-list";
+  lastSearch : string | null = "";
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
@@ -26,29 +39,51 @@ export class SearchComponent implements OnInit {
   constructor(private productsService: ProductsService) {
   }
 
-  ngOnInit(): void {
 
-    //Primeiro request, antes de escrever na barra de pesquisa
-    this.productsService
-      .getProductsList(undefined, undefined, undefined, 'pricePrimaryValue,asc')
-      .subscribe((productWPriceList) => {
-        if (productWPriceList.success) {
+  ngOnInit(): void {
+    combineLatest([
+      this.page.pipe(startWith(0)),
+      this.searchControl.valueChanges.pipe(startWith(''), debounceTime(300))
+    ])
+      .pipe(
+        switchMap(([page, searchTerm]) => {
+          let actualPage = page;
+          if (searchTerm !== this.lastSearch){
+            this.products = [];
+            actualPage = 0;
+          }
+          // Guardar o termo de pesquisa atual
+          this.lastSearch = searchTerm;
+          // O request utiliza os valores da página e da pesquisa
+          return this.productsService.getProductsList(
+            searchTerm === null ? undefined : searchTerm,
+            undefined,
+            undefined,
+            'pricePrimaryValue,asc',
+            actualPage
+          ).pipe(map(productWPriceList => ({ searchTerm, productWPriceList })));
+        }),
+        catchError(error => {
+          this.showError = true;
+          this.errorMessage = error.error.errorMessage;
+          return throwError(() => error);
+        })
+      )
+      .subscribe(({ searchTerm, productWPriceList }) => {
+        // Set the product list to the received products if it's a new search
+        if (searchTerm !== this.lastSearch) {
           this.products = productWPriceList.products;
+        } else {
+          this.products = [...this.products, ...productWPriceList.products];
         }
       });
-
-    this.searchControl.valueChanges.subscribe((searchTerm) => {
-      console.log(searchTerm)
-      this.productsService
-        .getProductsList(searchTerm === null ? undefined : searchTerm, undefined, undefined, 'pricePrimaryValue,asc')
-        .subscribe((productWPriceList) => {
-          if (productWPriceList.success) {
-            this.products = productWPriceList.products;
-          }
-        });
-    });
-
   }
 
+
+  onScroll() {
+    const nextPage = this.page.value + 1;
+    this.page.next(nextPage);
+    console.log("scrolled")
+  }
 
 }

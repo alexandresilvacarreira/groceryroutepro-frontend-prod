@@ -7,8 +7,16 @@
     </div>
     <button class="dark-blue-round-button"><fa-icon class="white-icon" [icon]="faFilter"></fa-icon></button>
   </div>
-  <app-loader *ngIf="!products"></app-loader>
-  <div class="product-list" *ngIf="products">
+  <app-loader class="loader" *ngIf="!products || products.length === 0"></app-loader>
+  <div class="product-list" *ngIf="products && products.length !== 0">
     <app-product-list-item *ngFor="let product of products" [product]="product"></app-product-list-item>
+    <div class="scroll"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      [infiniteScrollContainer]="productListSelector"
+      [fromRoot]="true"
+      (scrolled)="onScroll()"
+    ></div>
   </div>
 </div>
