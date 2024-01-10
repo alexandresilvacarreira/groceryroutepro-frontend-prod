@@ -10,6 +10,10 @@
     align-items: center;
     gap: 40px;
 
+    @media only screen and (min-width: 768px) {
+      justify-content: space-between;
+    }
+
     .options {
       display: flex;
       align-items: center;
@@ -20,6 +24,7 @@
       aspect-ratio: 1;
       border-radius: 8px;
       width: 124px;
+      cursor: pointer;
 
       @media only screen and (min-width: 768px) {
         max-width: 100%;
@@ -46,6 +51,11 @@
       fa-icon {
         color: #219EBC;
         font-size: 90px;
+
+        @media only screen and (min-width: 768px) {
+          font-size: 160px;
+        }
+
       }
     }
   }
