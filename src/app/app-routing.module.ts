@@ -15,6 +15,8 @@ import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.c
 import {ForgotPasswordSucessComponent} from "./pages/forgot-password-sucess/forgot-password-sucess.component";
 import {ChangePasswordComponent} from "./pages/change-password/change-password.component";
 import {ConfirmChangePasswordComponent} from "./pages/confirm-change-password/confirm-change-password.component";
+import {RoutesComponent} from "./pages/routes/routes.component";
+import {HistoryComponent} from "./pages/history/history.component";
 
 
 const routes: Routes = [
@@ -32,9 +34,9 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent },
   {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent },
   {path: 'change-password/:header', component: ChangePasswordComponent },
-  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent }
-
-
+  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent },
+  {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login")], data: {title: 'Rotas'}},
+  {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
 
 ];
 

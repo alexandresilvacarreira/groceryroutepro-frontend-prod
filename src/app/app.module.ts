@@ -42,6 +42,8 @@ import { RouteCurrentComponent } from './components/route-current/route-current.
 import { ForgotPasswordSucessComponent } from './pages/forgot-password-sucess/forgot-password-sucess.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
+import { RoutesComponent } from './pages/routes/routes.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 
 
@@ -84,7 +86,9 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ConfirmChangePasswordComponent,
     ForgotPasswordComponent,
     TabMenuShoppingListComponent,
-    RouteCurrentComponent
+    RouteCurrentComponent,
+    RoutesComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
