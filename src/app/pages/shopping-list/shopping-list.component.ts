@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,6 +8,6 @@ import {Component, Input} from '@angular/core';
 })
 export class ShoppingListComponent {
 
-  dynamicHeight: boolean= true;
 
+  protected readonly faCoins = faCoins;
 }

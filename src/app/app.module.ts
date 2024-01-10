@@ -45,6 +45,8 @@ import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { RoutesComponent } from './pages/routes/routes.component';
 import { HistoryComponent } from './pages/history/history.component';
+import {RoutePreviousComponent} from "./components/route-previous/route-previous.component";
+import { TabMenuShoppingListDesktopComponent } from './components/tab-menu-shopping-list-desktop/tab-menu-shopping-list-desktop.component';
 
 
 
@@ -55,42 +57,44 @@ Chart.defaults.font.weight = 500;
 registerLocaleData(localePt, 'pt'); // Register the locale data
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WelcomeComponent,
-    SplashComponent,
-    HeaderDashboardComponent,
-    DashboardComponent,
-    MobileNavbarComponent,
-    SignupComponent,
-    LoginComponent,
-    ConfirmRegistrationComponent,
-    ErrorComponent,
-    DesktopNavbarComponent,
-    ProductDetailsComponent,
-    SearchComponent,
-    ChainStickerComponent,
-    PriceHistoryChartComponent,
-    ProductListItemComponent,
-    UserPanelComponent,
-    HighlightCarouselComponent,
-    ToastComponent,
-    VerifyAccountComponent,
-    ShoppingListComponent,
-    HeaderPageComponent,
-    ProductCardItemComponent,
-    LoaderComponent,
-    ProductSearchFilterComponent,
-    ForgotPasswordComponent,
-    ForgotPasswordSucessComponent,
-    ChangePasswordComponent,
-    ConfirmChangePasswordComponent,
-    ForgotPasswordComponent,
-    TabMenuShoppingListComponent,
-    RouteCurrentComponent,
-    RoutesComponent,
-    HistoryComponent
-  ],
+    declarations: [
+        AppComponent,
+        WelcomeComponent,
+        SplashComponent,
+        HeaderDashboardComponent,
+        DashboardComponent,
+        MobileNavbarComponent,
+        SignupComponent,
+        LoginComponent,
+        ConfirmRegistrationComponent,
+        ErrorComponent,
+        DesktopNavbarComponent,
+        ProductDetailsComponent,
+        SearchComponent,
+        ChainStickerComponent,
+        PriceHistoryChartComponent,
+        ProductListItemComponent,
+        UserPanelComponent,
+        HighlightCarouselComponent,
+        ToastComponent,
+        VerifyAccountComponent,
+        ShoppingListComponent,
+        HeaderPageComponent,
+        ProductCardItemComponent,
+        LoaderComponent,
+        ProductSearchFilterComponent,
+        ForgotPasswordComponent,
+        ForgotPasswordSucessComponent,
+        ChangePasswordComponent,
+        ConfirmChangePasswordComponent,
+        ForgotPasswordComponent,
+        TabMenuShoppingListComponent,
+        RouteCurrentComponent,
+        RoutesComponent,
+        HistoryComponent,
+        RoutePreviousComponent,
+        TabMenuShoppingListDesktopComponent
+    ],
   imports: [
     BrowserModule,
     FontAwesomeModule,

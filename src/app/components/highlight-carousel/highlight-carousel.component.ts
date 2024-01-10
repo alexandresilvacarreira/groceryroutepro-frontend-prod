@@ -22,7 +22,7 @@ export class HighlightCarouselComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.productsService.getProductsList(undefined, undefined, undefined, "priceDiscountPercentage,desc", undefined, 3).subscribe(productWPriceList =>{
+    this.productsService.getProductsList(undefined, undefined, [1,2,3,4,5], "priceDiscountPercentage,desc", undefined, 15).subscribe(productWPriceList =>{
       if (productWPriceList.success){
         this.products = productWPriceList.products;
       }
