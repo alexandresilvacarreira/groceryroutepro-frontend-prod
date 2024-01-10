@@ -49,6 +49,7 @@ import {RoutePreviousComponent} from "./components/route-previous/route-previous
 import { TabMenuShoppingListDesktopComponent } from './components/tab-menu-shopping-list-desktop/tab-menu-shopping-list-desktop.component';
 import { RouteDetailsComponent } from './components/route-details/route-details.component';
 import { RouteSuggestionsComponent } from './components/route-suggestions/route-suggestions.component';
+import { RouteConfirmationComponent } from './components/route-confirmation/route-confirmation.component';
 
 
 
@@ -97,7 +98,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         RoutePreviousComponent,
         TabMenuShoppingListDesktopComponent,
         RouteDetailsComponent,
-        RouteSuggestionsComponent
+        RouteSuggestionsComponent,
+        RouteConfirmationComponent
     ],
   imports: [
     BrowserModule,
