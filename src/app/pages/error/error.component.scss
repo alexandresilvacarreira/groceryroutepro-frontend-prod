@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  gap: 25px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50%;
+    min-width: 35%;
+    margin: auto;
+  }
+
+  .logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    color: #0f7192;
+    >img {
+      width: 90%;
+      height: auto;
+    }
+  }
+  .description{
+    text-align: center;
+  }
+
+}
