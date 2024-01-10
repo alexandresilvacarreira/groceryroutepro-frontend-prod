@@ -37,6 +37,8 @@ import {ProductCardItemComponent} from "./components/product-card-item/product-c
 import { LoaderComponent } from './components/loader/loader.component';
 import {ProductSearchFilterComponent} from "./components/product-search-filter/product-search-filter.component";
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { TabMenuShoppingListComponent } from './components/tab-menu-shopping-list/tab-menu-shopping-list.component';
+import { RouteCurrentComponent } from './components/route-current/route-current.component';
 import { ForgotPasswordSucessComponent } from './pages/forgot-password-sucess/forgot-password-sucess.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ConfirmChangePasswordComponent } from './pages/confirm-change-password/confirm-change-password.component';
@@ -78,7 +80,10 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ForgotPasswordComponent,
     ForgotPasswordSucessComponent,
     ChangePasswordComponent,
-    ConfirmChangePasswordComponent
+    ConfirmChangePasswordComponent,
+    ForgotPasswordComponent,
+    TabMenuShoppingListComponent,
+    RouteCurrentComponent
   ],
   imports: [
     BrowserModule,
