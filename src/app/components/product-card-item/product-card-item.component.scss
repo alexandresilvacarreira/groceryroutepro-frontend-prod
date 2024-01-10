@@ -9,8 +9,6 @@
   padding: 10px 10px 15px;
   margin: 10px auto 20px;
 
-
-
   .first-row {
     display: flex;
     flex-direction: row;
@@ -18,10 +16,13 @@
     align-items: center;
     justify-content: space-between;
 
-    .name {
+    .name, .name h3 {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .name {
       height: 24px;
 
       h3 {
@@ -50,7 +51,6 @@
       .number {
         margin: 0 3px;
         padding: 0 8px;
-
       }
 
       .minus, .plus {
@@ -86,16 +86,7 @@
 
     .first-column {
       display: flex;
-
-
-      .chain {
-        background-color: #DB3A34;
-
-        h5 {
-          margin: 0;
-        }
-
-      }
+      align-items: center;
 
       .price {
         margin-left: 12px;
@@ -104,7 +95,6 @@
           font-weight: 400;
           margin: 0;
         }
-
       }
     }
 
@@ -113,7 +103,6 @@
 
     }
   }
-
 }
 
 

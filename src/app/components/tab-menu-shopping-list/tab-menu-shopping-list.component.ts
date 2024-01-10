@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {slideAnimationTabMenu} from "../../animations";
+import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 
 @Component({
   selector: 'app-tab-menu-shopping-list',
@@ -16,4 +17,5 @@ export class TabMenuShoppingListComponent {
   }
 
   protected readonly onclick = onclick;
+    protected readonly faCirclePlus = faCirclePlus;
 }
