@@ -1,22 +1,28 @@
 <div class="container">
-  <div class="search-row">
-    <div class="search-bar">
-      <input class="search-input" label="search" type="text" placeholder="Pesquisar"
-             [formControl]="searchControl"/>
-      <fa-icon class="grey-icon" [icon]="faSearch"></fa-icon>
+  <ng-container *ngIf="!openFilter">
+    <div class="search-row">
+      <div class="search-bar">
+        <input class="search-input" label="search" type="text" placeholder="Pesquisar"
+               [formControl]="searchControl"/>
+        <fa-icon class="grey-icon" [icon]="faSearch"></fa-icon>
+      </div>
+      <button class="dark-blue-round-button" (click)=" openFilterMenu()">
+        <fa-icon class="white-icon" [icon]="faFilter"></fa-icon>
+      </button>
     </div>
-    <button class="dark-blue-round-button"><fa-icon class="white-icon" [icon]="faFilter"></fa-icon></button>
-  </div>
-  <app-loader class="loader" *ngIf="!products || products.length === 0"></app-loader>
-  <div class="product-list" *ngIf="products && products.length !== 0">
-    <app-product-list-item *ngFor="let product of products" [product]="product"></app-product-list-item>
-    <div class="scroll"
-      infiniteScroll
-      [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="50"
-      [infiniteScrollContainer]="productListSelector"
-      [fromRoot]="true"
-      (scrolled)="onScroll()"
-    ></div>
-  </div>
+    <app-loader class="loader" *ngIf="!products || products.length === 0"></app-loader>
+    <div class="product-list" *ngIf="products && products.length !== 0">
+      <app-product-list-item *ngFor="let product of products" [product]="product"></app-product-list-item>
+      <div class="scroll"
+           infiniteScroll
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="50"
+           [infiniteScrollContainer]="productListSelector"
+           [fromRoot]="true"
+           (scrolled)="onScroll()"
+      ></div>
+    </div>
+  </ng-container>
+  <app-product-search-filter class="filter" *ngIf="openFilter" (closeEvent)="closeFilterMenu()"
+                             @slideFilter></app-product-search-filter>
 </div>

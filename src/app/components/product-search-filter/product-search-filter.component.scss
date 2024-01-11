@@ -1,10 +1,12 @@
 .filter {
+
   .header {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: relative;
+    border-bottom: 1px solid #918787;
 
     .icon {
       color: #0f7293;

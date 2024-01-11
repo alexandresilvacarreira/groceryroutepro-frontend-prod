@@ -17,11 +17,15 @@ import {
   take,
   throwError
 } from "rxjs";
+import _default from "chart.js/dist/plugins/plugin.tooltip";
+import animations = _default.defaults.animations;
+import { slideAnimationFilter} from "../../animations";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations : [slideAnimationFilter]
 })
 export class SearchComponent implements OnInit {
 
@@ -32,6 +36,7 @@ export class SearchComponent implements OnInit {
   page = new BehaviorSubject<number>(0);
   productListSelector = ".product-list";
   lastSearch : string | null = "";
+  openFilter=false;
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
@@ -84,6 +89,14 @@ export class SearchComponent implements OnInit {
     const nextPage = this.page.value + 1;
     this.page.next(nextPage);
     console.log("scrolled")
+  }
+
+  openFilterMenu(){
+    this.openFilter=true;
+  }
+
+  closeFilterMenu(){
+    this.openFilter = false;
   }
 
 }

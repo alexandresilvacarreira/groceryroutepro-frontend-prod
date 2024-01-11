@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {faCircle} from "@fortawesome/free-regular-svg-icons/faCircle";
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons/faCircleXmark";
@@ -13,6 +13,7 @@ import {NavigationService} from "../../services/navigation.service";
 })
 export class ProductSearchFilterComponent implements OnInit {
   previousRoute = '';
+  @Output() closeEvent=new EventEmitter<void>
 
   constructor(private navigationService: NavigationService) {
   }
@@ -28,4 +29,7 @@ export class ProductSearchFilterComponent implements OnInit {
   protected readonly faCircleXmark = faCircleXmark;
   protected readonly faArrowLeft = faArrowLeft;
 
+  emitCloseEvent(){
+    this.closeEvent.emit();
+  }
 }
