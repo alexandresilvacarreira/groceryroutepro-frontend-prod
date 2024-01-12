@@ -15,14 +15,12 @@ import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesom
 })
 export class ForgotPasswordComponent {
 
-  showPassword = false;
-  showPasswordConfirm = false;
   form!: FormGroup;
   showToast = false;
   toastMessage = "";
   showError =false;
   errorMessage="";
-  toastBool=false
+
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private userService: UserService) {
   }
@@ -58,17 +56,11 @@ export class ForgotPasswordComponent {
       this.authService.requestPasswordLink(email).pipe(
         catchError(error => {
           this.toastMessage = error.error?.message;
-          this.toastBool=false;
-          this.showToast = true;
 
           return throwError(() => error);
         })
       ).subscribe(serverResponse => {
         if (serverResponse.success) {
-          // TODO redirecionar para nova pagina EMAIL ENVIADO
-          this.toastBool=true;
-          this.showToast = true;
-          this.toastMessage = "Pedido enviado com sucesso";
           this.router.navigate(['/forgot-password-confirm']);
         }
       });
