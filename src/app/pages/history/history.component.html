@@ -1,2 +1,41 @@
+<div class="container">
 
-<app-history-route-summary-card></app-history-route-summary-card>
+  <div class="info">
+    <h4>Aqui pode consultar dados históricos relativos às suas compras anteriores. Defina uma janela de tempo para
+      vizualizar o histórico.</h4>
+  </div>
+
+  <div class="calendar">
+    <h3>Data de início</h3>
+    <app-datepicker-touch></app-datepicker-touch>
+  </div>
+
+  <div class="calendar">
+    <h3>Data de fim</h3>
+    <app-datepicker-touch></app-datepicker-touch>
+  </div>
+
+  <div class="options">
+    <div class="title">
+      <h4>
+        Escolha a opção que pretende:
+      </h4>
+    </div>
+    <div class="option">
+      <fa-icon [icon]="faCircle"></fa-icon>
+      <h4>Rotas</h4>
+    </div>
+    <div class="option">
+      <fa-icon [icon]="faCircle"></fa-icon>
+      <h4>Produtos</h4>
+    </div>
+  </div>
+  <div class="approve-button">
+    <fa-icon [icon]="faCheck"></fa-icon>
+    <h4>Confirmar</h4>
+  </div>
+</div>
+
+
+
+
