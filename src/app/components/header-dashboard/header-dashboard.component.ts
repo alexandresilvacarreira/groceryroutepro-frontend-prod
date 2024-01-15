@@ -6,11 +6,12 @@ import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
 import {catchError, of, switchMap, throwError} from "rxjs";
+import {TruncateFirstWordPipe} from "../../../pipes/truncate-first-word-pipe";
 
 @Component({
   selector: 'app-header-dashboard',
   templateUrl: './header-dashboard.component.html',
-  styleUrls: ['./header-dashboard.component.scss']
+  styleUrls: ['./header-dashboard.component.scss'],
 })
 export class HeaderDashboardComponent {
 
@@ -32,9 +33,10 @@ export class HeaderDashboardComponent {
       });
   }
 
-
   isUser(obj: any): obj is User {
     return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
   }
+
+  protected readonly TruncateFirstWordPipe = TruncateFirstWordPipe;
 
 }

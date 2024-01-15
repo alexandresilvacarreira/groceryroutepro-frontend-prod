@@ -5,38 +5,39 @@
       <img src="assets/images/gorceryroutepro_logo_white.svg"/>
     </div>
 
-
     <div class="options-wrapper">
       <div class="icons-wrapper">
 
-        <a [routerLink]="'/dashboard'" [routerLinkActive]="'active'">
+        <div class="option" [routerLink]="'/dashboard'" [routerLinkActive]="'active'">
           <fa-icon [icon]="faUser"></fa-icon>
           <h4 class="icon-name">Dashboard</h4>
-        </a>
-        <a [routerLink]="'/shopping-list'" [routerLinkActive]="'active'">
+        </div>
+
+        <div class="option" [routerLink]="'/shopping-list'" [routerLinkActive]="'active'">
           <fa-icon [icon]="faCartShopping"></fa-icon>
           <h4 class="icon-name">Lista de Compras</h4>
-        </a>
-        <a [routerLink]="'/search'" [routerLinkActive]="'active'">
+        </div>
+
+        <div class="option" [routerLink]="'/search'" [routerLinkActive]="'active'">
           <fa-icon [icon]="faSearch"></fa-icon>
           <h4 class="icon-name">Pesquisar</h4>
-        </a>
-        <a class="last" [routerLink]="'/routes'" [routerLinkActive]="'active'">
+        </div>
+
+        <div class="option" [routerLink]="'/routes'" [routerLinkActive]="'active'">
           <fa-icon [icon]="faRoute"></fa-icon>
           <h4 class="icon-name">Rotas</h4>
-        </a>
-
-      </div>
-
-      <div class="tab-wrapper">
-        <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
-          <h2 *ngIf="isUser(user)">Olá, {{user?.name}} </h2>
         </div>
-        <fa-icon [icon]="faUserGear"></fa-icon>
-        <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
-      </div>
-    </div>
 
+        <div class="tab-wrapper">
+          <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
+            <h2 *ngIf="isUser(user)">Olá, {{user!.name | truncateFirstWord}} </h2>
+          </div>
+          <fa-icon [icon]="faUserGear" [mask]="faCircle" [transform]={size:8}  ></fa-icon>
+          <fa-icon [icon]="faArrowRightFromBracket" [mask]="faCircle" [transform]={size:8} (click)="logout()"></fa-icon>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
