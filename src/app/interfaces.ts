@@ -124,6 +124,12 @@ interface ChangePasswordInterface{
   password: string
 }
 
+interface ProductSearchFilterOptions {
+  sort: string,
+  categories: number[],
+  chains: number[]
+}
+
 
 export {
   Signup,
@@ -141,5 +147,7 @@ export {
   Pagination,
   ProductWPriceList,
   EmailVerificationToken,
-  ChangePasswordInterface
+  ChangePasswordInterface,
+  ProductSearchFilterOptions
+
 }

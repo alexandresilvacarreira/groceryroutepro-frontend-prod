@@ -38,7 +38,6 @@ const routes: Routes = [
   {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login")], data: {title: 'Rotas'}},
   {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
   {path: '**', redirectTo: '/error', pathMatch: 'full'}
-
 ];
 
 @NgModule({

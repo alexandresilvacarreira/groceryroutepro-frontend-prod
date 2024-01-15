@@ -24,9 +24,7 @@ export class AppComponent implements OnInit {
   hideHeaderPage?:boolean;
   productDetailsRoute = /^\/product-details\/.*/;
   changePasswordRoute = /^\/change-password\/.*/;
-  // changePasswordRoute = /\/change-password\/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/;
   verifyAccountRoute = /\/verify-account\/.*/;
-
 
   pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/dashboard", "/product-details/", "request-new-password", '/forgot-password', '/change-password',
@@ -50,7 +48,6 @@ export class AppComponent implements OnInit {
           this.hideHeaderPage = this.pagesWithoutHeader.includes(this.currentRoute) || this.productDetailsRoute.test(this.currentRoute)
             || this.changePasswordRoute.test(this.currentRoute) || this.verifyAccountRoute.test(this.currentRoute);
           this.pageTitle = this.activatedRoute.firstChild?.snapshot.data['title'];
-
         }
       }
     )
