@@ -52,6 +52,7 @@ import { RouteSuggestionsComponent } from './components/route-suggestions/route-
 import { RouteConfirmationComponent } from './components/route-confirmation/route-confirmation.component';
 import { HistoryProductCardComponent } from './components/history-product-card/history-product-card.component';
 import { HistoryRouteSummaryCardComponent } from './components/history-route-summary-card/history-route-summary-card.component';
+import {TruncateFirstWordPipe} from "../pipes/truncate-first-word-pipe";
 
 
 
@@ -103,7 +104,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         RouteSuggestionsComponent,
         RouteConfirmationComponent,
         HistoryProductCardComponent,
-        HistoryRouteSummaryCardComponent
+        HistoryRouteSummaryCardComponent,
+      TruncateFirstWordPipe
     ],
   imports: [
     BrowserModule,
@@ -113,7 +115,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     HttpClientModule,
     ReactiveFormsModule,
     NgChartsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

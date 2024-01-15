@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
 import {catchError, tap, throwError} from "rxjs";
+import {faCircle} from "@fortawesome/free-solid-svg-icons/faCircle";
 
 @Component({
   selector: 'app-desktop-navbar',
@@ -46,4 +47,5 @@ export class DesktopNavbarComponent {
     return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
   }
 
+  protected readonly faCircle = faCircle;
 }
