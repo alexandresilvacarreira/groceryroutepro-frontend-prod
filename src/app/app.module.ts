@@ -127,7 +127,6 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopHeaderDashboardComponent,
     ShopNavbarComponent,
     ShopNewProductComponent,
-    TruncateFirstWordPipe,
     TestPageComponent,
   ],
   imports: [

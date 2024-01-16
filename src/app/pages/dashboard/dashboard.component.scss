@@ -4,6 +4,7 @@
 .user-panel{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 
   @media only screen and (max-width: 1230px) {
     display: flex;
