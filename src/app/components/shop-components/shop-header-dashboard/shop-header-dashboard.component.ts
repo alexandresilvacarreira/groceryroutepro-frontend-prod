@@ -1,19 +1,19 @@
-import {Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 import {faUserGear} from "@fortawesome/free-solid-svg-icons/faUserGear";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
-import {User} from "../../interfaces";
 import {Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {AuthService} from "../../services/auth.service";
-import {catchError, of, switchMap, throwError} from "rxjs";
-import {TruncateFirstWordPipe} from "../../pipes/truncate-first-word-pipe";
+import {UserService} from "../../../services/user.service";
+import {AuthService} from "../../../services/auth.service";
+import {catchError, throwError} from "rxjs";
+import {User} from "../../../interfaces";
+import {TruncateFirstWordPipe} from "../../../pipes/truncate-first-word-pipe";
 
 @Component({
-  selector: 'app-header-dashboard',
-  templateUrl: './header-dashboard.component.html',
-  styleUrls: ['./header-dashboard.component.scss'],
+  selector: 'app-shop-header-dashboard',
+  templateUrl: './shop-header-dashboard.component.html',
+  styleUrls: ['./shop-header-dashboard.component.scss']
 })
-export class HeaderDashboardComponent {
+export class ShopHeaderDashboardComponent {
 
   protected readonly faUserGear = faUserGear;
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;

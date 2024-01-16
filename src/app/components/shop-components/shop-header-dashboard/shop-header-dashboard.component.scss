@@ -1,0 +1,65 @@
+.dashboard {
+  border-radius: 0 0 15px 15px;
+  background: linear-gradient(260deg, rgba(33, 158, 188, 0.89) 0%, rgba(21, 101, 192, 0.89) 98.41%);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+
+  * h2, * h3 {
+    color: #FFF;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .tab-wrapper {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    bottom: 41px;
+    gap: 5px;
+
+    .logo {
+      padding-right: 15px;
+
+      img {
+        height: auto;
+        width: 70px;
+      }
+    }
+
+    .greeting {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      .title {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    fa-icon {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      color: #0F7293;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    display: none;
+  }
+}
+
+

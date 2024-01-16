@@ -46,17 +46,12 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {RoutesComponent} from './pages/routes/routes.component';
 import {HistoryComponent} from './pages/history/history.component';
 import {RoutePreviousComponent} from "./components/route-previous/route-previous.component";
-import {
-  TabMenuShoppingListDesktopComponent
-} from './components/tab-menu-shopping-list-desktop/tab-menu-shopping-list-desktop.component';
+import {TabMenuShoppingListDesktopComponent} from './components/tab-menu-shopping-list-desktop/tab-menu-shopping-list-desktop.component';
 import {RouteDetailsComponent} from './components/route-details/route-details.component';
 import {RouteSuggestionsComponent} from './components/route-suggestions/route-suggestions.component';
 import {RouteConfirmationComponent} from './components/route-confirmation/route-confirmation.component';
 import {HistoryProductCardComponent} from './components/history-product-card/history-product-card.component';
-import {
-  HistoryRouteSummaryCardComponent
-} from './components/history-route-summary-card/history-route-summary-card.component';
-import {TruncateFirstWordPipe} from "../pipes/truncate-first-word-pipe";
+import {HistoryRouteSummaryCardComponent} from './components/history-route-summary-card/history-route-summary-card.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -64,6 +59,12 @@ import {DatepickerTouchComponent} from './components/datepicker-touch/datepicker
 import { HistoryRoutesComponent } from './pages/history-routes/history-routes.component';
 import { HistoryProductsComponent } from './pages/history-products/history-products.component';
 import { ShopNotificationsCardComponent } from './components/shop-components/shop-notifications-card/shop-notifications-card.component';
+import { ShopDashboardComponent } from './pages/Shop-Pages/shop-dashboard/shop-dashboard.component';
+import { ShopHeaderDashboardComponent } from './components/shop-components/shop-header-dashboard/shop-header-dashboard.component';
+import { ShopNavbarComponent } from './components/shop-components/shop-navbar/shop-navbar.component';
+import { ShopNewProductComponent } from './pages/Shop-Pages/shop-new-product/shop-new-product.component';
+import {TruncateFirstWordPipe} from "./pipes/truncate-first-word-pipe";
+import { TestPageComponent } from './pages/test-page/test-page.component';
 
 
 
@@ -120,6 +121,12 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     HistoryRoutesComponent,
     HistoryProductsComponent,
     ShopNotificationsCardComponent,
+    ShopDashboardComponent,
+    ShopHeaderDashboardComponent,
+    ShopNavbarComponent,
+    ShopNewProductComponent,
+    TruncateFirstWordPipe,
+    TestPageComponent,
 
 
   ],

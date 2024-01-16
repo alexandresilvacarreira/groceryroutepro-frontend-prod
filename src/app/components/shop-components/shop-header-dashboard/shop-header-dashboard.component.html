@@ -1,0 +1,17 @@
+<div class="dashboard">
+  <div class="tab-wrapper">
+    <div class="greeting">
+      <ng-container *ngIf="userService.getCurrentUser() | async as user">
+        <div class="logo">
+          <img src="assets/images/gorceryroutepro_logo_white.svg"/>
+        </div>
+        <div class="title">
+          <h3>Olá,</h3>
+          <h2 *ngIf="isUser(user)">{{user!.name | truncateFirstWord}} </h2>
+        </div>
+      </ng-container>
+    </div>
+    <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+    <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
+  </div>
+</div>
