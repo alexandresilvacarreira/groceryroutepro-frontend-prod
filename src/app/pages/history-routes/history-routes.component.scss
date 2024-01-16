@@ -1,0 +1,51 @@
+h4 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #918787;
+
+  .icon {
+    color: #0f7293;
+    position: absolute;
+    left: 22px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+
+  h4 {
+    margin: 22px 0 0;
+  }
+
+  .calendars {
+    display: flex;
+    gap: 20px;
+
+    .calendar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      h4 {
+        margin: 22px 0 22px;
+      }
+
+      fa-icon {
+        color: #0F7293;
+      }
+    }
+  }
+}

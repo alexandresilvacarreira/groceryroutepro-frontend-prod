@@ -17,6 +17,8 @@ import {ChangePasswordComponent} from "./pages/change-password/change-password.c
 import {ConfirmChangePasswordComponent} from "./pages/confirm-change-password/confirm-change-password.component";
 import {RoutesComponent} from "./pages/routes/routes.component";
 import {HistoryComponent} from "./pages/history/history.component";
+import {HistoryProductsComponent} from "./pages/history-products/history-products.component";
+import {HistoryRoutesComponent} from "./pages/history-routes/history-routes.component";
 
 
 const routes: Routes = [
@@ -37,6 +39,8 @@ const routes: Routes = [
   {path: 'change-password-confirm', component: ConfirmChangePasswordComponent },
   {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login")], data: {title: 'Rotas'}},
   {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
+  {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login")]},
+  {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login")]},
   {path: '**', redirectTo: '/error', pathMatch: 'full'}
 ];
 
