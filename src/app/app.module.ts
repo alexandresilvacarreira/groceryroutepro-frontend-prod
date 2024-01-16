@@ -64,7 +64,8 @@ import {DatepickerTouchComponent} from './components/datepicker-touch/datepicker
 import { HistoryRoutesComponent } from './pages/history-routes/history-routes.component';
 import { HistoryProductsComponent } from './pages/history-products/history-products.component';
 import { ShopNotificationsCardComponent } from './components/shop-components/shop-notifications-card/shop-notifications-card.component';
-
+import { CreateRouteComponent } from './pages/create-route/create-route.component';
+import {GoogleMap, GoogleMapsModule} from "@angular/google-maps";
 
 
 Chart.defaults.font.family = 'Lato';
@@ -120,8 +121,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     HistoryRoutesComponent,
     HistoryProductsComponent,
     ShopNotificationsCardComponent,
-
-
+    CreateRouteComponent,
   ],
   imports: [
     BrowserModule,
@@ -136,7 +136,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    DatepickerTouchComponent
+    DatepickerTouchComponent,
+    GoogleMapsModule,
   ],
   providers: [DatePipe,
     {provide: LOCALE_ID, useValue: 'pt'},
