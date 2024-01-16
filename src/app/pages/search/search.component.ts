@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
-import {ProductWPrice, ProductWPriceList, User} from "../../interfaces";
+import {GenericProduct, ProductWPrice, ProductWPriceList, User} from "../../interfaces";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
@@ -29,7 +29,7 @@ import {slideAnimationFilter} from "../../animations";
 })
 export class SearchComponent implements OnInit {
 
-  products: ProductWPrice[] = [];
+  genericProducts: GenericProduct[] = [];
   showError = false;
   errorMessage = "";
   searchControl = new FormControl("");
@@ -37,6 +37,7 @@ export class SearchComponent implements OnInit {
   productListSelector = ".product-list";
   lastSearch: string | null = "";
   openFilter = false;
+  showNotFound = false;
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
@@ -54,32 +55,36 @@ export class SearchComponent implements OnInit {
         switchMap(([page, searchTerm]) => {
           let actualPage = page;
           if (searchTerm !== this.lastSearch) {
-            this.products = [];
+            this.genericProducts = [];
             actualPage = 0;
           }
           // Guardar o termo de pesquisa atual
           this.lastSearch = searchTerm;
           // O request utiliza os valores da página e da pesquisa
-          return this.productsService.getProductsList(
+          return this.productsService.getGenericProductsList(
             searchTerm === null ? undefined : searchTerm,
             undefined,
             undefined,
-            'pricePrimaryValue,asc',
+            'currentLowestPricePrimaryValue,asc',
             actualPage
-          ).pipe(map(productWPriceList => ({searchTerm, productWPriceList})));
+          ).pipe(map(genericProductsListResponse => ({searchTerm, genericProductsListResponse})));
         }),
         catchError(error => {
           this.showError = true;
           this.errorMessage = error.error.errorMessage;
+          this.showNotFound=true;
           return throwError(() => error);
         })
       )
-      .subscribe(({searchTerm, productWPriceList}) => {
-        // Set the product list to the received products if it's a new search
+      .subscribe(({searchTerm, genericProductsListResponse}) => {
+        this.showNotFound = false;
         if (searchTerm !== this.lastSearch) {
-          this.products = productWPriceList.products;
+          this.genericProducts = genericProductsListResponse.data.genericProducts;
         } else {
-          this.products = [...this.products, ...productWPriceList.products];
+          this.genericProducts = [...this.genericProducts, ...genericProductsListResponse.data.genericProducts];
+        }
+        if (this.genericProducts.length === 0){
+          this.showNotFound = true;
         }
       });
   }
@@ -88,7 +93,6 @@ export class SearchComponent implements OnInit {
   onScroll() {
     const nextPage = this.page.value + 1;
     this.page.next(nextPage);
-    console.log("scrolled")
   }
 
   openFilterMenu() {

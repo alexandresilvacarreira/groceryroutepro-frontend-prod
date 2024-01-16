@@ -7,7 +7,7 @@
   border-radius: 8px;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
   width: 150px;
-  height: 325px;
+  height: 330px;
 
   &:hover {
     cursor: pointer;
@@ -34,7 +34,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 10px;
 
     .product-thumbnail {
       background-size: contain;
@@ -67,8 +67,16 @@
         gap: 5px;
       }
 
-
     }
+
+    .available-elsewhere {
+      max-width: 90%;
+      text-align: center;
+      height: 30px;
+      font-size: 0.7em;
+      margin-bottom: 2px;
+    }
+
   }
 
 
@@ -78,7 +86,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-top: 10px;
 
     .line {
       background-color: #918787;

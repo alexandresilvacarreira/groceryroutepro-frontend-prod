@@ -1,22 +1,23 @@
-<div class="product-container" [routerLink]="'/product-details/' + product.productId">
-  <div *ngIf="product.priceDiscountPercentage!==0" class="price-discount-sticker">-{{product.priceDiscountPercentage}}
+<div class="product-container" [routerLink]="'/product-details/' + genericProduct.id">
+  <div *ngIf="currentLowestPrice.discountPercentage!==0" class="price-discount-sticker">-{{currentLowestPrice.discountPercentage}}
     %
   </div>
   <div class="product-details">
-    <div class="product-thumbnail" [style.background-image]="'url(' + product.imageUrl + ')'"></div>
+    <div class="product-thumbnail" [style.background-image]="'url(' + currentCheapestProduct.imageUrl + ')'"></div>
     <div class="product-info">
-      <span class="product-name overflow-ellipsis">{{product.name}}</span>
-      <span class="product-quantity grey-text overflow-ellipsis">{{product.quantity}}</span>
+      <span class="product-name overflow-ellipsis">{{genericProduct.name}}</span>
+      <span class="product-quantity grey-text overflow-ellipsis">{{genericProduct.quantity}}</span>
       <div class="product-primary-price">
-        <span class="overflow-ellipsis">{{product.pricePrimaryValue | number : undefined : 'pt'}} € </span>
+        <span class="overflow-ellipsis">{{currentLowestPrice.primaryValue | number : undefined : 'pt'}} € </span>
 <!--        <span *ngIf="product.pricePrimaryUnit!==''" class="overflow-ellipsis">/ {{product.pricePrimaryUnit}} </span>-->
-        <span *ngIf="product.priceWoDiscount!==''" class="grey-text overflow-ellipsis"><s> {{product.priceWoDiscount}}</s></span>
+        <span *ngIf="currentLowestPrice.priceWoDiscount!==''" class="grey-text overflow-ellipsis"><s> {{currentLowestPrice.priceWoDiscount}}</s></span>
       </div>
       <div class="product-secondary-price">
-        <span class="grey-text overflow-ellipsis">{{product.priceSecondaryValue | number : undefined : 'pt'}}</span>
-        <span class="grey-text overflow-ellipsis"> €/{{product.priceSecondaryUnit}}</span>
+        <span class="grey-text overflow-ellipsis">{{currentLowestPrice.secondaryValue | number : undefined : 'pt'}}</span>
+        <span class="grey-text overflow-ellipsis"> €/{{currentLowestPrice.secondaryUnit}}</span>
       </div>
-      <app-chain-sticker [chainName]="product.chain" [chainId]="product.chainId"></app-chain-sticker>
+      <app-chain-sticker [chainName]="currentCheapestProduct.chain.name" [chainId]="currentCheapestProduct.chain.id"></app-chain-sticker>
+      <div class="grey-text available-elsewhere"><span *ngIf="genericProduct.chains.length > 1">Disponível noutras superfícies</span></div>
     </div>
   </div>
   <div class="bottom-row">

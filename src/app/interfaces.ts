@@ -21,16 +21,16 @@ interface Login {
 }
 
 interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  includeWhiteLabel: boolean;
-  maxStoreRadiusKm: number;
-  vehicleFuelType: string;
-  vehicleConsumption: number;
-  stores: Store[];
-  role: Role;
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  includeWhiteLabel: boolean,
+  maxStoreRadiusKm: number,
+  vehicleFuelType: string,
+  vehicleConsumption: number,
+  stores: Store[],
+  role: Role,
   verifiedEmail: boolean,
   confirmation: {
     code: string
@@ -38,46 +38,49 @@ interface User {
 }
 
 interface Role {
-  id: number;
-  name: string;
-  users: User[];
+  id: number,
+  name: string,
+  users: User[],
 }
 
 interface Store {
-  id: number;
-  name: string;
-  users: User[];
+  id: number,
+  name: string,
+  users: User[],
 }
 
 interface Chain {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
 }
 
 interface Category {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
 }
 
 interface Product {
-  id: number;
-  name: string;
-  brand: string;
-  quantity: string;
-  imageUrl: string;
-  chain: Chain;
-  categories: Category[];
+  id: number,
+  name: string,
+  brand: string,
+  quantity: string,
+  imageUrl: string,
+  chain: Chain,
+  categories: Category[],
+  genericProduct: GenericProduct,
+  cheapestForGenericProduct: GenericProduct,
 }
 
 interface Price {
-  id: number;
-  primaryValue: number;
-  primaryUnit: string;
-  secondaryValue: number;
-  secondaryUnit: string;
-  discountPercentage: number;
-  priceWoDiscount: string;
-  collectionDate: string;
+  id: number,
+  primaryValue: number,
+  primaryUnit: string,
+  secondaryValue: number,
+  secondaryUnit: string,
+  discountPercentage: number,
+  priceWoDiscount: string,
+  collectionDate: string,
+  genericProduct: GenericProduct
 }
 
 interface ProductDetails {
@@ -120,28 +123,36 @@ interface ProductWPriceList {
 }
 
 interface GenericProduct {
-  id: number;
-  name: string;
-  brand: string;
-  quantity: string;
-  processedName: string;
-  processedBrand: string;
-  processedQuantity: string;
-  currentLowestPricePrimaryValue: number;
-  currentLowestPrice: Price;
-  currentCheapestProduct: Product;
-  categories: Category[];
-  chains: Chain[];
-  products: Product[];
+  id: number,
+  name: string,
+  brand: string,
+  quantity: string,
+  processedName: string,
+  processedBrand: string,
+  processedQuantity: string,
+  currentLowestPricePrimaryValue: number,
+  currentLowestPrice: Price,
+  currentCheapestProduct: Product,
+  categories: Category[],
+  chains: Chain[],
+  products: Product[]
 }
 
-interface GenericProductsResponse {
+interface GenericProductResponse {
+  data: {
+    genericProduct: GenericProduct
+  },
+  success: boolean,
+  message?:string
+}
+
+interface GenericProductsListResponse {
   data: {
     genericProducts: GenericProduct[],
     pagination: Pagination
   },
-  success: boolean
-  message: string
+  success: boolean,
+  message?: string
 }
 
 interface EmailVerificationToken {
@@ -149,7 +160,7 @@ interface EmailVerificationToken {
 }
 
 interface ChangePasswordInterface {
-  token: string;
+  token: string,
   password: string
 }
 
@@ -186,7 +197,9 @@ export {
   EmailVerificationToken,
   ChangePasswordInterface,
   ProductSearchFilterOptions,
-  GenericProductsResponse,
+  GenericProduct,
+  GenericProductResponse,
+  GenericProductsListResponse,
   PersonilizedMapMarker
 
 }
