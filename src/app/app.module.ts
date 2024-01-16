@@ -63,6 +63,7 @@ import {MatInputModule} from "@angular/material/input";
 import {DatepickerTouchComponent} from './components/datepicker-touch/datepicker-touch.component';
 import { HistoryRoutesComponent } from './pages/history-routes/history-routes.component';
 import { HistoryProductsComponent } from './pages/history-products/history-products.component';
+import { ShopNotificationsCardComponent } from './components/shop-components/shop-notifications-card/shop-notifications-card.component';
 
 
 
@@ -118,6 +119,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     TruncateFirstWordPipe,
     HistoryRoutesComponent,
     HistoryProductsComponent,
+    ShopNotificationsCardComponent,
 
 
   ],
