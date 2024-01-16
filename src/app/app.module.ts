@@ -61,6 +61,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {DatepickerTouchComponent} from './components/datepicker-touch/datepicker-touch.component';
+import { HistoryRoutesComponent } from './pages/history-routes/history-routes.component';
+import { HistoryProductsComponent } from './pages/history-products/history-products.component';
 
 
 
@@ -114,6 +116,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     HistoryProductCardComponent,
     HistoryRouteSummaryCardComponent,
     TruncateFirstWordPipe,
+    HistoryRoutesComponent,
+    HistoryProductsComponent,
 
 
   ],
