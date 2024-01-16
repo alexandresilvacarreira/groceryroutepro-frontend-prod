@@ -7,8 +7,8 @@ interface Signup {
 interface ServerResponse {
   message: string,
   success: boolean,
-  userRole?:string,
-  user?:User
+  userRole?: string,
+  user?: User
 }
 
 interface Login {
@@ -86,7 +86,7 @@ interface ProductDetails {
 interface ProductWPrice {
   name: string;
   chain: string;
-  chainId:number;
+  chainId: number;
   priceWoDiscount: string;
   imageUrl: string;
   quantity: string;
@@ -115,13 +115,44 @@ interface ProductWPriceList {
   pagination: Pagination;
 }
 
-interface EmailVerificationToken{
+interface GenericProduct {
+  id: number;
+  name: string;
+  brand: string;
+  quantity: string;
+  processedName: string;
+  processedBrand: string;
+  processedQuantity: string;
+  currentLowestPricePrimaryValue: number;
+  currentLowestPrice: Price;
+  currentCheapestProduct: Product;
+  categories: Category[];
+  chains: Chain[];
+  products: Product[];
+}
+
+interface GenericProductsResponse {
+  data: {
+    genericProducts: GenericProduct[],
+    pagination: Pagination
+  },
+  success: boolean
+  message: string
+}
+
+interface EmailVerificationToken {
   token: string
 }
 
-interface ChangePasswordInterface{
+interface ChangePasswordInterface {
   token: string;
   password: string
+}
+
+interface ProductSearchFilterOptions {
+  sort: string,
+  categories: number[],
+  chains: number[]
 }
 
 
@@ -141,5 +172,8 @@ export {
   Pagination,
   ProductWPriceList,
   EmailVerificationToken,
-  ChangePasswordInterface
+  ChangePasswordInterface,
+  ProductSearchFilterOptions,
+  GenericProductsResponse
+
 }

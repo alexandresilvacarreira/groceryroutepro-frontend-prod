@@ -19,7 +19,7 @@ import {RoutesComponent} from "./pages/routes/routes.component";
 import {HistoryComponent} from "./pages/history/history.component";
 import {HistoryProductsComponent} from "./pages/history-products/history-products.component";
 import {HistoryRoutesComponent} from "./pages/history-routes/history-routes.component";
-import {TestPageComponent} from "./pages/test-page/test-page.component";
+import {CreateRouteComponent} from "./pages/create-route/create-route.component";
 
 
 const routes: Routes = [
@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
   {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login")]},
   {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login")]},
-  {path: 'test-page', component: TestPageComponent, canActivate: [buildGuard("/login")]},
+  {path: 'create-route', component: CreateRouteComponent},
   {path: '**', redirectTo: '/error', pathMatch: 'full'}
 
 ];

@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {ProductDetails, ProductWPriceList, ServerResponse, Signup} from "../interfaces";
+import {GenericProductsResponse, ProductDetails, ProductWPriceList, ServerResponse, Signup} from "../interfaces";
 
 const BASE_URL = environment.BASE_URL;
 
@@ -29,6 +29,19 @@ export class ProductsService {
 
   getProductsList(search: string = this.defaultSearch, categories: number[] = this.defaultCategories, chains: number[] = this.defaultChains, sort: string = this.defaultSort, page: number = this.defaultPage, size: number = this.defaultSize) {
     return this.http.get<ProductWPriceList>(BASE_URL + "/products/list", {
+      params: {
+        search,
+        categories,
+        chains,
+        sort,
+        page,
+        size
+      }
+    });
+  }
+
+  getGenericProductsList(search: string = this.defaultSearch, categories: number[] = this.defaultCategories, chains: number[] = this.defaultChains, sort: string = this.defaultSort, page: number = this.defaultPage, size: number = this.defaultSize) {
+    return this.http.get<GenericProductsResponse>(BASE_URL + "/products/generic-products/list", {
       params: {
         search,
         categories,

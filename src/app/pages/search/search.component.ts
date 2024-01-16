@@ -19,13 +19,13 @@ import {
 } from "rxjs";
 import _default from "chart.js/dist/plugins/plugin.tooltip";
 import animations = _default.defaults.animations;
-import { slideAnimationFilter} from "../../animations";
+import {slideAnimationFilter} from "../../animations";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  animations : [slideAnimationFilter]
+  animations: [slideAnimationFilter]
 })
 export class SearchComponent implements OnInit {
 
@@ -35,8 +35,8 @@ export class SearchComponent implements OnInit {
   searchControl = new FormControl("");
   page = new BehaviorSubject<number>(0);
   productListSelector = ".product-list";
-  lastSearch : string | null = "";
-  openFilter=false;
+  lastSearch: string | null = "";
+  openFilter = false;
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit {
       .pipe(
         switchMap(([page, searchTerm]) => {
           let actualPage = page;
-          if (searchTerm !== this.lastSearch){
+          if (searchTerm !== this.lastSearch) {
             this.products = [];
             actualPage = 0;
           }
@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit {
             undefined,
             'pricePrimaryValue,asc',
             actualPage
-          ).pipe(map(productWPriceList => ({ searchTerm, productWPriceList })));
+          ).pipe(map(productWPriceList => ({searchTerm, productWPriceList})));
         }),
         catchError(error => {
           this.showError = true;
@@ -74,7 +74,7 @@ export class SearchComponent implements OnInit {
           return throwError(() => error);
         })
       )
-      .subscribe(({ searchTerm, productWPriceList }) => {
+      .subscribe(({searchTerm, productWPriceList}) => {
         // Set the product list to the received products if it's a new search
         if (searchTerm !== this.lastSearch) {
           this.products = productWPriceList.products;
@@ -91,11 +91,11 @@ export class SearchComponent implements OnInit {
     console.log("scrolled")
   }
 
-  openFilterMenu(){
-    this.openFilter=true;
+  openFilterMenu() {
+    this.openFilter = true;
   }
 
-  closeFilterMenu(){
+  closeFilterMenu() {
     this.openFilter = false;
   }
 
