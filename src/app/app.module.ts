@@ -59,13 +59,14 @@ import {DatepickerTouchComponent} from './components/datepicker-touch/datepicker
 import { HistoryRoutesComponent } from './pages/history-routes/history-routes.component';
 import { HistoryProductsComponent } from './pages/history-products/history-products.component';
 import { ShopNotificationsCardComponent } from './components/shop-components/shop-notifications-card/shop-notifications-card.component';
+import { CreateRouteComponent } from './pages/create-route/create-route.component';
+import {GoogleMap, GoogleMapsModule} from "@angular/google-maps";
 import { ShopDashboardComponent } from './pages/Shop-Pages/shop-dashboard/shop-dashboard.component';
 import { ShopHeaderDashboardComponent } from './components/shop-components/shop-header-dashboard/shop-header-dashboard.component';
 import { ShopNavbarComponent } from './components/shop-components/shop-navbar/shop-navbar.component';
 import { ShopNewProductComponent } from './pages/Shop-Pages/shop-new-product/shop-new-product.component';
 import {TruncateFirstWordPipe} from "./pipes/truncate-first-word-pipe";
 import { TestPageComponent } from './pages/test-page/test-page.component';
-
 
 
 Chart.defaults.font.family = 'Lato';
@@ -121,14 +122,13 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     HistoryRoutesComponent,
     HistoryProductsComponent,
     ShopNotificationsCardComponent,
+    CreateRouteComponent,
     ShopDashboardComponent,
     ShopHeaderDashboardComponent,
     ShopNavbarComponent,
     ShopNewProductComponent,
     TruncateFirstWordPipe,
     TestPageComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -143,7 +143,8 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    DatepickerTouchComponent
+    DatepickerTouchComponent,
+    GoogleMapsModule,
   ],
   providers: [DatePipe,
     {provide: LOCALE_ID, useValue: 'pt'},
