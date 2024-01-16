@@ -5,25 +5,31 @@
     <h1 class="page-title">Filtros</h1>
   </div>
 
-  <div class="filter-form" [formGroup]="form">
+  <div class="filter-form">
 
     <div class="group">
       <div class="title"><h4>Ordenar por</h4></div>
       <div class="option">
         <div class="option-name"><h4>Preço crescente</h4></div>
-        <fa-icon [icon]="sort === 'primaryPriceValue,asc' ? faCircleSolid : faCircle" (click)="setSorting('primaryPriceValue,asc')"></fa-icon>
+        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,asc' ? faCircleSolid : faCircle"
+                 [class]="sort === 'currentLowestPricePrimaryValue,asc' ? 'selected' : ''"
+                 (click)="setSorting('currentLowestPricePrimaryValue,asc')"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Preço decrescente</h4></div>
-        <fa-icon [icon]="sort === 'primaryPriceValue,desc' ? faCircleSolid : faCircle"  (click)="setSorting('primaryPriceValue,desc')"></fa-icon>
+        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,desc' ? faCircleSolid : faCircle"
+                 [class]="sort === 'currentLowestPricePrimaryValue,desc' ? 'selected' : ''"
+                 (click)="setSorting('currentLowestPricePrimaryValue,desc')"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Ordem alfabética crescente</h4></div>
-        <fa-icon [icon]="sort === 'name,asc' ? faCircleSolid : faCircle"  (click)="setSorting('name,asc')"></fa-icon>
+        <fa-icon [icon]="sort === 'name,asc' ? faCircleSolid : faCircle" [class]="sort === 'name,asc' ? 'selected' : ''"
+                 (click)="setSorting('name,asc')"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Ordem alfabética decrescente</h4></div>
-        <fa-icon [icon]="sort === 'name,desc' ? faCircleSolid : faCircle"  (click)="setSorting('name,desc')"></fa-icon>
+        <fa-icon [icon]="sort === 'name,desc' ? faCircleSolid : faCircle"
+                 [class]="sort === 'name,desc' ? 'selected' : ''" (click)="setSorting('name,desc')"></fa-icon>
       </div>
     </div>
 
@@ -31,43 +37,53 @@
       <div class="title"><h4>Categorias</h4></div>
       <div class="option">
         <div class="option-name"><h4>Mercearia</h4></div>
-        <fa-icon [icon]="categories.includes(1) ? faCircleSolid : faCircle"  (click)="setCategory(1)"></fa-icon>
+        <fa-icon [icon]="categories.includes(1) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(1) ? 'selected' : ''" (click)="setCategory(1)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Frutas e Legumes</h4></div>
-        <fa-icon [icon]="categories.includes(2) ? faCircleSolid : faCircle" (click)="setCategory(2)"></fa-icon>
+        <fa-icon [icon]="categories.includes(2) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(2) ? 'selected' : ''" (click)="setCategory(2)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Congelados</h4></div>
-        <fa-icon [icon]="categories.includes(3) ? faCircleSolid : faCircle" (click)="setCategory(3)"></fa-icon>
+        <fa-icon [icon]="categories.includes(3) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(3) ? 'selected' : ''" (click)="setCategory(3)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Laticínios e ovos</h4></div>
-        <fa-icon [icon]="categories.includes(4) ? faCircleSolid : faCircle" (click)="setCategory(4)"></fa-icon>
+        <fa-icon [icon]="categories.includes(4) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(4) ? 'selected' : ''" (click)="setCategory(4)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Peixaria</h4></div>
-        <fa-icon [icon]="categories.includes(5) ? faCircleSolid : faCircle" (click)="setCategory(5)"></fa-icon>
+        <fa-icon [icon]="categories.includes(5) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(5) ? 'selected' : ''" (click)="setCategory(5)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Talho</h4></div>
-        <fa-icon [icon]="categories.includes(6) ? faCircleSolid : faCircle" (click)="setCategory(6)"></fa-icon>
+        <fa-icon [icon]="categories.includes(6) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(6) ? 'selected' : ''" (click)="setCategory(6)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Charcutaria</h4></div>
-        <fa-icon [icon]="categories.includes(7) ? faCircleSolid : faCircle" (click)="setCategory(7)"></fa-icon>
+        <fa-icon [icon]="categories.includes(7) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(7) ? 'selected' : ''" (click)="setCategory(7)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Alternativas alimentares, bio e saudável</h4></div>
-        <fa-icon [icon]="categories.includes(8) ? faCircleSolid : faCircle" (click)="setCategory(8)"></fa-icon>
+        <fa-icon [icon]="categories.includes(8) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(8) ? 'selected' : ''" (click)="setCategory(8)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Bebidas</h4></div>
-        <fa-icon [icon]="categories.includes(9) ? faCircleSolid : faCircle" (click)="setCategory(9)"></fa-icon>
+        <fa-icon [icon]="categories.includes(9) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(9) ? 'selected' : ''" (click)="setCategory(9)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Padaria e pastelaria</h4></div>
-        <fa-icon [icon]="categories.includes(10) ? faCircleSolid : faCircle" (click)="setCategory(10)"></fa-icon>
+        <fa-icon [icon]="categories.includes(10) ? faCircleSolid : faCircle"
+                 [class]="categories.includes(10) ? 'selected' : ''" (click)="setCategory(10)"></fa-icon>
       </div>
     </div>
 
@@ -75,23 +91,23 @@
       <div class="title"><h4>Superfícies</h4></div>
       <div class="option">
         <div class="option-name"><h4>Auchan</h4></div>
-        <fa-icon [icon]="chains.includes(2) ? faCircleSolid : faCircle" (click)="setChain(2)"></fa-icon>
+        <fa-icon [icon]="chains.includes(2) ? faCircleSolid : faCircle"  [class]="chains.includes(2) ? 'selected' : ''" (click)="setChain(2)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Continente</h4></div>
-        <fa-icon [icon]="chains.includes(3) ? faCircleSolid : faCircle" (click)="setChain(3)"></fa-icon>
+        <fa-icon [icon]="chains.includes(3) ? faCircleSolid : faCircle"[class]="chains.includes(3) ? 'selected' : ''"  (click)="setChain(3)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Pingo Doce</h4></div>
-        <fa-icon [icon]="chains.includes(4) ? faCircleSolid : faCircle" (click)="setChain(4)"></fa-icon>
+        <fa-icon [icon]="chains.includes(4) ? faCircleSolid : faCircle" [class]="chains.includes(4) ? 'selected' : ''" (click)="setChain(4)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Intermarché</h4></div>
-        <fa-icon [icon]="chains.includes(5) ? faCircleSolid : faCircle" (click)="setChain(5)"></fa-icon>
+        <fa-icon [icon]="chains.includes(5) ? faCircleSolid : faCircle"[class]="chains.includes(5) ? 'selected' : ''"  (click)="setChain(5)"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Minipreço</h4></div>
-        <fa-icon [icon]="chains.includes(7) ? faCircleSolid : faCircle" (click)="setChain(7)"></fa-icon>
+        <fa-icon [icon]="chains.includes(7) ? faCircleSolid : faCircle" [class]="chains.includes(7) ? 'selected' : ''" (click)="setChain(7)"></fa-icon>
       </div>
     </div>
 
@@ -99,7 +115,7 @@
 
   <div class="buttons">
     <fa-icon [icon]="faCircleXmark" class="xmark" (click)="emitCloseEvent()"></fa-icon>
-    <fa-icon [icon]="faCircleCheck" class="check"></fa-icon>
+    <fa-icon [icon]="faCircleCheck" class="check" (click)="applyFilter()"></fa-icon>
   </div>
 
 </div>

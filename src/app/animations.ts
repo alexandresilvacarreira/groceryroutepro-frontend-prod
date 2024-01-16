@@ -34,12 +34,12 @@ export const slideAnimationTabMenu = trigger('slide', [
 
 export const slideAnimationFilter = trigger('slideFilter', [
   transition(':enter', [
-    style({transform: 'translateX(-100%)', position: 'relative'}),
+    style({transform: 'translateX(100%)', position: 'relative'}),
     animate('200ms linear', style({transform: 'translateX(0%)', position: 'relative'}))
   ]),
   transition(':leave', [
     style({transform: 'translateX(0%)', position: 'absolute'}),
-    animate('200ms linear', style({transform: 'translateX(-100%)', position: 'absolute'}))
+    animate('200ms linear', style({transform: 'translateX(100%)', position: 'absolute'}))
   ])
 ]);
 

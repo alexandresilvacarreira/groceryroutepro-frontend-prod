@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
-import {GenericProduct, ProductWPrice, ProductWPriceList, User} from "../../interfaces";
+import {GenericProduct, ProductSearchFilterOptions, ProductWPrice, ProductWPriceList, User} from "../../interfaces";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
@@ -20,6 +20,7 @@ import {
 import _default from "chart.js/dist/plugins/plugin.tooltip";
 import animations = _default.defaults.animations;
 import {slideAnimationFilter} from "../../animations";
+import {ProductFilterService} from "../../services/product-filter.service";
 
 @Component({
   selector: 'app-search',
@@ -30,53 +31,56 @@ import {slideAnimationFilter} from "../../animations";
 export class SearchComponent implements OnInit {
 
   genericProducts: GenericProduct[] = [];
-  showError = false;
-  errorMessage = "";
   searchControl = new FormControl("");
   page = new BehaviorSubject<number>(0);
   productListSelector = ".product-list";
   lastSearch: string | null = "";
   openFilter = false;
   showNotFound = false;
+  previousFilterOptions!: ProductSearchFilterOptions;
+
 
   protected readonly faFilter = faFilter;
   protected readonly faSearch = faSearch;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private productFilterService : ProductFilterService) {
   }
 
 
   ngOnInit(): void {
+
     combineLatest([
       this.page.pipe(startWith(0)),
-      this.searchControl.valueChanges.pipe(startWith(''), debounceTime(300))
+      this.searchControl.valueChanges.pipe(startWith(''), debounceTime(300)),
+      this.productFilterService.getFilterValues()
     ])
       .pipe(
-        switchMap(([page, searchTerm]) => {
+        switchMap(([page, searchTerm, filterOptions]) => {
           let actualPage = page;
-          if (searchTerm !== this.lastSearch) {
+          let currentFilterOptions = filterOptions;
+          if (searchTerm !== this.lastSearch || JSON.stringify(filterOptions) !== JSON.stringify(this.previousFilterOptions)) {
             this.genericProducts = [];
             actualPage = 0;
           }
           // Guardar o termo de pesquisa atual
           this.lastSearch = searchTerm;
+          //Guardar valores dos filtros
+          this.previousFilterOptions = filterOptions;
           // O request utiliza os valores da página e da pesquisa
           return this.productsService.getGenericProductsList(
             searchTerm === null ? undefined : searchTerm,
-            undefined,
-            undefined,
-            'currentLowestPricePrimaryValue,asc',
+            currentFilterOptions.categories,
+            currentFilterOptions.chains,
+            currentFilterOptions.sort,
             actualPage
-          ).pipe(map(genericProductsListResponse => ({searchTerm, genericProductsListResponse})));
+          ).pipe(map(genericProductsListResponse => ({searchTerm, genericProductsListResponse, filterOptions})));
         }),
         catchError(error => {
-          this.showError = true;
-          this.errorMessage = error.error.errorMessage;
           this.showNotFound=true;
           return throwError(() => error);
         })
       )
-      .subscribe(({searchTerm, genericProductsListResponse}) => {
+      .subscribe(({searchTerm, genericProductsListResponse, filterOptions}) => {
         this.showNotFound = false;
         if (searchTerm !== this.lastSearch) {
           this.genericProducts = genericProductsListResponse.data.genericProducts;
