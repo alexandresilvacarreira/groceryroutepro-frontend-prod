@@ -72,6 +72,7 @@ import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/s
 import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
 import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
 
+import { ProductPriceComparisonComponent } from './components/product-price-comparison/product-price-comparison.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -136,6 +137,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopEditProductComponent,
     ShopProductEditCardComponent,
     ShopSearchEditProductComponent,
+    ProductPriceComparisonComponent,
   ],
     imports: [
         BrowserModule,

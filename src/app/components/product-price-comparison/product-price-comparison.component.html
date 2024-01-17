@@ -1,0 +1,6 @@
+<div class="price-list-container">
+  <div class="price-row" *ngFor="let product of products">
+    <app-chain-sticker [style.font-size]="'0.9em'" [chainId]="product.chain.id" [chainName]="product.chain.name"></app-chain-sticker>
+    <span class="overflow-ellipsis">{{ currentPrice(product) | number : undefined : 'pt' }} €</span>
+  </div>
+</div>

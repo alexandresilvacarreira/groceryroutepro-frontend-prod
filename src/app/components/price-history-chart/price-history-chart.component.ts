@@ -3,8 +3,7 @@ import {Price, Product} from "../../interfaces";
 import {ChartDataset, ChartOptions, ChartType, Chart, ChartConfiguration, ChartEvent,} from 'chart.js';
 import {DatePipe} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BaseChartDirective} from 'ng2-charts';
-import {startWith, switchMap} from "rxjs";
+
 
 @Component({
   selector: 'app-price-history-chart',
