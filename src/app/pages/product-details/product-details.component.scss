@@ -72,17 +72,37 @@
       gap: 20px;
       margin: 20px 0;
 
+      .detail-title {
+        align-self: flex-start;
+        font-weight: bold;
+        flex: 2;
+      }
+
+      .detail-column {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .chains {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin-top: 10px;
+          font-size: 0.9em;
+        }
+
+
+      }
+
       .detail-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-
-        .detail-title {
-          align-self: flex-start;
-          font-weight: bold;
-          flex: 2;
-        }
 
         .detail-value {
           align-self: flex-end;

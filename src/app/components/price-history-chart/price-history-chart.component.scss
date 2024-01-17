@@ -2,10 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 canvas {
   min-height: 250px !important;
   max-width: 100% !important;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
 }

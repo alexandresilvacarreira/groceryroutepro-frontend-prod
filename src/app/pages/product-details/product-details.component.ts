@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Price, Product, ProductDetails, User} from "../../interfaces";
+import {GenericProduct, Price, Product, ProductDetails, User} from "../../interfaces";
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
@@ -15,26 +15,26 @@ import {NavigationService} from "../../services/navigation.service";
 export class ProductDetailsComponent implements OnInit {
 
   user?: User;
-  productId : number;
-  product!: Product;
-  prices!: Price[];
-  currentPrice!:Price;
+  genericProductId: number;
   previousRoute = '';
+  genericProduct!: GenericProduct;
+  products!: Product[];
+  currentCheapestProduct!: Product;
+  currentLowestPrice!: Price;
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
-              private productsService : ProductsService, private navigationService:NavigationService) {
-    this.productId = parseInt(this.route.snapshot.params['productId']);
+  constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService, private navigationService: NavigationService) {
+    this.genericProductId = parseInt(this.route.snapshot.params['genericProductId']);
   }
 
   ngOnInit(): void {
-    this.productsService.getProductDetails(this.productId).pipe(catchError(error => {
-
+    this.productsService.getGenericProduct(this.genericProductId).pipe(catchError(error => {
+      this.router.navigate(["/error"]);
       return throwError(() => error);
-    })).
-    subscribe(productDetails => {
-        this.product = productDetails.product;
-        this.prices = productDetails.prices;
-        this.currentPrice = this.prices[this.prices.length-1];
+    })).subscribe(genericProductResponse => {
+      this.genericProduct = genericProductResponse.data.genericProduct;
+      this.products = genericProductResponse.data.genericProduct.products;
+      this.currentCheapestProduct = genericProductResponse.data.genericProduct.currentCheapestProduct;
+      this.currentLowestPrice = genericProductResponse.data.genericProduct.currentLowestPrice;
     })
 
     this.previousRoute = this.navigationService.getPreviousRoute();

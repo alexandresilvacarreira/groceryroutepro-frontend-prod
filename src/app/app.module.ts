@@ -67,6 +67,7 @@ import { ShopNavbarComponent } from './components/shop-components/shop-navbar/sh
 import { ShopNewProductComponent } from './pages/Shop-Pages/shop-new-product/shop-new-product.component';
 import {TruncateFirstWordPipe} from "./pipes/truncate-first-word-pipe";
 import { TestPageComponent } from './pages/test-page/test-page.component';
+import {MatSelectModule} from "@angular/material/select";
 import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/shop-edit-product.component';
 import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
 import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
@@ -136,22 +137,23 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopProductEditCardComponent,
     ShopSearchEditProductComponent,
   ],
-  imports: [
-    BrowserModule,
-    FontAwesomeModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgChartsModule,
-    InfiniteScrollModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    DatepickerTouchComponent,
-    GoogleMapsModule,
-  ],
+    imports: [
+        BrowserModule,
+        FontAwesomeModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgChartsModule,
+        InfiniteScrollModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        DatepickerTouchComponent,
+        GoogleMapsModule,
+        MatSelectModule,
+    ],
   providers: [DatePipe,
     {provide: LOCALE_ID, useValue: 'pt'},
   ],

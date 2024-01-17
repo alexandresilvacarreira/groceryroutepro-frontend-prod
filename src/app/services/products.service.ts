@@ -50,7 +50,7 @@ export class ProductsService {
   }
 
   getGenericProduct(genericProductId: number) {
-    let url = `${BASE_URL}/products/${genericProductId}`;
+    let url = `${BASE_URL}/products/generic-products/${genericProductId}`;
     return this.http.get<GenericProductResponse>(url);
   }
 

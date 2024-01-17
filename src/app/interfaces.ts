@@ -67,6 +67,7 @@ interface Product {
   imageUrl: string,
   chain: Chain,
   categories: Category[],
+  prices: Price[],
   genericProduct: GenericProduct,
   cheapestForGenericProduct: GenericProduct,
 }

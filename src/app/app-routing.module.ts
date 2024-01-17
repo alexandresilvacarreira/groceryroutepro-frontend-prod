@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'confirm-registration', component: ConfirmRegistrationComponent},
   {path: 'error', component: ErrorComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login")]},
-  {path: 'product-details/:productId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
+  {path: 'product-details/:genericProductId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")],  data: {title: 'Pesquisa'}},
   {path: 'verify-account/:email', component: VerifyAccountComponent},
   {path: 'shopping-list', component: ShoppingListComponent, canActivate: [buildGuard("/login")], data: {title: 'Lista de Compras'}},
