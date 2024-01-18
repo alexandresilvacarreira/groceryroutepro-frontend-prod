@@ -141,7 +141,7 @@ export class CreateRouteComponent {
     this.inputPartida.setValue(result.description);
     this.showAutocompletePartida = false;
     this.partida = result;
-    this.addMarker();
+    //this.addMarker();
     //this.addMarker();
   }
 
