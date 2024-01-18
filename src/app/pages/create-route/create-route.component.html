@@ -57,17 +57,19 @@
 
   </div>
 
-  <div id="map"></div>
+  <!--<div id="map"></div>-->
   <google-map class="map"
     [height]="height"
     [width]="width"
     [center]="center"
     [zoom]="zoom"
     (mapClick)="moveMap($event)"
-    (mapMousemove)="move($event)">
-    <map-marker [position]="position" [options]="markerOptions" />
+    (mapMousemove)="move($event)"><ng-container *ngFor="let marker of markerPositions">
+    <map-marker
+      [position]="marker"
 
-  </google-map>
+    ></map-marker>
+  </ng-container></google-map>
 
   <div>Latitude: {{display?.lat}}</div>
   <div>Longitude: {{display?.lng}}</div>

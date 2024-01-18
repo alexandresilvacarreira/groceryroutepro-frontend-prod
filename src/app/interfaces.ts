@@ -1,3 +1,7 @@
+import LatLng = google.maps.LatLng;
+import LatLngBounds = google.maps.LatLngBounds;
+import GeocoderComponentRestrictions = google.maps.GeocoderComponentRestrictions;
+
 interface Signup {
   name: string,
   email: string,
@@ -154,6 +158,8 @@ interface ProductSearchFilterOptions {
   categories: number[],
   chains: number[]
 }
+
+
 
 
 export {

@@ -5,7 +5,7 @@ import {NavigationService} from "../../services/navigation.service";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {FormControl} from "@angular/forms";
 import {debounce, debounceTime, from, Observable, of, switchMap} from "rxjs";
-import Marker = google.maps.Marker;
+
 
 
 @Component({
@@ -14,10 +14,11 @@ import Marker = google.maps.Marker;
   styleUrls: ['./create-route.component.scss'],
 })
 export class CreateRouteComponent {
+
   previousRoute = '';
 
-  showAutocompletePartida=false;
-  showAutocompleteDestino=false;
+  showAutocompletePartida = false;
+  showAutocompleteDestino = false;
 
   center: google.maps.LatLngLiteral = {lat: 39.557191, lng: -7.8536599};
 
@@ -36,20 +37,18 @@ export class CreateRouteComponent {
   destinoResults: any[] = [];
 
 
-  partida?:google.maps.places.AutocompletePrediction;
-  destino?:google.maps.places.AutocompletePrediction;
-
-
-
-
+  partida?: google.maps.places.AutocompletePrediction;
+  destino?: google.maps.places.AutocompletePrediction;
 
 
   constructor(private navigationService: NavigationService) {
   }
 
-  partidaInputFocus(){
-    this.showAutocompletePartida=true;
+
+  partidaInputFocus() {
+    this.showAutocompletePartida = true;
   }
+
   partidaInputBlur(): void {
     // Use a slight delay to allow time for click events to trigger
     setTimeout(() => {
@@ -57,9 +56,10 @@ export class CreateRouteComponent {
     }, 200);
   }
 
-  destinoInputFocus(){
-    this.showAutocompleteDestino=true;
+  destinoInputFocus() {
+    this.showAutocompleteDestino = true;
   }
+
   destinoInputBlur(): void {
     // Use a slight delay to allow time for click events to trigger
     setTimeout(() => {
@@ -83,8 +83,8 @@ export class CreateRouteComponent {
     // Check if the inputString is truthy and not an empty string
     if (inputString && inputString.trim() !== "") {
       const autocompleteService = new google.maps.places.AutocompleteService();
-      const southwest = { lat: 32.35130, lng: -31.07921 };
-      const northeast = { lat: 42.20564806080576, lng: -5.901021665431905 };
+      const southwest = {lat: 32.35130, lng: -31.07921};
+      const northeast = {lat: 42.20564806080576, lng: -5.901021665431905};
       const newBounds = new google.maps.LatLngBounds(southwest, northeast);
       // todo ver a interface de bound
 
@@ -129,7 +129,6 @@ export class CreateRouteComponent {
       .subscribe((results) => {
         this.destinoResults = results;
       });
-
   }
 
 
@@ -138,20 +137,19 @@ export class CreateRouteComponent {
   protected readonly faLocationDot = faLocationDot;
 
 
-
-  onClickPartida(result:google.maps.places.AutocompletePrediction){
+  onClickPartida(result: google.maps.places.AutocompletePrediction) {
     this.inputPartida.setValue(result.description);
-    this.showAutocompletePartida=false;
-    this.partida=result;
-    this.addMarker(result)
+    this.showAutocompletePartida = false;
+    this.partida = result;
+    this.addMarker();
+    //this.addMarker();
   }
 
-  onClickDestino(result:google.maps.places.AutocompletePrediction){
+  onClickDestino(result: google.maps.places.AutocompletePrediction) {
     this.inputDestino.setValue(result.description);
-    this.showAutocompleteDestino=false;
-    this.destino=result;
+    this.showAutocompleteDestino = false;
+    this.destino = result;
   }
-
 
 
   //-----------------------------------------------//------------------------
@@ -160,13 +158,38 @@ export class CreateRouteComponent {
   markerOptions: google.maps.MarkerOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
 
-  markers = [google.maps.Marker];
+  markers: google.maps.Marker[] = [];
+
+  addMarker(lat: number , lng: number , description : string ="") {
+    let newMaker : google.maps.LatLngLiteral = {lat, lng};
+    this.markerPositions.push(newMaker);
+    console.log("marker added")
+  }
 
 
-  addMarker(lat : number, long: number) {
-     const newMaker = new google.maps.Marker({position: {lat: lat, lng: long}});
+  /*---------------------GEOCODER----------------------------------*/
 
-    this.markers.push(newMaker);
+  getGeoCoordinates(place_id: string) {
+    const geocoder = new google.maps.Geocoder();
+/*    geocoder
+      .geocode({placeId: place_id})
+      .then(({results}) => {
+        if (results[0]) {
+          map.setZoom(11);
+          map.setCenter(results[0].geometry.location);
+
+          const marker = new google.maps.Marker({
+            map,
+            position: results[0].geometry.location,
+          });
+
+          infowindow.setContent(results[0].formatted_address);
+          infowindow.open(map, marker);
+        } else {
+          window.alert("No results found");
+        }
+      })
+      .catch((e) => window.alert("Geocoder failed due to: " + e));*/
   }
 
 }
