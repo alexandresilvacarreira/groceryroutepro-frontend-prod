@@ -21,7 +21,8 @@ export class ProductDetailsComponent implements OnInit {
   currentPrice!:Price;
   previousRoute = '';
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private productsService : ProductsService, private navigationService:NavigationService) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
+              private productsService : ProductsService, private navigationService:NavigationService) {
     this.productId = parseInt(this.route.snapshot.params['productId']);
   }
 

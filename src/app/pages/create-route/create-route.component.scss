@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  width: 100%;
+
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+
+    .icon {
+      color: #0f7293;
+      position: absolute;
+      left: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .page-title {
+      margin: 0;
+    }
+
+  }
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50%;
+    min-width: 35%;
+    margin: auto;
+  }
+
+  .information-container {
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      .description-title {
+        font-family: 'Lato', sans-serif;
+      }
+
+      .input-box {
+        width: 100%;
+        position: relative;
+        flex: 1;
+        margin-top: 10px;
+
+        .input-location {
+          border-radius: 8px;
+          font-family: 'Lato', sans-serif;
+          padding: 15px;
+          width: 100%;
+          align-items: flex-start;
+          border: none;
+          background-color: #F6F6F6;
+
+          &:focus {
+            outline: solid 1px lightgrey;
+          }
+        }
+
+        .grey-icon {
+          color: #BDBDBD;
+          position: absolute;
+          right: 20px;
+          top: 25%;
+        }
+      }
+
+
+      .autocomplete-results {
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add box shadow
+        position: relative;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        .autocomplete-results-table {
+          z-index: 2;
+          position: absolute;
+          width: 100%;
+          gap: 2px;
+          border-bottom-left-radius: 8px; // Add border-radius
+          border-bottom-right-radius: 8px; // Add border-radius
+          background-color: #E6E6E6;
+          border: 1px solid #ccc;
+
+          .autocomplete-results-ngfor {
+
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            width: 100%;
+
+            &:hover {
+              background-color: rgba(190, 189, 189, 0.79); // Change background color on hover
+              cursor: pointer;
+              &:last-child{
+                border-bottom-left-radius: 8px; // Add border-radius
+                border-bottom-right-radius: 8px; // Add border-radius
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .map{
+    width: 100%;
+    height: 600px;
+    display: flex;
+  }
+
+
+}

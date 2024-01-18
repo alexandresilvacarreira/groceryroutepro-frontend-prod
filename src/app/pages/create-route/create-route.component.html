@@ -1,10 +1,76 @@
-<google-map
-  [height]="height"
-  [width]="width"
-  [center]="center"
-  [zoom]="zoom"
-  (mapClick)="moveMap($event)"
-  (mapMousemove)="move($event)"></google-map>
+<div class="container">
+  <div class="header">
+    <fa-icon class="icon" [icon]="faArrowLeft" [routerLink]="previousRoute"></fa-icon>
+    <h1 class="page-title">Nova Rota</h1>
+  </div>
 
-<div>Latitude: {{display?.lat}}</div>
-<div>Longitude: {{display?.lng}}</div>
+  <div class="information-container">
+    <div class="input-container">
+      <div class="description-title">
+        Local de partida*
+      </div>
+      <div class="input-box">
+        <input class="input-location"
+               label="partida"
+               type="text"
+               placeholder="Partida"
+               [formControl]="inputPartida"
+               (focus)="partidaInputFocus()"
+               (blur)="partidaInputBlur()"/>
+        <fa-icon class="grey-icon" [icon]="faLocationDot"></fa-icon>
+      </div>
+      <div class="autocomplete-results" *ngIf="showAutocompletePartida">
+        <div class="autocomplete-results-table">
+          <div class="autocomplete-results-ngfor"
+               *ngFor="let result of partidaResults"
+               (click)="onClickPartida(result)">
+            {{result.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <div class="description-title">
+        Local de partida*
+      </div>
+      <div class="input-box">
+        <input class="input-location"
+               label="destino"
+               type="text"
+               placeholder="Destino"
+               [formControl]="inputDestino"
+               (focus)="destinoInputFocus()"
+               (blur)="destinoInputBlur()"/>
+        <fa-icon class="grey-icon" [icon]="faLocationDot"></fa-icon>
+      </div>
+      <div class="autocomplete-results" *ngIf="showAutocompleteDestino">
+        <div class="autocomplete-results-table">
+          <div class="autocomplete-results-ngfor"
+               *ngFor="let result of destinoResults"
+               (click)="onClickDestino(result)">
+            {{result.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="map"></div>
+  <google-map class="map"
+    [height]="height"
+    [width]="width"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="moveMap($event)"
+    (mapMousemove)="move($event)">
+    <map-marker [position]="position" [options]="markerOptions" />
+
+  </google-map>
+
+  <div>Latitude: {{display?.lat}}</div>
+  <div>Longitude: {{display?.lng}}</div>
+</div>
+
+
