@@ -141,14 +141,14 @@ export class CreateRouteComponent {
     this.inputPartida.setValue(result.description);
     this.showAutocompletePartida = false;
     this.partida = result;
-    //this.addMarker();
-    //this.addMarker();
+    this.getGeoCoordinates(result);
   }
 
   onClickDestino(result: google.maps.places.AutocompletePrediction) {
     this.inputDestino.setValue(result.description);
     this.showAutocompleteDestino = false;
     this.destino = result;
+    this.getGeoCoordinates(result);
   }
 
 
@@ -160,36 +160,37 @@ export class CreateRouteComponent {
 
   markers: google.maps.Marker[] = [];
 
-  addMarker(lat: number , lng: number , description : string ="") {
+  addMarker(lat: number, lng: number) {
     let newMaker : google.maps.LatLngLiteral = {lat, lng};
     this.markerPositions.push(newMaker);
-    console.log("marker added")
+
   }
 
 
   /*---------------------GEOCODER----------------------------------*/
 
-  getGeoCoordinates(place_id: string) {
+  getGeoCoordinates(result:google.maps.places.AutocompletePrediction) {
     const geocoder = new google.maps.Geocoder();
-/*    geocoder
-      .geocode({placeId: place_id})
+    geocoder
+      .geocode({placeId: result.place_id})
       .then(({results}) => {
         if (results[0]) {
-          map.setZoom(11);
-          map.setCenter(results[0].geometry.location);
-
-          const marker = new google.maps.Marker({
-            map,
-            position: results[0].geometry.location,
-          });
-
-          infowindow.setContent(results[0].formatted_address);
-          infowindow.open(map, marker);
+          this.zoom=12;
+          let lat= results[0].geometry.location.lat();
+          let lng = results[0].geometry.location.lng()
+          this.addMarker(lat,lng);
+          this.center= this.markerPositions.length > 1
+            ? {
+              lat: this.markerPositions.reduce((sum, marker) => sum + marker.lat, 0) / this.markerPositions.length,
+              lng: this.markerPositions.reduce((sum, marker) => sum + marker.lng, 0) / this.markerPositions.length
+            }
+            : this.markerPositions[0];
         } else {
           window.alert("No results found");
         }
       })
-      .catch((e) => window.alert("Geocoder failed due to: " + e));*/
+      .catch((e) => window.alert("Geocoder failed due to: " + e));
   }
+
 
 }
