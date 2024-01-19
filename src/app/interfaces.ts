@@ -159,6 +159,12 @@ interface ProductSearchFilterOptions {
   chains: number[]
 }
 
+interface PersonilizedMapMarker {
+  place_id: string,
+  markerPosition: google.maps.LatLngLiteral,
+  title: string
+}
+
 
 
 
@@ -180,6 +186,7 @@ export {
   EmailVerificationToken,
   ChangePasswordInterface,
   ProductSearchFilterOptions,
-  GenericProductsResponse
+  GenericProductsResponse,
+  PersonilizedMapMarker
 
 }

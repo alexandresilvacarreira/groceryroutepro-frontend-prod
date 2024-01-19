@@ -5,6 +5,7 @@ import {NavigationService} from "../../services/navigation.service";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {FormControl} from "@angular/forms";
 import {debounce, debounceTime, from, Observable, of, switchMap} from "rxjs";
+import {PersonilizedMapMarker} from "../../interfaces";
 
 
 
@@ -155,14 +156,16 @@ export class CreateRouteComponent {
   //-----------------------------------------------//------------------------
   //Map marker
 
-  markerOptions: google.maps.MarkerOptions = {draggable: false};
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  PersonilizedMapMarkers:PersonilizedMapMarker[]=[];
 
-  markers: google.maps.Marker[] = [];
 
-  addMarker(lat: number, lng: number) {
-    let newMaker : google.maps.LatLngLiteral = {lat, lng};
-    this.markerPositions.push(newMaker);
+
+  addMarker(result:google.maps.places.AutocompletePrediction,lat: number, lng: number) {
+    let newMaker : PersonilizedMapMarker = {
+      place_id: result.place_id,
+      markerPosition: {lat,lng},
+      title: result.description};
+    this.PersonilizedMapMarkers.push(newMaker);
 
   }
 
@@ -175,16 +178,16 @@ export class CreateRouteComponent {
       .geocode({placeId: result.place_id})
       .then(({results}) => {
         if (results[0]) {
-          this.zoom=12;
           let lat= results[0].geometry.location.lat();
-          let lng = results[0].geometry.location.lng()
-          this.addMarker(lat,lng);
-          this.center= this.markerPositions.length > 1
-            ? {
-              lat: this.markerPositions.reduce((sum, marker) => sum + marker.lat, 0) / this.markerPositions.length,
-              lng: this.markerPositions.reduce((sum, marker) => sum + marker.lng, 0) / this.markerPositions.length
+          let lng = results[0].geometry.location.lng();
+          this.addMarker(result,lat,lng);
+          this.zoom=10;
+          this.center= this.PersonilizedMapMarkers.length > 1 ?
+            {
+              lat: this.PersonilizedMapMarkers.reduce((sum, marker) => sum + marker.markerPosition.lat, 0) / this.PersonilizedMapMarkers.length,
+              lng: this.PersonilizedMapMarkers.reduce((sum, marker) => sum + marker.markerPosition.lng, 0) / this.PersonilizedMapMarkers.length
             }
-            : this.markerPositions[0];
+            : this.PersonilizedMapMarkers[0].markerPosition;
         } else {
           window.alert("No results found");
         }
@@ -192,5 +195,10 @@ export class CreateRouteComponent {
       .catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
+
+
+  criarRota(){
+    //TODO ADICIONAR ENDEPOINT CORRETO DO BACKEND
+  }
 
 }

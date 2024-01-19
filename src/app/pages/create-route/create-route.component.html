@@ -64,14 +64,13 @@
     [center]="center"
     [zoom]="zoom"
     (mapClick)="moveMap($event)"
-    (mapMousemove)="move($event)"><ng-container *ngFor="let marker of markerPositions">
+    (mapMousemove)="move($event)"><ng-container *ngFor="let marker of PersonilizedMapMarkers">
     <map-marker
-      [position]="marker"
+      [position]="marker.markerPosition"
+      [title]="marker.title"
     ></map-marker>
   </ng-container></google-map>
-
-  <div>Latitude: {{display?.lat}}</div>
-  <div>Longitude: {{display?.lng}}</div>
+  <button class="dark-blue-button" (click)="criarRota()">Iniciar Viagem</button>
 </div>
 
 
