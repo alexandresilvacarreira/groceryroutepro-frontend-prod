@@ -1,47 +1,38 @@
-<div class="header">
-  <fa-icon class="icon" [icon]="faArrowLeft"></fa-icon>
-  <h1 class="page-title">Criar Produto</h1>
-</div>
-<div class="container">
-  <div class="newproduct-form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label for="chain_id">Nome:</label>-->
+<!--        <input type="text" id="chain_id" formControlName="chain" class="form-control">-->
+<!--    </div>-->
 
-    <div class="form-field">
-      <label class="form-label">Nome</label>
-      <input class="form-input" label="name" type="text" minlength="3" placeholder="Introduza o nome" required
-             formControlName="name"/>
+    <div class="form-group">
+        <label for="quantity">Quantidade:</label>
+        <input type="text" id="quantity" formControlName="quantity" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="pricePrimaryValue">Preço Primário:</label>
+        <input type="number" id="pricePrimaryValue" formControlName="price_primary" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="price_secondary">Preço Secundário:</label>
+        <input type="number" id="price_secondary" formControlName="price_secondary" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="category">Categoria:</label>
+        <input type="text" id="category" formControlName="category" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="brand">Marca:</label>
+        <input type="text" id="brand" formControlName="brand" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="image_url">URL da Imagem:</label>
+        <input type="text" id="image_url" formControlName="imageUrl" class="form-control">
     </div>
 
-    <div class="form-field">
-      <label class="form-label">Preço</label>
-      <input class="form-input" label="price" type="text" minlength="3" placeholder="Introduza o preço" required
-             formControlName="price"/>
-    </div>
 
-    <div class="form-field">
-      <label class="form-label">Quantidade</label>
-      <input class="form-input" label="quantity" type="text" placeholder="Introduza a quantidade" required
-             formControlName="quantity"/>
-    </div>
-
-    <div class="form-field">
-      <label class="form-label">Image_URL</label>
-      <input class="form-input" label="imageurl" type="text"  minlength="5" placeholder="Introduza o Url da imagem"
-             required
-             formControlName="imageurl"/>
-    </div>
-
-    <div class="form-field">
-      <label class="form-label">Descrição</label>
-      <textarea class="form-input" label="description" type="text"  placeholder="Introduza a descrição" required
-                formControlName="description"></textarea>
-    </div>
-
-  </div>
-
-  <div class="check">
-    <div class="button">
-      Publicar
-    </div>
-  </div>
-
-</div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>

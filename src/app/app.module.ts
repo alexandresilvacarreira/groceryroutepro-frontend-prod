@@ -67,6 +67,10 @@ import { ShopNavbarComponent } from './components/shop-components/shop-navbar/sh
 import { ShopNewProductComponent } from './pages/Shop-Pages/shop-new-product/shop-new-product.component';
 import {TruncateFirstWordPipe} from "./pipes/truncate-first-word-pipe";
 import { TestPageComponent } from './pages/test-page/test-page.component';
+import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/shop-edit-product.component';
+import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
+import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
+
 
 
 Chart.defaults.font.family = 'Lato';
@@ -128,6 +132,9 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopNavbarComponent,
     ShopNewProductComponent,
     TestPageComponent,
+    ShopEditProductComponent,
+    ShopProductEditCardComponent,
+    ShopSearchEditProductComponent,
   ],
   imports: [
     BrowserModule,
