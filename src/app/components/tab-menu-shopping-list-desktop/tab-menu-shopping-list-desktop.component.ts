@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
+import {ShoppingList} from "../../interfaces";
 
 @Component({
   selector: 'app-tab-menu-shopping-list-desktop',
@@ -9,6 +10,9 @@ import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 })
 export class TabMenuShoppingListDesktopComponent {
 
-    protected readonly faCoins = faCoins;
+  protected readonly faCoins = faCoins;
   protected readonly faCirclePlus = faCirclePlus;
+
+  @Input() shoppingList!: ShoppingList;
+
 }

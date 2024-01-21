@@ -3,13 +3,15 @@ import {GenericProduct, Price, Product} from "../../interfaces";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-product-list-item',
   templateUrl: './product-list-item.component.html',
   styleUrls: ['./product-list-item.component.scss']
 })
-export class ProductListItemComponent implements OnInit{
+export class ProductListItemComponent implements OnInit {
 
   @Input() genericProduct!: GenericProduct;
   currentCheapestProduct!: Product;
@@ -17,18 +19,32 @@ export class ProductListItemComponent implements OnInit{
 
   protected readonly faCartPlus = faCartPlus;
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, private shoppingListService: ShoppingListService) {
+  }
 
   ngOnInit(): void {
     this.currentCheapestProduct = this.genericProduct.currentCheapestProduct;
     this.currentLowestPrice = this.genericProduct.currentLowestPrice;
   }
 
-  addProduct(){
-    this.snackBar.openFromComponent(SnackBarComponent, {
-      duration: 1000,
-      panelClass: 'snack-bar'
-    });
+  addProduct() {
+    this.shoppingListService.addProduct(this.genericProduct.id).pipe(
+      catchError(error => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 2000,
+          panelClass: 'snack-bar',
+          data: {success: false, message : error.error.message}
+        });
+        return throwError(() => error);
+      })
+    ).subscribe(shoppingListResponse => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 2000,
+          panelClass: 'snack-bar',
+          data: {success: true, message : shoppingListResponse.message}
+        });
+      }
+    )
   }
 
 

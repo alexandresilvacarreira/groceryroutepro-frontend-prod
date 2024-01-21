@@ -1,3 +1,6 @@
+<div class="total-value" *ngIf="shoppingList">
+  <fa-icon [icon]="faCoins"></fa-icon><h3>Total</h3><h3 style="font-weight: 600">{{(activeTab !== "tab3" ? shoppingList.cheapestListCost : shoppingList.fastestListCost) | number:'1.2-2' :'pt'}} €</h3>
+</div>
 <div class="container">
   <div class="tabs">
     <div (click)="onTabClick('tab1')" [ngClass]="{ 'active': activeTab === 'tab1' }" class="tab"><h4>A sua selecção</h4>
@@ -7,28 +10,19 @@
     <div (click)="onTabClick('tab3')" [ngClass]="{ 'active': activeTab === 'tab3' }" class="tab"><h4>Mais rápido</h4>
     </div>
   </div>
-  <div class="content">
+  <div class="content" *ngIf="shoppingList">
     <div *ngIf="activeTab == 'tab1'" @slide>
-      <app-product-card-item></app-product-card-item>
-      <app-product-card-item></app-product-card-item>
-      <app-product-card-item></app-product-card-item>
-      <app-product-card-item></app-product-card-item>
-      <div class="plus">
-        <fa-icon [icon]="faCirclePlus"></fa-icon>
-      </div>
+      <ng-container *ngFor="let genericProductQuantity of shoppingList.genericProductQuantities">
+        <app-product-card-item [genericProductQuantity]="genericProductQuantity" (updatedShoppingList)="refreshShoppingList($event)"></app-product-card-item>
+      </ng-container>
     </div>
     <div *ngIf="activeTab == 'tab2'" @slide>
       TAB 2 COLOCAR DADOS
-      <div class="plus">
-        <fa-icon [icon]="faCirclePlus"></fa-icon>
-      </div>
     </div>
     <div *ngIf="activeTab == 'tab3'" @slide>
       TAB 3 COLOCAR DADOS
-      <div class="plus">
-        <fa-icon [icon]="faCirclePlus"></fa-icon>
-      </div>
     </div>
   </div>
+  <app-loader *ngIf="!shoppingList"></app-loader>
 </div>
 

@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+
+
+  .warning {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: auto;
+    padding: 10px;
+
+
+
+    fa-icon {
+      color: #EC8619;
+      font-size: 1.1em;
+    }
+
+  }
+
+  .dialog-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .product-name {
+      font-weight: 500;
+    }
+
+  }
+
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    &:hover {
+      cursor: pointer;
+    }
+
+    fa-icon {
+      font-size: 30px;
+    }
+
+    .xmark {
+      color: #DB3A34;
+
+    }
+
+    .check {
+      color: #4CAF50;
+    }
+}
+
+
+}

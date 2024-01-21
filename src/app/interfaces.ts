@@ -24,7 +24,7 @@ interface User {
   id: number,
   name: string,
   email: string,
-  password: string,
+  // password: string,
   includeWhiteLabel: boolean,
   maxStoreRadiusKm: number,
   vehicleFuelType: string,
@@ -34,7 +34,8 @@ interface User {
   verifiedEmail: boolean,
   confirmation: {
     code: string
-  }
+  },
+  currentShoppingList : ShoppingList
 }
 
 interface Role {
@@ -186,32 +187,27 @@ interface ShoppingListResponse {
   message?: string
 }
 
-
 interface ShoppingList {
   id: number,
   fastestListCost: number,
   cheapestListCost: number,
   creationDate: string,
   genericProductQuantities: GenericProductQuantity[],
-  fastestProductQuantities: FastestProductQuantity[],
-  cheapestProductQuantities: CheapestProductQuantity[],
+  fastestProductQuantities: ProductQuantity[],
+  cheapestProductQuantities: ProductQuantity[],
 }
 
 interface GenericProductQuantity {
   id: number,
   quantity: number,
+  value: number,
   genericProduct : GenericProduct
 }
 
-interface FastestProductQuantity {
+interface ProductQuantity {
   id: number,
   quantity: number,
-  product : Product
-}
-
-interface CheapestProductQuantity {
-  id: number,
-  quantity: number,
+  value: number,
   product : Product
 }
 
@@ -240,8 +236,7 @@ export {
   ShoppingListResponse,
   ShoppingList,
   GenericProductQuantity,
-  CheapestProductQuantity,
-  FastestProductQuantity,
+  ProductQuantity,
   PersonilizedMapMarker
 
 }

@@ -1,5 +1,15 @@
-<div class="total-value">
-  <fa-icon [icon]="faCoins"></fa-icon><h3>Total</h3><h3 style="font-weight: 600">100,62€</h3>
+<ng-container *ngIf="shoppingList && shoppingList.genericProductQuantities.length !== 0">
+  <div class="container">
+    <app-tab-menu-shopping-list [shoppingList]="shoppingList" (updateShoppingList)="refreshList($event)"></app-tab-menu-shopping-list>
+  </div>
+  <app-tab-menu-shopping-list-desktop [shoppingList]="shoppingList"></app-tab-menu-shopping-list-desktop>
+</ng-container>
+<app-loader class="loader" *ngIf="!shoppingList"></app-loader>
+<div class="empty-list-message" *ngIf="shoppingList && shoppingList.genericProductQuantities.length == 0">
+  <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
+  <h3 class="grey-text light-text">A sua lista será apresentada aqui. Toque em “+” para começar a adicionar artigos!</h3>
+  <div class="plus" [routerLink]="'/search'">
+    <fa-icon [icon]="faCirclePlus"></fa-icon>
+  </div>
 </div>
-<app-tab-menu-shopping-list></app-tab-menu-shopping-list>
-<app-tab-menu-shopping-list-desktop></app-tab-menu-shopping-list-desktop>
+

@@ -1,0 +1,8 @@
+<div class="row" *ngIf="success">
+  <fa-icon class="icon-success" [icon]="faCartPlus"></fa-icon>
+  <span>{{message}}</span>
+</div>
+<div class="row" *ngIf="!success">
+  <fa-icon class="icon-error" [icon]="faXmark"></fa-icon>
+  <span>{{message}}</span>
+</div>

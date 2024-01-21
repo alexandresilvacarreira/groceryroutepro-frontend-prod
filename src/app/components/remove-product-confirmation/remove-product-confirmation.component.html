@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="warning">
+    <fa-icon [icon]="faCircleExclamation"></fa-icon>
+    <h4 class="warning-text no-margin-text">Remover produto</h4>
+  </div>
+  <div class="dialog-body">
+    <span class="grey-text">Remover este produto da lista?</span>
+    <span class="product-name">{{ data.productName }}</span>
+  </div>
+  <div mat-dialog-actions>
+    <div class="buttons">
+      <fa-icon [icon]="faCircleXmark" class="xmark" (click)="closeDialog()"></fa-icon>
+      <fa-icon [icon]="faCircleCheck" class="check" (click)="removeProduct()"></fa-icon>
+    </div>
+  </div>
+</div>
+
+

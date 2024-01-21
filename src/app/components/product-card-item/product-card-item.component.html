@@ -1,29 +1,51 @@
-<div class="card-item">
-
+<div class="card-item" *ngIf="genericProductQuantity" [routerLink]="'/product-details/' + genericProductQuantity.genericProduct.id">
   <div class="first-row">
     <div class="name">
-      <h3>Grão-de-bico Cozido</h3>
+      <h3>{{genericProductQuantity.genericProduct.name}}</h3>
     </div>
-
     <div class="quantity">
       <div class="minus"><h4>-</h4></div>
-      <div class="number"><h4>2</h4></div>
+      <div class="number"><h4>{{genericProductQuantity.quantity}}</h4></div>
       <div class="plus"><h4>+</h4></div>
     </div>
   </div>
-
   <div class="second-row">
-    <div class="price"><h4>1,30 €</h4></div>
+    <div class="price"><h4>{{genericProductQuantity.value | number:'1.2-2' :'pt'}} €</h4></div>
   </div>
-
   <div class="third-row">
     <div class="first-column">
-      <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
-      <div class="price"><h5>0,65 € / un</h5></div>
+      <div class="grey-text cheapest-in" *ngIf="genericProductQuantity.genericProduct.chains.length > 1">Mais barato no(a):</div>
+      <div class="chain-info-row">
+        <app-chain-sticker [chainId]="genericProductQuantity.genericProduct.currentCheapestProduct.chain.id" [chainName]="genericProductQuantity.genericProduct.currentCheapestProduct.chain.name"></app-chain-sticker>
+        <div class="price"><h5>{{genericProductQuantity.genericProduct.currentLowestPricePrimaryValue | number:undefined :'pt'}} €</h5></div>
+      </div>
     </div>
-    <div class="second-column">
+    <div class="second-column" (click)="openRemoveDialog($event, genericProductQuantity.genericProduct.name, genericProductQuantity.genericProduct.id)">
       <fa-icon [icon]="faTrashCan"></fa-icon>
     </div>
   </div>
-
+</div>
+<div class="card-item" *ngIf="productQuantity" [routerLink]="'/product-details/' + productQuantity.product.genericProduct.id">
+  <div class="first-row">
+    <div class="name">
+      <h3>{{productQuantity.product.name}}</h3>
+    </div>
+    <div class="quantity">
+<!--      <div class="minus"><h4>-</h4></div>-->
+      <div class="number"><h4>{{productQuantity.quantity}}</h4></div>
+<!--      <div class="plus"><h4>+</h4></div>-->
+    </div>
+  </div>
+  <div class="second-row">
+    <div class="price"><h4>{{productQuantity.value | number:'1.2-2' :'pt'}} €</h4></div>
+  </div>
+  <div class="third-row">
+    <div class="first-column">
+      <app-chain-sticker [chainId]="productQuantity.product.chain.id" [chainName]="productQuantity.product.chain.name"></app-chain-sticker>
+      <div class="price"><h5>{{productQuantity.product.prices[productQuantity.product.prices.length-1].primaryValue | number:undefined :'pt'}} €</h5></div>
+    </div>
+    <div class="second-column">
+<!--      <fa-icon [icon]="faTrashCan"></fa-icon>-->
+    </div>
+  </div>
 </div>
