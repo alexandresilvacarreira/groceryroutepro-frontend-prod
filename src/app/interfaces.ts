@@ -178,6 +178,42 @@ interface PersonilizedMapMarker {
 }
 
 
+interface ShoppingListResponse {
+  data: {
+    shoppingList: ShoppingList
+  },
+  success: boolean,
+  message?: string
+}
+
+
+interface ShoppingList {
+  id: number,
+  fastestListCost: number,
+  cheapestListCost: number,
+  creationDate: string,
+  genericProductQuantities: GenericProductQuantity[],
+  fastestProductQuantities: FastestProductQuantity[],
+  cheapestProductQuantities: CheapestProductQuantity[],
+}
+
+interface GenericProductQuantity {
+  id: number,
+  quantity: number,
+  genericProduct : GenericProduct
+}
+
+interface FastestProductQuantity {
+  id: number,
+  quantity: number,
+  product : Product
+}
+
+interface CheapestProductQuantity {
+  id: number,
+  quantity: number,
+  product : Product
+}
 
 
 export {
@@ -201,6 +237,11 @@ export {
   GenericProduct,
   GenericProductResponse,
   GenericProductsListResponse,
+  ShoppingListResponse,
+  ShoppingList,
+  GenericProductQuantity,
+  CheapestProductQuantity,
+  FastestProductQuantity,
   PersonilizedMapMarker
 
 }

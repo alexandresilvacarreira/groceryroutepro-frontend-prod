@@ -1,8 +1,8 @@
-<div class="product-container" [routerLink]="'/product-details/' + genericProduct.id">
+<div class="product-container">
   <div *ngIf="currentLowestPrice.discountPercentage!==0" class="price-discount-sticker">-{{currentLowestPrice.discountPercentage}}
     %
   </div>
-  <div class="product-details">
+  <div class="product-details" [routerLink]="'/product-details/' + genericProduct.id">
     <div class="product-thumbnail" [style.background-image]="'url(' + currentCheapestProduct.imageUrl + ')'"></div>
     <div class="product-info">
       <span class="product-name overflow-ellipsis">{{genericProduct.name}}</span>
@@ -22,7 +22,7 @@
   </div>
   <div class="bottom-row">
     <div class="line"></div>
-    <div class="add-to-list-button">
+    <div class="add-to-list-button" (click)="addProduct()">
       <fa-icon class="dark-blue-text" [icon]="faCartPlus"></fa-icon>
       <div class="dark-blue-text overflow-ellipsis"> Adicionar</div>
     </div>

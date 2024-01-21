@@ -73,6 +73,8 @@ import { ShopProductEditCardComponent } from './components/shop-components/shop-
 import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
 
 import { ProductPriceComparisonComponent } from './components/product-price-comparison/product-price-comparison.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 Chart.defaults.font.family = 'Lato';
@@ -138,6 +140,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopProductEditCardComponent,
     ShopSearchEditProductComponent,
     ProductPriceComparisonComponent,
+    SnackBarComponent,
   ],
     imports: [
         BrowserModule,
@@ -155,9 +158,11 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         DatepickerTouchComponent,
         GoogleMapsModule,
         MatSelectModule,
+        MatSnackBarModule
     ],
   providers: [DatePipe,
     {provide: LOCALE_ID, useValue: 'pt'},
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {position: 'absolute'}}
   ],
   bootstrap: [AppComponent]
 })
