@@ -1,6 +1,5 @@
 <div class="container">
-  <div class="columns">
-
+  <div class="columns" *ngIf="shoppingList">
     <div class="column1">
       <div class="header">
         <h3>A sua selecção</h3>
@@ -8,13 +7,12 @@
       <div class="price">
         <fa-icon [icon]="faCoins"></fa-icon>
         <h3>Total</h3>
-        <h3 style="font-weight: 600">100,62€</h3>
+        <h3 style="font-weight: 600">{{(shoppingList.cheapestListCost) | number:'1.2-2' :'pt'}} €</h3>
       </div>
       <div class="content">
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
+        <ng-container *ngFor="let genericProductQuantity of shoppingList.genericProductQuantities">
+          <app-product-card-item [genericProductQuantity]="genericProductQuantity" (updatedShoppingList)="refreshShoppingList($event)"></app-product-card-item>
+        </ng-container>
       </div>
     </div>
 
@@ -25,13 +23,12 @@
       <div class="price">
         <fa-icon [icon]="faCoins"></fa-icon>
         <h3>Total</h3>
-        <h3 style="font-weight: 600">100,62€</h3>
+        <h3 style="font-weight: 600">{{(shoppingList.cheapestListCost) | number:'1.2-2' :'pt'}} €</h3>
       </div>
       <div class="content">
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
+        <ng-container *ngFor="let cheapestProductQuantity of shoppingList.cheapestProductQuantities">
+          <app-product-card-item [productQuantity]="cheapestProductQuantity"></app-product-card-item>
+        </ng-container>
       </div>
     </div>
 
@@ -42,13 +39,12 @@
       <div class="price">
         <fa-icon [icon]="faCoins"></fa-icon>
         <h3>Total</h3>
-        <h3 style="font-weight: 600">100,62€</h3>
+        <h3 style="font-weight: 600">{{(shoppingList.fastestListCost) | number:'1.2-2' :'pt'}} €</h3>
       </div>
       <div class="content">
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
-        <app-product-card-item></app-product-card-item>
+        <ng-container *ngFor="let fastestProductQuantity of shoppingList.fastestProductQuantities">
+          <app-product-card-item [productQuantity]="fastestProductQuantity"></app-product-card-item>
+        </ng-container>
       </div>
     </div>
   </div>

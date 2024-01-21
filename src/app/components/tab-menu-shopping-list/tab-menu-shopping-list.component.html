@@ -17,12 +17,15 @@
       </ng-container>
     </div>
     <div *ngIf="activeTab == 'tab2'" @slide>
-      TAB 2 COLOCAR DADOS
+      <ng-container *ngFor="let cheapestProductQuantity of shoppingList.cheapestProductQuantities">
+        <app-product-card-item [productQuantity]="cheapestProductQuantity"></app-product-card-item>
+      </ng-container>
     </div>
     <div *ngIf="activeTab == 'tab3'" @slide>
-      TAB 3 COLOCAR DADOS
+      <ng-container *ngFor="let fastestProductQuantity of shoppingList.fastestProductQuantities">
+        <app-product-card-item [productQuantity]="fastestProductQuantity"></app-product-card-item>
+      </ng-container>
     </div>
   </div>
-  <app-loader *ngIf="!shoppingList"></app-loader>
 </div>
 

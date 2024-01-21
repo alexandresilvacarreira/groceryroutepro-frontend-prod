@@ -4,9 +4,9 @@
       <h3>{{genericProductQuantity.genericProduct.name}}</h3>
     </div>
     <div class="quantity">
-      <div class="minus"><h4>-</h4></div>
+      <div class="minus" (click)="updateList($event, genericProductQuantity.genericProduct.id, false)"><h4>-</h4></div>
       <div class="number"><h4>{{genericProductQuantity.quantity}}</h4></div>
-      <div class="plus"><h4>+</h4></div>
+      <div class="plus" (click)="updateList($event, genericProductQuantity.genericProduct.id, true)"><h4>+</h4></div>
     </div>
   </div>
   <div class="second-row">
@@ -25,7 +25,7 @@
     </div>
   </div>
 </div>
-<div class="card-item" *ngIf="productQuantity" [routerLink]="'/product-details/' + productQuantity.product.genericProduct.id">
+<div class="card-item" *ngIf="productQuantity">
   <div class="first-row">
     <div class="name">
       <h3>{{productQuantity.product.name}}</h3>
@@ -41,8 +41,10 @@
   </div>
   <div class="third-row">
     <div class="first-column">
+      <div class="chain-info-row">
       <app-chain-sticker [chainId]="productQuantity.product.chain.id" [chainName]="productQuantity.product.chain.name"></app-chain-sticker>
       <div class="price"><h5>{{productQuantity.product.prices[productQuantity.product.prices.length-1].primaryValue | number:undefined :'pt'}} €</h5></div>
+      </div>
     </div>
     <div class="second-column">
 <!--      <fa-icon [icon]="faTrashCan"></fa-icon>-->

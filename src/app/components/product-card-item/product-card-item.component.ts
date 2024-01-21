@@ -4,6 +4,8 @@ import {faTrashCan} from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import {ProductQuantity, GenericProductQuantity, ShoppingList} from "../../interfaces";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RemoveProductConfirmationComponent} from "../remove-product-confirmation/remove-product-confirmation.component";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-product-card-item',
@@ -19,7 +21,7 @@ export class ProductCardItemComponent {
   @Input() productQuantity?:ProductQuantity;
   @Output() updatedShoppingList = new EventEmitter<ShoppingList>;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private shoppingListService: ShoppingListService) {
   }
 
   openRemoveDialog(event:Event, productName:string, genericProductId : number){
@@ -31,15 +33,40 @@ export class ProductCardItemComponent {
     let dialogRef = this.dialog.open(RemoveProductConfirmationComponent, {
       data: { productName, genericProductId },
     });
-
     dialogRef.afterClosed().subscribe(updatedList => {
       this.updatedShoppingList.emit(updatedList);
     })
-
   }
 
-  refreshShoppingList(){
+  updateList(event:Event, genericProductId : number, add = true){
 
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    event.preventDefault();
+
+    if (add) {
+      this.shoppingListService.addProduct(genericProductId).pipe(
+        catchError(error => {
+          console.error(error)
+          return throwError(() => error);
+        })
+      ).subscribe(shoppingListResponse => {
+        this.updatedShoppingList.emit(shoppingListResponse.data.shoppingList);
+      })
+    } else {
+      if (this.genericProductQuantity?.quantity === 1) {
+        this.openRemoveDialog(event, this.genericProductQuantity.genericProduct.name, this.genericProductQuantity.genericProduct.id);
+      } else {
+        this.shoppingListService.removeProduct(genericProductId).pipe(
+          catchError(error => {
+            console.error(error)
+            return throwError(() => error);
+          })
+        ).subscribe(shoppingListResponse => {
+          this.updatedShoppingList.emit(shoppingListResponse.data.shoppingList);
+        })
+      }
+    }
   }
 
 }

@@ -2,7 +2,7 @@
   <div class="container">
     <app-tab-menu-shopping-list [shoppingList]="shoppingList" (updateShoppingList)="refreshList($event)"></app-tab-menu-shopping-list>
   </div>
-  <app-tab-menu-shopping-list-desktop [shoppingList]="shoppingList"></app-tab-menu-shopping-list-desktop>
+  <app-tab-menu-shopping-list-desktop [shoppingList]="shoppingList" (updateShoppingList)="refreshList($event)"></app-tab-menu-shopping-list-desktop>
 </ng-container>
 <app-loader class="loader" *ngIf="!shoppingList"></app-loader>
 <div class="empty-list-message" *ngIf="shoppingList && shoppingList.genericProductQuantities.length == 0">

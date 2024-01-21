@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 import {ShoppingList} from "../../interfaces";
@@ -13,6 +13,11 @@ export class TabMenuShoppingListDesktopComponent {
   protected readonly faCoins = faCoins;
   protected readonly faCirclePlus = faCirclePlus;
 
-  @Input() shoppingList!: ShoppingList;
+  @Input() shoppingList?: ShoppingList;
+  @Output() updateShoppingList = new EventEmitter<ShoppingList>;
+
+  refreshShoppingList(shoppingListEvent: ShoppingList) {
+    this.updateShoppingList.emit(shoppingListEvent);
+  }
 
 }

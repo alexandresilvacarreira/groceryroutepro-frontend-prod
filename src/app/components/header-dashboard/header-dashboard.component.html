@@ -6,14 +6,13 @@
           <img src="assets/images/gorceryroutepro_logo_white.svg"/>
         </div>
         <div class="title">
-<!--          <h3>Olá,</h3>-->
-          <h2 *ngIf="isUser(user)">{{user!.name | truncateFirstWord}} </h2>
+          <h3 *ngIf="isUser(user)">Olá, {{user!.name | truncateFirstWord}} </h3>
         </div>
         <!--        <h2 *ngIf="isUser(user) && user?.name">{{ user!.name | truncateFirstWord}}  </h2>-->
       </ng-container>
     </div>
-    <fa-icon [icon]="faUserGear"></fa-icon>
-    <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
+<!--    <fa-icon [icon]="faUserGear"></fa-icon>-->
+    <fa-icon class="icon-button" [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
   </div>
 
 </div>

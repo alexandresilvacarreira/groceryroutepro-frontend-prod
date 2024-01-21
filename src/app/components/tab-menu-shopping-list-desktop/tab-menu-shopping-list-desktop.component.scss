@@ -38,6 +38,12 @@
 
 .container {
   padding-bottom: 10px;
+  margin-bottom: 40px;
+
+  .content {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
 
   * h3 {
     font-weight: 400;

@@ -1,42 +1,45 @@
 <div class="desktop-dashboard">
-
   <div class="all-wrapper">
-    <div class="logo">
-      <img src="assets/images/gorceryroutepro_logo_white.svg"/>
-    </div>
-
-    <div class="options-wrapper">
-      <div class="icons-wrapper">
-
-        <div class="option" [routerLink]="'/dashboard'" [routerLinkActive]="'active'">
-          <fa-icon [icon]="faUser"></fa-icon>
-          <h4 class="icon-name">Dashboard</h4>
-        </div>
-
-        <div class="option" [routerLink]="'/shopping-list'" [routerLinkActive]="'active'">
-          <fa-icon [icon]="faCartShopping"></fa-icon>
-          <h4 class="icon-name">Lista de Compras</h4>
-        </div>
-
-        <div class="option" [routerLink]="'/search'" [routerLinkActive]="'active'">
-          <fa-icon [icon]="faSearch"></fa-icon>
-          <h4 class="icon-name">Pesquisar</h4>
-        </div>
-
-        <div class="option" [routerLink]="'/routes'" [routerLinkActive]="'active'">
-          <fa-icon [icon]="faRoute"></fa-icon>
-          <h4 class="icon-name">Rotas</h4>
-        </div>
-
-        <div class="tab-wrapper">
-          <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
-            <h2 *ngIf="isUser(user)">Olá, {{user!.name | truncateFirstWord}} </h2>
+    <div class="logo-and-icons">
+      <div class="logo">
+        <img src="assets/images/gorceryroutepro_logo_white.svg"/>
+      </div>
+      <div class="options-wrapper">
+        <div class="icons-wrapper">
+          <div class="option" [routerLink]="'/dashboard'" [routerLinkActive]="'active'">
+            <fa-icon [icon]="faUser"></fa-icon>
+            <h4 class="icon-name">Dashboard</h4>
           </div>
-          <fa-icon [icon]="faUserGear" [mask]="faCircle" [transform]={size:8}  ></fa-icon>
-          <fa-icon [icon]="faArrowRightFromBracket" [mask]="faCircle" [transform]={size:8} (click)="logout()"></fa-icon>
+
+          <div class="option" [routerLink]="'/shopping-list'" [routerLinkActive]="'active'">
+            <fa-icon [icon]="faCartShopping"></fa-icon>
+            <h4 class="icon-name">Lista de Compras</h4>
+          </div>
+
+          <div class="option" [routerLink]="'/search'" [routerLinkActive]="'active'">
+            <fa-icon [icon]="faSearch"></fa-icon>
+            <h4 class="icon-name">Pesquisar</h4>
+          </div>
+          <div class="option" [routerLink]="'/routes'" [routerLinkActive]="'active'">
+            <fa-icon [icon]="faRoute"></fa-icon>
+            <h4 class="icon-name">Rotas</h4>
+          </div>
         </div>
       </div>
-
+    </div>
+    <div class="greeting-and-button">
+      <div class="options-wrapper">
+        <div class="icons-wrapper">
+          <div class="tab-wrapper">
+            <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
+              <h3 *ngIf="isUser(user)">Olá, {{ user!.name | truncateFirstWord }} </h3>
+            </div>
+            <!--          <fa-icon [icon]="faUserGear" [mask]="faCircle" [transform]={size:8}  ></fa-icon>-->
+            <fa-icon class="icon-button" [icon]="faArrowRightFromBracket" [mask]="faCircle" [transform]={size:8}
+                     (click)="logout()"></fa-icon>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
