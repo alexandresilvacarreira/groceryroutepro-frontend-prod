@@ -15,10 +15,25 @@ import {TruncateFirstWordPipe} from "../../../pipes/truncate-first-word-pipe";
 })
 export class ShopHeaderDashboardComponent {
 
+  chainId!: number;
+  chainName: string[]=[];
+  currentUser!: User;
+  matriz: number[] = [];
+
   protected readonly faUserGear = faUserGear;
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
 
   constructor(private router: Router, public userService: UserService, private authService: AuthService) {
+  }
+
+  ngOnInit(): void {
+
+    this.userService.getCurrentUser().subscribe(user => {
+      this.currentUser = user as User;
+      this.matriz = this.currentUser?.stores.map(store => store.id);
+      this.chainName= this.currentUser?.stores.map(store => store.name);
+      this.chainId = Number(this.matriz[0]);
+    });
   }
 
   logout() {

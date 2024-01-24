@@ -1,25 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {faArrowLeft, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {ProductsService} from "../../../services/products.service";
-import {Product, ProductWPrice, User} from "../../../interfaces";
+import {Category, GenericProduct, Price, Product, ProductData, ProductWPrice, User} from "../../../interfaces";
 import {UserService} from "../../../services/user.service";
-import {timestamp} from "rxjs";
-import {Chain} from "@angular/compiler";
+import {catchError, throwError} from "rxjs";
+
+
 
 @Component({
     selector: 'app-shop-new-product',
     templateUrl: './shop-new-product.component.html',
-    styleUrls: ['./shop-new-product.component.scss']
+    styleUrls: ['./shop-new-product.component.scss'],
+
+
 })
 export class ShopNewProductComponent implements OnInit {
 
     form!: FormGroup;
-    storeIds!: number;
+    chainId!: number;
     currentUser!: User;
     userId!: number;
-    matriz: number[]=[];
-
+    matriz: number[] = [];
+    listCategories: Category[] = [];
 
     readonly faArrowLeft = faArrowLeft;
     readonly faCheck = faCheck;
@@ -30,41 +33,77 @@ export class ShopNewProductComponent implements OnInit {
     ngOnInit(): void {
         this.userService.getCurrentUser().subscribe(user => {
             this.currentUser = user as User;
-            this.matriz =this.currentUser?.stores.map(store => store.id);
-            this.storeIds=Number(this.matriz[0]);
+            this.matriz = this.currentUser?.stores.map(store => store.id);
+            this.chainId = Number(this.matriz[0]);
         });
-
         this.userService.getCurrentUser().subscribe(user => {
             this.currentUser = user as User;
             this.userId = this.currentUser?.id
-        })
-
+        });
+        this.productsService.getCategories().subscribe((categories: Category[]) => {
+                this.listCategories = categories;
+            }
+        );
 
         this.form = this.formBuilder.group({
             name: [''],
             quantity: [''],
-            price_primary: [null],
-            price_secondary: [null],
-            category: [''],
             brand: [''],
             chain: {
-                id:this.storeIds,
+                id: this.chainId,
             },
             imageUrl: [''],
             date: [''],
-            edited_by: this.userId
+
+            productCategories: [[]],
+
+            primaryValue: [''],
+            primaryUnit: [''],
+            secondaryValue: [''],
+            secondaryUnit: [''],
+            priceWoDiscount: [''],
         });
     }
 
     onSubmit() {
-        let productData: Product = this.form.value;
+        let selectedCategoryIds = this.form.get("productCategories")?.value as number[];
+        let selectedCategories: Category[] = this.listCategories.filter(category => selectedCategoryIds.includes(category.id));
+
+        let product: Product = {
+            id: 0,
+            name: this.form.get("name")?.value,
+            brand: this.form.get("brand")?.value,
+            quantity: this.form.get("quantity")?.value,
+            imageUrl: this.form.get("imageUrl")?.value,
+            chain: this.form.get("chain")?.value,
+            categories: selectedCategories,
+            genericProduct: null as any,
+            cheapestForGenericProduct: null as any,
+            prices: null as any,
+
+        }
+
+        let price: Price = {
+            id: 0,
+            primaryValue: this.form.get("primaryValue")?.value,
+            primaryUnit: this.form.get("primaryUnit")?.value,
+            secondaryValue: this.form.get("secondaryValue")?.value,
+            secondaryUnit: this.form.get("secondaryUnit")?.value,
+            discountPercentage: this.form.get("discountPercentage")?.value,
+            priceWoDiscount: this.form.get("priceWoDiscount")?.value,
+            collectionDate: this.form.get("collectionDate")?.value,
+            genericProduct: null as any,
+        }
+
+        let productData: ProductData = {product: product, price: price};
+
         if (this.form.valid) {
-            this.productsService.setNewProduct(productData).subscribe((response) => {
-                if (response.success) {
-                    console.log("Produto adicionado com sucesso:", response.message);
-                } else {
-                    console.error("Erro ao adicionar produto:", response.message);
-                }
+            this.productsService.createNewProduct(productData).pipe(
+                catchError(error => {
+                    console.error(error);
+                    return throwError(() => error);
+                })).subscribe((response) => {
+                console.log("Produto adicionado com sucesso");
             });
         }
     }

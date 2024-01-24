@@ -4,12 +4,15 @@
   <app-desktop-navbar *ngIf="!hideNavbar"></app-desktop-navbar>
 </ng-container>
 <app-header-dashboard *ngIf="currentRoute==='/dashboard'"></app-header-dashboard>
+<!--TODO verifica se fiz bem isto do dashboar da loja :(-->
+<app-shop-desktop-navbar *ngIf="currentRoute==='/shop-dashboard' ||currentRoute==='/shop-edit-product' || currentRoute==='/shop-new-product' || currentRoute==='/shop-search-edit-product' "></app-shop-desktop-navbar>
+<app-shop-header-dashboard *ngIf="currentRoute==='/shop-dashboard' ||currentRoute==='/shop-edit-product' || currentRoute==='/shop-new-product' || currentRoute==='/shop-search-edit-product' "></app-shop-header-dashboard>
 <app-header-page *ngIf="!hideHeaderPage && pageTitle" [title]="pageTitle"></app-header-page>
 <div class="wrapper">
 <router-outlet></router-outlet>
 </div>
 <app-mobile-navbar *ngIf="!hideNavbar"></app-mobile-navbar>
-
+<app-shop-navbar *ngIf="currentRoute==='/shop-dashboard' ||currentRoute==='/shop-edit-product' || currentRoute==='/shop-new-product' || currentRoute==='/shop-search-edit-product'  "></app-shop-navbar>
 
 
 

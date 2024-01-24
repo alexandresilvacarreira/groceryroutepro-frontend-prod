@@ -1,28 +1,90 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <div>
-        <label for="name">Nome:</label>
-        <input id="name" type="text" formControlName="name">
-    </div>
-    <div>
-        <label for="quantity">Quantidade:</label>
-        <input id="quantity" type="text" formControlName="quantity">
-    </div>
-    <div>
-        <label for="pricePrimaryValue">Preço Primário:</label>
-        <input id="pricePrimaryValue" type="number" formControlName="pricePrimaryValue">
-    </div>
-    <div>
-        <label for="priceSecondaryValue">Preço Secundário:</label>
-        <input id="priceSecondaryValue" type="number" formControlName="priceSecondaryValue">
-    </div>
-    <div>
-        <label for="priceSecondaryUnit">Unidade Secundária:</label>
-        <input id="priceSecondaryUnit" type="text" formControlName="priceSecondaryUnit">
-    </div>
-    <div>
-        <label for="imageUrl">URL da Imagem:</label>
-        <input id="imageUrl" type="text" formControlName="imageUrl">
-    </div>
+        <div class="form-group">
+            <label for="name"><h4>Nome:</h4></label>
+            <input type="text" id="name" formControlName="name" placeholder="Introduz o nome do produto"
+                   class="form-control">
+        </div>
 
-    <button type="submit">Salvar Alterações</button>
+        <div class="form-group">
+            <label for="quantity"><h4>Quantidade:</h4></label>
+            <input type="text" id="quantity" formControlName="quantity" placeholder="Introduz a quantidade do produto"
+                   class="form-control">
+        </div>
 
+        <div class="form-group">
+            <label for="primaryUnit"><h4>Unidade Primária:</h4></label>
+            <select type="text" id="primaryUnit" formControlName="primaryUnit"
+                    placeholder="Introduz unidade primária (ex.:un, kg, lt)" class="form-control">
+                <option value="Un">Un</option>
+                <option value="Kg">Kg</option>
+                <option value="Lt">Lt</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priceWoDiscount"><h4>Preço sem desconto (caso se aplique):</h4></label>
+            <input type="number" id="priceWoDiscount" formControlName="priceWoDiscount"
+                   placeholder="Introduz preço sem desconto" class="form-control">
+            <div class="invalid-input-warning"
+                 *ngIf="form.get('priceWoDiscount')?.value <= form.get('primaryValue')?.value && form.get('priceWoDiscount')?.dirty && form.get('priceWoDiscount')?.touched">
+                <p class="text-danger">O preço sem desconto não pode ser maior ou igual ao preço primário.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="primaryValue"><h4>Preço Primário:</h4></label>
+            <input type="number" id="primaryValue" formControlName="primaryValue"
+                   placeholder="Introduz preço do produto" class="form-control">
+            <div class="invalid-input-warning"
+                 *ngIf="form.get('primaryValue')?.value >= form.get('priceWoDiscount')?.value && form.get('primaryValue')?.dirty && form.get('primaryValue')?.touched">
+                <p class="text-danger">O preço primário não pode ser maior ou igual ao preço sem desconto.</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="secondaryValue"><h4>Preço Secundário:</h4></label>
+            <input type="number" id="secondaryValue" formControlName="secondaryValue"
+                   placeholder="Introduz preço por quantidade" class="form-control">
+            <div class="invalid-input-warning"
+                 *ngIf="form.get('secondaryValue')?.value < form.get('primaryValue')?.value && form.get('secondaryValue')?.dirty && form.get('secondaryValue')?.touched">
+                <p class="text-danger">O preço secundário não pode ser inferior ao preço primário.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="secondaryUnit"><h4>Unidade Secundária: </h4></label>
+            <select type="text" id="secondaryUnit" formControlName="secondaryUnit"
+                    placeholder="Introduz unidade secundária (ex.:un, lt, kg)" class="form-control">
+                <option value="Un">Un</option>
+                <option value="Kg">Kg</option>
+                <option value="Lt">Lt</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field>
+                <mat-select placeholder="Selecione as Categorias" formControlName="productCategories" multiple>
+                    <mat-option *ngFor="let category of listCategories"
+                                [value]="category.id">{{category.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <label for="brand"><h4>Marca:</h4></label>
+            <input type="text" id="brand" formControlName="brand" placeholder="Introduz a marca" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="image_url"><h4>URL da Imagem:</h4></label>
+            <input type="text" id="image_url" formControlName="imageUrl" placeholder="Introduz o URL da imagem"
+                   class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Publicar</button>
+
+    </form>
+</div>

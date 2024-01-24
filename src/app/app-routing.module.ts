@@ -51,12 +51,14 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login")], data: {title: 'Histórico'}},
   {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login")]},
   {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-search-edit-product', component: ShopSearchEditProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'create-route', component: CreateRouteComponent},
   {path: 'test-page', component: TestPageComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [roleGuard("STORE")]},
+
+  {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
+  {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
+  {path: 'shop-search-edit-product', component: ShopSearchEditProductComponent, canActivate: [buildGuard("/login")]},
+
 
   {path: '**', redirectTo: '/error', pathMatch: 'full'},
 

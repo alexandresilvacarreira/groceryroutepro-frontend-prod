@@ -6,12 +6,11 @@
           <img src="assets/images/gorceryroutepro_logo_white.svg"/>
         </div>
         <div class="title">
-          <h3>Olá,</h3>
-          <h2 *ngIf="isUser(user)">{{user!.name | truncateFirstWord}} </h2>
+          <h3 *ngIf="isUser(user)">Olá, {{user!.name | truncateFirstWord}} </h3>
         </div>
       </ng-container>
     </div>
-    <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+    <app-chain-sticker class="chain" [chainId]="chainId" chainName="{{chainName}}"></app-chain-sticker>
     <fa-icon [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
   </div>
 </div>

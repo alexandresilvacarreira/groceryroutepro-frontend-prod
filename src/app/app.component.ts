@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   hideNavbar?:boolean;
   pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/request-new-password", "/forgot-password", "/forgot-password-confirm", "/change-password",
-    "/change-password-confirm", "/error"];
+    "/change-password-confirm", "/error", "/shop-dashboard", "/shop-new-product", "/shop-edit-product", "/shop-search-edit-product"];
   hideHeaderPage?:boolean;
   productDetailsRoute = /^\/product-details\/.*/;
   changePasswordRoute = /^\/change-password\/.*/;
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     "/dashboard", "/product-details/", "request-new-password", '/forgot-password', '/change-password',
   '/change-password-confirm', "/error", "create-route"];
   pageTitle?:string;
+
 
   constructor(private router: Router, private navigationService:NavigationService, private activatedRoute : ActivatedRoute) {
   }

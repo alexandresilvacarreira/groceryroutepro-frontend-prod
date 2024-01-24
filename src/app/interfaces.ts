@@ -91,6 +91,10 @@ interface ProductDetails {
   success: boolean;
   errorMessage: string;
 }
+interface ProductData{
+  product: Product;
+  price: Price;
+}
 
 interface ProductWPrice {
   name: string;
@@ -238,6 +242,7 @@ export {
   ShoppingList,
   GenericProductQuantity,
   ProductQuantity,
+  ProductData,
   PersonilizedMapMarker
 
 }

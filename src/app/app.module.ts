@@ -71,12 +71,17 @@ import {MatSelectModule} from "@angular/material/select";
 import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/shop-edit-product.component';
 import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
 import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
+import { ShopEditFilterComponent } from './components/shop-components/shop-edit-filter/shop-edit-filter.component';
+import {MatListModule} from "@angular/material/list";
+import {MatOptionModule} from "@angular/material/core";
+
 
 import { ProductPriceComparisonComponent } from './components/product-price-comparison/product-price-comparison.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import { RemoveProductConfirmationComponent } from './components/remove-product-confirmation/remove-product-confirmation.component';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { ShopDesktopNavbarComponent } from './components/shop-components/shop-desktop-navbar/shop-desktop-navbar.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -141,29 +146,34 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopEditProductComponent,
     ShopProductEditCardComponent,
     ShopSearchEditProductComponent,
+    ShopEditFilterComponent,
     ProductPriceComparisonComponent,
     SnackBarComponent,
     RemoveProductConfirmationComponent,
+    ShopDesktopNavbarComponent,
   ],
-    imports: [
-        BrowserModule,
-        FontAwesomeModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        NgChartsModule,
-        InfiniteScrollModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        FormsModule,
-        MatInputModule,
-        DatepickerTouchComponent,
-        GoogleMapsModule,
-        MatSelectModule,
-        MatSnackBarModule,
-        MatDialogModule
-    ],
+  imports: [
+    BrowserModule,
+    FontAwesomeModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgChartsModule,
+    InfiniteScrollModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    DatepickerTouchComponent,
+    GoogleMapsModule,
+    MatListModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule
+  ],
+
   providers: [DatePipe,
     {provide: LOCALE_ID, useValue: 'pt'},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {position: 'absolute'}}
