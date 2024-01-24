@@ -2,10 +2,8 @@
 <div *ngIf="products">
   <div class="carousel">
     <ng-container *ngFor="let product of products; let i = index">
-
       <div class="carousel_frame" *ngIf="i === productIndex" @slide
-           [routerLink]="'/product-details/' + product.productId">
-
+           [routerLink]="'/product-details/' + product.genericProductId">
         <div class="image">
           <img [src]="product.imageUrl">
         </div>
@@ -26,10 +24,7 @@
           </div>
         </div>
         <div class="discount"><h5>-{{product.priceDiscountPercentage}}%</h5></div>
-
-
       </div>
-
     </ng-container>
   </div>
 </div>

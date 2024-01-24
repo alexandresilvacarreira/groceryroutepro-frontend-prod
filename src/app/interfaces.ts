@@ -96,6 +96,7 @@ interface ProductWPrice {
   name: string;
   chain: string;
   chainId: number;
+  genericProductId: number;
   priceWoDiscount: string;
   imageUrl: string;
   quantity: string;

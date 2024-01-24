@@ -8,29 +8,29 @@
   <div class="signup-form" [formGroup]="form">
     <div class="form-field">
       <label class="form-label">Nome</label>
-      <input class="form-input" label="name" type="text" minlength="5" placeholder="Introduza o seu nome" required
+      <input class="form-input" label="name" type="text" minlength="5" placeholder="Introduz o teu nome" required
              formControlName="name"/>
       <div class="invalid-input-warning" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty && form.get('name')?.touched">
-        Nome inválido. Por favor introduza um nome válido (min. 5 caracteres, apenas texto).
+        Nome inválido. Por favor introduz um nome válido (min. 5 caracteres, apenas texto).
       </div>
     </div>
     <div class="form-field">
       <label class="form-label">Email</label>
-      <input class="form-input" label="email" type="email" placeholder="Introduza o seu e-mail" required
+      <input class="form-input" label="email" type="email" placeholder="Introduz o teu e-mail" required
              formControlName="email"/>
       <div class="invalid-input-warning" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty && form.get('email')?.touched">
-        Email inválido. Por favor introduza um email no formato “nome@exemplo.com”.
+        Email inválido. Por favor introduz um email no formato “nome@exemplo.com”.
       </div>
     </div>
     <div class="form-field">
       <label class="form-label">Password</label>
       <div class="password-container">
-        <input class="form-input" label="password" [type]="showPassword ? 'text' : 'password'" placeholder="Introduza uma password" required
+        <input class="form-input" label="password" [type]="showPassword ? 'text' : 'password'" placeholder="Introduz uma password" required
                formControlName="password"/>
         <fa-icon class="password-icon" [icon]="showPassword ? faEye : faEyeSlash" (mousedown)="toggleShowPassword()" (mouseup)="toggleShowPassword()"></fa-icon>
       </div>
       <div class="password-container">
-        <input class="form-input" label="confirmPassword" [type]="showPasswordConfirm ? 'text' : 'password'" placeholder="Confirme a password" required
+        <input class="form-input" label="confirmPassword" [type]="showPasswordConfirm ? 'text' : 'password'" placeholder="Confirma a password" required
                formControlName="confirmPassword"/>
         <fa-icon class="password-icon" [icon]="showPasswordConfirm ? faEye : faEyeSlash" (mousedown)="toggleShowPassword(true)" (mouseup)="toggleShowPassword(true)"></fa-icon>
       </div>
@@ -44,6 +44,6 @@
   </div>
   <button class="dark-blue-button" (click)="signup()">Registar</button>
   <div class="check-inputs-message" *ngIf="showMessage" @fade>
-    <p class="warning-text">Verifique o preenchimento dos campos</p>
+    <p class="warning-text">Verifica o preenchimento dos campos</p>
   </div>
 </div>

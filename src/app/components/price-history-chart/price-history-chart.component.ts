@@ -68,7 +68,7 @@ export class PriceHistoryChartComponent implements OnInit {
         case "pingo doce":
           backgroundColor = "rgba(119, 184, 34, 0.2)";
           borderColor = "rgba(119, 184, 34, 1)";
-          pointBackgroundColor = "rgb(255,255,255,1)";
+          pointBackgroundColor = "rgba(0, 0, 0, 1)";
           break;
       }
 
