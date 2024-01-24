@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   hideNavbar?:boolean;
   pagesWithoutNavbar = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/request-new-password", "/forgot-password", "/forgot-password-confirm", "/change-password",
-    "/change-password-confirm", "/error", "/shop-dashboard", "/shop-new-product", "/shop-edit-product", "/shop-search-edit-product"];
+    "/change-password-confirm", "/error", "/shop-dashboard", "/shop-new-product", "/shop-edit-product/", "/shop-search-edit-product"];
   hideHeaderPage?:boolean;
   productDetailsRoute = /^\/product-details\/.*/;
   changePasswordRoute = /^\/change-password\/.*/;
@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
         if (event instanceof NavigationEnd){
           this.previousRoute = this.currentRoute;
           this.currentRoute = event.url;
-          this.hideNavbar = this.pagesWithoutNavbar.includes(this.currentRoute) || this.changePasswordRoute.test(this.currentRoute)
+          let isShopRoute = this.currentRoute.startsWith('/shop-');
+          this.hideNavbar = isShopRoute ||
+              this.pagesWithoutNavbar.includes(this.currentRoute) || this.changePasswordRoute.test(this.currentRoute)
           || this.verifyAccountRoute.test(this.currentRoute); /*|| productDetailsRoute.test(this.currentRoute)*/;
 
           this.hideHeaderPage = this.pagesWithoutHeader.includes(this.currentRoute) || this.productDetailsRoute.test(this.currentRoute)

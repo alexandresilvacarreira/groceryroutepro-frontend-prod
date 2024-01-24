@@ -29,6 +29,7 @@ export class DesktopNavbarComponent {
   constructor(private router : Router, public userService: UserService, private authService : AuthService) {
   }
 
+
   logout() {
     this.authService.logout()
       .pipe(
