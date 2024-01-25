@@ -83,6 +83,7 @@ import { RemoveProductConfirmationComponent } from './components/remove-product-
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { ShopDesktopNavbarComponent } from './components/shop-components/shop-desktop-navbar/shop-desktop-navbar.component';
 import { ShopNotificationsComponent } from './pages/Shop-Pages/shop-notifications/shop-notifications.component';
+import { RouteMainCardComponent } from './components/route-main-card/route-main-card.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -153,6 +154,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     RemoveProductConfirmationComponent,
     ShopDesktopNavbarComponent,
     ShopNotificationsComponent,
+    RouteMainCardComponent,
   ],
   imports: [
     BrowserModule,
