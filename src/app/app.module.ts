@@ -70,7 +70,6 @@ import { TestPageComponent } from './pages/test-page/test-page.component';
 import {MatSelectModule} from "@angular/material/select";
 import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/shop-edit-product.component';
 import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
-import { ShopSearchEditProductComponent } from './pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component';
 import { ShopEditFilterComponent } from './components/shop-components/shop-edit-filter/shop-edit-filter.component';
 import {MatListModule} from "@angular/material/list";
 import {MatOptionModule} from "@angular/material/core";
@@ -147,7 +146,6 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     TestPageComponent,
     ShopEditProductComponent,
     ShopProductEditCardComponent,
-    ShopSearchEditProductComponent,
     ShopEditFilterComponent,
     ProductPriceComparisonComponent,
     SnackBarComponent,

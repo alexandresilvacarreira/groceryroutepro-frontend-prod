@@ -1,7 +1,9 @@
 <div class="container">
   <div class="wrapper">
-    <div class="title">
 
+    <div class="title">
+      <fa-icon [icon]="faLocationArrow"></fa-icon>
+      <h3>Mais barata</h3>
     </div>
 
     <div class="row-details">
@@ -23,28 +25,28 @@
 
       <div class="column">
         <div class="icon-column">
-          <fa-icon [icon]="faCoins"></fa-icon>
+          <fa-icon [icon]="faPiggyBank"></fa-icon>
         </div>
         <div class="data-column">
           <div class="first-row">
-            <h5>total:</h5>
+            <h5>poupa:</h5>
           </div>
           <div class="second-row">
-            <h4>32,33€</h4>
+            <h4>-2,33€</h4>
           </div>
         </div>
       </div>
 
       <div class="column">
         <div class="icon-column">
-          <fa-icon [icon]="faCoins"></fa-icon>
+          <fa-icon [icon]="faStopwatch"></fa-icon>
         </div>
         <div class="data-column">
           <div class="first-row">
-            <h5>total:</h5>
+            <h5>tempo:</h5>
           </div>
           <div class="second-row">
-            <h4>32,33€</h4>
+            <h4>15min</h4>
           </div>
         </div>
       </div>
@@ -53,22 +55,23 @@
 
     <div class="chains">
       <div class="label-column">
-        <h5>lojas:</h5>
+        <h5>Lojas:</h5>
       </div>
       <div class="chains-column">
-        <app-chain-sticker></app-chain-sticker>
-        <app-chain-sticker></app-chain-sticker>
-        <app-chain-sticker></app-chain-sticker>
+        <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
+        <app-chain-sticker [chainId]="4" chainName="pingo doce"></app-chain-sticker>
+        <app-chain-sticker [chainId]="1" chainName="Lidl"></app-chain-sticker>
       </div>
     </div>
 
-    <div class="map">
-
+    <div class="map" *ngIf="showMap">
+      <img src="../../../assets/images-teste/img.png"/>
     </div>
 
-    <div class="map">
-
-    </div>
+    <button type="submit" class="btn btn-primary">
+      <fa-icon [icon]="faLocationArrow"></fa-icon>
+      <h3>Iniciar viagem</h3>
+    </button>
 
   </div>
 </div>

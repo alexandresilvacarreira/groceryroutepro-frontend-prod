@@ -21,7 +21,7 @@ import {HistoryProductsComponent} from "./pages/history-products/history-product
 import {HistoryRoutesComponent} from "./pages/history-routes/history-routes.component";
 import {CreateRouteComponent} from "./pages/create-route/create-route.component";
 import {ShopEditProductComponent} from "./pages/Shop-Pages/shop-edit-product/shop-edit-product.component";
-import {ShopSearchEditProductComponent} from "./pages/Shop-Pages/shop-search-edit-product/shop-search-edit-product.component";
+
 import {TestPageComponent} from "./pages/test-page/test-page.component";
 import {
   ShopHeaderDashboardComponent
@@ -58,7 +58,6 @@ const routes: Routes = [
   {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-search-edit-product', component: ShopSearchEditProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login")]},
 
   {path: '**', redirectTo: '/error', pathMatch: 'full'},
