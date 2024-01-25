@@ -3,6 +3,7 @@ import {Price, Product} from "../../interfaces";
 import {ChartDataset, ChartOptions, ChartType, Chart, ChartConfiguration, ChartEvent,} from 'chart.js';
 import {DatePipe} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {distinctUntilChanged, of, startWith, switchAll, switchMap, tap} from "rxjs";
 
 
 @Component({
@@ -14,26 +15,22 @@ export class PriceHistoryChartComponent implements OnInit {
 
   @Input() products!: Product[];
   chainsList!: string[];
-  chainsFormControl = new FormControl('');
+  chainsFormControl: FormControl = new FormControl("");
   priceChartData: { chain: string, priceData: ChartConfiguration['data'] }[] = [];
 
   constructor(private datePipe: DatePipe) {
+
   }
 
   ngOnInit(): void {
 
     this.chainsList = this.products.map(p => p.chain.name);
     this.generateDatasets(this.products);
-    // this.chainsFormControl.setValue(this.chainsList[0]);
 
     this.chainsFormControl.valueChanges
       .subscribe(selectedChain => {
-        if (selectedChain !== null) {
-          let updatedData = this.priceChartData.find(d => d.chain === selectedChain)?.priceData;
-          if (updatedData) {
-            this.lineChartData = updatedData;
-          }
-        }
+        let updatedData = this.priceChartData.find(d => d.chain === selectedChain)!.priceData;
+        this.lineChartData = updatedData;
       })
   }
 
@@ -46,7 +43,7 @@ export class PriceHistoryChartComponent implements OnInit {
       let pointBackgroundColor = "";
       switch (product.chain.name) {
         case "auchan":
-          backgroundColor = "rgba(246, 246, 246, 1)";
+          backgroundColor = "rgba(246, 246, 246, 0.5)";
           borderColor = "rgba(219, 58, 52, 1)";
           pointBackgroundColor = "rgba(219, 58, 52, 1)";
           break;
@@ -56,9 +53,9 @@ export class PriceHistoryChartComponent implements OnInit {
           pointBackgroundColor = "rgba(219, 58, 52, 1)";
           break;
         case "intermarché":
-          backgroundColor = "rgb(255,255,255,1)";
-          borderColor = "rgba(0, 0, 0, 1)";
-          pointBackgroundColor = "rgba(219, 58, 52, 1)";
+          backgroundColor = "rgb(255,255,255,0.5)";
+          borderColor = "rgba(219, 58, 52, 1)";
+          pointBackgroundColor = "rgba(0, 0, 0, 1)";
           break;
         case "minipreço":
           backgroundColor = "rgba(21, 101, 192, 0.2)";
@@ -69,6 +66,7 @@ export class PriceHistoryChartComponent implements OnInit {
           backgroundColor = "rgba(119, 184, 34, 0.2)";
           borderColor = "rgba(119, 184, 34, 1)";
           pointBackgroundColor = "rgba(0, 0, 0, 1)";
+          ;
           break;
       }
 

@@ -52,5 +52,9 @@
     <h3 class="subtitle">Histórico de preço</h3>
     <app-price-history-chart [products]="products"></app-price-history-chart>
   </div>
+  <div class="add-to-list-button" (click)="addProduct()">
+    <fa-icon class="dark-blue-text" [icon]="faCartPlus"></fa-icon>
+    <div class="dark-blue-text overflow-ellipsis"> Adicionar à lista</div>
+  </div>
 
 </div>

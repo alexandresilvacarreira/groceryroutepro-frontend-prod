@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@fortawesome/free-solid-svg-icons",
+              "@fortawesome/free-regular-svg-icons"
+            ],
             "outputPath": "dist/groceryroutepro-angular-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",

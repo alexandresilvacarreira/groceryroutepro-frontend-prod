@@ -1,10 +1,10 @@
 <h2 class="title">Em destaque</h2>
 <app-highlight-carousel></app-highlight-carousel>
-<h2 class="title">Painel de Utilizador</h2>
+<!--<h2 class="title">Painel de Utilizador</h2>-->
 <div class="user-panel">
   <div class="column">
     <div class="title">
-      <h2>Lista de Compras</h2>
+      <h2 class="section-title">Lista de Compras</h2>
       <div class="card-wrapper" [routerLink]="'/shopping-list'" *ngIf="shoppingList && shoppingList.cheapestProductQuantities.length !== 0">
         <div class="total-value" *ngIf="shoppingList">
           <fa-icon [icon]="faCoins"></fa-icon><h3>Total</h3><h3 style="font-weight: 600">{{(shoppingList.cheapestListCost) | number:'1.2-2' :'pt'}} €</h3>

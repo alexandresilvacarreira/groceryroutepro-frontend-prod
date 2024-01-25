@@ -14,23 +14,22 @@ import {
     GenericProductResponse
 } from "../interfaces";
 import {Observable} from "rxjs";
-import {BaseRowDef} from "@angular/cdk/table";
 
 const BASE_URL = environment.BASE_URL;
 
 
 @Injectable({
-    providedIn: "root"
+  providedIn: "root"
 })
 
 export class ProductsService {
 
-    defaultSearch = "";
-    defaultCategories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    defaultChains = [1, 2, 3, 4, 5, 6, 7];
-    defaultSort = "currentLowestPricePrimaryValue,asc";
-    defaultPage = 0;
-    defaultSize = 10;
+  defaultSearch = "";
+  defaultCategories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  defaultChains = [1, 2, 3, 4, 5, 6, 7];
+  defaultSort = "currentLowestPricePrimaryValue,asc";
+  defaultPage = 0;
+  defaultSize = 14;
 
     constructor(private http: HttpClient) {
     }

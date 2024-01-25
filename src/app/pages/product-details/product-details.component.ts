@@ -3,9 +3,12 @@ import {GenericProduct, Price, Product, ProductDetails, User} from "../../interf
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
-import {faArrowLeft, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faCartPlus, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {catchError, throwError} from "rxjs";
 import {NavigationService} from "../../services/navigation.service";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {SnackBarComponent} from "../../components/snack-bar/snack-bar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-product-details',
@@ -22,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   currentCheapestProduct!: Product;
   currentLowestPrice!: Price;
 
-  constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService, private navigationService: NavigationService) {
+  constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService, private navigationService: NavigationService, private shoppingListService: ShoppingListService, private snackBar: MatSnackBar) {
     this.genericProductId = parseInt(this.route.snapshot.params['genericProductId']);
   }
 
@@ -39,11 +42,33 @@ export class ProductDetailsComponent implements OnInit {
 
     this.previousRoute = this.navigationService.getPreviousRoute();
 
-
   }
 
+
+  addProduct() {
+    this.shoppingListService.addProduct(this.genericProduct.id).pipe(
+      catchError(error => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 2000,
+          panelClass: 'snack-bar',
+          data: {success: false, message : error.error.message}
+        });
+        return throwError(() => error);
+      })
+    ).subscribe(shoppingListResponse => {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: 2000,
+          panelClass: 'snack-bar',
+          data: {success: true, message : shoppingListResponse.message}
+        });
+      }
+    )
+  }
 
   protected readonly faArrowLeft = faArrowLeft;
   protected readonly faEye = faEye;
   protected readonly faEyeSlash = faEyeSlash;
+  protected readonly faCartPlus = faCartPlus;
+
+
 }
