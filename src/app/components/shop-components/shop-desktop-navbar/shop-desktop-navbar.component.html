@@ -1,9 +1,11 @@
 <div class="desktop-dashboard">
     <div class="all-wrapper">
         <div class="logo-and-icons">
+
             <div class="logo">
                 <img src="assets/images/gorceryroutepro_logo_white.svg"/>
             </div>
+
             <div class="options-wrapper">
                 <div class="icons-wrapper">
                     <div class="option" [routerLink]="'/shop-dashboard'" [routerLinkActive]="'active'">
@@ -16,14 +18,15 @@
                         <h4 class="icon-name">Novo produto</h4>
                     </div>
 
-                    <div class="option" [routerLink]="'/shop-search-edit-product'" [routerLinkActive]="'active'">
-                        <fa-icon [icon]="faPenToSquare"></fa-icon>
-                        <h4 class="icon-name">Editar produto</h4>
+                    <div class="option" [routerLink]="'/shop-notifications'" [routerLinkActive]="'active'">
+                        <fa-icon [icon]="faBell"></fa-icon>
+                        <h4 class="icon-name">Notificações</h4>
                     </div>
+
                     <div class="option">
                         <app-chain-sticker [chainId]="chainId" chainName="{{chainName}}"></app-chain-sticker>
-
                     </div>
+
                 </div>
             </div>
         </div>

@@ -36,8 +36,8 @@
             <input type="number" id="priceWoDiscount" formControlName="priceWoDiscount"
                    placeholder="Introduz preço sem desconto" class="form-control">
             <div class="invalid-input-warning"
-                 *ngIf="form.get('priceWoDiscount')?.value <= form.get('primaryValue')?.value && form.get('priceWoDiscount')?.dirty && form.get('priceWoDiscount')?.touched">
-                <p class="text-danger">O preço sem desconto não pode ser maior ou igual ao preço primário.</p>
+                 *ngIf="form.get('priceWoDiscount')?.value < form.get('primaryValue')?.value && form.get('priceWoDiscount')?.dirty && form.get('priceWoDiscount')?.touched">
+                <p class="text-danger">O preço sem desconto tem de ser maior ao preço primário.</p>
             </div>
         </div>
 

@@ -82,6 +82,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import { RemoveProductConfirmationComponent } from './components/remove-product-confirmation/remove-product-confirmation.component';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { ShopDesktopNavbarComponent } from './components/shop-components/shop-desktop-navbar/shop-desktop-navbar.component';
+import { ShopNotificationsComponent } from './pages/Shop-Pages/shop-notifications/shop-notifications.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -151,6 +152,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     SnackBarComponent,
     RemoveProductConfirmationComponent,
     ShopDesktopNavbarComponent,
+    ShopNotificationsComponent,
   ],
   imports: [
     BrowserModule,

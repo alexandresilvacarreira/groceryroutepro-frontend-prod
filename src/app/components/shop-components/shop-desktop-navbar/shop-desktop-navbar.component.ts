@@ -11,7 +11,7 @@ import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import {faCircle} from "@fortawesome/free-solid-svg-icons/faCircle";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
-import {faPenToSquare} from "@fortawesome/free-regular-svg-icons";
+import {faBell, faPenToSquare} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-shop-desktop-navbar',
@@ -65,4 +65,5 @@ export class ShopDesktopNavbarComponent {
     protected readonly faPenToSquare = faPenToSquare;
 
 
+    protected readonly faBell = faBell;
 }

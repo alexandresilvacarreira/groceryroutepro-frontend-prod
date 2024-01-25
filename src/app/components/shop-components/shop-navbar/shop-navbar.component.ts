@@ -4,7 +4,7 @@ import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
-import {faPenToSquare} from "@fortawesome/free-regular-svg-icons";
+import {faBell, faPenToSquare} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-shop-navbar',
@@ -19,4 +19,5 @@ export class ShopNavbarComponent {
     protected readonly faUser = faUser;
   protected readonly faCartPlus = faCartPlus;
   protected readonly faPenToSquare = faPenToSquare;
+    protected readonly faBell = faBell;
 }

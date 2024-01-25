@@ -29,6 +29,7 @@ import {
 import {ShopDashboardComponent} from "./pages/Shop-Pages/shop-dashboard/shop-dashboard.component";
 import {ShopNewProductComponent} from "./pages/Shop-Pages/shop-new-product/shop-new-product.component";
 import {roleGuard} from "./guards/role.guard";
+import {ShopNotificationsComponent} from "./pages/Shop-Pages/shop-notifications/shop-notifications.component";
 
 
 const routes: Routes = [
@@ -58,7 +59,7 @@ const routes: Routes = [
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-search-edit-product', component: ShopSearchEditProductComponent, canActivate: [buildGuard("/login")]},
-
+  {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login")]},
 
   {path: '**', redirectTo: '/error', pathMatch: 'full'},
 
