@@ -16,7 +16,10 @@ import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
     styleUrls: ['./shop-edit-product.component.scss']
 })
 export class ShopEditProductComponent {
-
+    showMessage = false;
+    showToast = false;
+    message = "";
+    toastBoolean!: boolean;
 
 
     form: FormGroup = this.formBuilder.group({
@@ -96,6 +99,9 @@ export class ShopEditProductComponent {
     }
 
     onSubmit() {
+
+        this.showToast = false;
+
         let selectedCategoryIds = this.form.get("productCategories")?.value as number[];
         let selectedCategories: Category[] = this.listCategories.filter(category => selectedCategoryIds.includes(category.id));
 
@@ -127,14 +133,20 @@ export class ShopEditProductComponent {
 
 
         let productData: ProductData = {product: product, price: price};
-        console.log(this.productName);
 
         if (this.form.valid) {
             this.productsService.editProduct(productData).pipe(
                 catchError(error => {
+                    this.message = error.error.message;
+                    this.toastBoolean = false;
+                    this.showToast = true;
                     console.error(error);
                     return throwError(() => error);
                 })).subscribe((response) => {
+                    this.toastBoolean = true;
+                    this.showToast = true;
+                    this.message=response.message;
+
             });
         }
     }

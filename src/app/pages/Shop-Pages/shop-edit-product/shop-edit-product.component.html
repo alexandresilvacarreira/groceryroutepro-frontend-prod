@@ -1,3 +1,4 @@
+<app-toast *ngIf="showToast" [success]="toastBoolean" [message]="message"></app-toast>
 <div class="container-title" >
     <div class="header-page">
         <div class="page-title"><h3>Editar produto</h3></div>
@@ -34,7 +35,7 @@
             <input type="number" id="priceWoDiscount" formControlName="priceWoDiscount"
                    placeholder="Introduz preço sem desconto" class="form-control">
             <div class="invalid-input-warning"
-                 *ngIf="form.get('priceWoDiscount')?.value >= form.get('primaryValue')?.value && form.get('priceWoDiscount')?.dirty && form.get('priceWoDiscount')?.touched">
+                 *ngIf="form.get('priceWoDiscount')?.value <= form.get('primaryValue')?.value && form.get('priceWoDiscount')?.dirty && form.get('priceWoDiscount')?.touched">
                 <p class="text-danger">O preço sem desconto tem de ser maior ou igual ao preço primário.</p>
             </div>
         </div>
@@ -44,11 +45,10 @@
             <input type="number" id="primaryValue" formControlName="primaryValue"
                    placeholder="Introduz preço do produto" class="form-control">
             <div class="invalid-input-warning"
-                 *ngIf="form.get('primaryValue')?.value <= form.get('priceWoDiscount')?.value && form.get('primaryValue')?.dirty && form.get('primaryValue')?.touched">
+                 *ngIf="form.get('primaryValue')?.value >= form.get('priceWoDiscount')?.value && form.get('primaryValue')?.dirty && form.get('primaryValue')?.touched">
                 <p class="text-danger">O preço primário não pode ser maior ou igual ao preço sem desconto.</p>
             </div>
         </div>
-
 
         <div class="form-group">
             <label for="secondaryValue"><h4>Preço Secundário:</h4></label>

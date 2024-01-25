@@ -19,6 +19,11 @@ export class ShopNewProductComponent implements OnInit {
     userId!: number;
     matriz: number[] = [];
     listCategories: Category[] = [];
+    showMessage = false;
+    showToast = false;
+    message = "";
+    toastBoolean!: boolean;
+
 
 
     readonly faArrowLeft = faArrowLeft;
@@ -65,6 +70,7 @@ export class ShopNewProductComponent implements OnInit {
     onSubmit() {
         let selectedCategoryIds = this.form.get("productCategories")?.value as number[];
         let selectedCategories: Category[] = this.listCategories.filter(category => selectedCategoryIds.includes(category.id));
+        this.showToast = false;
 
         let product: Product = {
             id: 0,
@@ -96,9 +102,15 @@ export class ShopNewProductComponent implements OnInit {
         if (this.form.valid) {
             this.productsService.createNewProduct(productData).pipe(
                 catchError(error => {
+                    this.message = error.error.message;
+                    this.toastBoolean = false;
+                    this.showToast = true;
                     console.error(error);
                     return throwError(() => error);
                 })).subscribe((response) => {
+                this.toastBoolean = true;
+                this.showToast = true;
+                this.message = response.message;
             });
         }
     }
