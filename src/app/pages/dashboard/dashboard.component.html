@@ -5,20 +5,20 @@
   <div class="column">
     <div class="title">
       <h2 class="section-title">Lista de Compras</h2>
-      <div class="card-wrapper" [routerLink]="'/shopping-list'" *ngIf="shoppingList && shoppingList.cheapestProductQuantities.length !== 0">
-        <div class="total-value" *ngIf="shoppingList">
-          <fa-icon [icon]="faCoins"></fa-icon><h3>Total</h3><h3 style="font-weight: 600">{{(shoppingList.cheapestListCost) | number:'1.2-2' :'pt'}} €</h3>
-        </div>
-          <ng-container *ngFor="let cheapestProductQuantity of shoppingList.cheapestProductQuantities">
-            <app-product-card-item [productQuantity]="cheapestProductQuantity"></app-product-card-item>
-          </ng-container>
+    </div>
+    <div class="card-wrapper" [routerLink]="'/shopping-list'" *ngIf="shoppingList && shoppingList.cheapestProductQuantities.length !== 0">
+      <div class="total-value" *ngIf="shoppingList">
+        <fa-icon [icon]="faCoins"></fa-icon><h3>Total</h3><h3 style="font-weight: 600">{{(shoppingList.cheapestListCost) | number:'1.2-2' :'pt'}} €</h3>
       </div>
-      <div class="card-wrapper empty-list-message" *ngIf="!shoppingList || (shoppingList && shoppingList.cheapestProductQuantities.length == 0)">
-        <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
-        <p class="grey-text">A tua lista será apresentada aqui. Toca em “+” para começar a adicionar artigos!</p>
-        <div class="plus" [routerLink]="'/search'">
-          <fa-icon [icon]="faCirclePlus"></fa-icon>
-        </div>
+      <div class="product-card-item" *ngFor="let cheapestProductQuantity of shoppingList.cheapestProductQuantities">
+        <app-product-card-item [productQuantity]="cheapestProductQuantity"></app-product-card-item>
+      </div>
+    </div>
+    <div class="card-wrapper empty-list-message" *ngIf="!shoppingList || (shoppingList && shoppingList.cheapestProductQuantities.length == 0)">
+      <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
+      <p class="grey-text">A tua lista será apresentada aqui. Toca em “+” para começar a adicionar artigos!</p>
+      <div class="plus" [routerLink]="'/search'">
+        <fa-icon [icon]="faCirclePlus"></fa-icon>
       </div>
     </div>
   </div>

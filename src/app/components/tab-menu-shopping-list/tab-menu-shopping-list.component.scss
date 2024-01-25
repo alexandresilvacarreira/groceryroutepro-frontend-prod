@@ -43,9 +43,18 @@
   flex-direction: column;
   border-radius: 8px;
   background: #FFF;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  //box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding-bottom: 10px;
+
+  .content {
+    //margin: 0 25px 0 10px;
+    //display: flex;
+    //flex-direction: column;
+    max-height: 80vh;
+    overflow-y: scroll;
+    //width: 100%;
+  }
 
   @media only screen and (min-width: 1201px) {
     display: none;
@@ -55,11 +64,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #0F7293;
 
     .tab {
       display: flex;
       flex-direction: row;
-      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+      //box-shadow: 0 8px 1px 0 rgba(0, 0, 0, 0.25);
       flex: 1;
       justify-content: center;
       cursor: pointer;
@@ -87,5 +98,6 @@
     }
   }
 }
+
 
 
