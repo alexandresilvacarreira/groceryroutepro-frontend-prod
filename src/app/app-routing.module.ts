@@ -53,7 +53,7 @@ const routes: Routes = [
   {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login")]},
   {path: 'create-route', component: CreateRouteComponent},
   {path: 'test-page', component: TestPageComponent, canActivate: [buildGuard("/login")]},
-
+//[roleGuard("STORE")]
   {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},

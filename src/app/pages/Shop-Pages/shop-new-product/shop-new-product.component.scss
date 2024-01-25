@@ -1,3 +1,9 @@
+.container-title {
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+
 h4 {
   margin: 0
 }
@@ -6,7 +12,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
   position: relative;
 
   .icon {
@@ -27,6 +33,7 @@ h4 {
 .container {
   width: 90%;
   margin: auto;
+  padding-bottom: 150px;
   position: relative;
 
   @media only screen and (min-width: 768px) {
@@ -69,11 +76,23 @@ h4 {
     border: 1px solid #0F7293;
     padding: 0 45px;
     margin: 50px 0 50px 0;
-    background-color:unset;
-    box-shadow:(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-color: unset;
+    box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
     position: absolute;
     right: 0;
 
+  }
+
+  .btn-primary {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
   }
 }
 

@@ -6,6 +6,8 @@ import {NavigationService} from "../../../services/navigation.service";
 import {Category, GenericProduct, Price, Product, ProductData, ProductDetails, User} from "../../../interfaces";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {catchError, throwError} from "rxjs";
+import {SnackBarComponent} from "../../../components/snack-bar/snack-bar.component";
+import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 
 @Component({
@@ -14,24 +16,27 @@ import {catchError, throwError} from "rxjs";
     styleUrls: ['./shop-edit-product.component.scss']
 })
 export class ShopEditProductComponent {
-        form: FormGroup  = this.formBuilder.group({
-            name: [''],
-            quantity: [''],
-            brand: [''],
-            chain: {
-                id: '' ,
-            },
-            imageUrl: [''],
-            date: [''],
 
-            productCategories: [[]],
 
-            primaryValue: [''],
-            primaryUnit: [''],
-            secondaryValue: [''],
-            secondaryUnit: [''],
-            priceWoDiscount: [''],
-        });
+
+    form: FormGroup = this.formBuilder.group({
+        name: [''],
+        quantity: [''],
+        brand: [''],
+        chain: {
+            id: '',
+        },
+        imageUrl: [''],
+        date: [''],
+
+        productCategories: [[]],
+
+        primaryValue: [''],
+        primaryUnit: [''],
+        secondaryValue: [''],
+        secondaryUnit: [''],
+        priceWoDiscount: [''],
+    });
 
     chainId!: number;
     currentUser!: User;
@@ -41,7 +46,6 @@ export class ShopEditProductComponent {
 
     productId: number;
     product!: Product;
-    prices!: Price[];
     productName!: string;
 
 
@@ -65,13 +69,27 @@ export class ShopEditProductComponent {
         this.productsService.getProductDetails(this.productId).pipe(catchError(error => {
             return throwError(() => error);
         })).subscribe(productDetails => {
-            this.productName = productDetails.product.name;
-            this.prices = productDetails.prices;
 
-            console.log("SET", productDetails)
-           this.form.patchValue({
-               name: productDetails.product.name
-           })
+            let categoryIds = productDetails.product.categories.map(category => category.id);
+
+            this.form.patchValue({
+                name: productDetails.product.name,
+
+                quantity: productDetails.product.quantity,
+                brand: productDetails.product.brand,
+                chain: {
+                    id: productDetails.product.chain.id,
+                },
+                imageUrl: productDetails.product.imageUrl,
+                productCategories: categoryIds,
+
+                primaryValue: productDetails.prices[0].primaryValue,
+                primaryUnit: productDetails.prices[0].primaryUnit,
+                secondaryValue: productDetails.prices[0].secondaryValue,
+                secondaryUnit: productDetails.prices[0].secondaryUnit,
+                priceWoDiscount: productDetails.prices[0].priceWoDiscount,
+
+            })
         });
 
 
@@ -117,8 +135,10 @@ export class ShopEditProductComponent {
                     console.error(error);
                     return throwError(() => error);
                 })).subscribe((response) => {
-                console.log("Produto editado com sucesso");
             });
         }
     }
+
+    protected readonly faCheck = faCheck;
+    protected readonly faXmark = faXmark;
 }

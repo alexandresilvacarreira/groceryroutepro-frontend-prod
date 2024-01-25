@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ProductFilterService} from "../../../services/product-filter.service";
 import {faCircle} from "@fortawesome/free-regular-svg-icons/faCircle";
 import {faCircle as faCircleSolid} from "@fortawesome/free-solid-svg-icons/faCircle";
@@ -14,32 +13,24 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 })
 export class ShopEditFilterComponent {
 
-  @Output() closeEvent= new EventEmitter<void>;
-  form!: FormGroup;
+  @Output() closeEvent = new EventEmitter<void>;
   sort!: string;
   categories!: number[];
   chains!: number[];
 
-  constructor(private formBuilder: FormBuilder, private filterService : ProductFilterService) {
-
-    this.form = this.formBuilder.group({
-      sort: new FormControl(''),
-      categories: this.formBuilder.array([]),
-      chains: this.formBuilder.array([])
-    });
-
+  constructor(private filterService: ProductFilterService) {
   }
 
   ngOnInit(): void {
 
     this.filterService.getFilterValues().subscribe(filterOptions => {
-
       this.sort = filterOptions.sort;
       this.categories = filterOptions.categories;
       this.chains = filterOptions.chains;
-
     });
+
   }
+
   protected readonly faCircle = faCircle;
   protected readonly faCircleSolid = faCircleSolid;
   protected readonly faCircleCheck = faCircleCheck;
@@ -48,20 +39,23 @@ export class ShopEditFilterComponent {
 
 
   setSorting(option: string) {
-    this.form.controls['sort'].setValue(option);
+    this.sort = option;
   }
 
   setCategory(category: number) {
-    let categories = this.form.controls['categories'] as FormControl;
-    categories.setValue([...categories.value, category]);
+    this.categories.includes(category) ? this.categories = this.categories.filter(c => c !== category) : this.categories = [...this.categories, category];
   }
 
-  setChain(chain: number) {
-    let chains = this.form.controls['chains'] as FormControl;
-    chains.setValue([...chains.value, chain]);
+  emitCloseEvent() {
+    this.closeEvent.emit();
   }
 
-  emitCloseEvent(){
+  applyFilter() {
+    this.filterService.setFilterValues({
+      sort: this.sort,
+      chains: this.chains,
+      categories: this.categories
+    });
     this.closeEvent.emit();
   }
 

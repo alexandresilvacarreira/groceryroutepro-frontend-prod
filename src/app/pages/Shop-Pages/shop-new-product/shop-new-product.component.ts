@@ -1,19 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {faArrowLeft, faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {ProductsService} from "../../../services/products.service";
 import {Category, GenericProduct, Price, Product, ProductData, ProductWPrice, User} from "../../../interfaces";
 import {UserService} from "../../../services/user.service";
 import {catchError, throwError} from "rxjs";
 
-
-
 @Component({
     selector: 'app-shop-new-product',
     templateUrl: './shop-new-product.component.html',
     styleUrls: ['./shop-new-product.component.scss'],
-
-
 })
 export class ShopNewProductComponent implements OnInit {
 
@@ -23,6 +19,7 @@ export class ShopNewProductComponent implements OnInit {
     userId!: number;
     matriz: number[] = [];
     listCategories: Category[] = [];
+
 
     readonly faArrowLeft = faArrowLeft;
     readonly faCheck = faCheck;
@@ -80,7 +77,6 @@ export class ShopNewProductComponent implements OnInit {
             genericProduct: null as any,
             cheapestForGenericProduct: null as any,
             prices: null as any,
-
         }
 
         let price: Price = {
@@ -103,11 +99,10 @@ export class ShopNewProductComponent implements OnInit {
                     console.error(error);
                     return throwError(() => error);
                 })).subscribe((response) => {
-                console.log("Produto adicionado com sucesso");
             });
         }
     }
 
-
+    protected readonly faXmark = faXmark;
 }
 

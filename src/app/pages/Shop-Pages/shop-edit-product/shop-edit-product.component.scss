@@ -24,10 +24,18 @@ h4 {
   }
 }
 
+.container-title{
+  width: 90%;
+  margin: auto;
+  position: relative;
+
+}
+
 .container {
   width: 90%;
   margin: auto;
   position: relative;
+  padding-bottom: 180px;
 
   @media only screen and (min-width: 768px) {
     max-width: 50%;
@@ -74,6 +82,17 @@ h4 {
     position: absolute;
     right: 0;
 
+  }
+  .btn-primary {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
   }
 }
 
