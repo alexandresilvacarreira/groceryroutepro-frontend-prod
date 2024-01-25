@@ -21,7 +21,7 @@
               "@fortawesome/free-solid-svg-icons",
               "@fortawesome/free-regular-svg-icons"
             ],
-            "outputPath": "dist",
+            "outputPath": "dist/groceryroutepro-angular-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
