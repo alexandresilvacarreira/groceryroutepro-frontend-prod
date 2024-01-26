@@ -3,6 +3,8 @@ import {inject} from "@angular/core";
 import {UserService} from "../services/user.service";
 import {User} from "../interfaces";
 
+
+
 export function roleGuard(role: string): CanActivateFn {
 
     const roleGuard: CanActivateFn = (route, state) => {
@@ -12,25 +14,26 @@ export function roleGuard(role: string): CanActivateFn {
             let router = inject(Router);
 
             userService.getCurrentUser().subscribe(user => {
-                console.log(route)
-
+              let canNavigate = false;
                 if (user === null) {
                     // Se ainda não temos utilizador, não fazer nada
                     return true;
                 }
                 if (!user) {
-                    return router.navigate(['/login']);
+                    router.navigate(['/login']);
                 } else {
                     let isUser = function (obj: any): obj is User {
                         return obj !== false && obj !== null && typeof obj === 'object' && 'role' in obj;
                     }
                     if (isUser(user)) {
-                        if (user.role && user.role.name === role) {
-                            return true;
+                        if (user.role && user.role.name !== role) {
+                         return router.navigate(['/login']);
+                        } else {
+                          canNavigate = true;
                         }
                     }
-                    return router.navigate(['/login']);
                 }
+                return resolve(canNavigate);
             });
         });
     };

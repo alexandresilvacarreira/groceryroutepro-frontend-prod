@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
   {path: 'confirm-registration', component: ConfirmRegistrationComponent},
   {path: 'error', component: ErrorComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login")]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
   {path: 'product-details/:genericProductId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")],  data: {title: 'Pesquisa'}},
   {path: 'verify-account/:email', component: VerifyAccountComponent},
@@ -55,7 +55,7 @@ const routes: Routes = [
   {path: 'create-route', component: CreateRouteComponent},
   {path: 'test-page', component: TestPageComponent, canActivate: [buildGuard("/login")]},
 //[roleGuard("STORE")]
-  {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login")]},
+  {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
   {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login")]},

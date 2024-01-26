@@ -44,7 +44,6 @@ export class ShopEditProductComponent {
     chainId!: number;
     currentUser!: User;
     userId!: number;
-    matriz: number[] = [];
     listCategories: Category[] = [];
 
     productId: number;
@@ -62,8 +61,7 @@ export class ShopEditProductComponent {
 
         this.userService.getCurrentUser().subscribe(user => {
             this.currentUser = user as User;
-            this.matriz = this.currentUser?.stores.map(store => store.id);
-            this.chainId = Number(this.matriz[0]);
+            this.chainId = this.currentUser?.chain.id;
             this.userId = this.currentUser?.id
         });
         this.productsService.getCategories().subscribe((categories: Category[]) => {

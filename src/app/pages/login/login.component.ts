@@ -81,10 +81,14 @@ export class LoginComponent implements OnInit {
       ).subscribe(serverResponse => {
           if (serverResponse.user) {
             this.userService.setCurrentUser(serverResponse.user);
-            this.router.navigate(['/dashboard']);
+            let userRole = serverResponse.user.role.name;
+            if (userRole === "USER_FREE") {
+              this.router.navigate(['/dashboard']);
+            } else if (userRole === "STORE") {
+              this.router.navigate(['/shop-dashboard']);
+            }
           }
         });
-
     } else {
       emailInput?.markAsTouched();
       emailInput?.markAsDirty();

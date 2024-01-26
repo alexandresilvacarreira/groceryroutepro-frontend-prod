@@ -30,6 +30,7 @@ interface User {
   vehicleFuelType: string,
   vehicleConsumption: number,
   stores: Store[],
+  chain: Chain,
   role: Role,
   verifiedEmail: boolean,
   confirmation: {

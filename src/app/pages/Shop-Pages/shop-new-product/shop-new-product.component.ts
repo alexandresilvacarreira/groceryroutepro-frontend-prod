@@ -17,7 +17,6 @@ export class ShopNewProductComponent implements OnInit {
     chainId!: number;
     currentUser!: User;
     userId!: number;
-    matriz: number[] = [];
     listCategories: Category[] = [];
     showMessage = false;
     showToast = false;
@@ -35,8 +34,7 @@ export class ShopNewProductComponent implements OnInit {
     ngOnInit(): void {
         this.userService.getCurrentUser().subscribe(user => {
             this.currentUser = user as User;
-            this.matriz = this.currentUser?.stores.map(store => store.id);
-            this.chainId = Number(this.matriz[0]);
+            this.chainId = this.currentUser?.chain.id;
         });
         this.userService.getCurrentUser().subscribe(user => {
             this.currentUser = user as User;

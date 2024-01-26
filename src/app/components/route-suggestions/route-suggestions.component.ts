@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {faCar} from "@fortawesome/free-solid-svg-icons/faCar";
@@ -14,12 +14,12 @@ import {faLocationArrow} from "@fortawesome/free-solid-svg-icons/faLocationArrow
 })
 export class RouteSuggestionsComponent {
 
-    protected readonly faCoins = faCoins;
-    protected readonly faRoute = faRoute;
-    protected readonly faCar = faCar;
-    protected readonly faPiggyBank = faPiggyBank;
-    protected readonly faStopwatch = faStopwatch;
-    protected readonly faShop = faShop;
-    protected readonly faLocationArrow = faLocationArrow;
+  protected readonly faCoins = faCoins;
+  protected readonly faRoute = faRoute;
+  protected readonly faCar = faCar;
+  protected readonly faPiggyBank = faPiggyBank;
+  protected readonly faStopwatch = faStopwatch;
+  protected readonly faShop = faShop;
+  protected readonly faLocationArrow = faLocationArrow;
   protected readonly faCheck = faCheck;
 }
