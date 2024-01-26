@@ -33,6 +33,7 @@ export class RouteMainCardComponent {
 
     this.custo = Number(this.route.shoppingListCost.toFixed(2));
     this.totalTime = Math.round(this.route.totalTime / 60);
+    this.waypoints=this.route.coordenadasMarcadores;
 
 
 
@@ -54,6 +55,13 @@ export class RouteMainCardComponent {
   }
 
   buildMapsUrl(){
+    let waypointsString="";
+    //get waypoint coordinates
+    for (let i = 0; i < this.waypoints.length; i++) {
+      waypointsString+=this.waypoints[i].lat+","+this.waypoints[i].lng+"/"
+    }
+    const url: string= "https://www.google.com/maps/dir/"+waypointsString;
+    window.open(url, '_blank');
 
   }
 }
