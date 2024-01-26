@@ -14,16 +14,11 @@ export class TabMenuShoppingListComponent {
 
   activeTab: string = 'tab1';
   @Input() shoppingList?: ShoppingList;
-  @Output() updateShoppingList = new EventEmitter<ShoppingList>;
 
   onTabClick(tab: string) {
     this.activeTab = tab;
   }
 
   protected readonly faCoins = faCoins;
-
-  refreshShoppingList(shoppingListEvent: ShoppingList) {
-    this.updateShoppingList.emit(shoppingListEvent);
-  }
 
 }

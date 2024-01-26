@@ -11,7 +11,7 @@
       </div>
       <div class="content">
         <ng-container *ngFor="let genericProductQuantity of shoppingList.genericProductQuantities">
-          <app-product-card-item [genericProductQuantity]="genericProductQuantity" (updatedShoppingList)="refreshShoppingList($event)"></app-product-card-item>
+          <app-product-card-item [genericProductQuantity]="genericProductQuantity"></app-product-card-item>
         </ng-container>
       </div>
     </div>

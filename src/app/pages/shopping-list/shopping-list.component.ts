@@ -22,20 +22,10 @@ export class ShoppingListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.shoppingListService.getShoppingList()
-      .pipe(catchError(err => {
-        console.error(err);
-        return throwError(() => err);
-      }))
-      .subscribe(shoppingListResponse => {
-        this.shoppingList = shoppingListResponse.data.shoppingList;
-      });
-
-  }
-
-  refreshList(updatedList:ShoppingList){
-    this.shoppingList = updatedList;
+    this.shoppingListService.shoppingList.subscribe(list => {
+      if (list)
+        this.shoppingList = list;
+    })
   }
 
   protected readonly faCartShopping = faCartShopping;

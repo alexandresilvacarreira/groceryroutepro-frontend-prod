@@ -23,21 +23,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.userService.getCurrentUser().subscribe(user=>{
-    //   if (isUser(user)){
-    //     this.shoppingList = user.currentShoppingList;
-    //   }
-    // })
-
-    this.shoppingListService.getShoppingList()
-      .pipe(catchError(err => {
-        console.error(err);
-        return throwError(() => err);
-      }))
-      .subscribe(shoppingListResponse => {
-        this.shoppingList = shoppingListResponse.data.shoppingList;
-      });
-
+    this.shoppingListService.shoppingList.subscribe(list => {
+      if (list) {
+        this.shoppingList = list;
+      }
+    })
   }
 
   protected readonly faCirclePlus = faCirclePlus;

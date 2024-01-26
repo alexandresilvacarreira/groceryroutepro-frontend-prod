@@ -63,22 +63,7 @@ export class RoutesComponent {
     this.shoppingListService.shoppingList.subscribe(list => {
       if (list)
         this.shoppingList = list;
-      console.log(this.shoppingList)
     });
-
-    /*if ((((this.shoppingList && this.shoppingList.genericProductQuantities.length == 0)|| !this.shoppingList)
-      && this.routes!.length==0)){
-      console.log("sem lista de compras: "+true)
-    } else {
-      console.log("sem lista de compras: "+false)
-    }
-    if ((this.shoppingList && this.shoppingList.genericProductQuantities.length != 0)
-      && this.routes!.length==0){
-      console.log("sem rotas: "+true)
-    } else {
-      console.log("sem rotas: "+false)
-    }*/
-
   }
 
   protected readonly faCirclePlus = faCirclePlus;

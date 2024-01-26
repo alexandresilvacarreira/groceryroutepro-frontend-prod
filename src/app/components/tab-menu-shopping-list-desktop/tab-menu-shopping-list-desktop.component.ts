@@ -14,10 +14,6 @@ export class TabMenuShoppingListDesktopComponent {
   protected readonly faCirclePlus = faCirclePlus;
 
   @Input() shoppingList?: ShoppingList;
-  @Output() updateShoppingList = new EventEmitter<ShoppingList>;
 
-  refreshShoppingList(shoppingListEvent: ShoppingList) {
-    this.updateShoppingList.emit(shoppingListEvent);
-  }
 
 }

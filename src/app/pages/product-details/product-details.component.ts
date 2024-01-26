@@ -46,23 +46,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
   addProduct() {
-    this.shoppingListService.addProduct(this.genericProduct.id).pipe(
-      catchError(error => {
-        this.snackBar.openFromComponent(SnackBarComponent, {
-          duration: 2000,
-          panelClass: 'snack-bar',
-          data: {success: false, message : error.error.message}
-        });
-        return throwError(() => error);
-      })
-    ).subscribe(shoppingListResponse => {
-        this.snackBar.openFromComponent(SnackBarComponent, {
-          duration: 2000,
-          panelClass: 'snack-bar',
-          data: {success: true, message : shoppingListResponse.message}
-        });
-      }
-    )
+    this.shoppingListService.addProduct(this.genericProduct.id);
   }
 
   protected readonly faArrowLeft = faArrowLeft;

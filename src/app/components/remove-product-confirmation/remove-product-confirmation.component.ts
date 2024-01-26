@@ -22,11 +22,9 @@ export class RemoveProductConfirmationComponent {
   }
 
   removeProduct(){
-    this.shoppingListService.removeAll(this.data.genericProductId).pipe(catchError(err =>{
-      console.error(err);
-      return throwError(() => err);
-    })).subscribe(shoppingListResponse => {
-      this.dialogRef.close(shoppingListResponse.data.shoppingList);
+    this.shoppingListService.removeAll(this.data.genericProductId)
+    .subscribe(shoppingListResponse => {
+      this.dialogRef.close();
     })
   }
 

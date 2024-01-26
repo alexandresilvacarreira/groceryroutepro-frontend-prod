@@ -30,12 +30,12 @@ export class ProductCardItemComponent {
     event.stopImmediatePropagation();
     event.preventDefault();
 
-    let dialogRef = this.dialog.open(RemoveProductConfirmationComponent, {
+    /*let dialogRef =*/ this.dialog.open(RemoveProductConfirmationComponent, {
       data: { productName, genericProductId },
     });
-    dialogRef.afterClosed().subscribe(updatedList => {
-      this.updatedShoppingList.emit(updatedList);
-    })
+    // dialogRef.afterClosed().subscribe(updatedList => {
+    //   this.updatedShoppingList.emit(updatedList);
+    // })
   }
 
   updateList(event:Event, genericProductId : number, add = true){
@@ -45,26 +45,12 @@ export class ProductCardItemComponent {
     event.preventDefault();
 
     if (add) {
-      this.shoppingListService.addProduct(genericProductId).pipe(
-        catchError(error => {
-          console.error(error)
-          return throwError(() => error);
-        })
-      ).subscribe(shoppingListResponse => {
-        this.updatedShoppingList.emit(shoppingListResponse.data.shoppingList);
-      })
+      this.shoppingListService.addProduct(genericProductId)
     } else {
       if (this.genericProductQuantity?.quantity === 1) {
         this.openRemoveDialog(event, this.genericProductQuantity.genericProduct.name, this.genericProductQuantity.genericProduct.id);
       } else {
-        this.shoppingListService.removeProduct(genericProductId).pipe(
-          catchError(error => {
-            console.error(error)
-            return throwError(() => error);
-          })
-        ).subscribe(shoppingListResponse => {
-          this.updatedShoppingList.emit(shoppingListResponse.data.shoppingList);
-        })
+        this.shoppingListService.removeProduct(genericProductId)
       }
     }
   }
