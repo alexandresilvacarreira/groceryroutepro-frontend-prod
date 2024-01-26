@@ -4,7 +4,7 @@ import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {faPiggyBank} from "@fortawesome/free-solid-svg-icons";
 import {faStopwatch} from "@fortawesome/free-solid-svg-icons/faStopwatch";
 import {faLocationArrow} from "@fortawesome/free-solid-svg-icons/faLocationArrow";
-import {Chain, LatLngName, RouteObject} from "../../interfaces";
+import {Chain, LatLngName, PersonilizedMapMarker, RouteObject} from "../../interfaces";
 
 @Component({
   selector: 'app-route-main-card',
@@ -29,19 +29,46 @@ export class RouteMainCardComponent {
   custo!: number;
   waypoints!: LatLngName[];
 
+  //maps inputs
+  center: google.maps.LatLngLiteral = {lat: 39.557191, lng: -7.8536599};
+
+  zoom = 6;
+  display!: google.maps.LatLngLiteral;
+  height = "400px";
+  width = "100%";
+
+  personilizedMapMarkers:PersonilizedMapMarker[]=[];
+
+  moveMap(event: google.maps.MapMouseEvent) {
+    if (event.latLng !== null) {
+      this.center = (event.latLng.toJSON());
+    }
+  }
+
+  move(event: google.maps.MapMouseEvent) {
+    if (event.latLng !== null) {
+      this.display = event.latLng.toJSON();
+    }
+  }
+
+  /*addMarker(waypoint: LatLngName) {
+    let newMaker : PersonilizedMapMarker = {
+      place_id: result.place_id,
+      markerPosition: {lat,lng},
+      };
+    this.personilizedMapMarkers.push(newMaker);
+
+  }*/
+
   ngOnInit() {
 
     this.custo = Number(this.route.shoppingListCost.toFixed(2));
     this.totalTime = Math.round(this.route.totalTime / 60);
-    this.waypoints=this.route.coordenadasMarcadores;
-
-
-
-
-
-
+    /*for (let i = 0; i < this.route.coordenadasMarcadores.length; i++) {
+      let waypoint = new PersonilizedMapMarker(this.route.coordenadasMarcadores[i].
+    }
+    this.personilizedMapMarkers=this.route.coordenadasMarcadores;*/
     for (let i = 0; i < this.route.chainIdList.length && i < this.route.chainNameList.length; i++) {
-
       let chain: Chain = {
         id: this.route.chainIdList[i],
         name: this.route.chainNameList[i]
@@ -49,6 +76,10 @@ export class RouteMainCardComponent {
 
       this.chainList.push(chain);
     }
+
+
+
+
 
 
 

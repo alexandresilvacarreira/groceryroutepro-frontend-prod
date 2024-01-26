@@ -67,7 +67,20 @@
     </div>
 
     <div class="map" *ngIf="showMap">
-      <img src="../../../assets/images-teste/img.png"/>
+      <google-map class="map"
+                  [height]="height"
+                  [width]="width"
+                  [center]="center"
+                  [zoom]="zoom"
+                  (mapClick)="moveMap($event)"
+                  (mapMousemove)="move($event)">
+        <ng-container *ngFor="let marker of personilizedMapMarkers">
+          <map-marker
+            [position]="marker.markerPosition"
+            [label]="marker.title"
+          ></map-marker>
+        </ng-container>
+      </google-map>
     </div>
 
     <button type="submit" class="btn btn-primary" (click)="buildMapsUrl()">

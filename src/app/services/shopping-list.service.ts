@@ -8,9 +8,9 @@ import {
   ProductWPriceList,
   ServerResponse,
   Signup,
-  Product, ShoppingListResponse
+  Product, ShoppingListResponse, ShoppingList
 } from "../interfaces";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable, pipe, tap} from "rxjs";
 
 const BASE_URL = environment.BASE_URL;
 
@@ -19,24 +19,41 @@ const BASE_URL = environment.BASE_URL;
 })
 
 export class ShoppingListService {
+  _shoppingList = new BehaviorSubject<ShoppingList | null>(null);
 
   constructor(private http: HttpClient) {
   }
 
-  getShoppingList(){
-    return this.http.get<ShoppingListResponse>(BASE_URL + "/shopping-list/get", {withCredentials: true});
+  get shoppingList(){
+    return this._shoppingList.asObservable();
   }
 
-  addProduct(genericProductId : number){
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/add-product",{genericProductId}, {withCredentials: true});
+  getShoppingList() {
+    return this.http.get<ShoppingListResponse>(BASE_URL + "/shopping-list/get", {withCredentials: true})
+      .pipe(tap(response => {
+        this._shoppingList.next(response.data.shoppingList);
+      }));
   }
 
-  removeProduct(genericProductId : number){
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-product",{genericProductId}, {withCredentials: true});
+  addProduct(genericProductId: number) {
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/add-product", {genericProductId}, {withCredentials: true})
+      .pipe(tap(response => {
+        this._shoppingList.next(response.data.shoppingList);
+      }));
   }
 
-  removeAll(genericProductId : number){
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-all",{genericProductId}, {withCredentials: true});
+  removeProduct(genericProductId: number) {
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-product", {genericProductId}, {withCredentials: true})
+      .pipe(tap(response => {
+        this._shoppingList.next(response.data.shoppingList);
+      }));
+  }
+
+  removeAll(genericProductId: number) {
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-all", {genericProductId}, {withCredentials: true})
+      .pipe(tap(response => {
+        this._shoppingList.next(response.data.shoppingList);
+      }));
   }
 
 

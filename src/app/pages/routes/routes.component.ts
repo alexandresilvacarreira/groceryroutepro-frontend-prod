@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {faCalendar} from "@fortawesome/free-regular-svg-icons/faCalendar";
 import {faCircleArrowLeft} from "@fortawesome/free-solid-svg-icons/faCircleArrowLeft";
 import {faCircleArrowRight} from "@fortawesome/free-solid-svg-icons/faCircleArrowRight";
@@ -7,7 +7,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {NavigationService} from "../../services/navigation.service";
 import {GoogleApiService} from "../../services/google-api.service";
-import {RouteObject} from "../../interfaces";
+import {RouteObject, ShoppingList, User} from "../../interfaces";
+import {UserService} from "../../services/user.service";
+import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
+import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
+import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
+import {ShoppingListService} from "../../services/shopping-list.service";
 
 @Component({
   selector: 'app-routes',
@@ -19,34 +24,64 @@ export class RoutesComponent {
   protected readonly faCalendar = faCalendar;
   protected readonly faCircleArrowLeft = faCircleArrowLeft;
   protected readonly faCircleArrowRight = faCircleArrowRight;
-    protected readonly faArrowLeft = faArrowLeft;
+  protected readonly faArrowLeft = faArrowLeft;
 
-    //input Variables
+  //input Variables
   routes?: RouteObject[];
   cheapestRoute?: RouteObject;
   fastestRoute?: RouteObject;
   savings?: number;
-
+  shoppingList?: ShoppingList;
+  showToast = false;
+  toastMessage = "";
 
 
   previousRoute = '';
 
-    constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService, private navigationService: NavigationService,
-                private googleApiService: GoogleApiService) {
-    }
+  constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService, private navigationService: NavigationService,
+              private googleApiService: GoogleApiService, private shoppingListService: ShoppingListService) {
+  }
 
-  ngOnInit(){
+  ngOnInit() {
+
+
     this.previousRoute = this.navigationService.getPreviousRoute();
-    this.googleApiService.getRoutes().subscribe(response=>{
-      this.routes=response.data.routes;
-      this.cheapestRoute=this.routes[0];
-      this.fastestRoute=this.routes[1];
-
-      this.savings=Number((this.fastestRoute.shoppingListCost-this.cheapestRoute.shoppingListCost).toFixed(2));
+    this.googleApiService.getRoutes().subscribe(response => {
+      this.showToast = false;
+      this.routes = response.data.routes;
+      console.log(this.routes)
+      if (!response.success && this.routes.length != 0) {
+        this.showToast = true;
+        this.toastMessage = "Lista de compras foi alterada, deves gerar nova rota"
+      }
+      if (this.routes.length != 0) {
+        this.cheapestRoute = this.routes[0];
+        this.fastestRoute = this.routes[1];
+        this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
+      }
     })
+    this.shoppingListService.shoppingList.subscribe(list => {
+      if (list)
+        this.shoppingList = list;
+      console.log(this.shoppingList)
+    });
 
-
-
-
+    /*if ((((this.shoppingList && this.shoppingList.genericProductQuantities.length == 0)|| !this.shoppingList)
+      && this.routes!.length==0)){
+      console.log("sem lista de compras: "+true)
+    } else {
+      console.log("sem lista de compras: "+false)
     }
+    if ((this.shoppingList && this.shoppingList.genericProductQuantities.length != 0)
+      && this.routes!.length==0){
+      console.log("sem rotas: "+true)
+    } else {
+      console.log("sem rotas: "+false)
+    }*/
+
+  }
+
+  protected readonly faCirclePlus = faCirclePlus;
+  protected readonly faCartShopping = faCartShopping;
+  protected readonly faRoute = faRoute;
 }

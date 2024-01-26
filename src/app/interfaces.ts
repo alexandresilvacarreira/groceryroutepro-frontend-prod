@@ -38,6 +38,8 @@ interface User {
     code: string
   },
   currentShoppingList : ShoppingList
+
+
 }
 
 interface Role {
