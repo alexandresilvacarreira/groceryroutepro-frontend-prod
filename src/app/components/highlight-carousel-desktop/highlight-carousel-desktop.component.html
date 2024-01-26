@@ -1,78 +1,80 @@
-<app-loader *ngIf="!products"></app-loader>
-<ng-container *ngIf="firstProduct && secondProduct && thirdProduct">
-  <div class="carousel">
+<div class="carousel-wraper">
+  <app-loader class="loader" *ngIf="!products"></app-loader>
+  <ng-container>
+    <div class="carousel">
+      <div class="carousel_frame" *ngIf="firstProduct && loaded" @slideCarouselFirst
+           [routerLink]="'/product-details/' + firstProduct.genericProductId">
+        <div class="image">
+          <img [src]="firstProduct.imageUrl">
+        </div>
+        <div class="info">
+          <div class="title"><h5>{{firstProduct.name}}</h5></div>
+          <div class="qntd"><h6>{{firstProduct.quantity}}</h6></div>
+          <div class="price">
+            <div class="atual_price"><h5>{{firstProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
+            <div class="previous_price"><h6>{{firstProduct.priceWoDiscount}}</h6></div>
+          </div>
+          <div class="qntd_price">
+            <span class=""><h5>{{firstProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
+            <span class=""><h5>€/{{firstProduct.priceSecondaryUnit}}</h5> </span>
+          </div>
+          <div>
+            <app-chain-sticker [chainId]="firstProduct.chainId" [chainName]="firstProduct.chain"
+                               class="chain"></app-chain-sticker>
+          </div>
+        </div>
+        <div class="discount"><h5>-{{firstProduct.priceDiscountPercentage}}%</h5></div>
+      </div>
 
-    <div class="carousel_frame" @slide
-         [routerLink]="'/product-details/' + firstProduct.genericProductId">
-      <div class="image">
-        <img [src]="firstProduct.imageUrl">
+      <div class="large-frame" @slideCarouselMiddle *ngIf="secondProduct  && loaded"
+           [routerLink]="'/product-details/' + secondProduct.genericProductId">
+        <div class="image">
+          <img [src]="secondProduct.imageUrl">
+        </div>
+        <div class="info">
+          <div class="title"><h5>{{secondProduct.name}}</h5></div>
+          <div class="qntd"><h6>{{secondProduct.quantity}}</h6></div>
+          <div class="price">
+            <div class="atual_price"><h5>{{secondProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
+            <div class="previous_price"><h6>{{secondProduct.priceWoDiscount}}</h6></div>
+          </div>
+          <div class="qntd_price">
+            <span class=""><h5>{{secondProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
+            <span class=""><h5>€/{{secondProduct.priceSecondaryUnit}}</h5> </span>
+          </div>
+          <div>
+            <app-chain-sticker [chainId]="secondProduct.chainId" [chainName]="secondProduct.chain"
+                               class="chain"></app-chain-sticker>
+          </div>
+        </div>
+        <div class="discount"><h5>-{{secondProduct.priceDiscountPercentage}}%</h5></div>
       </div>
-      <div class="info">
-        <div class="title"><h5>{{firstProduct.name}}</h5></div>
-        <div class="qntd"><h6>{{firstProduct.quantity}}</h6></div>
-        <div class="price">
-          <div class="atual_price"><h5>{{firstProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
-          <div class="previous_price"><h6>{{firstProduct.priceWoDiscount}}</h6></div>
+
+      <div class="carousel_frame" @slideCarouselLast *ngIf="thirdProduct  && loaded"
+           [routerLink]="'/product-details/' + thirdProduct.genericProductId">
+        <div class="image">
+          <img [src]="thirdProduct.imageUrl">
         </div>
-        <div class="qntd_price">
-          <span class=""><h5>{{firstProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
-          <span class=""><h5>€/{{firstProduct.priceSecondaryUnit}}</h5> </span>
+        <div class="info">
+          <div class="title"><h5>{{thirdProduct.name}}</h5></div>
+          <div class="qntd"><h6>{{thirdProduct.quantity}}</h6></div>
+          <div class="price">
+            <div class="atual_price"><h5>{{thirdProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
+            <div class="previous_price"><h6>{{thirdProduct.priceWoDiscount}}</h6></div>
+          </div>
+          <div class="qntd_price">
+            <span class=""><h5>{{thirdProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
+            <span class=""><h5>€/{{thirdProduct.priceSecondaryUnit}}</h5> </span>
+          </div>
+          <div>
+            <app-chain-sticker [chainId]="thirdProduct.chainId" [chainName]="thirdProduct.chain"
+                               class="chain"></app-chain-sticker>
+          </div>
         </div>
-        <div>
-          <app-chain-sticker [chainId]="firstProduct.chainId" [chainName]="firstProduct.chain"
-                             class="chain"></app-chain-sticker>
-        </div>
+        <div class="discount"><h5>-{{thirdProduct.priceDiscountPercentage}}%</h5></div>
       </div>
-      <div class="discount"><h5>-{{firstProduct.priceDiscountPercentage}}%</h5></div>
+
     </div>
+  </ng-container>
+</div>
 
-    <div class="large-frame" @slide
-         [routerLink]="'/product-details/' + secondProduct.genericProductId">
-      <div class="image">
-        <img [src]="secondProduct.imageUrl">
-      </div>
-      <div class="info">
-        <div class="title"><h5>{{secondProduct.name}}</h5></div>
-        <div class="qntd"><h6>{{secondProduct.quantity}}</h6></div>
-        <div class="price">
-          <div class="atual_price"><h5>{{secondProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
-          <div class="previous_price"><h6>{{secondProduct.priceWoDiscount}}</h6></div>
-        </div>
-        <div class="qntd_price">
-          <span class=""><h5>{{secondProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
-          <span class=""><h5>€/{{secondProduct.priceSecondaryUnit}}</h5> </span>
-        </div>
-        <div>
-          <app-chain-sticker [chainId]="secondProduct.chainId" [chainName]="secondProduct.chain"
-                             class="chain"></app-chain-sticker>
-        </div>
-      </div>
-      <div class="discount"><h5>-{{secondProduct.priceDiscountPercentage}}%</h5></div>
-    </div>
-
-    <div class="carousel_frame" @slide
-         [routerLink]="'/product-details/' + thirdProduct.genericProductId">
-      <div class="image">
-        <img [src]="thirdProduct.imageUrl">
-      </div>
-      <div class="info">
-        <div class="title"><h5>{{thirdProduct.name}}</h5></div>
-        <div class="qntd"><h6>{{thirdProduct.quantity}}</h6></div>
-        <div class="price">
-          <div class="atual_price"><h5>{{thirdProduct.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
-          <div class="previous_price"><h6>{{thirdProduct.priceWoDiscount}}</h6></div>
-        </div>
-        <div class="qntd_price">
-          <span class=""><h5>{{thirdProduct.priceSecondaryValue | number : undefined : 'pt'}}</h5></span>
-          <span class=""><h5>€/{{thirdProduct.priceSecondaryUnit}}</h5> </span>
-        </div>
-        <div>
-          <app-chain-sticker [chainId]="thirdProduct.chainId" [chainName]="thirdProduct.chain"
-                             class="chain"></app-chain-sticker>
-        </div>
-      </div>
-      <div class="discount"><h5>-{{thirdProduct.priceDiscountPercentage}}%</h5></div>
-    </div>
-
-  </div>
-</ng-container>

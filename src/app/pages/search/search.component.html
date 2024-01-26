@@ -24,6 +24,6 @@
       ></div>
     </div>
   </ng-container>
-  <app-product-search-filter class="filter" *ngIf="openFilter" (closeEvent)="closeFilterMenu()"
+  <app-product-search-filter class="filter" *ngIf="openFilter" (closeEvent)="closeFilterMenu()" [forStore]="false"
                              @slideFilter></app-product-search-filter>
 </div>

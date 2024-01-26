@@ -120,13 +120,21 @@
   }
 }
 
-app-highlight-carousel {
-  @media only screen and (min-width: 768px) {
+.carousel-desktop {
 
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
+
 }
 
+.carousel-mobile {
 
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+
+}
 
 
 

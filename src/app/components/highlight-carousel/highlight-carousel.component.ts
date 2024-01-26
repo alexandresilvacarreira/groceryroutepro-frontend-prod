@@ -11,7 +11,6 @@ import {slideAnimation} from "../../animations";
   animations: [slideAnimation]
 })
 
-
 export class HighlightCarouselComponent implements OnInit {
 
   products?: ProductWPrice[];
@@ -34,8 +33,7 @@ export class HighlightCarouselComponent implements OnInit {
       } else {
         this.productIndex +=1;
       }
-    }, 2000)
-
+    }, 4000)
   }
 
 

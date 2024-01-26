@@ -1,4 +1,4 @@
-import {trigger, style, animate, transition, keyframes} from '@angular/animations';
+import {trigger, style, animate, transition, keyframes, state} from '@angular/animations';
 
 export const fadeAnimation = trigger('fade', [
   transition(':enter', [
@@ -43,4 +43,23 @@ export const slideAnimationFilter = trigger('slideFilter', [
   ])
 ]);
 
+export const slideFirst = trigger('slideCarouselFirst', [
+  transition(':enter', [
+    style({transform: 'scale(0.5)', opacity: 0}),
+    animate('700ms ease-in', style({transform:  'scale(1)', opacity: 1}))
+  ]),
+]);
 
+export const slideMiddle = trigger('slideCarouselMiddle', [
+  transition(':enter', [
+    style({transform: 'scale(0.5)', opacity: 0}),
+    animate('700ms 200ms ease-in-out', style({transform:  'scale(1)', opacity: 1}))
+  ]),
+]);
+
+export const slideLast = trigger('slideCarouselLast', [
+  transition(':enter', [
+    style({transform: 'scale(0.5)', opacity: 0}),
+    animate('700ms 300ms ease-in-out', style({transform:  'scale(1)', opacity: 1}))
+  ]),
+]);

@@ -1,33 +1,34 @@
-<div class="container-title" >
-    <div class="header-page">
-        <div class="page-title"><h3>Dashboard</h3></div>
-    </div>
+<div class="container-title">
+  <div class="header-page">
+    <div class="page-title"><h3>Dashboard</h3></div>
+  </div>
 </div>
 <div class="container">
-    <ng-container *ngIf="!openFilter">
-        <div class="search-row">
-            <div class="search-bar">
-                <input class="search-input" label="search" type="text" placeholder="Pesquisar"
-                       [formControl]="searchControl"/>
-                <fa-icon class="grey-icon" [icon]="faSearch"></fa-icon>
-            </div>
-            <button class="dark-blue-round-button" (click)=" openFilterMenu()">
-                <fa-icon class="white-icon" [icon]="faFilter"></fa-icon>
-            </button>
-        </div>
-        <app-loader class="loader" *ngIf="!products || products.length === 0"></app-loader>
-        <div class="product-list" *ngIf="products && products.length !== 0">
-            <app-shop-product-edit-card *ngFor="let product of products" [product]="product"></app-shop-product-edit-card>
-            <div class="scroll"
-                 infiniteScroll
-                 [infiniteScrollDistance]="2"
-                 [infiniteScrollThrottle]="50"
-                 [infiniteScrollContainer]="productListSelector"
-                 [fromRoot]="true"
-                 (scrolled)="onScroll()"
-            ></div>
-        </div>
-    </ng-container>
-    <app-shop-edit-filter class="filter" *ngIf="openFilter" (closeEvent)="closeFilterMenu()"
-                          @slideFilter></app-shop-edit-filter>
+  <ng-container *ngIf="!openFilter">
+    <div class="search-row">
+      <div class="search-bar">
+        <input class="search-input" label="search" type="text" placeholder="Pesquisar"
+               [formControl]="searchControl"/>
+        <fa-icon class="grey-icon" [icon]="faSearch"></fa-icon>
+      </div>
+      <button class="dark-blue-round-button" (click)=" openFilterMenu()">
+        <fa-icon class="white-icon" [icon]="faFilter"></fa-icon>
+      </button>
+    </div>
+    <app-loader class="loader" *ngIf="!products || products.length === 0 && !showNotFound"></app-loader>
+    <div *ngIf="showNotFound" class="grey-text">Nenhum produto encontrado</div>
+    <div class="product-list" *ngIf="products && products.length !== 0">
+      <app-shop-product-edit-card *ngFor="let product of products" [product]="product"></app-shop-product-edit-card>
+      <div class="scroll"
+           infiniteScroll
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="50"
+           [infiniteScrollContainer]="productListSelector"
+           [fromRoot]="true"
+           (scrolled)="onScroll()"
+      ></div>
+    </div>
+  </ng-container>
+  <app-product-search-filter class="filter" *ngIf="openFilter" (closeEvent)="closeFilterMenu()" [forStore]="true"
+                             @slideFilter></app-product-search-filter>
 </div>

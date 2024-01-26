@@ -11,15 +11,15 @@
       <div class="title"><h4>Ordenar por</h4></div>
       <div class="option">
         <div class="option-name"><h4>Preço crescente</h4></div>
-        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,asc' ? faCircleSolid : faCircle"
-                 [class]="sort === 'currentLowestPricePrimaryValue,asc' ? 'selected' : ''"
-                 (click)="setSorting('currentLowestPricePrimaryValue,asc')"></fa-icon>
+        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,asc' || sort === 'pricePrimaryValue,asc' ? faCircleSolid : faCircle"
+                 [class]="sort === 'currentLowestPricePrimaryValue,asc' || sort === 'pricePrimaryValue,asc' ? 'selected' : ''"
+                 (click)="forStore ? setSorting('pricePrimaryValue,asc') : setSorting('currentLowestPricePrimaryValue,asc')"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Preço decrescente</h4></div>
-        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,desc' ? faCircleSolid : faCircle"
-                 [class]="sort === 'currentLowestPricePrimaryValue,desc' ? 'selected' : ''"
-                 (click)="setSorting('currentLowestPricePrimaryValue,desc')"></fa-icon>
+        <fa-icon [icon]="sort === 'currentLowestPricePrimaryValue,desc' || sort === 'pricePrimaryValue,desc' ? faCircleSolid : faCircle"
+                 [class]="sort === 'currentLowestPricePrimaryValue,desc' || sort === 'pricePrimaryValue,desc' ? 'selected' : ''"
+                 (click)="forStore ? setSorting('pricePrimaryValue,desc') : setSorting('currentLowestPricePrimaryValue,desc')"></fa-icon>
       </div>
       <div class="option">
         <div class="option-name"><h4>Ordem alfabética crescente</h4></div>
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div class="group">
+    <div class="group" *ngIf="!forStore">
       <div class="title"><h4>Superfícies</h4></div>
       <div class="option">
         <div class="option-name"><h4>Auchan</h4></div>

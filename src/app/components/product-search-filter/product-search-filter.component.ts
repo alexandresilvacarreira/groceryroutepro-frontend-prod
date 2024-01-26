@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {faCircle} from "@fortawesome/free-regular-svg-icons/faCircle";
 import {faCircle as faCircleSolid} from "@fortawesome/free-solid-svg-icons/faCircle";
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
@@ -19,6 +19,7 @@ export class ProductSearchFilterComponent implements OnInit {
   sort!: string;
   categories!: number[];
   chains!: number[];
+  @Input() forStore!:boolean;
 
   constructor(private filterService: ProductFilterService) {
   }

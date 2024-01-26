@@ -1,3 +1,10 @@
+.carousel-wraper{
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+
 .carousel {
   display: flex;
   width: 100%;
@@ -249,6 +256,7 @@
     }
   }
 }
+
 
 
 

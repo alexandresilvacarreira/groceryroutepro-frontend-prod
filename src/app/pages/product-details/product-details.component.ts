@@ -44,7 +44,6 @@ export class ProductDetailsComponent implements OnInit {
 
   }
 
-
   addProduct() {
     this.shoppingListService.addProduct(this.genericProduct.id);
   }
