@@ -83,6 +83,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { ShopDesktopNavbarComponent } from './components/shop-components/shop-desktop-navbar/shop-desktop-navbar.component';
 import { ShopNotificationsComponent } from './pages/Shop-Pages/shop-notifications/shop-notifications.component';
 import { RouteMainCardComponent } from './components/route-main-card/route-main-card.component';
+import { HighlightCarouselDesktopComponent } from './components/highlight-carousel-desktop/highlight-carousel-desktop.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -153,6 +154,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopDesktopNavbarComponent,
     ShopNotificationsComponent,
     RouteMainCardComponent,
+    HighlightCarouselDesktopComponent,
   ],
   imports: [
     BrowserModule,
