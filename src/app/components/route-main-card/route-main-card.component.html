@@ -3,7 +3,7 @@
 
     <div class="title">
       <fa-icon [icon]="faLocationArrow"></fa-icon>
-      <h3>Mais barata</h3>
+      <h3>{{titleCard}}</h3>
     </div>
 
     <div class="row-details">
@@ -17,7 +17,7 @@
             <h5>total:</h5>
           </div>
           <div class="second-row">
-            <h4>32,33€</h4>
+            <h4>{{custo}}€</h4>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
             <h5>poupa:</h5>
           </div>
           <div class="second-row">
-            <h4>-2,33€</h4>
+            <h4>{{savings}}€</h4>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <h5>tempo:</h5>
           </div>
           <div class="second-row">
-            <h4>15min</h4>
+            <h4>{{totalTime}} min</h4>
           </div>
         </div>
       </div>
@@ -58,9 +58,11 @@
         <h5>Lojas:</h5>
       </div>
       <div class="chains-column">
-        <app-chain-sticker [chainId]="3" chainName="continente"></app-chain-sticker>
-        <app-chain-sticker [chainId]="4" chainName="pingo doce"></app-chain-sticker>
-        <app-chain-sticker [chainId]="1" chainName="Lidl"></app-chain-sticker>
+        <ng-container *ngIf="chainList">
+          <ng-container *ngFor=" let chain of chainList">
+            <app-chain-sticker [chainId]="chain.id" chainName="{{chain.name}}"></app-chain-sticker>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
 

@@ -4,8 +4,10 @@ import {faArrowLeft, faLocationDot} from "@fortawesome/free-solid-svg-icons";
 import {NavigationService} from "../../services/navigation.service";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {FormControl} from "@angular/forms";
-import {debounce, debounceTime, from, Observable, of, switchMap} from "rxjs";
+import {catchError, debounce, debounceTime, from, Observable, of, switchMap, throwError} from "rxjs";
 import {PersonilizedMapMarker} from "../../interfaces";
+import {GoogleApiService} from "../../services/google-api.service";
+import {Router} from "@angular/router";
 
 
 
@@ -15,6 +17,8 @@ import {PersonilizedMapMarker} from "../../interfaces";
   styleUrls: ['./create-route.component.scss'],
 })
 export class CreateRouteComponent {
+  showToast=false;
+  toastMessage="";
 
   previousRoute = '';
 
@@ -26,7 +30,7 @@ export class CreateRouteComponent {
   zoom = 6;
   display!: google.maps.LatLngLiteral;
   height = "400px";
-  width = "600px";
+  width = "100%";
 
   inputPartida = new FormControl("");
   inputDestino = new FormControl("");
@@ -42,7 +46,8 @@ export class CreateRouteComponent {
   destino?: google.maps.places.AutocompletePrediction;
 
 
-  constructor(private navigationService: NavigationService) {
+  constructor(private navigationService: NavigationService, private googleApiService: GoogleApiService,
+              private router: Router ) {
   }
 
 
@@ -198,7 +203,17 @@ export class CreateRouteComponent {
 
 
   criarRota(){
-    //TODO ADICIONAR ENDEPOINT CORRETO DO BACKEND
+   this.googleApiService.createRoute(this.PersonilizedMapMarkers[0].markerPosition.lat,this.PersonilizedMapMarkers[0].markerPosition.lng,
+     this.PersonilizedMapMarkers[1].markerPosition.lat,this.PersonilizedMapMarkers[1].markerPosition.lng).pipe(
+     catchError(error => {
+       this.toastMessage = error.error?.message;
+       this.showToast = true;
+       return throwError(() => error);
+     })
+   ).subscribe(serverResponse => {
+       this.router.navigate(['/routes']);
+   });
+
   }
 
 }

@@ -1,6 +1,7 @@
 import LatLng = google.maps.LatLng;
 import LatLngBounds = google.maps.LatLngBounds;
 import GeocoderComponentRestrictions = google.maps.GeocoderComponentRestrictions;
+import LatLngLiteral = google.maps.LatLngLiteral;
 
 interface Signup {
   name: string,
@@ -216,6 +217,32 @@ interface ProductQuantity {
   value: number,
   product : Product
 }
+interface LatLngName extends LatLngLiteral{
+   nameLocation: string;
+}
+interface RouteObject{
+  polyline:string;
+
+  coordenadasMarcadores: LatLngName[];
+
+  totalTime: number;
+
+  shoppingListCost: number;
+
+  vertices: LatLng[];
+
+  chainIdList: number[];
+  chainNameList: string[];
+}
+
+interface RouteResponse{
+  data: {
+    routes :RouteObject[]
+  },
+  success: boolean,
+  message?: string
+
+}
 
 
 export {
@@ -244,6 +271,10 @@ export {
   GenericProductQuantity,
   ProductQuantity,
   ProductData,
-  PersonilizedMapMarker
+  PersonilizedMapMarker,
+  RouteResponse,
+  RouteObject,
+  LatLngName
+
 
 }

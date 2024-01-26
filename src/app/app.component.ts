@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   pagesWithoutHeader = ["/login", "/welcome","/confirm-registration","/signup","/verify-account","/",
     "/dashboard", "/product-details/", "request-new-password", '/forgot-password', '/change-password',
-  '/change-password-confirm', "/error", "create-route"];
+  '/change-password-confirm', "/error", "/create-route", "/routes"];
   pageTitle?:string;
 
 
