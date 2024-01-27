@@ -66,7 +66,6 @@ import { ShopHeaderDashboardComponent } from './components/shop-components/shop-
 import { ShopNavbarComponent } from './components/shop-components/shop-navbar/shop-navbar.component';
 import { ShopNewProductComponent } from './pages/Shop-Pages/shop-new-product/shop-new-product.component';
 import {TruncateFirstWordPipe} from "./pipes/truncate-first-word-pipe";
-import { TestPageComponent } from './pages/test-page/test-page.component';
 import {MatSelectModule} from "@angular/material/select";
 import { ShopEditProductComponent } from './pages/Shop-Pages/shop-edit-product/shop-edit-product.component';
 import { ShopProductEditCardComponent } from './components/shop-components/shop-product-edit-card/shop-product-edit-card.component';
@@ -145,7 +144,6 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopHeaderDashboardComponent,
     ShopNavbarComponent,
     ShopNewProductComponent,
-    TestPageComponent,
     ShopEditProductComponent,
     ShopProductEditCardComponent,
     ShopEditFilterComponent,

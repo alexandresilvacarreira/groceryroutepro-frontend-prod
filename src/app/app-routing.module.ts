@@ -53,7 +53,6 @@ const routes: Routes = [
   {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
   {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
   {path: 'create-route', component: CreateRouteComponent},
-  {path: 'test-page', component: TestPageComponent, canActivate: [buildGuard("/login")]},
 //[roleGuard("STORE")]
   {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
