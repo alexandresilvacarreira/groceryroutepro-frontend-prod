@@ -5,7 +5,7 @@ import {NavigationService} from "../../services/navigation.service";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {FormControl} from "@angular/forms";
 import {catchError, debounce, debounceTime, from, Observable, of, switchMap, throwError} from "rxjs";
-import {PersonilizedMapMarker} from "../../interfaces";
+import {PersonilizedMapMarker, RouteWaypoint} from "../../interfaces";
 import {GoogleApiService} from "../../services/google-api.service";
 import {Router} from "@angular/router";
 
@@ -21,6 +21,10 @@ export class CreateRouteComponent {
   toastMessage="";
 
   previousRoute = '';
+  mapsOptions: google.maps.MapOptions={
+    disableDefaultUI: true,
+    zoomControl: true
+  };
 
   showAutocompletePartida = false;
   showAutocompleteDestino = false;
@@ -44,6 +48,9 @@ export class CreateRouteComponent {
 
   partida?: google.maps.places.AutocompletePrediction;
   destino?: google.maps.places.AutocompletePrediction;
+
+  markerOptions : google.maps.MarkerOptions[]=[];
+  markerOpt?:google.maps.MarkerOptions;
 
 
   constructor(private navigationService: NavigationService, private googleApiService: GoogleApiService,
@@ -147,37 +154,29 @@ export class CreateRouteComponent {
     this.inputPartida.setValue(result.description);
     this.showAutocompletePartida = false;
     this.partida = result;
-    this.getGeoCoordinates(result);
+    this.getGeoCoordinates(result, true);
   }
 
   onClickDestino(result: google.maps.places.AutocompletePrediction) {
     this.inputDestino.setValue(result.description);
     this.showAutocompleteDestino = false;
     this.destino = result;
-    this.getGeoCoordinates(result);
+    this.getGeoCoordinates(result, false);
   }
 
 
   //-----------------------------------------------//------------------------
   //Map marker
 
-  PersonilizedMapMarkers:PersonilizedMapMarker[]=[];
 
 
 
-  addMarker(result:google.maps.places.AutocompletePrediction,lat: number, lng: number) {
-    let newMaker : PersonilizedMapMarker = {
-      place_id: result.place_id,
-      markerPosition: {lat,lng},
-      title: result.description};
-    this.PersonilizedMapMarkers.push(newMaker);
 
-  }
 
 
   /*---------------------GEOCODER----------------------------------*/
 
-  getGeoCoordinates(result:google.maps.places.AutocompletePrediction) {
+  getGeoCoordinates(result:google.maps.places.AutocompletePrediction, partida: boolean) {
     const geocoder = new google.maps.Geocoder();
     geocoder
       .geocode({placeId: result.place_id})
@@ -185,16 +184,15 @@ export class CreateRouteComponent {
         if (results[0]) {
           let lat= results[0].geometry.location.lat();
           let lng = results[0].geometry.location.lng();
-          this.addMarker(result,lat,lng);
-          this.zoom=10;
-          this.center= this.PersonilizedMapMarkers.length > 1 ?
-            {
-              lat: this.PersonilizedMapMarkers.reduce((sum, marker) => sum + marker.markerPosition.lat, 0) / this.PersonilizedMapMarkers.length,
-              lng: this.PersonilizedMapMarkers.reduce((sum, marker) => sum + marker.markerPosition.lng, 0) / this.PersonilizedMapMarkers.length
-            }
-            : this.PersonilizedMapMarkers[0].markerPosition;
-        } else {
-          window.alert("No results found");
+          let label = "";
+           (partida) ?  label = "Partida" : label = "Destino";
+
+
+
+          this.markerOptions.push(this.generateMarkerOptions(lat, lng, label));
+
+          this.zoom=this.calculateZoom();
+          this.center =this.calculateCenter();
         }
       })
       .catch((e) => window.alert("Geocoder failed due to: " + e));
@@ -203,8 +201,19 @@ export class CreateRouteComponent {
 
 
   criarRota(){
-   this.googleApiService.createRoute(this.PersonilizedMapMarkers[0].markerPosition.lat,this.PersonilizedMapMarkers[0].markerPosition.lng,
-     this.PersonilizedMapMarkers[1].markerPosition.lat,this.PersonilizedMapMarkers[1].markerPosition.lng).pipe(
+    let waypoints : {lat :number, lng: number}[]=[];
+
+      for ( let marker of this.markerOptions){
+        if (marker.position){
+          const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
+          const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
+          waypoints.push({lat,lng})
+        }
+      }
+
+
+   this.googleApiService.createRoute(waypoints[0].lat,waypoints[0].lng,
+     waypoints[1].lat, waypoints[1].lng).pipe(
      catchError(error => {
        this.toastMessage = error.error?.message;
        this.showToast = true;
@@ -214,6 +223,80 @@ export class CreateRouteComponent {
        this.router.navigate(['/routes']);
    });
 
+  }
+
+
+  generateMarkerOptions(lat: number, lng: number, labelText: string): google.maps.MarkerOptions {
+    return {
+      position: { lat, lng },
+      draggable: false,
+      label: {
+        text: labelText,
+        fontWeight: 'bolder', // Set font weight to bold
+        fontFamily: 'Lato', // Set font family to Lato
+        color: '#000000',
+        fontSize: '16px',
+
+
+      },
+      anchorPoint: new google.maps.Point(0, -20)
+    };
+  }
+
+  calculateZoom(): number {
+    const maxZoom = 20;
+    const minZoom = 1;
+    const padding = 200;
+
+    const bounds = new google.maps.LatLngBounds();
+    if (this.markerOptions) {
+      for (const marker of this.markerOptions) {
+        if (marker.position) {
+          const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
+          const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
+          bounds.extend(new google.maps.LatLng(lat, lng));
+        }
+      }
+      const ne = bounds.getNorthEast();
+      const sw = bounds.getSouthWest();
+
+      const maxLat = ne.lat();
+      const minLat = sw.lat();
+      const maxLng = ne.lng();
+      const minLng = sw.lng();
+
+      const latRange = maxLat - minLat;
+      const lngRange = maxLng - minLng;
+
+      // Calculate zoom level based on latitude or longitude range
+      const zoomLat = Math.floor(Math.log2((360 * padding) / (256 * latRange)));
+      const zoomLng = Math.floor(Math.log2((360 * padding) / (256 * lngRange)));
+
+      return Math.min(maxZoom, Math.max(minZoom, Math.min(zoomLat, zoomLng)));
+    }
+
+    return minZoom;
+
+
+  }
+  calculateCenter(): google.maps.LatLngLiteral {
+    let totalLat = 0;
+    let totalLng = 0;
+
+    for (const marker of this.markerOptions) {
+      if (marker.position) {
+        const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
+        const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
+        totalLat += lat;
+        totalLng += lng;
+      }
+
+    }
+
+    const avgLat = totalLat / this.markerOptions.length;
+    const avgLng = totalLng / this.markerOptions.length;
+
+    return { lat: avgLat, lng: avgLng };
   }
 
 }

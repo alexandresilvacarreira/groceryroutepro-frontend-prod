@@ -49,7 +49,6 @@ export class RoutesComponent {
     this.googleApiService.getRoutes().subscribe(response => {
       this.showToast = false;
       this.routes = response.data.routes;
-      console.log(this.routes)
       if (!response.success && this.routes.length != 0) {
         this.showToast = true;
         this.toastMessage = "Lista de compras foi alterada, deves gerar nova rota"

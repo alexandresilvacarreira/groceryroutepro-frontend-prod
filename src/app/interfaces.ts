@@ -245,6 +245,10 @@ interface RouteResponse{
   message?: string
 
 }
+interface RouteWaypoint{
+  coordenadas: {lat: number,lng: number},
+  label: string
+}
 
 
 export {
@@ -276,7 +280,8 @@ export {
   PersonilizedMapMarker,
   RouteResponse,
   RouteObject,
-  LatLngName
+  LatLngName,
+  RouteWaypoint
 
 
 }

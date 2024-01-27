@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (click)="openRoutes()">
   <div class="wrapper">
 
     <div class="title">
@@ -66,6 +66,8 @@
       </div>
     </div>
 
+
+
     <div class="map" *ngIf="showMap">
       <google-map class="map"
                   [height]="height"
@@ -73,12 +75,13 @@
                   [center]="center"
                   [zoom]="zoom"
                   (mapClick)="moveMap($event)"
-                  (mapMousemove)="move($event)">
-        <ng-container *ngFor="let marker of personilizedMapMarkers">
+                  (mapMousemove)="move($event)"
+                  [options]="mapsOptions">
+        <ng-container *ngFor="let marker of markerOptions">
           <map-marker
-            [position]="marker.markerPosition"
-            [label]="marker.title"
+            [options]="marker"
           ></map-marker>
+          <map-polyline [path]="vertices" [options]="polylineOptions"></map-polyline>
         </ng-container>
       </google-map>
     </div>

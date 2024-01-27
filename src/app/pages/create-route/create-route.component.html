@@ -60,17 +60,19 @@
 
   <!--<div id="map"></div>-->
   <google-map class="map"
-    [height]="height"
-    [width]="width"
-    [center]="center"
-    [zoom]="zoom"
-    (mapClick)="moveMap($event)"
-    (mapMousemove)="move($event)"><ng-container *ngFor="let marker of PersonilizedMapMarkers">
-    <map-marker
-      [position]="marker.markerPosition"
-      [title]="marker.title"
-    ></map-marker>
-  </ng-container></google-map>
+              [height]="height"
+              [width]="width"
+              [center]="center"
+              [zoom]="zoom"
+              (mapClick)="moveMap($event)"
+              (mapMousemove)="move($event)"
+              [options]="mapsOptions">
+    <ng-container *ngFor="let marker of markerOptions">
+      <map-marker
+        [options]="marker"
+      ></map-marker>
+    </ng-container>
+  </google-map>
   <button class="dark-blue-button" (click)="criarRota()">Iniciar Viagem</button>
 </div>
 
