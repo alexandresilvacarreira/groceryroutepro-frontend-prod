@@ -21,8 +21,6 @@ import {HistoryProductsComponent} from "./pages/history-products/history-product
 import {HistoryRoutesComponent} from "./pages/history-routes/history-routes.component";
 import {CreateRouteComponent} from "./pages/create-route/create-route.component";
 import {ShopEditProductComponent} from "./pages/Shop-Pages/shop-edit-product/shop-edit-product.component";
-
-import {TestPageComponent} from "./pages/test-page/test-page.component";
 import {
   ShopHeaderDashboardComponent
 } from "./components/shop-components/shop-header-dashboard/shop-header-dashboard.component";
