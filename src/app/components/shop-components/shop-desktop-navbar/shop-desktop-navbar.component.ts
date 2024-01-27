@@ -32,7 +32,7 @@ export class ShopDesktopNavbarComponent {
       this.currentUser = user as User;
       this.chainId = this.currentUser?.chain.id;
       this.chainName = this.currentUser?.chain.name;
-      console.log(this.chainName)
+
     });
   }
   logout() {

@@ -16,9 +16,9 @@ import {TruncateFirstWordPipe} from "../../../pipes/truncate-first-word-pipe";
 export class ShopHeaderDashboardComponent {
 
   chainId!: number;
-  chainName: string[]=[];
+  chainName!: string;
   currentUser!: User;
-  matriz: number[] = [];
+
 
   protected readonly faUserGear = faUserGear;
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
@@ -30,9 +30,8 @@ export class ShopHeaderDashboardComponent {
 
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user as User;
-      this.matriz = this.currentUser?.stores.map(store => store.id);
-      this.chainName= this.currentUser?.stores.map(store => store.name);
-      this.chainId = Number(this.matriz[0]);
+      this.chainId = this.currentUser?.chain.id;
+      this.chainName = this.currentUser?.chain.name;
     });
   }
 
