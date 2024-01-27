@@ -42,25 +42,37 @@
       margin: 0;
     }
   }
+
   @media only screen and (min-width: 768px) {
-    max-width: 50%;
+    max-width: 100%;
     min-width: 35%;
-    margin: auto;
+    margin:auto;
   }
-  .info-container{
+
+  .info-container {
+
     flex-direction: column;
     display: flex;
     gap: 10px;
     width: 100%;
+
+    @media only screen and (min-width: 768px) {
+      flex-direction: row;
+      width: 100%;
+      .app-route-main-card {
+        flex: 1;
+      }
+    }
+
     .empty-list-message {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       padding: 50px;
       margin: auto;
       text-align: center;
+      width: 100%;
 
       .icon {
         transform: rotate(-15deg);
@@ -115,6 +127,10 @@
       }
     }
 
+    @media only screen and (min-width: 768px) {
+      max-width: 50%;
+    }
+
   }
 
 
@@ -128,6 +144,10 @@
     padding: 10px;
     margin-bottom: 20px;
     align-items: center;
+
+    @media only screen and (min-width: 768px) {
+      max-width: 50%;
+    }
 
     fa-icon {
       align-self: flex-start;
