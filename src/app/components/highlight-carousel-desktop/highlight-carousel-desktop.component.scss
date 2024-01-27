@@ -4,11 +4,10 @@
   }
 }
 
-
 .carousel {
   display: flex;
   width: 100%;
-  height: 360px;
+  height: 200px;
   overflow: hidden;
   margin: 40px auto;
   justify-content: center;
@@ -22,139 +21,6 @@
 
   &:hover {
     cursor: pointer;
-  }
-
-  .large-frame:hover {
-    border: 3px solid #4CAF50;
-  }
-
-  .large-frame {
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-    height: 350px;
-    width: 300px;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
-    overflow: hidden;
-    border-left: 2px solid #4CAF50;
-    font-size: 1.3em;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-
-    @media only screen and (max-width: 1375px) {
-        display: none;
-      }
-
-
-    @media only screen and (min-width: 1630px) {
-      flex-direction: row;
-      justify-content: space-evenly;
-      width: 485px;
-      height: 275px;
-      font-size: 1.8em;
-    }
-
-    h5 {
-      margin: 0;
-    }
-
-    .image {
-      display: flex;
-      width: 230px;
-      height: 140px;
-      align-items: center;
-      justify-content: center;
-
-      @media only screen and (min-width: 1630px) {
-        display: flex;
-        width: 230px;
-        height: 275px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      img {
-        width: 100%;
-        height: auto;
-        justify-content: center;
-      }
-    }
-
-    .info {
-      display: flex;
-      flex-direction: column;
-      height: 170px;
-      align-items: center;
-
-      @media only screen and (min-width: 1630px) {
-        gap: 15px;
-      }
-
-      h6 {
-        margin: 0;
-      }
-
-      .title, .qntd, .price, .qntd_price {
-        display: flex;
-        height: 30px;
-        align-items: center;
-        width: 220px;
-
-
-      }
-
-      .chain {
-        display: flex;
-        height: 24px;
-        width: 100%
-      }
-
-      .qntd, .qntd_price {
-        color: #918787;
-      }
-
-      .qntd_price {
-        span {
-          display: flex;
-        }
-      }
-
-      .price {
-        display: flex;
-        flex-direction: row;
-
-        .atual_price {
-          display: flex;
-          margin-right: 10px;
-        }
-
-        .previous_price {
-          display: flex;
-          color: #918787;
-          text-decoration: line-through;
-        }
-      }
-    }
-
-    .discount {
-      display: flex;
-      position: absolute;
-      background-color: #4CAF50;
-      top: 0;
-      right: 0;
-      width: 100px;
-      height: 30px;
-      justify-content: center;
-      align-items: center;
-      border-top-right-radius: 8px;
-      border-bottom-left-radius: 8px;
-      color: #FFFFFF;
-
-    }
   }
 
   .carousel_frame:hover {

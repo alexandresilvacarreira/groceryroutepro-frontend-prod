@@ -10,6 +10,10 @@ h3, * h4, * h5, * h6 {
   flex: 1;
   flex-wrap: wrap;
 
+  &:hover{
+    cursor: pointer;
+  }
+
   .row1 {
     display: flex;
     justify-content: space-between;

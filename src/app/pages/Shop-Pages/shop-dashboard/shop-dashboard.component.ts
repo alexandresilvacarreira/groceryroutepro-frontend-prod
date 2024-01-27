@@ -36,7 +36,7 @@ export class ShopDashboardComponent {
 
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user as User;
-      this.chainId = [this.chainId.push(this.currentUser?.chain.id)];
+      this.chainId = [this.currentUser?.chain.id];
       this.productFilterService.setFilterValues({
         sort: "pricePrimaryValue,asc",
         chains: this.chainId,

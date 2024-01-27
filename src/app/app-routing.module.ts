@@ -34,12 +34,12 @@ import {ShopNotificationsComponent} from "./pages/Shop-Pages/shop-notifications/
 
 const routes: Routes = [
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
-  {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false)]},
+  {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false), ]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
   {path: 'confirm-registration', component: ConfirmRegistrationComponent},
   {path: 'error', component: ErrorComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
   {path: 'product-details/:genericProductId', component: ProductDetailsComponent, canActivate: [buildGuard("/login")]},
   {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login")],  data: {title: 'Pesquisa'}},
   {path: 'verify-account/:email', component: VerifyAccountComponent},

@@ -50,7 +50,6 @@ export class ShopEditProductComponent {
     product!: Product;
     productName!: string;
 
-
     constructor(private formBuilder: FormBuilder, private productsService: ProductsService,
                 private userService: UserService, private route: ActivatedRoute) {
         this.productId = parseInt(this.route.snapshot.params['productId']);

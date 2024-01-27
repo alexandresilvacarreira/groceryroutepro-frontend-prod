@@ -24,6 +24,14 @@
     overflow: hidden;
     border-left: 2px solid #4CAF50;
 
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.carousel_frame:hover {
+      border: 3px solid #4CAF50;
+    }
+
     .image {
       display: flex;
       margin-top: 20px;
@@ -34,7 +42,6 @@
       img {
         width: 100%;
         height: auto;
-
       }
     }
 
@@ -51,10 +58,6 @@
         height: 16px;
         align-items: center;
         width: 170px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
       }
 
       .chain {

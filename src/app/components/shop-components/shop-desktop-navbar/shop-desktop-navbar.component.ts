@@ -20,9 +20,9 @@ import {faBell, faPenToSquare} from "@fortawesome/free-regular-svg-icons";
 })
 export class ShopDesktopNavbarComponent {
   chainId!: number;
-  chainName: string[]=[];
+  chainName!: string;
   currentUser!: User;
-  matriz: number[] = [];
+
   constructor(private router : Router, public userService: UserService, private authService : AuthService) {
   }
 
@@ -30,9 +30,9 @@ export class ShopDesktopNavbarComponent {
 
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user as User;
-      this.matriz = this.currentUser?.stores.map(store => store.id);
-      this.chainName= this.currentUser?.stores.map(store => store.name);
-      this.chainId = Number(this.matriz[0]);
+      this.chainId = this.currentUser?.chain.id;
+      this.chainName = this.currentUser?.chain.name;
+      console.log(this.chainName)
     });
   }
   logout() {

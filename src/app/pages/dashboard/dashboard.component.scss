@@ -10,7 +10,7 @@
     margin-left: 5px;
   }
 
-  .routes-title{
+  .routes-title {
     @media only screen and (min-width: 768px) {
       margin-left: 15px;
     }
@@ -18,10 +18,11 @@
 
 }
 
-.user-panel{
+.user-panel {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 50px;
 
   @media only screen and (max-width: 1230px) {
     display: flex;
@@ -71,7 +72,7 @@
       }
     }
 
-    .card-wrapper{
+    .card-wrapper {
       display: flex;
       width: 80%;
       //min-width: 100%;
@@ -146,11 +147,12 @@
 
     }
 
-    .info-container{
+    .info-container {
       flex-direction: column;
       display: flex;
       gap: 10px;
       width: 100%;
+
       .empty-list-message {
         display: flex;
         flex-direction: column;
@@ -228,6 +230,7 @@
     padding: 10px;
     box-shadow: 0 0 8.1px 0 rgba(0, 0, 0, 0.25);
     border-radius: 8px;
+
     &:hover {
       cursor: pointer;
     }
