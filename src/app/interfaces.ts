@@ -237,7 +237,7 @@ interface RouteObject{
   chainNameList: string[];
 }
 
-interface RouteResponse{
+interface RouteResponse {
   data: {
     routes :RouteObject[]
   },

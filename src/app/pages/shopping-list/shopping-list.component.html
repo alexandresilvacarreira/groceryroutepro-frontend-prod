@@ -5,7 +5,7 @@
   <app-tab-menu-shopping-list-desktop [shoppingList]="shoppingList"></app-tab-menu-shopping-list-desktop>
 </ng-container>
 <app-loader class="loader" *ngIf="!shoppingList"></app-loader>
-<div class="empty-list-message" *ngIf="shoppingList && shoppingList.genericProductQuantities.length == 0">
+<div class="empty-list-message" *ngIf="shoppingList && shoppingList.genericProductQuantities.length === 0">
   <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
   <h3 class="grey-text light-text">A tua lista será apresentada aqui. Toca em “+” para começar a adicionar artigos!</h3>
   <div class="plus" [routerLink]="'/search'">

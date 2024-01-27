@@ -11,6 +11,7 @@ import {ShoppingListService} from "../../services/shopping-list.service";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {GoogleApiService} from "../../services/google-api.service";
 import {NavigationService} from "../../services/navigation.service";
+import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,7 @@ import {NavigationService} from "../../services/navigation.service";
 })
 export class DashboardComponent implements OnInit {
 
-  shoppingList!:ShoppingList;
+  shoppingList!: ShoppingList;
 
   routes?: RouteObject[];
   cheapestRoute?: RouteObject;
@@ -27,28 +28,48 @@ export class DashboardComponent implements OnInit {
   savings?: number;
   showToast = false;
   toastMessage = "";
-  previousRoute = '';
+  showListChangedWarning = false;
 
-  constructor(private userService: UserService, private router: Router,
-              private shoppingListService : ShoppingListService,
-              private googleApiService: GoogleApiService,
-              private navigationService: NavigationService
-  ) {
+
+  constructor(private shoppingListService: ShoppingListService,
+              private googleApiService: GoogleApiService) {
   }
 
 
-
   ngOnInit(): void {
+
+    this.showToast = false;
 
     this.shoppingListService.shoppingList.subscribe(list => {
       if (list) {
         this.shoppingList = list;
       }
     })
+
+    this.googleApiService.getRoutes().subscribe(response => {
+      if (response){
+        if (!response.success && response.data.routes.length !== 0) {
+          this.showToast = true;
+          this.toastMessage = "Lista de compras alterada, deverão ser geradas novas rotas."
+          this.showListChangedWarning = true;
+          this.routes = this.googleApiService.getOldRoutes();
+        } else {
+          this.routes = response.data.routes;
+        }
+        if (this.routes.length !== 0) {
+          this.cheapestRoute = this.routes[0];
+          this.fastestRoute = this.routes[1];
+          this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
+        }
+      }
+    })
+
+
   }
 
   protected readonly faCirclePlus = faCirclePlus;
   protected readonly faCartShopping = faCartShopping;
   protected readonly faCoins = faCoins;
-    protected readonly faRoute = faRoute;
+  protected readonly faRoute = faRoute;
+  protected readonly faCircleExclamation = faCircleExclamation;
 }

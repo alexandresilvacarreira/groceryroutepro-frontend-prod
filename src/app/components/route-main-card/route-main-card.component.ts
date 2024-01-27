@@ -25,7 +25,6 @@ export class RouteMainCardComponent {
   protected readonly faLocationArrow = faLocationArrow;
 
 
-
   markerOptions : google.maps.MarkerOptions[]=[];
   markerOpt?:google.maps.MarkerOptions;
 
@@ -35,10 +34,7 @@ export class RouteMainCardComponent {
   };
 
 
-
   polylineOptions: google.maps.PolylineOptions= {strokeColor: '#1565C0', strokeWeight: 2 };
-
-
 
 
   @Input() route!: RouteObject;
@@ -78,6 +74,7 @@ export class RouteMainCardComponent {
 
 
   ngOnInit() {
+
     this.custo = Number(this.route.shoppingListCost.toFixed(2));
     this.totalTime = Math.round(this.route.totalTime / 60);
     this.routeWaypoints = this.route.coordenadasMarcadores.map(item => ({

@@ -5,7 +5,6 @@ import {ProductQuantity, GenericProductQuantity, ShoppingList} from "../../inter
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {RemoveProductConfirmationComponent} from "../remove-product-confirmation/remove-product-confirmation.component";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-product-card-item',
@@ -19,7 +18,6 @@ export class ProductCardItemComponent {
 
   @Input() genericProductQuantity?:GenericProductQuantity;
   @Input() productQuantity?:ProductQuantity;
-  @Output() updatedShoppingList = new EventEmitter<ShoppingList>;
 
   constructor(public dialog: MatDialog, private shoppingListService: ShoppingListService) {
   }

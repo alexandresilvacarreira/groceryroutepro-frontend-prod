@@ -17,23 +17,31 @@
             <h5>total:</h5>
           </div>
           <div class="second-row">
-            <h4>{{custo}}€</h4>
+            <h4>{{custo | number : undefined : 'pt' }} €</h4>
           </div>
         </div>
       </div>
-
-
       <div class="column">
         <div class="icon-column">
           <fa-icon [icon]="faPiggyBank"></fa-icon>
         </div>
         <div class="data-column">
+          <ng-container *ngIf="titleCard === 'Maior poupança'">
           <div class="first-row">
-            <h5>poupa:</h5>
+            <h5>poupas:</h5>
           </div>
           <div class="second-row">
-            <h4>{{savings}}€</h4>
+            <h4 class="green-text">{{savings | number : undefined : 'pt' }}€</h4>
           </div>
+          </ng-container>
+          <ng-container *ngIf="titleCard === 'Mais rápida'">
+            <div class="first-row">
+              <h5>gastas:</h5>
+            </div>
+            <div class="second-row">
+              <h4 class="red-text">+{{savings | number : undefined : 'pt' }}€</h4>
+            </div>
+          </ng-container>
         </div>
       </div>
 

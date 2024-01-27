@@ -8,7 +8,12 @@ import {catchError, debounce, debounceTime, from, Observable, of, switchMap, thr
 import {PersonilizedMapMarker, RouteWaypoint} from "../../interfaces";
 import {GoogleApiService} from "../../services/google-api.service";
 import {Router} from "@angular/router";
-
+import {
+  RemoveProductConfirmationComponent
+} from "../../components/remove-product-confirmation/remove-product-confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
+import {GenerateRouteDialogComponent} from "../../components/generate-route-dialog/generate-route-dialog.component";
+import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 
 
 @Component({
@@ -17,11 +22,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-route.component.scss'],
 })
 export class CreateRouteComponent {
-  showToast=false;
-  toastMessage="";
+  showToast = false;
+  toastMessage = "";
 
   previousRoute = '';
-  mapsOptions: google.maps.MapOptions={
+  mapsOptions: google.maps.MapOptions = {
     disableDefaultUI: true,
     zoomControl: true
   };
@@ -49,12 +54,12 @@ export class CreateRouteComponent {
   partida?: google.maps.places.AutocompletePrediction;
   destino?: google.maps.places.AutocompletePrediction;
 
-  markerOptions : google.maps.MarkerOptions[]=[];
-  markerOpt?:google.maps.MarkerOptions;
+  markerOptions: google.maps.MarkerOptions[] = [];
+  markerOpt?: google.maps.MarkerOptions;
 
 
   constructor(private navigationService: NavigationService, private googleApiService: GoogleApiService,
-              private router: Router ) {
+              private router: Router, public dialog: MatDialog) {
   }
 
 
@@ -101,7 +106,6 @@ export class CreateRouteComponent {
       const newBounds = new google.maps.LatLngBounds(southwest, northeast);
       // todo ver a interface de bound
 
-
       const inputToString = inputString.toString();
 
       return from(
@@ -124,6 +128,8 @@ export class CreateRouteComponent {
   }
 
   ngOnInit() {
+
+    this.previousRoute = this.navigationService.getPreviousRoute();
 
     this.inputPartida.valueChanges
       .pipe(
@@ -169,66 +175,65 @@ export class CreateRouteComponent {
   //Map marker
 
 
-
-
-
-
-
   /*---------------------GEOCODER----------------------------------*/
 
-  getGeoCoordinates(result:google.maps.places.AutocompletePrediction, partida: boolean) {
+  getGeoCoordinates(result: google.maps.places.AutocompletePrediction, partida: boolean) {
     const geocoder = new google.maps.Geocoder();
     geocoder
       .geocode({placeId: result.place_id})
       .then(({results}) => {
         if (results[0]) {
-          let lat= results[0].geometry.location.lat();
+          let lat = results[0].geometry.location.lat();
           let lng = results[0].geometry.location.lng();
           let label = "";
-           (partida) ?  label = "Partida" : label = "Destino";
-
+          (partida) ? label = "Partida" : label = "Destino";
 
 
           this.markerOptions.push(this.generateMarkerOptions(lat, lng, label));
 
-          this.zoom=this.calculateZoom();
-          this.center =this.calculateCenter();
+          this.zoom = this.calculateZoom();
+          this.center = this.calculateCenter();
         }
       })
       .catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
+  criarRota() {
 
+    let dialogRef = this.dialog.open(GenerateRouteDialogComponent);
 
-  criarRota(){
-    let waypoints : {lat :number, lng: number}[]=[];
+    let waypoints: { lat: number, lng: number }[] = [];
 
-      for ( let marker of this.markerOptions){
-        if (marker.position){
-          const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
-          const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
-          waypoints.push({lat,lng})
-        }
+    for (let marker of this.markerOptions) {
+      if (marker.position) {
+        const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
+        const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
+        waypoints.push({lat, lng})
       }
+    }
 
-
-   this.googleApiService.createRoute(waypoints[0].lat,waypoints[0].lng,
-     waypoints[1].lat, waypoints[1].lng).pipe(
-     catchError(error => {
-       this.toastMessage = error.error?.message;
-       this.showToast = true;
-       return throwError(() => error);
-     })
-   ).subscribe(serverResponse => {
-       this.router.navigate(['/routes']);
-   });
+    this.googleApiService.createRoute(waypoints[0].lat, waypoints[0].lng,
+      waypoints[1].lat, waypoints[1].lng).pipe(
+      catchError(error => {
+        this.toastMessage = "Ocorreu um erro ao gerar rota.";
+        this.showToast = true;
+        console.error(error);
+        dialogRef.close();
+        return throwError(() => error);
+      }),switchMap(() => {
+        return of(this.googleApiService.getRoutes())
+      })
+    ).subscribe(serverResponse => {
+      dialogRef.close();
+      this.router.navigate(['/routes']);
+    });
 
   }
 
 
   generateMarkerOptions(lat: number, lng: number, labelText: string): google.maps.MarkerOptions {
     return {
-      position: { lat, lng },
+      position: {lat, lng},
       draggable: false,
       label: {
         text: labelText,
@@ -279,6 +284,7 @@ export class CreateRouteComponent {
 
 
   }
+
   calculateCenter(): google.maps.LatLngLiteral {
     let totalLat = 0;
     let totalLng = 0;
@@ -296,7 +302,8 @@ export class CreateRouteComponent {
     const avgLat = totalLat / this.markerOptions.length;
     const avgLng = totalLng / this.markerOptions.length;
 
-    return { lat: avgLat, lng: avgLng };
+    return {lat: avgLat, lng: avgLng};
   }
 
+  protected readonly faRoute = faRoute;
 }

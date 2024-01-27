@@ -84,6 +84,7 @@ import { ShopDesktopNavbarComponent } from './components/shop-components/shop-de
 import { ShopNotificationsComponent } from './pages/Shop-Pages/shop-notifications/shop-notifications.component';
 import { RouteMainCardComponent } from './components/route-main-card/route-main-card.component';
 import { HighlightCarouselDesktopComponent } from './components/highlight-carousel-desktop/highlight-carousel-desktop.component';
+import { GenerateRouteDialogComponent } from './components/generate-route-dialog/generate-route-dialog.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -155,6 +156,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     ShopNotificationsComponent,
     RouteMainCardComponent,
     HighlightCarouselDesktopComponent,
+    GenerateRouteDialogComponent,
   ],
   imports: [
     BrowserModule,

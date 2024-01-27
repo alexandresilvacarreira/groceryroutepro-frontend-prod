@@ -8,7 +8,7 @@
   <div class="information-container">
     <div class="input-container">
       <div class="description-title">
-        Local de partida*
+        Local de partida <span [style.color]="'#DB3A34'"><sup>*</sup></span>
       </div>
       <div class="input-box">
         <input class="input-location"
@@ -33,7 +33,7 @@
 
     <div class="input-container">
       <div class="description-title">
-        Local de partida*
+        Local de destino <span [style.color]="'#DB3A34'"><sup>*</sup></span>
       </div>
       <div class="input-box">
         <input class="input-location"
@@ -55,9 +55,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
   <!--<div id="map"></div>-->
   <google-map class="map"
               [height]="height"
@@ -73,7 +71,15 @@
       ></map-marker>
     </ng-container>
   </google-map>
-  <button class="dark-blue-button" (click)="criarRota()">Iniciar Viagem</button>
+  <div class="info">
+    <p class="grey-text align-left"><span [style.color]="'#DB3A34'"><sup>*</sup></span>Campos obrigatórios</p>
+  </div>
+  <div class="button-container">
+    <div class="clear-button dark-blue-text" (click)="criarRota()">
+      <fa-icon [icon]="faRoute"></fa-icon>
+      <span>Gerar rotas</span>
+    </div>
+  </div>
 </div>
 
 

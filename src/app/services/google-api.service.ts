@@ -1,15 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {RouteResponse, ServerResponse} from "../interfaces";
+import {RouteObject, RouteResponse, ServerResponse, ShoppingList, ShoppingListResponse} from "../interfaces";
+import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 const BASE_URL = environment.BASE_URL;
 @Injectable({
   providedIn: "root"
 })
 export class GoogleApiService {
-  constructor(private http: HttpClient) {
 
+  constructor(private http: HttpClient) {
+    this.getRoutes();
   }
+
+  _oldRoutes = new BehaviorSubject<RouteObject[]>([]);
 
   createRoute(partidaLat:number, partidaLng: number, destinoLat: number, destinoLng: number){
     return this.http.post<ServerResponse>(BASE_URL + "/google-maps-api/create-route", {partida :{
@@ -23,14 +27,21 @@ export class GoogleApiService {
     }, {withCredentials: true})
   }
 
-
   getRoutes(){
-    return this.http.get<RouteResponse>(BASE_URL+"/google-maps-api/get-route",{withCredentials: true});
-
+    return this.http.get<RouteResponse>(BASE_URL+"/google-maps-api/get-route",{withCredentials: true})
+      .pipe(
+        catchError(error => {
+          console.error(error)
+          return throwError(() => error);
+        }),
+        tap(routeResponse => {
+          if (routeResponse.success || this._oldRoutes.value.length === 0)
+            this._oldRoutes.next(routeResponse.data.routes);
+        }))
     }
 
-
-
-
+    getOldRoutes() {
+      return this._oldRoutes.value;
+    }
 
 }
