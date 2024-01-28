@@ -24,11 +24,11 @@ export class GoogleApiService {
       lat: destinoLat,
       lng: destinoLng
     }
-    }, {withCredentials: true})
+    })
   }
 
   getRoutes(){
-    return this.http.get<RouteResponse>(BASE_URL+"/google-maps-api/get-route",{withCredentials: true})
+    return this.http.get<RouteResponse>(BASE_URL+"/google-maps-api/get-route")
       .pipe(
         catchError(error => {
           console.error(error)

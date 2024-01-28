@@ -33,7 +33,7 @@ export class ProductsService {
 
     getProductDetails(productId: number) {
         let url = `${BASE_URL}/products/${productId}`;
-        return this.http.get<ProductDetails>(url, {withCredentials: true});
+        return this.http.get<ProductDetails>(url);
     }
 
     getProductsList(search: string = this.defaultSearch, categories: number[] = this.defaultCategories, chains: number[] = this.defaultChains, sort: string = this.defaultSort, page: number = this.defaultPage, size: number = this.defaultSize) {
@@ -70,11 +70,11 @@ export class ProductsService {
 
     createNewProduct(productData: ProductData): Observable<ServerResponse> {
 
-        return this.http.post<ServerResponse>(BASE_URL + "/products/create", productData, {withCredentials: true})
+        return this.http.post<ServerResponse>(BASE_URL + "/products/create", productData)
     }
 
     editProduct(productData: ProductData): Observable<ServerResponse> {
-        return this.http.post<ServerResponse>(BASE_URL + "/products/edit", productData, {withCredentials: true})
+        return this.http.post<ServerResponse>(BASE_URL + "/products/edit", productData)
     }
 
     getCategories(): Observable<Category[]> {

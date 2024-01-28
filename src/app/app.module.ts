@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {WelcomeComponent} from './pages/welcome/welcome.component';
 import {SplashComponent} from './components/splash/splash.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HeaderDashboardComponent} from "./components/header-dashboard/header-dashboard.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
@@ -84,6 +84,7 @@ import {ShopNotificationsComponent} from './pages/Shop-Pages/shop-notifications/
 import {RouteMainCardComponent} from './components/route-main-card/route-main-card.component';
 import {HighlightCarouselDesktopComponent} from './components/highlight-carousel-desktop/highlight-carousel-desktop.component';
 import {GenerateRouteDialogComponent} from './components/generate-route-dialog/generate-route-dialog.component';
+import {AuthInterceptor} from "./auth.interceptor";
 
 
 Chart.defaults.font.family = 'Lato';
@@ -180,7 +181,12 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
 
     providers: [DatePipe,
         {provide: LOCALE_ID, useValue: 'pt'},
-        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {position: 'absolute'}}
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {position: 'absolute'}},
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

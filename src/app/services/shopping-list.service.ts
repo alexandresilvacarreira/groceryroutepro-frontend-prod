@@ -26,7 +26,7 @@ export class ShoppingListService {
   }
 
   getShoppingList() {
-    return this.http.get<ShoppingListResponse>(BASE_URL + "/shopping-list/get", {withCredentials: true})
+    return this.http.get<ShoppingListResponse>(BASE_URL + "/shopping-list/get")
       .pipe(
         catchError(error => {
           console.error(error)
@@ -38,7 +38,7 @@ export class ShoppingListService {
   }
 
   addProduct(genericProductId: number) {
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/add-product", {genericProductId}, {withCredentials: true})
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/add-product", {genericProductId})
       .pipe(
         catchError(error => {
           this.snackBar.openFromComponent(SnackBarComponent, {
@@ -61,7 +61,7 @@ export class ShoppingListService {
   }
 
   removeProduct(genericProductId: number) {
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-product", {genericProductId}, {withCredentials: true})
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-product", {genericProductId})
       .pipe(
         catchError(error => {
           console.error(error)
@@ -73,7 +73,7 @@ export class ShoppingListService {
   }
 
   removeAll(genericProductId: number) {
-    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-all", {genericProductId}, {withCredentials: true})
+    return this.http.post<ShoppingListResponse>(BASE_URL + "/shopping-list/remove-all", {genericProductId})
       .pipe(
         catchError(error => {
           console.error(error)

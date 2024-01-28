@@ -11,6 +11,7 @@ import {ShoppingListService} from "../../services/shopping-list.service";
   styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
+  loading=true;
 
   shoppingList!: ShoppingList;
   protected readonly faCoins = faCoins;
@@ -20,6 +21,7 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     this.shoppingListService.shoppingList.subscribe(list => {
+      this.loading=false;
       if (list)
         this.shoppingList = list;
     })
