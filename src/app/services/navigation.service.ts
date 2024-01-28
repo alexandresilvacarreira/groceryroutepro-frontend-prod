@@ -4,36 +4,31 @@ import {filter} from "rxjs";
 
 
 @Injectable({
-  providedIn: "root"
+    providedIn: "root"
 })
 
 export class NavigationService {
 
-  currentRoute = '';
-  previousRoute = '';
+    currentRoute = '';
+    previousRoute = '';
 
-  constructor(private router:Router) {
+    constructor(private router: Router) {
 
-    this.getNavigationEnd().subscribe(
-      (event) => {
-        if (event instanceof NavigationEnd){
-          this.previousRoute = this.currentRoute;
-          this.currentRoute = event.url;
-        }
-      }
-    )
-  }
+        this.getNavigationEnd().subscribe(
+            (event) => {
+                if (event instanceof NavigationEnd) {
+                    this.previousRoute = this.currentRoute;
+                    this.currentRoute = event.url;
+                }
+            }
+        )
+    }
 
-  getNavigationEnd(){
-    return this.router.events.pipe(filter(event => event instanceof NavigationEnd));
-  }
+    getNavigationEnd() {
+        return this.router.events.pipe(filter(event => event instanceof NavigationEnd));
+    }
 
-  getPreviousRoute(){
-    return this.previousRoute;
-  }
-
-  getCurrentRoute(){
-    return this.currentRoute;
-  }
-
+    getPreviousRoute() {
+        return this.previousRoute;
+    }
 }

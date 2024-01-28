@@ -1,7 +1,5 @@
 import {Component, Input} from '@angular/core';
-import _default from "chart.js/dist/plugins/plugin.tooltip";
-import animations = _default.defaults.animations;
-import {faCheck, faCross, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {fadeAnimation} from "../../animations";
 
 @Component({

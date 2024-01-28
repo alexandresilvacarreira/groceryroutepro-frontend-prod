@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {ChangePasswordInterface, EmailVerificationToken, ServerResponse, Signup} from "../interfaces";
+import {ServerResponse, Signup} from "../interfaces";
 
 
 const BASE_URL = environment.BASE_URL;
@@ -12,7 +12,7 @@ const BASE_URL = environment.BASE_URL;
 })
 
 export class AuthService {
-  emailVerificationtoken !: EmailVerificationToken;
+
 
   constructor(private http: HttpClient) {
   }

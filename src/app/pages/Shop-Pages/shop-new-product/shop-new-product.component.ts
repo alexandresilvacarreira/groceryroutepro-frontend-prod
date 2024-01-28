@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {faArrowLeft, faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {faArrowLeft, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {ProductsService} from "../../../services/products.service";
-import {Category, GenericProduct, Price, Product, ProductData, ProductWPrice, User} from "../../../interfaces";
+import {Category, Price, Product, ProductData, User} from "../../../interfaces";
 import {UserService} from "../../../services/user.service";
 import {catchError, throwError} from "rxjs";
 
@@ -18,7 +18,6 @@ export class ShopNewProductComponent implements OnInit {
     currentUser!: User;
     userId!: number;
     listCategories: Category[] = [];
-    showMessage = false;
     showToast = false;
     message = "";
     toastBoolean!: boolean;
@@ -113,6 +112,6 @@ export class ShopNewProductComponent implements OnInit {
         }
     }
 
-    protected readonly faXmark = faXmark;
+
 }
 

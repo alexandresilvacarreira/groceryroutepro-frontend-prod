@@ -1,8 +1,8 @@
-import {Injectable, OnInit} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {Login, ServerResponse, Signup, User} from "../interfaces";
-import {BehaviorSubject, catchError, Observable, of, throwError} from "rxjs";
+import {User} from "../interfaces";
+import {BehaviorSubject, catchError, of} from "rxjs";
 
 const BASE_URL = environment.BASE_URL;
 

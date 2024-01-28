@@ -1,9 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {ShoppingList} from "../../interfaces";
-import {UserService} from "../../services/user.service";
-import {BehaviorSubject, catchError, throwError} from "rxjs";
-import {isUser} from "../../utils";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 import {ShoppingListService} from "../../services/shopping-list.service";

@@ -8,10 +8,8 @@
         <div class="title">
           <h3 *ngIf="isUser(user)">Olá, {{user!.name | truncateFirstWord}} </h3>
         </div>
-        <!--        <h2 *ngIf="isUser(user) && user?.name">{{ user!.name | truncateFirstWord}}  </h2>-->
       </ng-container>
     </div>
-<!--    <fa-icon [icon]="faUserGear"></fa-icon>-->
     <fa-icon class="icon-button" [icon]="faArrowRightFromBracket" (click)="logout()"></fa-icon>
   </div>
 

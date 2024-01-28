@@ -7,6 +7,7 @@ import {AuthService} from "../../../services/auth.service";
 import {catchError, throwError} from "rxjs";
 import {User} from "../../../interfaces";
 import {TruncateFirstWordPipe} from "../../../pipes/truncate-first-word-pipe";
+import {isUser} from "../../../utils";
 
 @Component({
   selector: 'app-shop-header-dashboard',
@@ -46,11 +47,7 @@ export class ShopHeaderDashboardComponent {
         this.router.navigate(["/login"]);
       });
   }
-
-  isUser(obj: any): obj is User {
-    return obj !== false && obj !== null && typeof obj === 'object' && 'name' in obj;
-  }
-
   protected readonly TruncateFirstWordPipe = TruncateFirstWordPipe;
 
+  protected readonly isUser = isUser;
 }

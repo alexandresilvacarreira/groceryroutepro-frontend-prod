@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
-import {animate, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {BehaviorSubject, catchError, mergeMap, of, switchMap, throwError} from "rxjs";
-import {User} from "../../interfaces";
+import {catchError, throwError} from "rxjs";
 import {fadeAnimation} from "../../animations";
 
 @Component({

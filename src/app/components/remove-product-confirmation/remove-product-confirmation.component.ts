@@ -1,11 +1,9 @@
-import {Component, EventEmitter, Inject, Output} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons/faCircleXmark";
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
 import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {catchError, throwError} from "rxjs";
-import {ShoppingList} from "../../interfaces";
 
 @Component({
   selector: 'app-remove-product-confirmation',
@@ -14,8 +12,9 @@ import {ShoppingList} from "../../interfaces";
 })
 export class RemoveProductConfirmationComponent {
 
-  constructor(public dialogRef: MatDialogRef<RemoveProductConfirmationComponent>, @Inject(MAT_DIALOG_DATA) public data: {productName: string, genericProductId : number}, private shoppingListService : ShoppingListService){
-  }
+  constructor(public dialogRef: MatDialogRef<RemoveProductConfirmationComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {productName: string, genericProductId : number},
+              private shoppingListService : ShoppingListService){}
 
   closeDialog(){
     this.dialogRef.close();

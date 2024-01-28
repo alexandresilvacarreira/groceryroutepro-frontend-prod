@@ -1,15 +1,12 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {
     Category,
-    Product,
     ProductData,
     ProductDetails,
-    ProductWPrice,
     ProductWPriceList,
     ServerResponse,
-    Signup,
     GenericProductsListResponse,
     GenericProductResponse
 } from "../interfaces";
@@ -85,10 +82,6 @@ export class ProductsService {
         return this.http.get<Category[]>(url);
     }
 
-    getProductData(productId: number) {
-        let url = BASE_URL + "/products/${productId}";
-        return this.http.get<ProductData>(url);
-    }
 
 
 }

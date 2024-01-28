@@ -21,9 +21,6 @@ import {HistoryProductsComponent} from "./pages/history-products/history-product
 import {HistoryRoutesComponent} from "./pages/history-routes/history-routes.component";
 import {CreateRouteComponent} from "./pages/create-route/create-route.component";
 import {ShopEditProductComponent} from "./pages/Shop-Pages/shop-edit-product/shop-edit-product.component";
-import {
-  ShopHeaderDashboardComponent
-} from "./components/shop-components/shop-header-dashboard/shop-header-dashboard.component";
 import {ShopDashboardComponent} from "./pages/Shop-Pages/shop-dashboard/shop-dashboard.component";
 import {ShopNewProductComponent} from "./pages/Shop-Pages/shop-new-product/shop-new-product.component";
 import {roleGuard} from "./guards/role.guard";
@@ -31,43 +28,45 @@ import {ShopNotificationsComponent} from "./pages/Shop-Pages/shop-notifications/
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/welcome', pathMatch: 'full'},
-  {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false), ]},
-  {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
-  {path: 'confirm-registration', component: ConfirmRegistrationComponent},
-  {path: 'error', component: ErrorComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
-  {path: 'product-details/:genericProductId', component: ProductDetailsComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
-  {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")], data: {title: 'Pesquisa'}},
-  {path: 'verify-account/:email', component: VerifyAccountComponent},
-  {path: 'shopping-list', component: ShoppingListComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")], data: {title: 'Lista de Compras'}},
-  {path: 'forgot-password', component: ForgotPasswordComponent },
-  {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent },
-  {path: 'change-password/:header', component: ChangePasswordComponent },
-  {path: 'change-password-confirm', component: ConfirmChangePasswordComponent },
-  {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")], data: {title: 'Rotas'}},
-  {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")], data: {title: 'Histórico'}},
-  {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
-  {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login"),  roleGuard("USER_FREE")]},
-  {path: 'create-route', component: CreateRouteComponent},
+    {path: '', redirectTo: '/welcome', pathMatch: 'full'},
+    {path: 'error', component: ErrorComponent},
+
+    {path: 'signup', component: SignupComponent},
+    {path: 'forgot-password', component: ForgotPasswordComponent},
+    {path: 'forgot-password-confirm', component: ForgotPasswordSucessComponent},
+    {path: 'change-password/:header', component: ChangePasswordComponent},
+    {path: 'change-password-confirm', component: ConfirmChangePasswordComponent},
+    {path: 'confirm-registration', component: ConfirmRegistrationComponent},
+
+    {path: 'welcome', component: WelcomeComponent, canActivate: [buildGuard("/dashboard", false),]},
+    {path: 'login', component: LoginComponent, canActivate: [buildGuard("/dashboard", false)]},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+    {path: 'product-details/:genericProductId', component: ProductDetailsComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+    {path: 'search', component: SearchComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")], data: {title: 'Pesquisa'}},
+    {path: 'verify-account/:email', component: VerifyAccountComponent},
+    {path: 'shopping-list', component: ShoppingListComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")], data: {title: 'Lista de Compras'}},
+
+    {path: 'routes', component: RoutesComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")], data: {title: 'Rotas'}},
+    {path: 'history', component: HistoryComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")], data: {title: 'Histórico'}},
+    {path: 'history-products', component: HistoryProductsComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+    {path: 'history-routes', component: HistoryRoutesComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+    {path: 'create-route', component: CreateRouteComponent, canActivate: [buildGuard("/login"), roleGuard("USER_FREE")]},
+
 //[roleGuard("STORE")]
   {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
   {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
   {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
   {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
 
-  {path: '**', redirectTo: '/error', pathMatch: 'full'},
-
-
+    {path: '**', redirectTo: '/error', pathMatch: 'full'},
 
 
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    declarations: [],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

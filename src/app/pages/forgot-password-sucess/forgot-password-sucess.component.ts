@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {fadeAnimation} from "../../animations";
-import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-forgot-password-sucess',
@@ -9,15 +9,6 @@ import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesom
   animations: [fadeAnimation]
 })
 export class ForgotPasswordSucessComponent {
-  constructor() {
-  }
-
-
-
-  ngOnInit(): void {
-  }
-
-
   protected readonly faArrowLeft = faArrowLeft;
 }
 

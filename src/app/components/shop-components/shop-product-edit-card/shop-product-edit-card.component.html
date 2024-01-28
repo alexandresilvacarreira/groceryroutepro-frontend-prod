@@ -5,14 +5,13 @@
   </div>
   <div class="details">
     <div class="image">
-      <img [src]="product.imageUrl">
+      <img [src]="product.imageUrl" alt="Product image">
     </div>
     <div class="info">
       <div class="title"><h3>{{product.name}}</h3></div>
       <div class="qntd"><h5>{{product.quantity}}</h5></div>
       <div class="price">
         <div class="atual_price"><h5>{{product.pricePrimaryValue | number : undefined : 'pt'}}€</h5></div>
-        <!--      <div class="previous_price"><h6>{{product.priceWoDiscount}}</h6></div>-->
       </div>
       <div class="qntd_price">
         <span class=""><h4>{{product.priceSecondaryValue | number : undefined : 'pt'}}</h4></span>

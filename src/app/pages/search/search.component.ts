@@ -1,24 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
-import {GenericProduct, ProductSearchFilterOptions, ProductWPrice, ProductWPriceList, User} from "../../interfaces";
+import {GenericProduct, ProductSearchFilterOptions} from "../../interfaces";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
-import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {
   BehaviorSubject,
   catchError,
   combineLatest,
-  debounceTime,
-  forkJoin, map,
-  merge, startWith,
+  debounceTime, map, startWith,
   switchMap,
-  take,
   throwError
 } from "rxjs";
 import _default from "chart.js/dist/plugins/plugin.tooltip";
-import animations = _default.defaults.animations;
 import {slideAnimationFilter} from "../../animations";
 import {ProductFilterService} from "../../services/product-filter.service";
 

@@ -1,16 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {RouteObject, ShoppingList, User} from "../../interfaces";
-import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
-import {catchError, lastValueFrom, throwError} from "rxjs";
-import {isUser} from "../../utils";
+import {RouteObject, ShoppingList} from "../../interfaces";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons/faCirclePlus";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import {faCoins} from "@fortawesome/free-solid-svg-icons/faCoins";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {GoogleApiService} from "../../services/google-api.service";
-import {NavigationService} from "../../services/navigation.service";
 import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 
 @Component({

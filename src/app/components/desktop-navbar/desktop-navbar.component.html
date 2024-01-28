@@ -2,7 +2,7 @@
   <div class="all-wrapper">
     <div class="logo-and-icons">
       <div class="logo">
-        <img src="assets/images/gorceryroutepro_logo_white.svg"/>
+        <img src="assets/images/gorceryroutepro_logo_white.svg" alt="logoGroceryRoutePro"/>
       </div>
       <div class="options-wrapper">
         <div class="icons-wrapper">
@@ -32,7 +32,7 @@
             <div *ngIf="userService.getCurrentUser() | async as user" class="greeting">
               <h3 *ngIf="isUser(user)">Olá, {{ user!.name | truncateFirstWord }} </h3>
             </div>
-            <!--          <fa-icon [icon]="faUserGear" [mask]="faCircle" [transform]={size:8}  ></fa-icon>-->
+
             <fa-icon class="icon-button" [icon]="faArrowRightFromBracket" [mask]="faCircle" [transform]={size:8}
                      (click)="logout()"></fa-icon>
           </div>

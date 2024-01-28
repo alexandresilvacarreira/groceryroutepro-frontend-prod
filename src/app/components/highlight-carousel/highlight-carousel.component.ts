@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {ProductWPrice} from "../../interfaces";
-import {animate, style, transition, trigger} from "@angular/animations";
 import {slideAnimation} from "../../animations";
 
 @Component({

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {ProductWPrice} from "../../interfaces";
 import {ProductsService} from "../../services/products.service";
-import {BehaviorSubject} from "rxjs";
 import {slideFirst, slideLast, slideMiddle} from "../../animations";
 
 @Component({

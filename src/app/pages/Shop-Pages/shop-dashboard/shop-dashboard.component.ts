@@ -16,8 +16,6 @@ import {ProductFilterService} from "../../../services/product-filter.service";
 export class ShopDashboardComponent {
 
   products: ProductWPrice[] = [];
-  showError = false;
-  errorMessage = "";
   searchControl = new FormControl("");
   page = new BehaviorSubject<number>(0);
   productListSelector = ".product-list";

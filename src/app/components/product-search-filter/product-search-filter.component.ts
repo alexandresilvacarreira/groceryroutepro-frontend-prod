@@ -4,7 +4,6 @@ import {faCircle as faCircleSolid} from "@fortawesome/free-solid-svg-icons/faCir
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons/faCircleXmark";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import {NavigationService} from "../../services/navigation.service";
 import {ProductFilterService} from "../../services/product-filter.service";
 
 

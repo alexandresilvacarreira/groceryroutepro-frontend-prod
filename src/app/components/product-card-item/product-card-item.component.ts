@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {faTrashCan} from "@fortawesome/free-solid-svg-icons/faTrashCan";
-import {ProductQuantity, GenericProductQuantity, ShoppingList} from "../../interfaces";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ProductQuantity, GenericProductQuantity} from "../../interfaces";
+import {MatDialog} from "@angular/material/dialog";
 import {RemoveProductConfirmationComponent} from "../remove-product-confirmation/remove-product-confirmation.component";
 import {ShoppingListService} from "../../services/shopping-list.service";
 
@@ -28,12 +28,9 @@ export class ProductCardItemComponent {
     event.stopImmediatePropagation();
     event.preventDefault();
 
-    /*let dialogRef =*/ this.dialog.open(RemoveProductConfirmationComponent, {
+    this.dialog.open(RemoveProductConfirmationComponent, {
       data: { productName, genericProductId },
     });
-    // dialogRef.afterClosed().subscribe(updatedList => {
-    //   this.updatedShoppingList.emit(updatedList);
-    // })
   }
 
   updateList(event:Event, genericProductId : number, add = true){
@@ -44,12 +41,10 @@ export class ProductCardItemComponent {
 
     if (add) {
       this.shoppingListService.addProduct(genericProductId)
+    } else if (this.genericProductQuantity?.quantity === 1) {
+      this.openRemoveDialog(event, this.genericProductQuantity.genericProduct.name, this.genericProductQuantity.genericProduct.id);
     } else {
-      if (this.genericProductQuantity?.quantity === 1) {
-        this.openRemoveDialog(event, this.genericProductQuantity.genericProduct.name, this.genericProductQuantity.genericProduct.id);
-      } else {
-        this.shoppingListService.removeProduct(genericProductId)
-      }
+      this.shoppingListService.removeProduct(genericProductId)
     }
   }
 

@@ -9,7 +9,6 @@
       <span class="product-quantity grey-text overflow-ellipsis">{{genericProduct.quantity}}</span>
       <div class="product-primary-price">
         <span class="overflow-ellipsis">{{currentLowestPrice.primaryValue | number : undefined : 'pt'}} € </span>
-<!--        <span *ngIf="product.pricePrimaryUnit!==''" class="overflow-ellipsis">/ {{product.pricePrimaryUnit}} </span>-->
         <span *ngIf="currentLowestPrice.priceWoDiscount!==''" class="grey-text overflow-ellipsis"><s> {{currentLowestPrice.priceWoDiscount}}</s></span>
       </div>
       <div class="product-secondary-price">

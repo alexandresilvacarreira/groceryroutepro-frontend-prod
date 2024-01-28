@@ -1,16 +1,9 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {
-  GenericProductsListResponse,
-  GenericProductResponse,
-  ProductDetails,
-  ProductWPriceList,
-  ServerResponse,
-  Signup,
-  Product, ShoppingListResponse, ShoppingList
+import {ShoppingListResponse, ShoppingList
 } from "../interfaces";
-import {BehaviorSubject, catchError, Observable, pipe, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackBarComponent} from "../components/snack-bar/snack-bar.component";
 

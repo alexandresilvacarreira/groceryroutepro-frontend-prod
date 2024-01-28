@@ -1,12 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from "../../../services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {ProductsService} from "../../../services/products.service";
-import {NavigationService} from "../../../services/navigation.service";
-import {Category, GenericProduct, Price, Product, ProductData, ProductDetails, User} from "../../../interfaces";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Category, Price, Product, ProductData, User} from "../../../interfaces";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {catchError, throwError} from "rxjs";
-import {SnackBarComponent} from "../../../components/snack-bar/snack-bar.component";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 

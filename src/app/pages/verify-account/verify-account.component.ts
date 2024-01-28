@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {faArrowLeft, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {animate, style, transition, trigger} from "@angular/animations";
 import {catchError, throwError} from "rxjs";
 import {fadeAnimation} from "../../animations";
 
@@ -17,8 +16,7 @@ import {fadeAnimation} from "../../animations";
 export class VerifyAccountComponent implements OnInit {
 
   protected readonly faArrowLeft = faArrowLeft;
-  protected readonly faEyeSlash = faEyeSlash;
-  protected readonly faEye = faEye;
+
 
 
   form!: FormGroup;

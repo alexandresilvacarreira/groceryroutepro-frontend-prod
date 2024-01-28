@@ -1,16 +1,11 @@
-/// <reference types="@types/google.maps" />
 import {Component} from '@angular/core';
 import {faArrowLeft, faLocationDot} from "@fortawesome/free-solid-svg-icons";
 import {NavigationService} from "../../services/navigation.service";
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {FormControl} from "@angular/forms";
-import {catchError, debounce, debounceTime, from, Observable, of, switchMap, throwError} from "rxjs";
-import {PersonilizedMapMarker, RouteWaypoint} from "../../interfaces";
+import {catchError, debounceTime, from, Observable, of, switchMap, throwError} from "rxjs";
 import {GoogleApiService} from "../../services/google-api.service";
 import {Router} from "@angular/router";
-import {
-  RemoveProductConfirmationComponent
-} from "../../components/remove-product-confirmation/remove-product-confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {GenerateRouteDialogComponent} from "../../components/generate-route-dialog/generate-route-dialog.component";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
@@ -47,9 +42,6 @@ export class CreateRouteComponent {
   inputPartida = new FormControl("");
   inputDestino = new FormControl("");
 
-  /*partidaResults?: google.maps.places.AutocompleteResponse;
-  destinoResults?:google.maps.places.AutocompleteResponse;*/
-
   partidaResults: any[] = [];
   destinoResults: any[] = [];
 
@@ -73,7 +65,6 @@ export class CreateRouteComponent {
   }
 
   partidaInputBlur(): void {
-    // Use a slight delay to allow time for click events to trigger
     setTimeout(() => {
       this.showAutocompletePartida = false;
     }, 200);
@@ -85,7 +76,6 @@ export class CreateRouteComponent {
   }
 
   destinoInputBlur(): void {
-    // Use a slight delay to allow time for click events to trigger
     setTimeout(() => {
       this.showAutocompleteDestino = false;
     }, 200);
@@ -104,13 +94,11 @@ export class CreateRouteComponent {
   }
 
   autocompleteMethod(inputString: string | null): Observable<any[]> {
-    // Check if the inputString is truthy and not an empty string
     if (inputString && inputString.trim() !== "") {
       const autocompleteService = new google.maps.places.AutocompleteService();
       const southwest = {lat: 32.35130, lng: -31.07921};
       const northeast = {lat: 42.20564806080576, lng: -5.901021665431905};
       const newBounds = new google.maps.LatLngBounds(southwest, northeast);
-      // todo ver a interface de bound
 
       const inputToString = inputString.toString();
 
@@ -128,7 +116,6 @@ export class CreateRouteComponent {
         })
       );
     } else {
-      // If input is empty, return an Observable of an empty array
       return of([]);
     }
   }
@@ -176,12 +163,7 @@ export class CreateRouteComponent {
     this.getGeoCoordinates(result, false);
   }
 
-
-  //-----------------------------------------------//------------------------
-  //Map marker
-
-
-  /*---------------------GEOCODER----------------------------------*/
+    /*---------------------GEOCODER----------------------------------*/
 
   getGeoCoordinates(result: google.maps.places.AutocompletePrediction, partida: boolean) {
     const geocoder = new google.maps.Geocoder();
@@ -197,7 +179,7 @@ export class CreateRouteComponent {
 
 
 
-          const indexToRemove =  this.lableProxy.findIndex(item => typeof item === "string" && item === label);
+          const indexToRemove =  this.lableProxy.findIndex(item => item === label);
 
 
           if (indexToRemove !== -1) {
@@ -242,7 +224,7 @@ export class CreateRouteComponent {
         }),switchMap(() => {
           return of(this.googleApiService.getRoutes())
         })
-      ).subscribe(serverResponse => {
+      ).subscribe(() => {
         dialogRef.close();
         this.router.navigate(['/routes']);
       });
@@ -261,12 +243,10 @@ export class CreateRouteComponent {
       draggable: false,
       label: {
         text: labelText,
-        fontWeight: 'bolder', // Set font weight to bold
-        fontFamily: 'Lato', // Set font family to Lato
+        fontWeight: 'bolder',
+        fontFamily: 'Lato',
         color: '#000000',
         fontSize: '16px',
-
-
       },
       anchorPoint: new google.maps.Point(0, -20)
     };
@@ -297,7 +277,7 @@ export class CreateRouteComponent {
       const latRange = maxLat - minLat;
       const lngRange = maxLng - minLng;
 
-      // Calculate zoom level based on latitude or longitude range
+
       const zoomLat = Math.floor(Math.log2((360 * padding) / (256 * latRange)));
       const zoomLng = Math.floor(Math.log2((360 * padding) / (256 * lngRange)));
 

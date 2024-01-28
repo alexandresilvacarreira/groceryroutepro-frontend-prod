@@ -4,7 +4,7 @@ import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
 import {faPiggyBank} from "@fortawesome/free-solid-svg-icons";
 import {faStopwatch} from "@fortawesome/free-solid-svg-icons/faStopwatch";
 import {faLocationArrow} from "@fortawesome/free-solid-svg-icons/faLocationArrow";
-import {Chain, LatLngName, PersonilizedMapMarker, RouteObject, RouteWaypoint} from "../../interfaces";
+import {Chain, RouteObject, RouteWaypoint} from "../../interfaces";
 import LatLng = google.maps.LatLng;
 import {Router} from "@angular/router";
 
@@ -81,9 +81,9 @@ export class RouteMainCardComponent {
       coordenadas: {lat: item.lat, lng: item.lng},
       label: item.nameLocation
     }));
-    for (let i = 0; i < this.routeWaypoints.length; i++) {
-      this.markerOpt  = this.generateMarkerOptions(this.routeWaypoints[i].coordenadas.lat,
-        this.routeWaypoints[i].coordenadas.lng, this.routeWaypoints[i].label);
+    for (const element of this.routeWaypoints) {
+      this.markerOpt = this.generateMarkerOptions(element.coordenadas.lat,
+          element.coordenadas.lng, element.label);
       this.markerOptions.push(this.markerOpt)
     }
 
@@ -104,13 +104,11 @@ export class RouteMainCardComponent {
 
   buildMapsUrl(){
     let waypointsString="";
-    //get waypoint coordinates
-    for (let i = 0; i < this.routeWaypoints.length; i++) {
-      waypointsString+=this.routeWaypoints[i].coordenadas.lat+","+this.routeWaypoints[i].coordenadas.lng+"/"
+    for (const element of this.routeWaypoints) {
+      waypointsString += element.coordenadas.lat + "," + element.coordenadas.lng+"/"
     }
     const url: string= "https://www.google.com/maps/dir/"+waypointsString;
     window.open(url, '_blank');
-
   }
 
 

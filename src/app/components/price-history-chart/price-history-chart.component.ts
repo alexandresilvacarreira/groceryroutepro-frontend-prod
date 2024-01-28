@@ -1,9 +1,9 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Price, Product} from "../../interfaces";
-import {ChartDataset, ChartOptions, ChartType, Chart, ChartConfiguration, ChartEvent,} from 'chart.js';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from "../../interfaces";
+import {ChartOptions, ChartType, ChartConfiguration} from 'chart.js';
 import {DatePipe} from "@angular/common";
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {distinctUntilChanged, of, startWith, switchAll, switchMap, tap} from "rxjs";
+import {FormControl} from '@angular/forms';
+
 
 
 @Component({
@@ -66,7 +66,6 @@ export class PriceHistoryChartComponent implements OnInit {
           backgroundColor = "rgba(119, 184, 34, 0.2)";
           borderColor = "rgba(119, 184, 34, 1)";
           pointBackgroundColor = "rgba(0, 0, 0, 1)";
-          ;
           break;
       }
 

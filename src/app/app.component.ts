@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "./services/user.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {filter} from "rxjs";
 import {NavigationService} from "./services/navigation.service";
 
 @Component({

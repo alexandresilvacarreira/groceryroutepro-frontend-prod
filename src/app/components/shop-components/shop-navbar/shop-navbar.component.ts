@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
@@ -7,9 +7,9 @@ import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
 import {faBell, faPenToSquare} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
-  selector: 'app-shop-navbar',
-  templateUrl: './shop-navbar.component.html',
-  styleUrls: ['./shop-navbar.component.scss']
+    selector: 'app-shop-navbar',
+    templateUrl: './shop-navbar.component.html',
+    styleUrls: ['./shop-navbar.component.scss']
 })
 export class ShopNavbarComponent {
 
@@ -17,7 +17,7 @@ export class ShopNavbarComponent {
     protected readonly faCartShopping = faCartShopping;
     protected readonly faRoute = faRoute;
     protected readonly faUser = faUser;
-  protected readonly faCartPlus = faCartPlus;
-  protected readonly faPenToSquare = faPenToSquare;
+    protected readonly faCartPlus = faCartPlus;
+    protected readonly faPenToSquare = faPenToSquare;
     protected readonly faBell = faBell;
 }

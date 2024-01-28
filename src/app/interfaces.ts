@@ -1,6 +1,4 @@
 import LatLng = google.maps.LatLng;
-import LatLngBounds = google.maps.LatLngBounds;
-import GeocoderComponentRestrictions = google.maps.GeocoderComponentRestrictions;
 import LatLngLiteral = google.maps.LatLngLiteral;
 
 interface Signup {
@@ -14,11 +12,6 @@ interface ServerResponse {
   success: boolean,
   userRole?: string,
   user?: User
-}
-
-interface Login {
-  email: string,
-  password: string
 }
 
 interface User {
@@ -166,25 +159,10 @@ interface GenericProductsListResponse {
   message?: string
 }
 
-interface EmailVerificationToken {
-  token: string
-}
-
-interface ChangePasswordInterface {
-  token: string,
-  password: string
-}
-
 interface ProductSearchFilterOptions {
   sort: string,
   categories: number[],
   chains: number[]
-}
-
-interface PersonilizedMapMarker {
-  place_id: string,
-  markerPosition: google.maps.LatLngLiteral,
-  title: string
 }
 
 
@@ -253,7 +231,6 @@ interface RouteWaypoint{
 
 export {
   Signup,
-  Login,
   ServerResponse,
   User,
   Role,
@@ -266,8 +243,6 @@ export {
   ProductWPrice,
   Pagination,
   ProductWPriceList,
-  EmailVerificationToken,
-  ChangePasswordInterface,
   ProductSearchFilterOptions,
   GenericProduct,
   GenericProductResponse,
@@ -277,11 +252,8 @@ export {
   GenericProductQuantity,
   ProductQuantity,
   ProductData,
-  PersonilizedMapMarker,
   RouteResponse,
   RouteObject,
   LatLngName,
   RouteWaypoint
-
-
 }

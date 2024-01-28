@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {faArrowLeft, faArrowRightToBracket, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../services/auth.service";
-import {ChangePasswordInterface} from "../../interfaces";
 import {ActivatedRoute, Router} from "@angular/router";
 import {catchError, throwError} from "rxjs";
 import {fadeAnimation} from "../../animations";
@@ -52,7 +51,6 @@ export class ChangePasswordComponent {
 
   protected readonly faEye = faEye;
   protected readonly faArrowLeft = faArrowLeft;
-  protected readonly faArrowRightToBracket = faArrowRightToBracket;
   protected readonly faEyeSlash = faEyeSlash;
 
   ngOnInit(): void {
