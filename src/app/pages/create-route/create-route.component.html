@@ -18,7 +18,7 @@
                [formControl]="inputPartida"
                (focus)="partidaInputFocus()"
                (blur)="partidaInputBlur()"/>
-        <fa-icon class="grey-icon" [icon]="faLocationDot"></fa-icon>
+        <fa-icon class="grey-icon" [icon]="faLocationDot" *ngIf="showMarkerPartida"></fa-icon>
       </div>
       <div class="autocomplete-results" *ngIf="showAutocompletePartida">
         <div class="autocomplete-results-table">
@@ -43,7 +43,7 @@
                [formControl]="inputDestino"
                (focus)="destinoInputFocus()"
                (blur)="destinoInputBlur()"/>
-        <fa-icon class="grey-icon" [icon]="faLocationDot"></fa-icon>
+        <fa-icon class="grey-icon" [icon]="faLocationDot" *ngIf="showMarkerDestino"></fa-icon>
       </div>
       <div class="autocomplete-results" *ngIf="showAutocompleteDestino">
         <div class="autocomplete-results-table">

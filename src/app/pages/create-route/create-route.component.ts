@@ -22,6 +22,9 @@ import {faRoute} from "@fortawesome/free-solid-svg-icons/faRoute";
   styleUrls: ['./create-route.component.scss'],
 })
 export class CreateRouteComponent {
+  showMarkerPartida=true;
+  showMarkerDestino=true;
+
   showToast = false;
   toastMessage = "";
 
@@ -55,7 +58,8 @@ export class CreateRouteComponent {
   destino?: google.maps.places.AutocompletePrediction;
 
   markerOptions: google.maps.MarkerOptions[] = [];
-  markerOpt?: google.maps.MarkerOptions;
+  lableProxy:string[]=[];
+
 
 
   constructor(private navigationService: NavigationService, private googleApiService: GoogleApiService,
@@ -65,6 +69,7 @@ export class CreateRouteComponent {
 
   partidaInputFocus() {
     this.showAutocompletePartida = true;
+    this.showMarkerPartida=false;
   }
 
   partidaInputBlur(): void {
@@ -76,6 +81,7 @@ export class CreateRouteComponent {
 
   destinoInputFocus() {
     this.showAutocompleteDestino = true;
+    this.showMarkerDestino=false;
   }
 
   destinoInputBlur(): void {
@@ -185,10 +191,22 @@ export class CreateRouteComponent {
         if (results[0]) {
           let lat = results[0].geometry.location.lat();
           let lng = results[0].geometry.location.lng();
-          let label = "";
-          (partida) ? label = "Partida" : label = "Destino";
+          let label = (partida) ? "Partida" : "Destino";
+
+          console.log("Label to search for:", label);
 
 
+
+          const indexToRemove =  this.lableProxy.findIndex(item => typeof item === "string" && item === label);
+
+
+          if (indexToRemove !== -1) {
+            this.markerOptions.splice(indexToRemove, 1);
+            this.lableProxy.splice(indexToRemove, 1);
+          }
+
+          console.log(this.markerOptions)
+          this.lableProxy.push(label);
           this.markerOptions.push(this.generateMarkerOptions(lat, lng, label));
 
           this.zoom = this.calculateZoom();
@@ -199,35 +217,41 @@ export class CreateRouteComponent {
   }
 
   criarRota() {
+    this.showToast=false;
+    if (this.markerOptions.length>1){
+      let dialogRef = this.dialog.open(GenerateRouteDialogComponent);
 
-    let dialogRef = this.dialog.open(GenerateRouteDialogComponent);
+      let waypoints: { lat: number, lng: number }[] = [];
 
-    let waypoints: { lat: number, lng: number }[] = [];
-
-    for (let marker of this.markerOptions) {
-      if (marker.position) {
-        const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
-        const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
-        waypoints.push({lat, lng})
+      for (let marker of this.markerOptions) {
+        if (marker.position) {
+          const lat = typeof marker.position.lat === 'function' ? marker.position.lat() : marker.position.lat;
+          const lng = typeof marker.position.lng === 'function' ? marker.position.lng() : marker.position.lng;
+          waypoints.push({lat, lng})
+        }
       }
-    }
 
-    this.googleApiService.createRoute(waypoints[0].lat, waypoints[0].lng,
-      waypoints[1].lat, waypoints[1].lng).pipe(
-      catchError(error => {
-        this.toastMessage = "Ocorreu um erro ao gerar rota.";
-        this.showToast = true;
-        console.error(error);
+      this.googleApiService.createRoute(waypoints[0].lat, waypoints[0].lng,
+        waypoints[1].lat, waypoints[1].lng).pipe(
+        catchError(error => {
+          this.toastMessage = "Ocorreu um erro ao gerar rota.";
+          this.showToast = true;
+          console.error(error);
+          dialogRef.close();
+          return throwError(() => error);
+        }),switchMap(() => {
+          return of(this.googleApiService.getRoutes())
+        })
+      ).subscribe(serverResponse => {
         dialogRef.close();
-        return throwError(() => error);
-      }),switchMap(() => {
-        return of(this.googleApiService.getRoutes())
-      })
-    ).subscribe(serverResponse => {
-      dialogRef.close();
-      this.router.navigate(['/routes']);
-    });
-
+        this.router.navigate(['/routes']);
+      });
+    } else {
+      setTimeout(()=> {
+        this.showToast=true
+      }, 1)
+      this.toastMessage="Os campos obrigatórios têm que estar preenchidos";
+    }
   }
 
 
