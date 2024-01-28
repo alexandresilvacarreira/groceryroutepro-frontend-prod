@@ -53,9 +53,9 @@ const routes: Routes = [
   {path: 'create-route', component: CreateRouteComponent},
 //[roleGuard("STORE")]
   {path: 'shop-dashboard', component: ShopDashboardComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
-  {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login")]},
-  {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login")]},
+  {path: 'shop-new-product', component: ShopNewProductComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
+  {path: 'shop-edit-product/:productId', component: ShopEditProductComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
+  {path: 'shop-notifications', component: ShopNotificationsComponent, canActivate: [buildGuard("/login"), roleGuard("STORE")]},
 
   {path: '**', redirectTo: '/error', pathMatch: 'full'},
 
