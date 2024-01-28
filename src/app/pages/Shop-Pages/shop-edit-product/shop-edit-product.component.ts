@@ -88,7 +88,6 @@ export class ShopEditProductComponent {
         priceWoDiscount: productDetails.prices[0].priceWoDiscount,
 
       })
-      console.log(productDetails.product.name);
     });
   }
 

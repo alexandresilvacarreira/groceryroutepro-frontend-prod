@@ -176,7 +176,6 @@ export class CreateRouteComponent {
           let lng = results[0].geometry.location.lng();
           let label = (partida) ? "Partida" : "Destino";
 
-          console.log("Label to search for:", label);
 
 
 
@@ -188,7 +187,6 @@ export class CreateRouteComponent {
             this.lableProxy.splice(indexToRemove, 1);
           }
 
-          console.log(this.markerOptions)
           this.lableProxy.push(label);
           this.markerOptions.push(this.generateMarkerOptions(lat, lng, label));
 

@@ -37,8 +37,6 @@ export class ChangePasswordComponent {
     let parts = this.header.split("-");
     this.email=parts[0];
     this.token=parts[1];
-    console.log(this.email)
-    console.log(this.token)
   }
 
   toggleShowPassword(confirm = false) {
