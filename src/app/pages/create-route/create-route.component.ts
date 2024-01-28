@@ -46,6 +46,7 @@ export class CreateRouteComponent {
   destinoResults: any[] = [];
 
 
+
   partida?: google.maps.places.AutocompletePrediction;
   destino?: google.maps.places.AutocompletePrediction;
 
@@ -96,8 +97,8 @@ export class CreateRouteComponent {
   autocompleteMethod(inputString: string | null): Observable<any[]> {
     if (inputString && inputString.trim() !== "") {
       const autocompleteService = new google.maps.places.AutocompleteService();
-      const southwest = {lat: 32.35130, lng: -31.07921};
-      const northeast = {lat: 42.20564806080576, lng: -5.901021665431905};
+      const southwest = new google.maps.LatLng(36.95, -9.5);
+      const northeast = new google.maps.LatLng(42.15, -6.2);
       const newBounds = new google.maps.LatLngBounds(southwest, northeast);
 
       const inputToString = inputString.toString();
