@@ -182,11 +182,11 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
     providers: [DatePipe,
         {provide: LOCALE_ID, useValue: 'pt'},
         {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {position: 'absolute'}},
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true
-        }
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: AuthInterceptor,
+        //     multi: true
+        // }
     ],
     bootstrap: [AppComponent]
 })
