@@ -31,7 +31,7 @@ export class AuthService {
       .set('email', email)
       .set('password', password);
 
-    return this.http.post<ServerResponse>("/api" + "/process-login", body.toString(), {
+    return this.http.post<ServerResponse>(BASE_URL + "/process-login", body.toString(), {
       headers
     })
   }

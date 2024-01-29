@@ -1,9 +1,0 @@
-{
-  "/api": {
-    "target": "https://octopus-app-5cwcc.ondigitalocean.app",
-    "secure": true,
-    "pathRewrite": {
-      "^/api": ""
-    }
-  }
-}
