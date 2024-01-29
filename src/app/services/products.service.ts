@@ -37,7 +37,7 @@ export class ProductsService {
     }
 
     getProductsList(search: string = this.defaultSearch, categories: number[] = this.defaultCategories, chains: number[] = this.defaultChains, sort: string = this.defaultSort, page: number = this.defaultPage, size: number = this.defaultSize) {
-        return this.http.get<ProductWPriceList>(BASE_URL + "/products/list", {
+        return this.http.get<ProductWPriceList>("/api" + "/products/list", {
             params: {
                 search,
                 categories,

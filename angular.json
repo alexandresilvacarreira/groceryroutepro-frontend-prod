@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "proxyConfig": "src/proxy.conf.json",
             "allowedCommonJsDependencies": [
               "@fortawesome/free-solid-svg-icons",
               "@fortawesome/free-regular-svg-icons"
